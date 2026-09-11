@@ -4903,5 +4903,284 @@ export const aartis: AartiItem[] = [
         transliteration: ['Mrudu manda vaahe vaaraa sugandhita |', 'Charana samvaahana karito aanandita ||', 'Daasa mhane svaamee krupaa karaavee |', 'Datta naamaachee akhanda godee dyaavee || Jai dev jai dev || 3 ||'],
       }
     ],
+  },
+  {
+    id: 'shiva-panchakshara-stotra',
+    slug: 'shiva-panchakshara-stotra',
+    titleDevanagari: 'श्री शिव पञ्चाक्षर स्तोत्रम्',
+    titleTransliteration: 'Shri Shiva Panchakshara Stotram',
+    firstLineDevanagari: 'नागेन्द्रहाराय त्रिलोचनाय भस्माङ्गरागाय महेश्वराय',
+    firstLineTransliteration: 'Nagendraharaaya trilochanaya bhasmangaragaya maheshwaraya',
+    deity: 'shiva',
+    type: 'stotra',
+    language: 'sanskrit',
+    author: 'जगद्गुरु आदि शंकराचार्य (Adi Shankaracharya)',
+    meaningSummary: 'भगवान शिवाच्या "ॐ नमः शिवाय" या पञ्चाक्षरी महामंत्राच्या प्रत्येक अक्षरावर आदि शंकराचार्यांनी रचलेले अत्यंत पावन स्तोत्र.',
+    tags: ['shiva', 'mahadev', 'stotra', 'panchakshara', 'shankaracharya', 'sanskrit', 'monday', 'pradosh'],
+    stanzas: [
+      {
+        stanzaNumber: 1,
+        sectionTitle: '॥ न-कारः ॥',
+        devanagari: ['नागेन्द्रहाराय त्रिलोचनाय भस्माङ्गरागाय महेश्वराय ।', 'नित्याय शुद्धाय दिगम्बराय तस्मै "न" काराय नमः शिवाय ॥ १ ॥'],
+        transliteration: ['Nagendraharaaya trilochanaya bhasmangaragaya maheshwaraya |', 'Nityaya shuddhaya digambaraya tasmai "Na" karaya namah shivaya || 1 ||'],
+      },
+      {
+        stanzaNumber: 2,
+        sectionTitle: '॥ म-कारः ॥',
+        devanagari: ['मन्दाकिनीसलिलचन्दनचर्चिताय नन्दीश्वरप्रमथनाथमहेश्वराय ।', 'मन्दारमुख्यबहुपुष्पसुपूजिताय तस्मै "म" काराय नमः शिवाय ॥ २ ॥'],
+        transliteration: ['Mandakinisalilachandanacharchitaya nandishwarapramathanathamaheshwaraya |', 'Mandaramukhyabahupushpasupoojitaya tasmai "Ma" karaya namah shivaya || 2 ||'],
+      },
+      {
+        stanzaNumber: 3,
+        sectionTitle: '॥ शि-कारः ॥',
+        devanagari: ['शिवाय गौरीवदनाब्जवृन्दसूर्याय दक्षाध्वरनाशकाय ।', 'श्रीनीलकण्ठाय वृषध्वजाय तस्मै "शि" काराय नमः शिवाय ॥ ३ ॥'],
+        transliteration: ['Shivaya gaurivadanabjavrindasuryaya dakshadhwaranashakaya |', 'Shrineelakanthaya vrishadhwajaya tasmai "Shi" karaya namah shivaya || 3 ||'],
+      },
+      {
+        stanzaNumber: 4,
+        sectionTitle: '॥ वा-कारः ॥',
+        devanagari: ['वसिष्ठकुम्भोद्भवगौतमार्यमुनीन्द्रदेवार्चितशेखराय ।', 'चन्द्रार्कवैश्वानरलोचनाय तस्मै "वा" काराय नमः शिवाय ॥ ४ ॥'],
+        transliteration: ['Vasishthakumbhodbhavagautamaryamuneendradevarchitashekharaya |', 'Chandrarkavaishwanaralochanaya tasmai "Va" karaya namah shivaya || 4 ||'],
+      },
+      {
+        stanzaNumber: 5,
+        sectionTitle: '॥ य-कारः ॥',
+        devanagari: ['यक्षस्वरूपाय जटाधराय पिनाकहस्ताय सनातनाय ।', 'दिव्याय देवाय दिगम्बराय तस्मै "य" काराय नमः शिवाय ॥ ५ ॥'],
+        transliteration: ['Yakshaswaroopaya jatadharaya pinakahastaya sanatanaya |', 'Divyaya devaya digambaraya tasmai "Ya" karaya namah shivaya || 5 ||'],
+      },
+      {
+        stanzaNumber: 6,
+        sectionTitle: '॥ फलश्रुती ॥',
+        devanagari: ['पञ्चाक्षरमिदं पुण्यं यः पठेच्छिवसंनिधौ ।', 'शिवलोकमवाप्नोति शिवेन सह मोदते ॥'],
+        transliteration: ['Panchaksharamidam punyam yah pathechchhivasamnidhau |', 'Shivalokamavapnoti shivena saha modate ||'],
+      }
+    ],
+  },
+  {
+    id: 'lingashtakam',
+    slug: 'lingashtakam',
+    titleDevanagari: 'श्री लिङ्गाष्टकम्',
+    titleTransliteration: 'Shri Lingashtakam',
+    firstLineDevanagari: 'ब्रह्ममुरारिसुरार्चितलिङ्गं निर्मलभासितशोभितलिङ्गम्',
+    firstLineTransliteration: 'Brahmamurarisurarchitalingam nirmalabhasitashobhitalingam',
+    deity: 'shiva',
+    type: 'ashtak',
+    language: 'sanskrit',
+    author: 'जगद्गुरु आदि शंकराचार्य (Adi Shankaracharya)',
+    meaningSummary: 'शिवलिंगाच्या पूजनाचे माहात्म्य व सर्व पापनाश करणारी आदि शंकराचार्यांची सुप्रसिद्ध आठ श्लोकांची स्तुती.',
+    tags: ['shiva', 'lingashtakam', 'ashtak', 'shankaracharya', 'sanskrit', 'shivratri', 'monday'],
+    stanzas: [
+      {
+        stanzaNumber: 1,
+        devanagari: ['ब्रह्ममुरारिसुरार्चितलिङ्गं निर्मलभासितशोभितलिङ्गम् ।', 'जन्मजदुःखविनाशकलिङ्गं तत् प्रणमामि सदाशिवलिङ्गम् ॥ १ ॥'],
+        transliteration: ['Brahmamurarisurarchitalingam nirmalabhasitashobhitalingam |', 'Janmajaduhkhavinashakalingam tat pranamami sadashivalingam || 1 ||'],
+      },
+      {
+        stanzaNumber: 2,
+        devanagari: ['देवमुनिप्रवरार्चितलिङ्गं कामदहं करुणाकरलिङ्गम् ।', 'रावणदर्पविनाशनलिङ्गं तत् प्रणमामि सदाशिवलिङ्गम् ॥ २ ॥'],
+        transliteration: ['Devamunipravararchitalingam kamadaham karunakaralingam |', 'Ravanadarpavinashanalingam tat pranamami sadashivalingam || 2 ||'],
+      },
+      {
+        stanzaNumber: 3,
+        devanagari: ['सर्वसुगन्धिसुलेपितलिङ्गं बुद्धिविवर्धनकारणलिङ्गम् ।', 'सिद्धसुरासुरवन्दितलिङ्गं तत् प्रणमामि सदाशिवलिङ्गम् ॥ ३ ॥'],
+        transliteration: ['Sarvasugandhisulepitalingam buddhivivardhanakaranalingam |', 'Siddhasurasuravanditalingam tat pranamami sadashivalingam || 3 ||'],
+      },
+      {
+        stanzaNumber: 4,
+        devanagari: ['कनकमहामणिभूषितलिङ्गं फणिपतिवेष्टितशोभितलिङ्गम् ।', 'दक्षसुयज्ञविनाशनलिङ्गं तत् प्रणमामि सदाशिवलिङ्गम् ॥ ४ ॥'],
+        transliteration: ['Kanakamahamanibhooshitalingam phanipativeshtitashobhitalingam |', 'Dakshasuyadjnavinashanalingam tat pranamami sadashivalingam || 4 ||'],
+      },
+      {
+        stanzaNumber: 5,
+        devanagari: ['कुङ्कुमचन्दनलेपितलिङ्गं पङ्कजहारसुशोभितलिङ्गम् ।', 'सञ्चितपापविनाशनलिङ्गं तत् प्रणमामि सदाशिवलिङ्गम् ॥ ५ ॥'],
+        transliteration: ['Kumkumachandanalepitalingam pankajaharasushobhitalingam |', 'Sanchitapaapavinashanalingam tat pranamami sadashivalingam || 5 ||'],
+      },
+      {
+        stanzaNumber: 6,
+        devanagari: ['देवगणार्चितसेवितलिङ्गं भावैर्भक्तिभिरेव च लिङ्गम् ।', 'दिनकरकोटिप्रभाकरलिङ्गं तत् प्रणमामि सदाशिवलिङ्गम् ॥ ६ ॥'],
+        transliteration: ['Devaganarchitasevitalingam bhavairbhaktibhireva cha lingam |', 'Dinakarakotiprabhakaralingam tat pranamami sadashivalingam || 6 ||'],
+      },
+      {
+        stanzaNumber: 7,
+        devanagari: ['अष्टदलोपरिवेष्टितलिङ्गं सर्वसमुद्भवकारणलिङ्गम् ।', 'अष्टदरिद्रविनाशनलिङ्गं तत् प्रणमामि सदाशिवलिङ्गम् ॥ ७ ॥'],
+        transliteration: ['Ashtadalopariveshtitalingam sarvasamudbhavakaranalingam |', 'Ashtadaridravinashanalingam tat pranamami sadashivalingam || 7 ||'],
+      },
+      {
+        stanzaNumber: 8,
+        devanagari: ['सुरगुरुसुरवरपूजितलिङ्गं सुरवनपुष्पसदार्चितलिङ्गम् ।', 'परात्परं परमात्मकलिङ्गं तत् प्रणमामि सदाशिवलिङ्गम् ॥ ८ ॥'],
+        transliteration: ['Suragurusuravarapoojitalingam suravanapushpasadarchitalingam |', 'Paratparam paramatmakalingam tat pranamami sadashivalingam || 8 ||'],
+      },
+      {
+        stanzaNumber: 9,
+        sectionTitle: '॥ फलश्रुती ॥',
+        devanagari: ['लिङ्गाष्टकमिदं पुण्यं यः पठेच्छिवसंनिधौ ।', 'शिवलोकमवाप्नोति शिवेन सह मोदते ॥'],
+        transliteration: ['Lingashtakamidam punyam yah pathechchhivasamnidhau |', 'Shivalokamavapnoti shivena saha modate ||'],
+      }
+    ],
+  },
+  {
+    id: 'rudrashtakam',
+    slug: 'rudrashtakam',
+    titleDevanagari: 'श्री रुद्राष्टकम्',
+    titleTransliteration: 'Shri Rudrashtakam',
+    firstLineDevanagari: 'नमामीशमीशान निर्वाणरूपं विभुं व्यापकं ब्रह्मवेदस्वरूपम्',
+    firstLineTransliteration: 'Namamishamishana nirvanaroopam vibhum vyapakam brahmavedaswaroopam',
+    deity: 'shiva',
+    type: 'ashtak',
+    language: 'sanskrit',
+    author: 'गोस्वामी तुलसीदास (Goswami Tulsidas - Ramcharitmanas)',
+    meaningSummary: 'गोस्वामी तुलसीदास विरचित श्रीरामचरितमानसातील भगवान शंकराची अत्यंत ओजस्वी व भक्तिरसपूर्ण आठ श्लोकांची स्तुती.',
+    tags: ['shiva', 'rudrashtakam', 'ashtak', 'tulsidas', 'ramcharitmanas', 'sanskrit', 'monday'],
+    stanzas: [
+      {
+        stanzaNumber: 1,
+        devanagari: ['नमामीशमीशान निर्वाणरूपं विभुं व्यापकं ब्रह्मवेदस्वरूपम् ।', 'निजं निर्गुणं निर्विकल्पं निरीहं चिदाकाशमाकाशवासं भजेऽहम् ॥ १ ॥'],
+        transliteration: ['Namamishamishana nirvanaroopam vibhum vyapakam brahmavedaswaroopam |', 'Nijam nirgunam nirvikalpam nireeham chidakashamakashavasam bhajeham || 1 ||'],
+      },
+      {
+        stanzaNumber: 2,
+        devanagari: ['निराकारमोङ्कारमूलं तुरीयं गिरा ज्ञान गोतीतमीशं गिरीशम् ।', 'करालं महाकाल कालं कृपालं गुणागार संसारपारं नतोऽहम् ॥ २ ॥'],
+        transliteration: ['Nirakaramonkaramoolam tureeyam gira dnyana goteetameesham gireesham |', 'Karalam mahakala kalam kripalam gunagara samsaraparam natoham || 2 ||'],
+      },
+      {
+        stanzaNumber: 3,
+        devanagari: ['तुषाराद्रि संकाश गौरं गभीरं मनोभूत कोटि प्रभा श्री शरीरम् ।', 'स्फुरन्मौलि कल्लोलिनी चारु गङ्गा लसद्भालबालेन्दु कण्ठे भुजङ्गा ॥ ३ ॥'],
+        transliteration: ['Tusharadri samkasha gauram gabheeram manobhoota koti prabha shree shareeram |', 'Sphuranmauli kallolinee chaaru gangaa lasadbhalabalendu kanthe bhujangaa || 3 ||'],
+      },
+      {
+        stanzaNumber: 4,
+        devanagari: ['चलत्कुण्डलं भ्रू सुनेत्रं विशालं प्रसन्नाननं नीलकण्ठं दयालम् ।', 'मृगाधीशचर्माम्बरं मुण्डमालं प्रियं शङ्करं सर्वनाथं भजामि ॥ ४ ॥'],
+        transliteration: ['Chalatkundalam bhroo sunetram vishalam prasannannanam neelakantham dayalam |', 'Mrigadhishacharmambaram mundamalam priyam shankaram sarvanatham bhajami || 4 ||'],
+      },
+      {
+        stanzaNumber: 5,
+        devanagari: ['प्रचण्डं प्रकृष्टं प्रगल्भं परेशं अखण्डं अजं भानुकोटिप्रकाशम् ।', 'त्रयः शूल निर्मूलनं शूलपाणिं भजेऽहं भवानीपतिं भावगम्यम् ॥ ५ ॥'],
+        transliteration: ['Prachandam prakrishtam pragalbham paresham akhandam ajam bhanukotiprakasham |', 'Trayah shoola nirmoolanam shoolapanim bhajeham bhavanipatim bhavagamyam || 5 ||'],
+      },
+      {
+        stanzaNumber: 6,
+        devanagari: ['कलातीत कल्याण कल्पान्तकारी सदा सज्जनानन्ददाता पुरारी ।', 'चिदानन्द सन्दोह मोहापहारी प्रसीद प्रसीद प्रभो मन्मथारी ॥ ६ ॥'],
+        transliteration: ['Kalateeta kalyana kalpantakaree sada sajjananandadata purari |', 'Chidananda sandoha mohapaharee praseeda praseeda prabho manmatharee || 6 ||'],
+      },
+      {
+        stanzaNumber: 7,
+        devanagari: ['न यावद् उमानाथ पादारविन्दं भजन्तीह लोके परे वा नराणाम् ।', 'न तावत्सुखं शान्ति सन्तापनाशं प्रसीद प्रभो सर्वभूताधिवासम् ॥ ७ ॥'],
+        transliteration: ['Na yavada umanatha padaravindam bhajanteeha loke pare vaa naranaam |', 'Na tavatsukham shanti santapanasham praseeda prabho sarvabhootadhivasam || 7 ||'],
+      },
+      {
+        stanzaNumber: 8,
+        devanagari: ['न जानामि योगं जपं नैव पूजां नतोऽहं सदा सर्वदा शम्भु तुभ्यम् ।', 'जरा जन्म दुःखौघ तातप्यमानं प्रभो पाहि आपन्नमामीश शम्भो ॥ ८ ॥'],
+        transliteration: ['Na janami yogam japam naiva poojaam natoham sadaa sarvadaa shambhu tubhyam |', 'Jaraa janma duhkhaugha tatapyamanam prabho pahi aapannamamisha shambho || 8 ||'],
+      },
+      {
+        stanzaNumber: 9,
+        sectionTitle: '॥ फलश्रुती / दोहा ॥',
+        devanagari: ['रुद्राष्टकमिदं प्रोक्तं विप्रेण हरतोषये ।', 'ये पठन्ति नरा भक्त्या तेषां शम्भुः प्रसीदति ॥'],
+        transliteration: ['Rudrashtakamidam proktam viprena haratoshaye |', 'Ye pathanti nara bhaktya teshaam shambhuh praseedati ||'],
+      }
+    ],
+  },
+  {
+    id: 'shiva-manasa-puja',
+    slug: 'shiva-manasa-puja',
+    titleDevanagari: 'श्री शिव मानस पूजा',
+    titleTransliteration: 'Shri Shiva Manasa Pooja',
+    firstLineDevanagari: 'रत्नैः कल्पितमासनं हिमजलैः स्नानं च दिव्याम्बरं',
+    firstLineTransliteration: 'Ratnaih kalpitamasanam himajlaih snanam cha divyambaram',
+    deity: 'shiva',
+    type: 'stotra',
+    language: 'sanskrit',
+    author: 'जगद्गुरु आदि शंकराचार्य (Adi Shankaracharya)',
+    meaningSummary: 'मनानेच अंतःकरणात केलेली शिवाची षोडशोपचार पूजा व सर्व कर्मे शिवाला अर्पण करणारी आदि शंकराचार्यांची अप्रतिम रचना.',
+    tags: ['shiva', 'manasa-puja', 'stotra', 'shankaracharya', 'sanskrit', 'meditation'],
+    stanzas: [
+      {
+        stanzaNumber: 1,
+        devanagari: ['रत्नैः कल्पितमासनं हिमजलैः स्नानं च दिव्याम्बरं', 'नानारत्नविभूषितं मृगमदामोदाङ्कितं चन्दनम् ।', 'जातीचम्पकबिल्वपत्ररचितं पुष्पं च धूपं तथा', 'दीपं देव दयानिधे पशुपते हृत्कल्पितं गृह्यताम् ॥ १ ॥'],
+        transliteration: ['Ratnaih kalpitamasanam himajlaih snanam cha divyambaram', 'Nanaratnavibhooshitam mrigamadamodankitam chandanam |', 'Jateechampakabilvapatrarachitam pushpam cha dhoopam tatha', 'Deepam deva dayanidhe pashupate hritkalpitam grihyatam || 1 ||'],
+      },
+      {
+        stanzaNumber: 2,
+        devanagari: ['सौवर्णे नवरत्नखण्डरचिते पात्रे घृतं पायसं', 'भक्ष्यं पञ्चविधं पयोदधियुतं रम्भाफलं पानकम् ।', 'शाकानामयुतं जलं रुचिकरं कर्पूरखण्डोज्ज्वलं', 'ताम्बूलं मनसा मया विरचितं भक्त्या प्रभो स्वीकुरु ॥ २ ॥'],
+        transliteration: ['Sauvarne navaratnakhandarachite patre ghritam payasam', 'Bhakshyam panchavidham payodadhiyutam rambhaphalam panakam |', 'Shakanamayutam jalam ruchikaram karpoorakhandojjwalam', 'Tamboolam manasa maya virachitam bhaktya prabho sveekuru || 2 ||'],
+      },
+      {
+        stanzaNumber: 3,
+        devanagari: ['छत्रं चामरयोर्युगं व्यजनकं चादर्शकं निर्मलं', 'वीणाभेरिमृदङ्गकाहलकला गीतं च नृत्यं तथा ।', 'साष्टाङ्गं प्रणतिः स्तुतिर्बहुविधा ह्येतत्समस्तं मया', 'सङ्कल्पेन समर्पितं तव विभो पूजां गृहाण प्रभो ॥ ३ ॥'],
+        transliteration: ['Chhatram chamarayoryugam vyajanakam chadarshakam nirmalam', 'Veenabherimridangakahalakala geetam cha nrityam tatha |', 'Sashtangam pranatih stutirbahuvidha hyetatsamastam maya', 'Sankalpena samarpitam tava vibho poojaam grihana prabho || 3 ||'],
+      },
+      {
+        stanzaNumber: 4,
+        devanagari: ['आत्मा त्वं गिरिजा मतिः सहचराः प्राणाः शरीरं गृहं', 'पूजा ते विषयोपभोगरचना निद्रा समाधिस्थितिः ।', 'सञ्चारः पदयोः प्रदक्षिणविधिः स्तोत्राणि सर्वा गिरो', 'यद्यत्कर्म करोमि तत्तदखिलं शम्भो तवाराधनम् ॥ ४ ॥'],
+        transliteration: ['Aatma tvam girija matih sahacharah pranah shareeram griham', 'Pooja te vishayopabhogarachana nidra samadhisthitih |', 'Sancharah padayoh pradakshinavidhih stotrani sarva giro', 'Yadyatkarma karomi tattadakhilam shambho tavaradhanam || 4 ||'],
+      },
+      {
+        stanzaNumber: 5,
+        devanagari: ['करचरण कृतं वाक्कायजं कर्मजं वा', 'श्रवणनयनजं वा मानसं वापराधम् ।', 'विहितमविहितं वा सर्वमेतत्क्षमस्व', 'जय जय करुणाब्धे श्रीमहादेव शम्भो ॥ ५ ॥'],
+        transliteration: ['Karacharana kritam vaakkayajam karmajam vaa', 'Shravananayanajam vaa manasam vaaparadham |', 'Vihitamavihitam vaa sarvametatkshamasva', 'Jai jai karunabdhe shreemahadeva shambho || 5 ||'],
+      }
+    ],
+  },
+  {
+    id: 'kalabhairavashtakam',
+    slug: 'kalabhairavashtakam',
+    titleDevanagari: 'श्री कालभैरवाष्टकम्',
+    titleTransliteration: 'Shri Kalabhairavashtakam',
+    firstLineDevanagari: 'देवराजसेव्यमानपावनाङ्घ्रिपङ्कजं व्यालयज्ञसूत्रमिन्दुशेखरं कृपाकरम्',
+    firstLineTransliteration: 'Devarajasevyamanapavananghripankajam vyalayadjnasootramindushekharam kripakaram',
+    deity: 'shiva',
+    type: 'ashtak',
+    language: 'sanskrit',
+    author: 'जगद्गुरु आदि शंकराचार्य (Adi Shankaracharya)',
+    meaningSummary: 'काशीचे क्षेत्रपाल भगवान कालभैरवाची आदि शंकराचार्यांनी केलेली कालभयनाशी, पापहारक व अतिशय लोकप्रिय स्तुती.',
+    tags: ['shiva', 'kalabhairava', 'ashtak', 'shankaracharya', 'kashi', 'sanskrit'],
+    stanzas: [
+      {
+        stanzaNumber: 1,
+        devanagari: ['देवराजसेव्यमानपावनाङ्घ्रिपङ्कजं व्यालयज्ञसूत्रमिन्दुशेखरं कृपाकरम् ।', 'नारदादियोगिवृन्दवन्दितं दिगम्बरं काशिकापुराधिनाथकालभैरवं भजे ॥ १ ॥'],
+        transliteration: ['Devarajasevyamanapavananghripankajam vyalayadjnasootramindushekharam kripakaram |', 'Naradadiyogivrindavanditam digambaram kashikapuradhinathakalabhairavam bhaje || 1 ||'],
+      },
+      {
+        stanzaNumber: 2,
+        devanagari: ['भानुकोटिभास्वरं भवाब्धितारकं परं नीलकण्ठमीप्सितार्थदायकं त्रिलोचनम् ।', 'कालकालमम्बुजाक्षमक्षशूलमक्षरं काशिकापुराधिनाथकालभैरवं भजे ॥ २ ॥'],
+        transliteration: ['Bhanukotibhaswaram bhavabdhitarakam param neelakanthameepsitarthadayakam trilochanam |', 'Kalakalamambujakshamakshashoolamaksharam kashikapuradhinathakalabhairavam bhaje || 2 ||'],
+      },
+      {
+        stanzaNumber: 3,
+        devanagari: ['शूलटङ्कपाशदण्डपाणिमादिकारणं श्यामकायमादिदेवमक्षरं निरामयम् ।', 'भीमविक्रमं प्रभुं विचित्रताण्डवप्रियं काशिकापुराधिनाथकालभैरवं भजे ॥ ३ ॥'],
+        transliteration: ['Shoolatankapashadandapanimadikaranam shyamakayamadidevamaksharam niramayam |', 'Bheemavikramam prabhum vichitratandavapriyam kashikapuradhinathakalabhairavam bhaje || 3 ||'],
+      },
+      {
+        stanzaNumber: 4,
+        devanagari: ['भुक्तिमुक्तिदायकं प्रशस्तचारुविग्रहं भक्तवत्सलं स्थितं समस्तलोकविग्रहम् ।', 'विनिक्वणन्मनोज्ञहेमकिङ्किणीलसत्कटिं काशिकापुराधिनाथकालभैरवं भजे ॥ ४ ॥'],
+        transliteration: ['Bhuktimuktidayakam prashastacharuvigraham bhaktavatsalam sthitam samastalokavigraham |', 'Vinikwananmanojnahemakinkinilasatkatim kashikapuradhinathakalabhairavam bhaje || 4 ||'],
+      },
+      {
+        stanzaNumber: 5,
+        devanagari: ['धर्मसेतुपालकं त्वधर्ममार्गनाशनं कर्मपाशमोचकं सुशर्मदायकं विभुम् ।', 'स्वर्णवर्णशेषपाशशोभिताङ्गमण्डलं काशिकापुराधिनाथकालभैरवं भजे ॥ ५ ॥'],
+        transliteration: ['Dharmasetupalakam tvadharmamarganashanam karmapashamochakam susharmadayakam vibhum |', 'Swarnavarnasheshapashashobhitangamandalam kashikapuradhinathakalabhairavam bhaje || 5 ||'],
+      },
+      {
+        stanzaNumber: 6,
+        devanagari: ['रत्नपादुकाप्रभाभिरामपादयुग्मकं नित्यमद्वितीयमिष्टदैवतं निरञ्जनम् ।', 'मृत्युदर्पनाशनं कराळदंष्ट्रमोक्षणं काशिकापुराधिनाथकालभैरवं भजे ॥ ६ ॥'],
+        transliteration: ['Ratnapadukaprabhabhiramapadayugmakam nityamadviteeyamishtadaivatam niranjanam |', 'Mrityudarpanaashanam karaladamshtramokshanam kashikapuradhinathakalabhairavam bhaje || 6 ||'],
+      },
+      {
+        stanzaNumber: 7,
+        devanagari: ['अट्टहासभिन्नपद्मजाण्डकोशसन्ततिं दृष्टिपातनष्टपापजालमुग्रशासनम् ।', 'अष्टसिद्धिदायकं कपालमालिकाधरं काशिकापुराधिनाथकालभैरवं भजे ॥ ७ ॥'],
+        transliteration: ['Attahasabhinnapadmajandakoshasantatim drishtipatanashtapapajalamugrashasanam |', 'Ashtasiddhidayakam kapalamalikadharam kashikapuradhinathakalabhairavam bhaje || 7 ||'],
+      },
+      {
+        stanzaNumber: 8,
+        devanagari: ['भूतसङ्घनायकं विशालकीर्तिदायकं काशिवासलोकपुण्यपापशोधकं विभुम् ।', 'नीतिमार्गकोविदं पुरातनं जगत्पतिं काशिकापुराधिनाथकालभैरवं भजे ॥ ८ ॥'],
+        transliteration: ['Bhootasanghanayakam vishalakeertidayakam kashivasalokapunyapapashodhakam vibhum |', 'Neetimargakovidam puratanam jagatpatim kashikapuradhinathakalabhairavam bhaje || 8 ||'],
+      },
+      {
+        stanzaNumber: 9,
+        sectionTitle: '॥ फलश्रुती ॥',
+        devanagari: ['कालभैरवाष्टकं पठन्ति ये मनोहरं ज्ञानमुक्तिसाधनं विचित्रपुण्यवर्धनम् ।', 'शोकमोहदैन्यलोभकोपतापनाशनं ते प्रयान्ति कालभैरवाङ्घ्रिसन्निधिं ध्रुवम् ॥'],
+        transliteration: ['Kalabhairavashtakam pathanti ye manoharam dnyanamuktisaadhanam vichitrapunyavardhanam |', 'Shokamohadainyalobhakopatapanashanam te prayanti kalabhairavanghrisannidhim dhruvam ||'],
+      }
+    ],
   }
 ];

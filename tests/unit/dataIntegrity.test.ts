@@ -141,4 +141,21 @@ describe('Data Integrity & Schema Validation', () => {
       expect(slugs).toContain(slug);
     });
   });
+
+  it('includes iconic Shiva Stotras and Ashtakas', () => {
+    const slugs = aartis.map(a => a.slug);
+    const expectedShivaHymns = [
+      'shiva-panchakshara-stotra',
+      'lingashtakam',
+      'rudrashtakam',
+      'shiva-manasa-puja',
+      'kalabhairavashtakam',
+      'shiva-tandava-stotra',
+      'bilvashtakam',
+    ];
+
+    expectedShivaHymns.forEach(slug => {
+      expect(slugs).toContain(slug);
+    });
+  });
 });

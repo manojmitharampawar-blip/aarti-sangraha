@@ -174,8 +174,16 @@ export function useCustomGroups() {
     [groups]
   );
 
+  const importGroup = useCallback(
+    (name: string, description: string = "", aartiIds: string[] = []): CustomGroup => {
+      return createGroup(name, description, aartiIds);
+    },
+    [createGroup]
+  );
+
   return {
     groups,
+    importGroup,
     isLoaded,
     createGroup,
     updateGroup,

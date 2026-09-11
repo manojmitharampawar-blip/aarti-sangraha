@@ -11,6 +11,7 @@ import {
   Type,
   Sun,
   Edit3,
+  Send,
   Plus,
   FolderOpen,
   Sparkles,
@@ -25,6 +26,7 @@ import { useAutoScroll } from '@/hooks/useAutoScroll';
 import { AutoScrollPill } from '@/components/AutoScrollPill';
 import { FontSizeModal } from '@/components/FontSizeModal';
 import { GroupEditorModal } from '@/components/GroupEditorModal';
+import { ShareGroupModal } from '@/components/ShareGroupModal';
 import { NextAartiCountdown } from '@/components/NextAartiCountdown';
 import { DevotionalAudioBar } from '@/components/DevotionalAudioBar';
 
@@ -40,6 +42,7 @@ function GroupPlayerContent() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFontModalOpen, setIsFontModalOpen] = useState(false);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [pendingNextAarti, setPendingNextAarti] = useState<AartiItem | null>(null);
   const [isCompletedToast, setIsCompletedToast] = useState(false);
 
@@ -237,6 +240,17 @@ function GroupPlayerContent() {
             </button>
           )}
 
+          {customGroup && (
+            <button
+              onClick={() => setIsShareModalOpen(true)}
+              aria-label="Share group on WhatsApp"
+              title="व्हॉट्सॲपवर शेअर करा"
+              className="p-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 hover:bg-emerald-500/20 transition-colors"
+            >
+              <Send className="w-4 h-4" />
+            </button>
+          )}
+
           {/* Edit Group Sequence (for custom groups) */}
           {customGroup && (
             <button
@@ -368,6 +382,18 @@ function GroupPlayerContent() {
       />
 
       <FontSizeModal isOpen={isFontModalOpen} onClose={() => setIsFontModalOpen(false)} />
+
+      {customGroup && (
+        <ShareGroupModal
+          isOpen={isShareModalOpen}
+          onClose={() => setIsShareModalOpen(false)}
+          group={{
+            name: customGroup.name,
+            description: customGroup.description,
+            aartiIds: customGroup.aartiIds,
+          }}
+        />
+      )}
 
       {customGroup && (
         <GroupEditorModal

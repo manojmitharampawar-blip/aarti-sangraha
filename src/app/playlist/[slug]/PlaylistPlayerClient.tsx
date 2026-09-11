@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ChevronLeft, ChevronRight, CheckCircle, Type, Sun } from 'lucide-react';
+import { ArrowLeft, ChevronLeft, ChevronRight, CheckCircle, Type, Sun, Send } from 'lucide-react';
 import { Playlist, AartiItem } from '@/types';
 import { aartis } from '@/data/aartis';
 import { useThemeContext } from '@/components/ThemeProvider';
@@ -10,6 +10,7 @@ import { useWakeLock } from '@/hooks/useWakeLock';
 import { useAutoScroll } from '@/hooks/useAutoScroll';
 import { AutoScrollPill } from '@/components/AutoScrollPill';
 import { FontSizeModal } from '@/components/FontSizeModal';
+import { ShareGroupModal } from '@/components/ShareGroupModal';
 import { NextAartiCountdown } from '@/components/NextAartiCountdown';
 import { DevotionalAudioBar } from '@/components/DevotionalAudioBar';
 
@@ -23,6 +24,7 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFontModalOpen, setIsFontModalOpen] = useState(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [pendingNextAarti, setPendingNextAarti] = useState<AartiItem | null>(null);
   const [isCompletedToast, setIsCompletedToast] = useState(false);
 
@@ -146,6 +148,15 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
           )}
 
           <button
+            onClick={() => setIsShareModalOpen(true)}
+            aria-label="Share sequence on WhatsApp"
+            title="व्हॉट्सॲपवर शेअर करा"
+            className="p-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 hover:bg-emerald-500/20 transition-colors"
+          >
+            <Send className="w-4 h-4" />
+          </button>
+
+          <button
             onClick={toggleScript}
             aria-label="Switch script"
             className="px-2.5 py-1.5 rounded-xl border text-xs font-bold border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)]"
@@ -258,6 +269,16 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
       />
 
       <FontSizeModal isOpen={isFontModalOpen} onClose={() => setIsFontModalOpen(false)} />
+
+      <ShareGroupModal
+        isOpen={isShareModalOpen}
+        onClose={() => setIsShareModalOpen(false)}
+        group={{
+          name: playlist.titleDevanagari,
+          description: playlist.description,
+          aartiIds: playlist.aartiIds,
+        }}
+      />
     </div>
   );
 }
