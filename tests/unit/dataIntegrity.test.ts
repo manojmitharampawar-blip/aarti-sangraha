@@ -76,4 +76,18 @@ describe('Data Integrity & Schema Validation', () => {
     expect(slugs).toContain('aarti-gayatri-mata');
     expect(slugs).toContain('aarti-sant-eknath');
   });
+
+  it('includes daily temple prahar aartis for Pandharpur, Akkalkot, Shegaon, Kolhapur and Tuljapur', () => {
+    const slugs = aartis.map(a => a.slug);
+    expect(slugs).toContain('pandharpur-vitthal-kakad-aarti');
+    expect(slugs).toContain('pandharpur-vitthal-shej-aarti');
+    expect(slugs).toContain('rukhumai-aarti');
+    expect(slugs).toContain('akkalkot-swami-kakad-aarti');
+    expect(slugs).toContain('akkalkot-swami-shej-aarti');
+    expect(slugs).toContain('shegaon-gajanan-kakad-aarti');
+    expect(slugs).toContain('kolhapur-ambabai-karveer-aarti');
+    expect(slugs).toContain('kolhapur-ambabai-kakad-aarti');
+    expect(slugs).toContain('tuljabhavani-aarti');
+    expect(slugs).toContain('ganesha-kakad-aarti');
+  });
 });
