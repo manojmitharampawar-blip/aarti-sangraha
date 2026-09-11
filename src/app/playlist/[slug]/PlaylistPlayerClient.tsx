@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ChevronLeft, ChevronRight, CheckCircle, Type, Sun, Sparkles } from 'lucide-react';
+import { ArrowLeft, ChevronLeft, ChevronRight, CheckCircle, Type, Sun } from 'lucide-react';
 import { Playlist, AartiItem } from '@/types';
 import { aartis } from '@/data/aartis';
 import { useThemeContext } from '@/components/ThemeProvider';
@@ -10,6 +10,8 @@ import { useWakeLock } from '@/hooks/useWakeLock';
 import { useAutoScroll } from '@/hooks/useAutoScroll';
 import { AutoScrollPill } from '@/components/AutoScrollPill';
 import { FontSizeModal } from '@/components/FontSizeModal';
+import { NextAartiCountdown } from '@/components/NextAartiCountdown';
+import { DevotionalAudioBar } from '@/components/DevotionalAudioBar';
 
 interface PlaylistPlayerClientProps {
   playlist: Playlist;
@@ -21,7 +23,8 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFontModalOpen, setIsFontModalOpen] = useState(false);
-  const [transitionMessage, setTransitionMessage] = useState<string | null>(null);
+  const [pendingNextAarti, setPendingNextAarti] = useState<AartiItem | null>(null);
+  const [isCompletedToast, setIsCompletedToast] = useState(false);
 
   // Map playlist IDs to AartiItem objects
   const playlistAartis: AartiItem[] = playlist.aartiIds
@@ -30,26 +33,27 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
 
   const currentAarti = playlistAartis[currentIndex] || playlistAartis[0];
 
+  const proceedToNext = useCallback(() => {
+    setPendingNextAarti(null);
+    setCurrentIndex(prev => prev + 1);
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    resetEndTrigger();
+  }, []);
+
+  const cancelCountdown = useCallback(() => {
+    setPendingNextAarti(null);
+  }, []);
+
   const handleReachEnd = useCallback(() => {
     if (currentIndex < playlistAartis.length - 1) {
       const nextHymn = playlistAartis[currentIndex + 1];
-      const nextTitle =
-        script === 'devanagari' ? nextHymn.titleDevanagari : nextHymn.titleTransliteration;
-
-      setTransitionMessage(`पुढील आरती: ${nextTitle} सुरू होत आहे...`);
-
-      setTimeout(() => {
-        setCurrentIndex(prev => prev + 1);
-        window.scrollTo({ top: 0, behavior: 'instant' });
-        resetEndTrigger();
-        setTransitionMessage(null);
-      }, 1200);
+      setPendingNextAarti(nextHymn);
     } else {
       stopAutoScroll();
-      setTransitionMessage('पूजा संपन्न! (Pooja Completed) 🙏');
-      setTimeout(() => setTransitionMessage(null), 3000);
+      setIsCompletedToast(true);
+      setTimeout(() => setIsCompletedToast(false), 4000);
     }
-  }, [currentIndex, playlistAartis, script]);
+  }, [currentIndex, playlistAartis]);
 
   const {
     isScrolling,
@@ -76,6 +80,7 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
 
   const goToPrev = () => {
     if (currentIndex > 0) {
+      setPendingNextAarti(null);
       setCurrentIndex(prev => prev - 1);
       resetEndTrigger();
     }
@@ -83,18 +88,29 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
 
   const goToNext = () => {
     if (currentIndex < playlistAartis.length - 1) {
+      setPendingNextAarti(null);
       setCurrentIndex(prev => prev + 1);
       resetEndTrigger();
     }
   };
 
   return (
-    <div className={`space-y-6 max-w-lg mx-auto pb-16 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>
-      {/* Floating Transition Alert */}
-      {transitionMessage && (
-        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-2xl bg-amber-600 text-white text-xs font-bold shadow-2xl flex items-center gap-2 animate-bounce border border-amber-400">
-          <Sparkles className="w-4 h-4 text-yellow-200" />
-          <span>{transitionMessage}</span>
+    <div className={`space-y-6 max-w-lg mx-auto pb-20 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>
+      {/* Gentle Bottom Transition Countdown */}
+      {pendingNextAarti && (
+        <NextAartiCountdown
+          nextTitle={script === 'devanagari' ? pendingNextAarti.titleDevanagari : pendingNextAarti.titleTransliteration}
+          totalSeconds={12}
+          onProceed={proceedToNext}
+          onCancel={cancelCountdown}
+        />
+      )}
+
+      {/* Completion Toast */}
+      {isCompletedToast && (
+        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-2xl bg-emerald-600 text-white text-xs font-bold shadow-2xl flex items-center gap-2 border border-emerald-400">
+          <CheckCircle className="w-4 h-4" />
+          <span>पूजा संपन्न! संपूर्ण आरती संग्रह पूर्ण झाला. 🙏</span>
         </div>
       )}
 
@@ -167,6 +183,13 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
           {script === 'devanagari' ? currentAarti.titleDevanagari : currentAarti.titleTransliteration}
         </h1>
       </div>
+
+      {/* Devotional Audio & Speech Recitation Toolbar */}
+      <DevotionalAudioBar
+        stanzas={currentAarti.stanzas}
+        script={script}
+        onSpeechComplete={handleReachEnd}
+      />
 
       {/* Aarti Lyrics Canvas */}
       <article

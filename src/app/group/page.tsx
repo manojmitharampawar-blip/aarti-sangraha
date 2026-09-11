@@ -13,7 +13,6 @@ import {
   Edit3,
   Plus,
   FolderOpen,
-  Sparkles,
 } from 'lucide-react';
 import { AartiItem } from '@/types';
 import { aartis } from '@/data/aartis';
@@ -24,6 +23,8 @@ import { useAutoScroll } from '@/hooks/useAutoScroll';
 import { AutoScrollPill } from '@/components/AutoScrollPill';
 import { FontSizeModal } from '@/components/FontSizeModal';
 import { GroupEditorModal } from '@/components/GroupEditorModal';
+import { NextAartiCountdown } from '@/components/NextAartiCountdown';
+import { DevotionalAudioBar } from '@/components/DevotionalAudioBar';
 
 function GroupPlayerContent() {
   const searchParams = useSearchParams();
@@ -36,7 +37,8 @@ function GroupPlayerContent() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFontModalOpen, setIsFontModalOpen] = useState(false);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
-  const [transitionMessage, setTransitionMessage] = useState<string | null>(null);
+  const [pendingNextAarti, setPendingNextAarti] = useState<AartiItem | null>(null);
+  const [isCompletedToast, setIsCompletedToast] = useState(false);
 
   const group = groups.find(g => g.id === groupId);
 
@@ -47,29 +49,31 @@ function GroupPlayerContent() {
 
   const currentAarti = orderedAartis[currentIndex] || orderedAartis[0];
 
+  // Transition handler when user or timer confirms moving to next aarti
+  const proceedToNext = useCallback(() => {
+    setPendingNextAarti(null);
+    setCurrentIndex(prev => prev + 1);
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    resetEndTrigger();
+  }, []);
+
+  const cancelCountdown = useCallback(() => {
+    setPendingNextAarti(null);
+  }, []);
+
   // Callback when auto-scrolling reaches the bottom of the current aarti
   const handleReachEnd = useCallback(() => {
     if (currentIndex < orderedAartis.length - 1) {
       const nextHymn = orderedAartis[currentIndex + 1];
-      const nextTitle =
-        script === 'devanagari' ? nextHymn.titleDevanagari : nextHymn.titleTransliteration;
-
-      setTransitionMessage(`पुढील आरती: ${nextTitle} सुरू होत आहे...`);
-
-      // 1.2 second breathing pause, then move to next aarti, scroll to top, and continue auto-scrolling
-      setTimeout(() => {
-        setCurrentIndex(prev => prev + 1);
-        window.scrollTo({ top: 0, behavior: 'instant' });
-        resetEndTrigger();
-        setTransitionMessage(null);
-      }, 1200);
+      // Instead of instant switch, trigger gentle countdown allowing user to finish chanting
+      setPendingNextAarti(nextHymn);
     } else {
       // Reached end of last aarti in group
       stopAutoScroll();
-      setTransitionMessage('पूजा संपन्न! (Pooja Completed) 🙏');
-      setTimeout(() => setTransitionMessage(null), 3000);
+      setIsCompletedToast(true);
+      setTimeout(() => setIsCompletedToast(false), 4000);
     }
-  }, [currentIndex, orderedAartis, script]);
+  }, [currentIndex, orderedAartis]);
 
   const {
     isScrolling,
@@ -95,6 +99,7 @@ function GroupPlayerContent() {
 
   const goToPrev = () => {
     if (currentIndex > 0) {
+      setPendingNextAarti(null);
       setCurrentIndex(prev => prev - 1);
       resetEndTrigger();
     }
@@ -102,6 +107,7 @@ function GroupPlayerContent() {
 
   const goToNext = () => {
     if (currentIndex < orderedAartis.length - 1) {
+      setPendingNextAarti(null);
       setCurrentIndex(prev => prev + 1);
       resetEndTrigger();
     }
@@ -165,12 +171,22 @@ function GroupPlayerContent() {
   }
 
   return (
-    <div className={`space-y-6 max-w-lg mx-auto pb-16 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>
-      {/* Floating Transition Alert */}
-      {transitionMessage && (
-        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-2xl bg-amber-600 text-white text-xs font-bold shadow-2xl flex items-center gap-2 animate-bounce border border-amber-400">
-          <Sparkles className="w-4 h-4 text-yellow-200" />
-          <span>{transitionMessage}</span>
+    <div className={`space-y-6 max-w-lg mx-auto pb-20 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>
+      {/* Gentle Bottom Transition Countdown Banner */}
+      {pendingNextAarti && (
+        <NextAartiCountdown
+          nextTitle={script === 'devanagari' ? pendingNextAarti.titleDevanagari : pendingNextAarti.titleTransliteration}
+          totalSeconds={12}
+          onProceed={proceedToNext}
+          onCancel={cancelCountdown}
+        />
+      )}
+
+      {/* Completion Toast */}
+      {isCompletedToast && (
+        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-2xl bg-emerald-600 text-white text-xs font-bold shadow-2xl flex items-center gap-2 border border-emerald-400">
+          <CheckCircle className="w-4 h-4" />
+          <span>पूजा संपन्न! संपूर्ण आरती संग्रह पूर्ण झाला. 🙏</span>
         </div>
       )}
 
@@ -258,6 +274,13 @@ function GroupPlayerContent() {
           </p>
         )}
       </div>
+
+      {/* Devotional Audio & Speech Recitation Toolbar */}
+      <DevotionalAudioBar
+        stanzas={currentAarti.stanzas}
+        script={script}
+        onSpeechComplete={handleReachEnd}
+      />
 
       {/* Lyrics Canvas */}
       <article

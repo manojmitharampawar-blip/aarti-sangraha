@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   ArrowLeft,
   Heart,
@@ -22,6 +23,8 @@ import { useAutoScroll } from '@/hooks/useAutoScroll';
 import { AutoScrollPill } from '@/components/AutoScrollPill';
 import { FontSizeModal } from '@/components/FontSizeModal';
 import { AddToGroupModal } from '@/components/AddToGroupModal';
+import { DevotionalAudioBar } from '@/components/DevotionalAudioBar';
+import { NextAartiCountdown } from '@/components/NextAartiCountdown';
 import { deities } from '@/data/deities';
 
 interface AartiReaderClientProps {
@@ -30,18 +33,44 @@ interface AartiReaderClientProps {
 }
 
 export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) {
+  const router = useRouter();
   const { script, toggleScript, fontSize, diyaGlow } = useThemeContext();
   const { isFavorite, toggleFavorite } = useFavorites();
   const { isLocked, isSupported: wakeLockSupported, requestLock, releaseLock } = useWakeLock();
-  const { isScrolling, speed, setSpeed, toggle: toggleAutoScroll } = useAutoScroll(1);
 
   const [isFontModalOpen, setIsFontModalOpen] = useState(false);
   const [isGroupModalOpen, setIsGroupModalOpen] = useState(false);
   const [showMeaning, setShowMeaning] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [showNextCountdown, setShowNextCountdown] = useState(false);
 
   const favorited = isFavorite(aarti.id);
   const deityInfo = deities.find(d => d.id === aarti.deity);
+
+  const handleReachEnd = useCallback(() => {
+    if (nextAarti) {
+      setShowNextCountdown(true);
+    }
+  }, [nextAarti]);
+
+  const {
+    isScrolling,
+    speed,
+    setSpeed,
+    toggle: toggleAutoScroll,
+    resetEndTrigger,
+  } = useAutoScroll(1, handleReachEnd);
+
+  const proceedToNext = useCallback(() => {
+    if (nextAarti) {
+      setShowNextCountdown(false);
+      router.push(`/aarti/${nextAarti.slug}`);
+    }
+  }, [nextAarti, router]);
+
+  const cancelCountdown = useCallback(() => {
+    setShowNextCountdown(false);
+  }, []);
 
   // Auto request wakeLock on mount if supported
   useEffect(() => {
@@ -72,7 +101,17 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
   };
 
   return (
-    <div className={`space-y-6 max-w-lg mx-auto pb-12 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>
+    <div className={`space-y-6 max-w-lg mx-auto pb-16 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>
+      {/* Gentle Next Aarti Countdown */}
+      {showNextCountdown && nextAarti && (
+        <NextAartiCountdown
+          nextTitle={script === 'devanagari' ? nextAarti.titleDevanagari : nextAarti.titleTransliteration}
+          totalSeconds={12}
+          onProceed={proceedToNext}
+          onCancel={cancelCountdown}
+        />
+      )}
+
       {/* Reader Top Action Bar */}
       <div className="flex items-center justify-between pb-3 border-b border-[var(--border-main)]">
         <Link
@@ -180,6 +219,12 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
           </p>
         )}
       </div>
+
+      {/* Devotional Audio & Speech Recitation Toolbar */}
+      <DevotionalAudioBar
+        stanzas={aarti.stanzas}
+        script={script}
+      />
 
       {/* Aarti Lyrics Canvas */}
       <article
