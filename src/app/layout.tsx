@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import { Header } from '@/components/Header';
 import { BottomNav } from '@/components/BottomNav';
 import { RitualBar } from '@/components/RitualBar';
+import { PWAInstallPrompt } from '@/components/PWAInstallPrompt';
 
 const notoSans = Noto_Sans_Devanagari({
   weight: ['400', '500', '600', '700', '800'],
@@ -32,6 +33,16 @@ export const metadata: Metadata = {
   description: 'A serene, distraction-free, mobile-first Aarti Sangraha web app with auto-scroll, dual-script support, and offline capabilities.',
   keywords: ['aarti sangraha', 'ganesh aarti', 'marathi aarti', 'sukhkarta dukhharta', 'durga aarti', 'hanuman chalisa'],
   authors: [{ name: 'Aarti Sangraha Team' }],
+  manifest: '/manifest.json',
+  icons: {
+    icon: '/icon-192.png',
+    apple: '/icon-192.png',
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'आरती संग्रह',
+  },
 };
 
 export const viewport: Viewport = {
@@ -52,6 +63,7 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="flex-1 flex flex-col max-w-xl mx-auto w-full min-h-screen relative shadow-2xl shadow-black/5 pb-24">
             <Header />
+            <PWAInstallPrompt />
             <main className="flex-1 px-4 py-5 w-full">
               {children}
             </main>

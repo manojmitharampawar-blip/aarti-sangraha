@@ -20,9 +20,9 @@ export default function PlaylistsPage() {
   const isDevanagari = script === 'devanagari';
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-full overflow-hidden">
       <div className="flex items-start justify-between gap-3">
-        <div>
+        <div className="min-w-0 flex-1">
           <h1 className="text-xl sm:text-2xl font-black text-[var(--text-primary)] font-devanagari">
             {isDevanagari ? 'आरती संग्रह व उपासना क्रम' : 'Aarti Playlists & Sequences'}
           </h1>
@@ -76,10 +76,10 @@ export default function PlaylistsPage() {
           return (
             <div
               key={playlist.id}
-              className="p-5 rounded-3xl border border-[var(--border-main)] bg-[var(--card-main)] hover:border-saffron-500/60 hover:shadow-lg hover:shadow-saffron-500/5 transition-all group relative"
+              className="p-4 sm:p-5 rounded-3xl border border-[var(--border-main)] bg-[var(--card-main)] hover:border-saffron-500/60 hover:shadow-lg hover:shadow-saffron-500/5 transition-all group relative overflow-hidden"
             >
-              <div className="flex items-start justify-between gap-2">
-                <div className="space-y-2 flex-1">
+              <div className="flex items-start justify-between gap-3 min-w-0">
+                <div className="space-y-2 flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-0.5 rounded-full bg-saffron-500/10 text-saffron-600">
                       <Sparkles className="w-3 h-3" />
@@ -93,12 +93,12 @@ export default function PlaylistsPage() {
                   </div>
 
                   <Link href={`/playlist/${playlist.slug}`} className="block">
-                    <h2 className="text-lg font-black text-[var(--text-primary)] group-hover:text-saffron-600 transition-colors font-devanagari">
+                    <h2 className="text-base sm:text-lg font-black text-[var(--text-primary)] group-hover:text-saffron-600 transition-colors font-devanagari truncate">
                       {isDevanagari ? playlist.titleDevanagari : playlist.title}
                     </h2>
                   </Link>
 
-                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-2">
                     {playlist.description}
                   </p>
 
@@ -108,12 +108,12 @@ export default function PlaylistsPage() {
                   </p>
 
                   <div className="pt-2 flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-1.5 text-xs font-bold text-saffron-700 dark:text-saffron-400">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-saffron-600" />
-                      <span>{playlist.aartiIds.length} आरत्या सलग क्रमाने</span>
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-saffron-700 dark:text-saffron-400 min-w-0 truncate">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-saffron-600 shrink-0" />
+                      <span className="truncate">{playlist.aartiIds.length} आरत्या सलग क्रमाने</span>
                     </div>
 
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 shrink-0">
                       {/* WhatsApp share button */}
                       <button
                         onClick={e => {
@@ -134,6 +134,7 @@ export default function PlaylistsPage() {
 
                       <Link
                         href={`/playlist/${playlist.slug}`}
+                        aria-label={`Open sequence ${playlist.title}`}
                         className="w-8 h-8 rounded-full bg-saffron-500/10 group-hover:bg-saffron-600 group-hover:text-white text-saffron-600 flex items-center justify-center transition-all shrink-0"
                       >
                         <ArrowRight className="w-4 h-4" />

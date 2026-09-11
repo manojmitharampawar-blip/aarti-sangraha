@@ -1,12 +1,25 @@
 'use client';
 
 import React from 'react';
-import { Sun, Moon, Flame, Bell, Type, ShieldCheck, Github, Smartphone } from 'lucide-react';
+import {
+  Sun,
+  Moon,
+  Flame,
+  Bell,
+  Type,
+  ShieldCheck,
+  Smartphone,
+  Download,
+  CheckCircle,
+} from 'lucide-react';
 import { useThemeContext, ThemeType } from '@/components/ThemeProvider';
 import { playTempleBell } from '@/lib/audioBell';
+import { triggerPWAInstall } from '@/components/PWAInstallPrompt';
 
 export default function SettingsPage() {
   const { theme, setTheme, script, setScript, fontSize, setFontSize } = useThemeContext();
+
+  const isDevanagari = script === 'devanagari';
 
   const themeOptions: { id: ThemeType; label: string; icon: React.ReactNode; desc: string }[] = [
     {
@@ -33,12 +46,47 @@ export default function SettingsPage() {
     <div className="space-y-6 max-w-lg mx-auto pb-12">
       <div>
         <h1 className="text-xl sm:text-2xl font-black text-[var(--text-primary)] font-devanagari">
-          सेटिंग्ज व प्राधान्ये
+          {isDevanagari ? 'सेटिंग्ज व प्राधान्ये' : 'Settings & Preferences'}
         </h1>
         <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">
-          Settings & Preferences
+          {isDevanagari ? 'ॲप रूप, फॉन्ट, ध्वनी व ऑफलाइन इन्स्टॉलेशन' : 'Appearance, Font Scale, Audio & PWA Install'}
         </p>
       </div>
+
+      {/* PWA App Installation Section */}
+      <section className="p-4 sm:p-5 rounded-3xl border border-amber-500/30 bg-gradient-to-br from-amber-500/15 via-saffron-500/10 to-transparent space-y-3 shadow-md shadow-amber-500/5">
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex items-center gap-2.5">
+            <div className="w-10 h-10 rounded-2xl bg-saffron-600 text-white flex items-center justify-center shadow-xs">
+              <Download className="w-5 h-5" />
+            </div>
+            <div>
+              <h2 className="text-base font-black text-[var(--text-primary)] font-devanagari">
+                {isDevanagari ? 'मोबाईल / PC वर ॲप इन्स्टॉल करा' : 'Install Aarti App (PWA)'}
+              </h2>
+              <p className="text-xs text-[var(--text-secondary)]">
+                {isDevanagari
+                  ? 'इंटरनेटशिवाय जलद चालणारे अधिकृत ॲप'
+                  : 'Fast offline standalone app on Home Screen'}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+          {isDevanagari
+            ? 'हे ॲप तुमच्या फोनवर थेट इन्स्टॉल केले जाऊ शकते. यासाठी ॲप स्टोअर किंवा प्ले स्टोअरची आवश्यकता नाही.'
+            : 'You can install this app directly on your device with offline support and zero ads.'}
+        </p>
+
+        <button
+          onClick={() => triggerPWAInstall()}
+          className="w-full py-2.5 px-4 rounded-xl bg-saffron-600 hover:bg-saffron-700 active:scale-98 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md shadow-saffron-600/25 transition-all"
+        >
+          <Smartphone className="w-4 h-4" />
+          <span>{isDevanagari ? 'आता ॲप इन्स्टॉल करा (Install App)' : 'Install App to Home Screen'}</span>
+        </button>
+      </section>
 
       {/* Theme Settings */}
       <section className="space-y-3">
@@ -52,7 +100,7 @@ export default function SettingsPage() {
               onClick={() => setTheme(opt.id)}
               className={`w-full flex items-center justify-between p-4 rounded-2xl border text-left transition-all ${
                 theme === opt.id
-                  ? 'border-saffron-600 bg-saffron-500/10 shadow-sm ring-1 ring-saffron-500/30'
+                  ? 'border-saffron-600 bg-saffron-500/10 shadow-xs ring-1 ring-saffron-500/30'
                   : 'border-[var(--border-main)] bg-[var(--card-main)] hover:border-saffron-500/40'
               }`}
             >
@@ -78,31 +126,31 @@ export default function SettingsPage() {
       {/* Script Language Preference */}
       <section className="space-y-3">
         <h2 className="text-xs font-bold text-[var(--text-secondary)] uppercase tracking-wider">
-          लिपी प्राधान्य (Script Preference)
+          भाषा व लिपी (Script & Language)
         </h2>
         <div className="grid grid-cols-2 gap-3">
           <button
             onClick={() => setScript('devanagari')}
             className={`p-4 rounded-2xl border text-center transition-all ${
               script === 'devanagari'
-                ? 'border-saffron-600 bg-saffron-500/10 text-saffron-600 font-bold'
-                : 'border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-secondary)]'
+                ? 'border-saffron-600 bg-saffron-500/10 shadow-xs ring-1 ring-saffron-500/30'
+                : 'border-[var(--border-main)] bg-[var(--card-main)] hover:border-saffron-500/40'
             }`}
           >
-            <span className="block text-base font-devanagari">मराठी / हिंदी</span>
-            <span className="text-[11px] block mt-0.5 opacity-80">देवनागरी लिपी</span>
+            <span className="text-lg font-black block font-devanagari">मराठी / देवनागरी</span>
+            <span className="text-xs text-[var(--text-secondary)]">मूळ देवनागरी लिपी</span>
           </button>
 
           <button
             onClick={() => setScript('transliteration')}
             className={`p-4 rounded-2xl border text-center transition-all ${
               script === 'transliteration'
-                ? 'border-saffron-600 bg-saffron-500/10 text-saffron-600 font-bold'
-                : 'border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-secondary)]'
+                ? 'border-saffron-600 bg-saffron-500/10 shadow-xs ring-1 ring-saffron-500/30'
+                : 'border-[var(--border-main)] bg-[var(--card-main)] hover:border-saffron-500/40'
             }`}
           >
-            <span className="block text-base font-sans font-bold">English</span>
-            <span className="text-[11px] block mt-0.5 opacity-80">Phonetic Latin Script</span>
+            <span className="text-lg font-black block">English</span>
+            <span className="text-xs text-[var(--text-secondary)]">Phonetic English</span>
           </button>
         </div>
       </section>
@@ -117,7 +165,7 @@ export default function SettingsPage() {
           <input
             type="range"
             min={16}
-            max={28}
+            max={32}
             step={2}
             value={fontSize}
             onChange={e => setFontSize(Number(e.target.value))}
@@ -127,7 +175,7 @@ export default function SettingsPage() {
             <span>लहान (16px)</span>
             <span>मध्यम (20px)</span>
             <span>मोठे (24px)</span>
-            <span>खूप मोठे (28px)</span>
+            <span>खूप मोठे (32px)</span>
           </div>
           <p
             style={{ fontSize: `${fontSize}px` }}
@@ -168,9 +216,9 @@ export default function SettingsPage() {
           हे ॲप पूर्णपणे स्टॅटिक असून इंटरनेट नसतानाही काम करते. कोणतीही जाहिरात किंवा ट्रॅकर नाही.
         </p>
         <div className="pt-2 border-t border-[var(--border-main)] flex items-center justify-between text-xs text-[var(--text-secondary)]">
-          <span>आवृत्ती: १.०.० (GitHub Pages)</span>
-          <span className="flex items-center gap-1">
-            <Smartphone className="w-3.5 h-3.5" />
+          <span>आवृत्ती: १.०.० (PWA Enabled)</span>
+          <span className="flex items-center gap-1 text-emerald-600 font-semibold">
+            <CheckCircle className="w-3.5 h-3.5" />
             <span>PWA Ready</span>
           </span>
         </div>
