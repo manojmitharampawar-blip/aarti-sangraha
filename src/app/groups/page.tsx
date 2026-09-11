@@ -10,7 +10,6 @@ import {
   Sparkles,
   Plus,
   ListMusic,
-  Calendar,
 } from 'lucide-react';
 import { useCustomGroups } from '@/hooks/useCustomGroups';
 import { useThemeContext } from '@/components/ThemeProvider';
@@ -197,8 +196,12 @@ export default function GroupsPage() {
 
       {/* Group Editor Modal */}
       <GroupEditorModal
+        key={selectedGroup ? selectedGroup.id : 'new-group'}
         isOpen={isEditorOpen}
-        onClose={() => setIsEditorOpen(false)}
+        onClose={() => {
+          setIsEditorOpen(false);
+          setSelectedGroup(null);
+        }}
         group={selectedGroup}
       />
     </div>
