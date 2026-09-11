@@ -12,6 +12,7 @@ import {
   ChevronUp,
   Share2,
   ChevronRight,
+  FolderPlus,
 } from 'lucide-react';
 import { AartiItem } from '@/types';
 import { useThemeContext } from '@/components/ThemeProvider';
@@ -20,6 +21,7 @@ import { useWakeLock } from '@/hooks/useWakeLock';
 import { useAutoScroll } from '@/hooks/useAutoScroll';
 import { AutoScrollPill } from '@/components/AutoScrollPill';
 import { FontSizeModal } from '@/components/FontSizeModal';
+import { AddToGroupModal } from '@/components/AddToGroupModal';
 import { deities } from '@/data/deities';
 
 interface AartiReaderClientProps {
@@ -34,6 +36,7 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
   const { isScrolling, speed, setSpeed, toggle: toggleAutoScroll } = useAutoScroll(1);
 
   const [isFontModalOpen, setIsFontModalOpen] = useState(false);
+  const [isGroupModalOpen, setIsGroupModalOpen] = useState(false);
   const [showMeaning, setShowMeaning] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -97,6 +100,16 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
               <Sun className={`w-4 h-4 ${isLocked ? 'animate-spin-slow text-amber-500' : ''}`} />
             </button>
           )}
+
+          {/* Add to Group Button */}
+          <button
+            onClick={() => setIsGroupModalOpen(true)}
+            aria-label="Add to custom aarti group"
+            title="Add to group"
+            className="p-2 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)] hover:border-saffron-500/50"
+          >
+            <FolderPlus className="w-4 h-4 text-saffron-600" />
+          </button>
 
           {/* Script Switcher */}
           <button
@@ -254,6 +267,13 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
 
       {/* Font Size Modal */}
       <FontSizeModal isOpen={isFontModalOpen} onClose={() => setIsFontModalOpen(false)} />
+
+      {/* Add To Group Modal */}
+      <AddToGroupModal
+        isOpen={isGroupModalOpen}
+        onClose={() => setIsGroupModalOpen(false)}
+        aarti={aarti}
+      />
     </div>
   );
 }

@@ -8,7 +8,7 @@ import { Home, Layers, ListMusic, Heart, Search } from 'lucide-react';
 const navItems = [
   { href: '/', label: 'होम', sublabel: 'Home', icon: Home },
   { href: '/deities', label: 'देवता', sublabel: 'Deities', icon: Layers },
-  { href: '/playlists', label: 'क्रम', sublabel: 'Sequences', icon: ListMusic },
+  { href: '/playlists', label: 'क्रम व ग्रुप', sublabel: 'Sequences', icon: ListMusic },
   { href: '/search', label: 'शोध', sublabel: 'Search', icon: Search },
   { href: '/favorites', label: 'आवडते', sublabel: 'Saved', icon: Heart },
 ];
@@ -20,7 +20,10 @@ export function BottomNav() {
     <nav className="fixed bottom-0 left-0 right-0 z-40 border-t backdrop-blur-lg transition-colors duration-300 border-[var(--border-main)] bg-[var(--card-main)]/95 pb-safe">
       <div className="max-w-xl mx-auto px-2 flex justify-around items-center h-16">
         {navItems.map(item => {
-          const isActive = pathname === item.href || (item.href !== '/' && pathname?.startsWith(item.href));
+          const isActive =
+            pathname === item.href ||
+            (item.href !== '/' && pathname?.startsWith(item.href)) ||
+            (item.href === '/playlists' && (pathname?.startsWith('/groups') || pathname?.startsWith('/group')));
           const Icon = item.icon;
 
           return (

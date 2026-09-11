@@ -59,3 +59,12 @@ export interface Playlist {
   occasion: string;
   aartiIds: string[];
 }
+
+export interface CustomGroup {
+  id: string;
+  name: string;
+  description?: string;
+  aartiIds: string[];
+  createdAt: number;
+  updatedAt: number;
+}

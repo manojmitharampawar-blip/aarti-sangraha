@@ -4,22 +4,45 @@ import React from 'react';
 import Link from 'next/link';
 import { playlists } from '@/data/playlists';
 import { useThemeContext } from '@/components/ThemeProvider';
-import { ListMusic, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import { ListMusic, ArrowRight, Sparkles, CheckCircle2, FolderPlus } from 'lucide-react';
 
 export default function PlaylistsPage() {
   const { script } = useThemeContext();
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-xl sm:text-2xl font-black text-[var(--text-primary)] font-devanagari">
-          {script === 'devanagari' ? 'आरती संग्रह क्रम' : 'Aarti Playlists & Sequences'}
-        </h1>
-        <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">
-          {script === 'devanagari'
-            ? 'सण, उत्सव व दैनंदिन पूजेसाठी सलग आरत्यांचे क्रमबद्ध संकलन'
-            : 'Pre-ordered continuous recitation sequences for festivals and daily pooja'}
-        </p>
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <h1 className="text-xl sm:text-2xl font-black text-[var(--text-primary)] font-devanagari">
+            {script === 'devanagari' ? 'आरती संग्रह क्रम' : 'Aarti Playlists & Sequences'}
+          </h1>
+          <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">
+            {script === 'devanagari'
+              ? 'सण, उत्सव व दैनंदिन पूजेसाठी सलग आरत्यांचे क्रमबद्ध संकलन'
+              : 'Pre-ordered continuous recitation sequences for festivals and daily pooja'}
+          </p>
+        </div>
+
+        <Link
+          href="/groups"
+          className="flex items-center gap-1 px-3 py-2 rounded-xl border border-saffron-500/30 bg-saffron-500/10 text-saffron-600 text-xs font-bold hover:bg-saffron-500/20 active:scale-95 transition-all shrink-0"
+        >
+          <FolderPlus className="w-3.5 h-3.5" />
+          <span>माझे ग्रुप (My Groups)</span>
+        </Link>
+      </div>
+
+      {/* Tabs */}
+      <div className="flex gap-2 p-1 rounded-xl bg-black/5 dark:bg-white/5 text-xs font-bold">
+        <div className="flex-1 py-2 text-center rounded-lg bg-[var(--card-main)] text-saffron-600 shadow-xs">
+          पारंपरिक क्रम (Built-in Sequences)
+        </div>
+        <Link
+          href="/groups"
+          className="flex-1 py-2 text-center rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+        >
+          माझे वैयक्तिक ग्रुप (My Groups)
+        </Link>
       </div>
 
       <div className="space-y-3.5">
