@@ -3,24 +3,30 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  :root, html.theme-light {
     --bg-main: #fdfbf7;
     --card-main: #ffffff;
     --border-main: #f0e9dc;
     --text-primary: #1c1917;
     --text-secondary: #78716c;
     --accent: #ea580c;
+    --accent-glow: rgba(234, 88, 12, 0.12);
+    --spotlight-halo: rgba(245, 158, 11, 0.15);
   }
 
-  html.theme-dark {
-    --bg-main: #090d16;
-    --card-main: #111827;
-    --border-main: #1f2937;
-    --text-primary: #f3f4f6;
-    --text-secondary: #9ca3af;
-    --accent: #fb923c;
+  /* Kindle & Apple Books Sepia / Parchment Paper */
+  html.theme-sepia {
+    --bg-main: #fbf3e4;
+    --card-main: #f5ecd8;
+    --border-main: #ebdcc0;
+    --text-primary: #3c2f1f;
+    --text-secondary: #7e6951;
+    --accent: #b45309;
+    --accent-glow: rgba(180, 83, 9, 0.14);
+    --spotlight-halo: rgba(180, 83, 9, 0.18);
   }
 
+  /* Sandalwood & Diya Temple Worship Theme */
   html.theme-pooja {
     --bg-main: #180902;
     --card-main: #2b1104;
@@ -28,6 +34,32 @@
     --text-primary: #fef3c7;
     --text-secondary: #fcd34d;
     --accent: #f59e0b;
+    --accent-glow: rgba(245, 158, 11, 0.2);
+    --spotlight-halo: rgba(245, 158, 11, 0.28);
+  }
+
+  /* Midnight Slate Theme */
+  html.theme-dark {
+    --bg-main: #0f172a;
+    --card-main: #1e293b;
+    --border-main: #334155;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --accent: #fb923c;
+    --accent-glow: rgba(251, 146, 60, 0.15);
+    --spotlight-halo: rgba(251, 146, 60, 0.22);
+  }
+
+  /* Pure OLED Black for AMOLED screens and battery savings */
+  html.theme-oled {
+    --bg-main: #000000;
+    --card-main: #0a0a0a;
+    --border-main: #262626;
+    --text-primary: #fafafa;
+    --text-secondary: #a3a3a3;
+    --accent: #ea580c;
+    --accent-glow: rgba(234, 88, 12, 0.2);
+    --spotlight-halo: rgba(234, 88, 12, 0.3);
   }
 
   body {
@@ -57,4 +89,31 @@
 /* Diya Aura Effect */
 .diya-aura {
   box-shadow: 0 0 50px 15px rgba(245, 158, 11, 0.25);
+}
+
+/* Liquid Glass Floating Island (Apple Books style) */
+.liquid-glass-island {
+  background: rgba(var(--card-main), 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Active Stanza Focus / Spotlight Halo */
+.stanza-spotlight-active {
+  box-shadow: 0 4px 20px -2px var(--spotlight-halo);
+  border-color: var(--accent) !important;
+  opacity: 1 !important;
+  transform: scale(1.01);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stanza-spotlight-dimmed {
+  opacity: 0.55 !important;
+  filter: blur(0.2px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stanza-spotlight-dimmed:hover {
+  opacity: 0.85 !important;
+  filter: none;
 }

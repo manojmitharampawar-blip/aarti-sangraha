@@ -1,4 +1,10 @@
-export type ScriptType = 'devanagari' | 'transliteration';
+export type ScriptType = 'devanagari' | 'transliteration' | 'dual';
+
+export type FontFamilyType = 'sans' | 'serif' | 'mukta';
+
+export type LineSpacingType = 'compact' | 'normal' | 'relaxed';
+
+export type TextAlignType = 'center' | 'left';
 
 export type HymnType = 'aarti' | 'chalisa' | 'stotra' | 'ashtak' | 'mantra';
 
@@ -31,6 +37,16 @@ export type DeityId =
   | 'parvati'
   | 'kartikeya';
 
+export interface Deity {
+  id: DeityId;
+  nameDevanagari: string;
+  nameTransliteration: string;
+  description: string;
+  primaryDay?: string;
+  color: string;
+  icon: string;
+}
+
 export interface Stanza {
   stanzaNumber: number;
   sectionTitle?: string;
@@ -49,31 +65,11 @@ export interface AartiItem {
   firstLineTransliteration: string;
   deity: DeityId;
   type: HymnType;
-  language: 'marathi' | 'hindi' | 'sanskrit';
+  language: 'marathi' | 'sanskrit' | 'hindi';
   author?: string;
-  stanzas: Stanza[];
   meaningSummary?: string;
-  defaultSpeed?: number;
   tags: string[];
-}
-
-export interface CustomGroup {
-  id: string;
-  name: string;
-  description?: string;
-  aartiIds: string[];
-  createdAt: number;
-  updatedAt: number;
-}
-
-export interface Deity {
-  id: DeityId;
-  nameDevanagari: string;
-  nameTransliteration: string;
-  description: string;
-  primaryDay: string;
-  color: string;
-  icon: string;
+  stanzas: Stanza[];
 }
 
 export interface Playlist {
@@ -84,4 +80,13 @@ export interface Playlist {
   description: string;
   occasion: string;
   aartiIds: string[];
+}
+
+export interface CustomGroup {
+  id: string;
+  name: string;
+  description?: string;
+  aartiIds: string[];
+  createdAt: number;
+  updatedAt: number;
 }

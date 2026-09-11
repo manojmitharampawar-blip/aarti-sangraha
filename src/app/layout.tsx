@@ -1,9 +1,31 @@
 import type { Metadata, Viewport } from 'next';
+import { Noto_Sans_Devanagari, Noto_Serif_Devanagari, Mukta } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { Header } from '@/components/Header';
 import { BottomNav } from '@/components/BottomNav';
 import { RitualBar } from '@/components/RitualBar';
+
+const notoSans = Noto_Sans_Devanagari({
+  weight: ['400', '500', '600', '700', '800'],
+  subsets: ['devanagari', 'latin'],
+  display: 'swap',
+  variable: '--font-noto-sans',
+});
+
+const notoSerif = Noto_Serif_Devanagari({
+  weight: ['400', '600', '700'],
+  subsets: ['devanagari', 'latin'],
+  display: 'swap',
+  variable: '--font-noto-serif',
+});
+
+const mukta = Mukta({
+  weight: ['400', '500', '600', '700', '800'],
+  subsets: ['devanagari', 'latin'],
+  display: 'swap',
+  variable: '--font-mukta',
+});
 
 export const metadata: Metadata = {
   title: 'आरती संग्रह (Aarti Sangraha) — Nitya Pooja & Prayers',
@@ -25,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="mr" suppressHydrationWarning>
+    <html lang="mr" suppressHydrationWarning className={`${notoSans.variable} ${notoSerif.variable} ${mukta.variable}`}>
       <body className="antialiased min-h-screen flex flex-col font-sans transition-colors duration-300">
         <ThemeProvider>
           <div className="flex-1 flex flex-col max-w-xl mx-auto w-full min-h-screen relative shadow-2xl shadow-black/5 pb-24">

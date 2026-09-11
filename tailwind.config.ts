@@ -56,7 +56,14 @@ const config: Config = {
         },
       },
       fontFamily: {
-        devanagari: ['"Noto Sans Devanagari"', '"Mukta"', 'system-ui', 'sans-serif'],
+        devanagari: ['var(--font-noto-sans)', '"Noto Sans Devanagari"', '"Mukta"', 'system-ui', 'sans-serif'],
+        grantha: ['var(--font-noto-serif)', '"Noto Serif Devanagari"', 'Georgia', 'serif'],
+        mukta: ['var(--font-mukta)', '"Mukta"', 'sans-serif'],
+      },
+      lineHeight: {
+        'compact': '1.85',
+        'normal-dev': '2.2',
+        'relaxed-dev': '2.6',
       },
       keyframes: {
         diyaGlow: {

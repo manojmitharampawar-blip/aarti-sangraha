@@ -12,8 +12,6 @@ import {
   Sun,
   Edit3,
   Send,
-  Plus,
-  FolderOpen,
   Sparkles,
 } from 'lucide-react';
 import { AartiItem, CustomGroup } from '@/types';
@@ -24,7 +22,7 @@ import { useThemeContext } from '@/components/ThemeProvider';
 import { useWakeLock } from '@/hooks/useWakeLock';
 import { useAutoScroll } from '@/hooks/useAutoScroll';
 import { AutoScrollPill } from '@/components/AutoScrollPill';
-import { FontSizeModal } from '@/components/FontSizeModal';
+import { ReadingSettingsModal } from '@/components/ReadingSettingsModal';
 import { GroupEditorModal } from '@/components/GroupEditorModal';
 import { ShareGroupModal } from '@/components/ShareGroupModal';
 import { NextAartiCountdown } from '@/components/NextAartiCountdown';
@@ -36,11 +34,21 @@ function GroupPlayerContent() {
   const deityId = searchParams.get('deity');
 
   const { groups, isLoaded } = useCustomGroups();
-  const { script, toggleScript, fontSize, diyaGlow } = useThemeContext();
+  const {
+    script,
+    toggleScript,
+    fontSize,
+    fontFamily,
+    lineSpacing,
+    textAlign,
+    spotlightMode,
+    diyaGlow,
+  } = useThemeContext();
   const { isLocked, isSupported: wakeLockSupported, requestLock, releaseLock } = useWakeLock();
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isFontModalOpen, setIsFontModalOpen] = useState(false);
+  const [activeStanzaIndex, setActiveStanzaIndex] = useState(0);
+  const [isReadingSettingsOpen, setIsReadingSettingsOpen] = useState(false);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [pendingNextAarti, setPendingNextAarti] = useState<AartiItem | null>(null);
@@ -63,10 +71,24 @@ function GroupPlayerContent() {
 
   const currentAarti = orderedAartis[currentIndex] || orderedAartis[0];
 
+  const fontClass =
+    fontFamily === 'serif'
+      ? 'font-grantha'
+      : fontFamily === 'mukta'
+      ? 'font-mukta'
+      : 'font-devanagari';
+
+  const lineHeightStyle =
+    lineSpacing === 'compact' ? '1.85' : lineSpacing === 'relaxed' ? '2.6' : '2.2';
+
+  const isDevanagari = script === 'devanagari';
+  const isDual = script === 'dual';
+
   // Transition handler when user or timer confirms moving to next aarti
   const proceedToNext = useCallback(() => {
     setPendingNextAarti(null);
     setCurrentIndex(prev => prev + 1);
+    setActiveStanzaIndex(0);
     window.scrollTo({ top: 0, behavior: 'instant' });
     resetEndTrigger();
   }, []);
@@ -105,84 +127,49 @@ function GroupPlayerContent() {
     };
   }, [wakeLockSupported, requestLock, releaseLock]);
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [currentIndex]);
-
   const goToPrev = () => {
     if (currentIndex > 0) {
-      setPendingNextAarti(null);
       setCurrentIndex(prev => prev - 1);
-      resetEndTrigger();
+      setActiveStanzaIndex(0);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   const goToNext = () => {
     if (currentIndex < orderedAartis.length - 1) {
-      setPendingNextAarti(null);
       setCurrentIndex(prev => prev + 1);
-      resetEndTrigger();
+      setActiveStanzaIndex(0);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      setIsCompletedToast(true);
+      setTimeout(() => setIsCompletedToast(false), 4000);
     }
   };
 
-  if (groupId && !isLoaded) {
+  if (!isLoaded) {
     return (
-      <div className="py-12 text-center text-xs text-[var(--text-secondary)]">
+      <div className="text-center py-12 text-sm text-[var(--text-secondary)]">
         लोड होत आहे...
       </div>
     );
   }
 
-  if (!deityId && !customGroup) {
+  if (orderedAartis.length === 0 || !currentAarti) {
     return (
-      <div className="py-16 text-center space-y-4">
-        <FolderOpen className="w-12 h-12 text-saffron-600 mx-auto" />
-        <h2 className="text-base font-bold text-[var(--text-primary)]">
-          ग्रुप सापडला नाही (Group Not Found)
+      <div className="space-y-6 max-w-lg mx-auto text-center py-16 px-4">
+        <h2 className="text-lg font-bold text-[var(--text-primary)]">
+          या ग्रुपमध्ये कोणत्याही आरत्या आढळल्या नाहीत.
         </h2>
-        <p className="text-xs text-[var(--text-secondary)] max-w-xs mx-auto">
-          हा ग्रुप कदाचित हटवला गेला आहे किंवा अस्तित्वात नाही.
+        <p className="text-xs text-[var(--text-secondary)]">
+          कृपया ग्रुपमध्ये आरत्या जोडा किंवा क्रम संपादित करा.
         </p>
         <Link
           href="/groups"
-          className="inline-flex items-center gap-1.5 px-4 py-2 bg-saffron-600 text-white rounded-xl text-xs font-bold shadow-md"
+          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-saffron-600 text-white font-semibold text-xs"
         >
-          <span>सर्व ग्रुप पहा (View Groups)</span>
+          <ArrowLeft className="w-4 h-4" />
+          <span>ग्रुप यादीकडे परत जा</span>
         </Link>
-      </div>
-    );
-  }
-
-  if (orderedAartis.length === 0) {
-    return (
-      <div className="py-16 text-center space-y-4">
-        <div className="w-12 h-12 rounded-full bg-saffron-500/10 text-saffron-600 flex items-center justify-center mx-auto">
-          <Plus className="w-6 h-6" />
-        </div>
-        <h2 className="text-base font-bold text-[var(--text-primary)] font-devanagari">
-          {groupTitle} मध्ये आरत्या नाहीत
-        </h2>
-        <p className="text-xs text-[var(--text-secondary)] max-w-xs mx-auto">
-          सलग पठण सुरू करण्यासाठी या ग्रुपमध्ये आपल्या पसंतीच्या आरत्या जोडा.
-        </p>
-        {customGroup && (
-          <>
-            <button
-              onClick={() => setIsEditorOpen(true)}
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-saffron-600 text-white rounded-xl text-xs font-bold shadow-md shadow-saffron-600/20 active:scale-95"
-            >
-              <Plus className="w-4 h-4" />
-              <span>आरत्या जोडा (Add Aartis to Group)</span>
-            </button>
-
-            <GroupEditorModal
-              key={customGroup.id}
-              isOpen={isEditorOpen}
-              onClose={() => setIsEditorOpen(false)}
-              group={customGroup}
-            />
-          </>
-        )}
       </div>
     );
   }
@@ -190,11 +177,11 @@ function GroupPlayerContent() {
   const backLink = deityId ? `/deities?id=${deityId}` : '/groups';
 
   return (
-    <div className={`space-y-6 max-w-lg mx-auto pb-20 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>
+    <div className={`space-y-6 max-w-lg mx-auto pb-24 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>
       {/* Gentle Bottom Transition Countdown Banner */}
       {pendingNextAarti && (
         <NextAartiCountdown
-          nextTitle={script === 'devanagari' ? pendingNextAarti.titleDevanagari : pendingNextAarti.titleTransliteration}
+          nextTitle={isDevanagari ? pendingNextAarti.titleDevanagari : pendingNextAarti.titleTransliteration}
           totalSeconds={12}
           onProceed={proceedToNext}
           onCancel={cancelCountdown}
@@ -266,14 +253,24 @@ function GroupPlayerContent() {
           <button
             onClick={toggleScript}
             aria-label="Switch script"
-            className="px-2.5 py-1.5 rounded-xl border text-xs font-bold border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)]"
+            className="px-2.5 py-1.5 rounded-xl border text-xs font-bold border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)] flex items-center gap-1"
           >
-            {script === 'devanagari' ? 'मराठी' : 'ENG'}
+            {script === 'dual' ? (
+              <>
+                <Sparkles className="w-3 h-3 text-amber-500" />
+                <span>दोन्ही</span>
+              </>
+            ) : isDevanagari ? (
+              'मराठी'
+            ) : (
+              'ENG'
+            )}
           </button>
 
           <button
-            onClick={() => setIsFontModalOpen(true)}
-            aria-label="Adjust font size"
+            onClick={() => setIsReadingSettingsOpen(true)}
+            aria-label="Adjust font size and reading theme"
+            title="वाचन व अक्षर रचना (Aa)"
             className="p-2 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)]"
           >
             <Type className="w-4 h-4" />
@@ -296,10 +293,10 @@ function GroupPlayerContent() {
           <span>{groupTitle}</span>
         </p>
         <h1
-          style={{ fontSize: `${Math.min(fontSize + 6, 32)}px` }}
-          className="font-extrabold text-[var(--text-primary)] font-devanagari leading-snug"
+          style={{ fontSize: `${Math.min(fontSize + 6, 34)}px` }}
+          className={`font-black text-[var(--text-primary)] leading-snug ${fontClass}`}
         >
-          {script === 'devanagari' ? currentAarti.titleDevanagari : currentAarti.titleTransliteration}
+          {isDevanagari ? currentAarti.titleDevanagari : currentAarti.titleTransliteration}
         </h1>
         {currentAarti.author && (
           <p className="text-[11px] text-[var(--text-secondary)]">
@@ -311,36 +308,84 @@ function GroupPlayerContent() {
       {/* Devotional Audio & Speech Recitation Toolbar */}
       <DevotionalAudioBar
         stanzas={currentAarti.stanzas}
-        script={script}
+        script={script === 'dual' ? 'devanagari' : script}
         onSpeechComplete={handleReachEnd}
       />
 
-      {/* Lyrics Canvas */}
+      {/* Lyrics Canvas with Kindle Typography and Spotlight Focus */}
       <article
-        style={{ fontSize: `${fontSize}px`, lineHeight: '1.9' }}
-        className="space-y-6 pt-2 font-devanagari text-center"
+        style={{
+          fontSize: `${fontSize}px`,
+          lineHeight: lineHeightStyle,
+          textAlign: textAlign,
+        }}
+        className={`space-y-6 pt-2 ${fontClass}`}
       >
         {currentAarti.stanzas.map((stanza, sIdx) => {
-          const lines = script === 'devanagari' ? stanza.devanagari : stanza.transliteration;
+          const isActive = activeStanzaIndex === sIdx;
           return (
             <div
               key={sIdx}
-              className={`p-4 rounded-2xl ${
+              onClick={() => setActiveStanzaIndex(sIdx)}
+              className={`p-4 sm:p-5 rounded-3xl transition-all cursor-pointer ${
                 stanza.isChorus
-                  ? 'bg-amber-500/5 border border-amber-500/20 font-bold'
+                  ? 'bg-amber-500/10 border-2 border-amber-500/30 font-bold'
+                  : 'border border-[var(--border-main)] bg-[var(--card-main)]'
+              } ${
+                spotlightMode
+                  ? isActive
+                    ? 'stanza-spotlight-active'
+                    : 'stanza-spotlight-dimmed'
                   : ''
               }`}
             >
-              {lines.map((line, lIdx) => (
-                <p
-                  key={lIdx}
-                  className={`${
-                    stanza.isChorus ? 'text-saffron-700 dark:text-saffron-300 font-bold' : 'text-[var(--text-primary)]'
-                  } tracking-wide`}
-                >
-                  {line}
-                </p>
-              ))}
+              {stanza.sectionTitle && (
+                <div className="text-xs font-extrabold uppercase tracking-wider text-saffron-700 dark:text-saffron-300 mb-2 py-0.5 px-3 rounded-full bg-saffron-500/15 inline-block">
+                  {stanza.sectionTitle}
+                </div>
+              )}
+
+              {isDual ? (
+                stanza.devanagari.map((devLine, lIdx) => (
+                  <div key={lIdx} className="space-y-0.5 my-1.5">
+                    <p
+                      className={`font-semibold tracking-wide ${
+                        stanza.isChorus ? 'text-saffron-700 dark:text-saffron-300 font-bold' : 'text-[var(--text-primary)]'
+                      }`}
+                    >
+                      {devLine}
+                    </p>
+                    <p
+                      style={{ fontSize: `${Math.max(13, fontSize - 6)}px` }}
+                      className="text-[var(--text-secondary)] italic font-sans opacity-85"
+                    >
+                      {stanza.transliteration[lIdx] || ''}
+                    </p>
+                  </div>
+                ))
+              ) : isDevanagari ? (
+                stanza.devanagari.map((line, lIdx) => (
+                  <p
+                    key={lIdx}
+                    className={`font-semibold tracking-wide ${
+                      stanza.isChorus ? 'text-saffron-700 dark:text-saffron-300 font-bold' : 'text-[var(--text-primary)]'
+                    }`}
+                  >
+                    {line}
+                  </p>
+                ))
+              ) : (
+                stanza.transliteration.map((line, lIdx) => (
+                  <p
+                    key={lIdx}
+                    className={`font-medium tracking-wide ${
+                      stanza.isChorus ? 'text-saffron-700 dark:text-saffron-300 font-bold' : 'text-[var(--text-primary)]'
+                    }`}
+                  >
+                    {line}
+                  </p>
+                ))
+              )}
             </div>
           );
         })}
@@ -351,22 +396,22 @@ function GroupPlayerContent() {
         <button
           onClick={goToPrev}
           disabled={currentIndex === 0}
-          className="flex-1 flex items-center justify-center gap-1.5 py-3 px-4 rounded-2xl border border-[var(--border-main)] bg-[var(--card-main)] font-bold text-sm text-[var(--text-primary)] disabled:opacity-30 disabled:cursor-not-allowed hover:border-saffron-500 transition-colors"
+          className="flex-1 flex items-center justify-center gap-1.5 py-3 px-4 rounded-2xl border border-[var(--border-main)] bg-[var(--card-main)] font-bold text-xs text-[var(--text-primary)] disabled:opacity-30 disabled:cursor-not-allowed hover:border-saffron-500 transition-colors"
         >
           <ChevronLeft className="w-4 h-4" />
-          <span>मागील (Previous)</span>
+          <span>मागील (Prev)</span>
         </button>
 
         {currentIndex < orderedAartis.length - 1 ? (
           <button
             onClick={goToNext}
-            className="flex-1 flex items-center justify-center gap-1.5 py-3 px-4 rounded-2xl bg-saffron-600 hover:bg-saffron-700 text-white font-bold text-sm shadow-md shadow-saffron-600/20 active:scale-98 transition-transform"
+            className="flex-1 flex items-center justify-center gap-1.5 py-3 px-4 rounded-2xl bg-saffron-600 hover:bg-saffron-700 text-white font-bold text-xs shadow-md shadow-saffron-600/20 active:scale-98 transition-all"
           >
             <span>पुढील (Next)</span>
             <ChevronRight className="w-4 h-4" />
           </button>
         ) : (
-          <div className="flex-1 flex items-center justify-center gap-1.5 py-3 px-4 rounded-2xl bg-emerald-600 text-white font-bold text-sm shadow-md">
+          <div className="flex-1 flex items-center justify-center gap-1.5 py-3 px-4 rounded-2xl bg-emerald-600 text-white font-bold text-xs shadow-md">
             <CheckCircle className="w-4 h-4" />
             <span>पूजा संपन्न (Complete)</span>
           </div>
@@ -381,7 +426,10 @@ function GroupPlayerContent() {
         onSpeedChange={setSpeed}
       />
 
-      <FontSizeModal isOpen={isFontModalOpen} onClose={() => setIsFontModalOpen(false)} />
+      <ReadingSettingsModal
+        isOpen={isReadingSettingsOpen}
+        onClose={() => setIsReadingSettingsOpen(false)}
+      />
 
       {customGroup && (
         <ShareGroupModal
