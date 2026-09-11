@@ -20,6 +20,23 @@ export const playlists: Playlist[] = [
     ],
   },
   {
+    id: 'shirdi-sai-chatur-prahar',
+    slug: 'shirdi-sai-chatur-prahar',
+    title: 'Shirdi Sai 4-Prahar Daily Aarti Routine',
+    titleDevanagari: 'शिर्डी साईबाबा चार प्रहर नित्य आरती क्रम',
+    description: 'Complete daily four-session aarti sequence chanted in Shirdi temple (Kakad, Madhyan, Dhoop, Shej).',
+    occasion: 'Daily Shirdi Routine & Guruvar Pujan',
+    aartiIds: [
+      'shirdi-sai-kakad-aarti',
+      'shirdi-sai-madhyan-aarti',
+      'shirdi-sai-dhoop-aarti',
+      'saibaba-aarti',
+      'shirdi-sai-shej-aarti',
+      'concluding-ghalin-lotangan',
+      'concluding-mantra-pushpanjali',
+    ],
+  },
+  {
     id: 'sandhya-aarti-daily',
     slug: 'sandhya-aarti-daily',
     title: 'Daily Sandhya Aarti Sequence',

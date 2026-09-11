@@ -58,4 +58,12 @@ describe('Data Integrity & Schema Validation', () => {
       expect(slugs).toContain(slug);
     });
   });
+
+  it('includes all four daily prahar aartis sung in Shirdi temple', () => {
+    const slugs = aartis.map(a => a.slug);
+    expect(slugs).toContain('shirdi-sai-kakad-aarti');
+    expect(slugs).toContain('shirdi-sai-madhyan-aarti');
+    expect(slugs).toContain('shirdi-sai-dhoop-aarti');
+    expect(slugs).toContain('shirdi-sai-shej-aarti');
+  });
 });
