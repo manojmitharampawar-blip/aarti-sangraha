@@ -99,6 +99,22 @@ export const playlists: Playlist[] = [
     ],
   },
   {
+    id: 'shiva-parivar-sangraha',
+    slug: 'shiva-parivar-sangraha',
+    title: 'Complete Shiva Parivar Aarti Sangraha',
+    titleDevanagari: 'संपूर्ण शिव परिवार आरती संग्रह',
+    description: 'Complete family worship sequence: Shri Ganesha, Lord Kartikeya, Lord Shiva Mahadev, and Mata Parvati.',
+    occasion: 'Mondays, Pradosh, Shivratri & Hartalika',
+    aartiIds: [
+      'ganesha-sukhkarta',
+      'kartikeya-aarti',
+      'shiva-lavthavti',
+      'parvati-aarti',
+      'concluding-ghalin-lotangan',
+      'concluding-mantra-pushpanjali',
+    ],
+  },
+  {
     id: 'sandhya-aarti-daily',
     slug: 'sandhya-aarti-daily',
     title: 'Daily Sandhya Aarti Sequence',

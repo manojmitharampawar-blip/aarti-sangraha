@@ -90,4 +90,10 @@ describe('Data Integrity & Schema Validation', () => {
     expect(slugs).toContain('tuljabhavani-aarti');
     expect(slugs).toContain('ganesha-kakad-aarti');
   });
+
+  it('includes Mata Parvati and Lord Kartikeya Swami aartis', () => {
+    const slugs = aartis.map(a => a.slug);
+    expect(slugs).toContain('aarti-parvati-mata');
+    expect(slugs).toContain('aarti-kartikeya-swami');
+  });
 });

@@ -27,7 +27,9 @@ export type DeityId =
   | 'saraswati'
   | 'santoshimata'
   | 'eknath'
-  | 'gayatri';
+  | 'gayatri'
+  | 'parvati'
+  | 'kartikeya';
 
 export interface Stanza {
   stanzaNumber: number;
