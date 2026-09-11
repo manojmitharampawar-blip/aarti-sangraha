@@ -123,4 +123,22 @@ describe('Data Integrity & Schema Validation', () => {
       expect(slugs).toContain(slug);
     });
   });
+
+  it('includes authentic Aartis and Stotras for Lord Dattatreya', () => {
+    const slugs = aartis.map(a => a.slug);
+    const expectedDattaHymns = [
+      'trigunatmak-traimurti',
+      'ghora-kashtoddharana-stotra',
+      'dattatreya-stotra-narada',
+      'datta-bavani',
+      'dattashtakam',
+      'datta-pradakshina-aarti',
+      'datta-kakad-aarti',
+      'datta-shej-aarti',
+    ];
+
+    expectedDattaHymns.forEach(slug => {
+      expect(slugs).toContain(slug);
+    });
+  });
 });

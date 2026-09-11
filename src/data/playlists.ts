@@ -2,6 +2,26 @@ import { Playlist } from '@/types';
 
 export const playlists: Playlist[] = [
   {
+    id: 'guruwar-datta-upasana',
+    slug: 'guruwar-datta-upasana',
+    title: 'Thursday Special Dattaguru Upasana & Aarti Routine',
+    titleDevanagari: 'गुरुवार श्री दत्तगुरू विशेष उपासना व आरती क्रम',
+    description: 'Complete sacred sequence for Lord Dattatreya: Prabhat Kakad Aarti, Narada Purana Stotram, Ghora Kashtoddharana Stotra, Datta Bavani, Dattashtakam, Trigunatmak Main Aarti, Pradakshina Aarti, and Shej Aarti.',
+    occasion: 'Thursday & Datta Jayanti Seva',
+    aartiIds: [
+      'datta-kakad-aarti',
+      'dattatreya-stotra-narada',
+      'ghora-kashtoddharana-stotra',
+      'datta-bavani',
+      'dattashtakam',
+      'datta-trigunatmak',
+      'datta-pradakshina-aarti',
+      'concluding-ghalin-lotangan',
+      'concluding-mantra-pushpanjali',
+      'datta-shej-aarti',
+    ],
+  },
+  {
     id: 'prabhat-nitya-stotra-pathan',
     slug: 'prabhat-nitya-stotra-pathan',
     title: 'Daily Morning Sacred Stotra Chanting',
