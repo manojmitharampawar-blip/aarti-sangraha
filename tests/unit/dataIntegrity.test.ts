@@ -36,4 +36,26 @@ describe('Data Integrity & Schema Validation', () => {
       });
     });
   });
+
+  it('includes all revered Maharashtra saints and festival hymns requested', () => {
+    const slugs = aartis.map(a => a.slug);
+    const expectedHymns = [
+      'aarti-dnyanraja',
+      'aarti-tukaram',
+      'aarti-gauri-mata',
+      'aarti-sai-baba',
+      'aarti-ambe-mata-navratri',
+      'aarti-samarth-ramdas',
+      'aarti-nityanand-maharaj',
+      'aarti-swami-samarth',
+      'aarti-gajanan-maharaj',
+      'om-jai-jagdish-hare',
+      'aarti-bal-krishna',
+      'aarti-khanderaya-jejuri',
+    ];
+
+    expectedHymns.forEach(slug => {
+      expect(slugs).toContain(slug);
+    });
+  });
 });

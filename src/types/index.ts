@@ -12,7 +12,17 @@ export type DeityId =
   | 'krishna'
   | 'rama'
   | 'surya'
-  | 'sarvajanik';
+  | 'sarvajanik'
+  | 'vishnu'
+  | 'gauri'
+  | 'saibaba'
+  | 'swamisamarth'
+  | 'gajananmaharaj'
+  | 'dnyaneshwar'
+  | 'tukaram'
+  | 'ramdas'
+  | 'nityanand'
+  | 'khandoba';
 
 export interface Stanza {
   stanzaNumber: number;
@@ -39,15 +49,23 @@ export interface AartiItem {
   tags: string[];
 }
 
+export interface CustomGroup {
+  id: string;
+  name: string;
+  description?: string;
+  aartiIds: string[];
+  createdAt: number;
+  updatedAt: number;
+}
+
 export interface Deity {
   id: DeityId;
   nameDevanagari: string;
   nameTransliteration: string;
   description: string;
-  primaryDay: string; // e.g. 'Tuesday'
+  primaryDay: string;
   color: string;
   icon: string;
-  count?: number;
 }
 
 export interface Playlist {
@@ -58,13 +76,4 @@ export interface Playlist {
   description: string;
   occasion: string;
   aartiIds: string[];
-}
-
-export interface CustomGroup {
-  id: string;
-  name: string;
-  description?: string;
-  aartiIds: string[];
-  createdAt: number;
-  updatedAt: number;
 }
