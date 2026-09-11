@@ -37,8 +37,14 @@ export function filterHymns(hymns: AartiItem[], options: FilterOptions): AartiIt
     if (options.deity && options.deity !== 'all' && hymn.deity !== options.deity) {
       return false;
     }
-    if (options.type && options.type !== 'all' && hymn.type !== options.type) {
-      return false;
+    if (options.type && options.type !== 'all') {
+      if (options.type === 'stotra') {
+        if (hymn.type !== 'stotra' && hymn.type !== 'ashtak') {
+          return false;
+        }
+      } else if (hymn.type !== options.type) {
+        return false;
+      }
     }
     if (options.language && options.language !== 'all' && hymn.language !== options.language) {
       return false;

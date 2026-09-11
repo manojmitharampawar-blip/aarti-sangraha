@@ -25,6 +25,7 @@ import { FontSizeModal } from '@/components/FontSizeModal';
 import { AddToGroupModal } from '@/components/AddToGroupModal';
 import { DevotionalAudioBar } from '@/components/DevotionalAudioBar';
 import { NextAartiCountdown } from '@/components/NextAartiCountdown';
+import { getHymnTypeBadge } from '@/components/AartiCard';
 import { deities } from '@/data/deities';
 
 interface AartiReaderClientProps {
@@ -46,6 +47,8 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
 
   const favorited = isFavorite(aarti.id);
   const deityInfo = deities.find(d => d.id === aarti.deity);
+  const isDevanagari = script === 'devanagari';
+  const typeBadge = getHymnTypeBadge(aarti.type, isDevanagari);
 
   const handleReachEnd = useCallback(() => {
     if (nextAarti) {
@@ -58,7 +61,6 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
     speed,
     setSpeed,
     toggle: toggleAutoScroll,
-    resetEndTrigger,
   } = useAutoScroll(1, handleReachEnd);
 
   const proceedToNext = useCallback(() => {
@@ -87,7 +89,7 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
       try {
         await navigator.share({
           title: aarti.titleDevanagari,
-          text: `आरती संग्रह: ${aarti.titleDevanagari}\n${aarti.firstLineDevanagari}`,
+          text: `आरती व स्तोत्र संग्रह: ${aarti.titleDevanagari}\n${aarti.firstLineDevanagari}`,
           url: window.location.href,
         });
       } catch {
@@ -103,9 +105,10 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
   return (
     <div className={`space-y-6 max-w-lg mx-auto pb-16 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>
       {/* Gentle Next Aarti Countdown */}
-      {showNextCountdown && nextAarti && (
+      {
+      showNextCountdown && nextAarti && (
         <NextAartiCountdown
-          nextTitle={script === 'devanagari' ? nextAarti.titleDevanagari : nextAarti.titleTransliteration}
+          nextTitle={isDevanagari ? nextAarti.titleDevanagari : nextAarti.titleTransliteration}
           totalSeconds={12}
           onProceed={proceedToNext}
           onCancel={cancelCountdown}
@@ -143,7 +146,7 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
           {/* Add to Group Button */}
           <button
             onClick={() => setIsGroupModalOpen(true)}
-            aria-label="Add to custom aarti group"
+            aria-label="Add to custom group"
             title="Add to group"
             className="p-2 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)] hover:border-saffron-500/50"
           >
@@ -156,7 +159,7 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
             aria-label="Switch script"
             className="px-2.5 py-1.5 rounded-xl border text-xs font-bold border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)]"
           >
-            {script === 'devanagari' ? 'मराठी' : 'ENG'}
+            {isDevanagari ? 'मराठी' : 'ENG'}
           </button>
 
           {/* Font Size Button */}
@@ -184,7 +187,7 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
           {/* Share Button */}
           <button
             onClick={handleShare}
-            aria-label="Share aarti"
+            aria-label="Share hymn"
             className="p-2 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-secondary)] hover:border-saffron-500/50"
           >
             <Share2 className="w-4 h-4" />
@@ -200,17 +203,21 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
 
       {/* Aarti Header Title */}
       <div className="text-center space-y-2 pt-2">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-saffron-500/10 text-saffron-600 border border-saffron-500/20">
-          <span>{deityInfo ? (script === 'devanagari' ? deityInfo.nameDevanagari : deityInfo.nameTransliteration) : aarti.deity}</span>
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-stone-100 dark:bg-stone-800 border border-[var(--border-main)]">
+          <span className="text-[var(--text-primary)]">
+            {deityInfo ? (isDevanagari ? deityInfo.nameDevanagari : deityInfo.nameTransliteration) : aarti.deity}
+          </span>
           <span>•</span>
-          <span className="uppercase">{aarti.type}</span>
+          <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${typeBadge.className}`}>
+            {typeBadge.label}
+          </span>
         </div>
 
         <h1
           style={{ fontSize: `${Math.min(fontSize + 8, 34)}px` }}
           className="font-extrabold text-[var(--text-primary)] leading-snug tracking-tight font-devanagari px-2"
         >
-          {script === 'devanagari' ? aarti.titleDevanagari : aarti.titleTransliteration}
+          {isDevanagari ? aarti.titleDevanagari : aarti.titleTransliteration}
         </h1>
 
         {aarti.author && (
@@ -226,13 +233,13 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
         script={script}
       />
 
-      {/* Aarti Lyrics Canvas */}
+      {/* Aarti / Stotra Lyrics Canvas */}
       <article
         style={{ fontSize: `${fontSize}px`, lineHeight: '1.9' }}
         className="space-y-6 pt-2 font-devanagari text-center"
       >
         {aarti.stanzas.map((stanza, sIdx) => {
-          const lines = script === 'devanagari' ? stanza.devanagari : stanza.transliteration;
+          const lines = isDevanagari ? stanza.devanagari : stanza.transliteration;
           return (
             <div
               key={sIdx}
@@ -242,6 +249,11 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
                   : 'hover:bg-black/[0.02] dark:hover:bg-white/[0.02]'
               }`}
             >
+              {stanza.sectionTitle && (
+                <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-saffron-700 dark:text-saffron-300 mb-3 py-1 px-3.5 rounded-full bg-saffron-500/10 inline-block border border-saffron-500/25">
+                  {stanza.sectionTitle}
+                </div>
+              )}
               {lines.map((line, lIdx) => (
                 <p
                   key={lIdx}
@@ -279,11 +291,11 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
         </div>
       )}
 
-      {/* Next Recommended Aarti in Sequence */}
+      {/* Next Recommended Hymn in Sequence */}
       {nextAarti && (
         <div className="pt-4">
           <p className="text-xs font-bold text-[var(--text-secondary)] uppercase tracking-wider mb-2">
-            पुढील आरती (Next Aarti)
+            पुढील उपासना (Next Upasana)
           </p>
           <Link
             href={`/aarti/${nextAarti.slug}`}
@@ -292,7 +304,7 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
             <div>
               <p className="text-xs text-saffron-600 font-semibold">पुढील उपासना क्रम</p>
               <h3 className="text-base font-bold text-[var(--text-primary)] font-devanagari">
-                {script === 'devanagari' ? nextAarti.titleDevanagari : nextAarti.titleTransliteration}
+                {isDevanagari ? nextAarti.titleDevanagari : nextAarti.titleTransliteration}
               </h3>
             </div>
             <div className="w-8 h-8 rounded-full bg-saffron-600 text-white flex items-center justify-center group-hover:translate-x-1 transition-transform">

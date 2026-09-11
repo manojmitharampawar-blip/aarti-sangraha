@@ -33,6 +33,7 @@ export type DeityId =
 
 export interface Stanza {
   stanzaNumber: number;
+  sectionTitle?: string;
   isChorus?: boolean;
   devanagari: string[];
   transliteration: string[];

@@ -1,49 +1,41 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import {
-  X,
-  ArrowUp,
-  ArrowDown,
-  Trash2,
-  Plus,
-  Check,
-  Search,
-  Sparkles,
-  Layers,
-} from 'lucide-react';
-import { CustomGroup, AartiItem } from '@/types';
+import { X, ArrowUp, ArrowDown, Trash2, Plus, Check, Search, GripVertical } from 'lucide-react';
 import { aartis } from '@/data/aartis';
 import { deities } from '@/data/deities';
+import { CustomGroup } from '@/types';
 import { useCustomGroups } from '@/hooks/useCustomGroups';
+import { getHymnTypeBadge } from '@/components/AartiCard';
 
 interface GroupEditorModalProps {
   isOpen: boolean;
   onClose: () => void;
-  group?: CustomGroup | null; // If null, create mode
+  group?: CustomGroup | null;
 }
 
 export function GroupEditorModal({ isOpen, onClose, group }: GroupEditorModalProps) {
   const { createGroup, updateGroup, deleteGroup } = useCustomGroups();
-
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [pickerSearch, setPickerSearch] = useState('');
 
-  // Re-synchronize state whenever group prop or isOpen changes
+  // Sync state whenever modal opens or group prop changes
   useEffect(() => {
-    if (group) {
-      setName(group.name || '');
-      setDescription(group.description || '');
-      setSelectedIds(group.aartiIds ? [...group.aartiIds] : []);
-    } else {
-      setName('');
-      setDescription('');
-      setSelectedIds([]);
+    if (isOpen) {
+      if (group) {
+        setName(group.name);
+        setDescription(group.description || '');
+        setSelectedIds([...group.aartiIds]);
+      } else {
+        setName('');
+        setDescription('');
+        setSelectedIds([]);
+      }
+      setPickerSearch('');
     }
-    setPickerSearch('');
-  }, [group, isOpen]);
+  }, [isOpen, group]);
 
   if (!isOpen) return null;
 
@@ -89,7 +81,7 @@ export function GroupEditorModal({ isOpen, onClose, group }: GroupEditorModalPro
     );
   };
 
-  // Filter aartis for search & add
+  // Filter hymns for search & add
   const searchLower = pickerSearch.trim().toLowerCase();
   const filteredPickerAartis = pickerSearch.trim()
     ? aartis.filter(
@@ -97,7 +89,9 @@ export function GroupEditorModal({ isOpen, onClose, group }: GroupEditorModalPro
           a.titleDevanagari.toLowerCase().includes(searchLower) ||
           a.titleTransliteration.toLowerCase().includes(searchLower) ||
           a.firstLineDevanagari.toLowerCase().includes(searchLower) ||
-          a.deity.toLowerCase().includes(searchLower)
+          a.firstLineTransliteration.toLowerCase().includes(searchLower) ||
+          a.deity.toLowerCase().includes(searchLower) ||
+          a.tags.some(t => t.toLowerCase().includes(searchLower))
       )
     : aartis;
 
@@ -108,10 +102,10 @@ export function GroupEditorModal({ isOpen, onClose, group }: GroupEditorModalPro
         <div className="flex items-center justify-between pb-3 border-b border-[var(--border-main)] shrink-0">
           <div>
             <span className="text-[10px] uppercase font-bold tracking-wider text-saffron-600">
-              {group ? 'ग्रुप संपादन' : 'नवीन संग्रह'}
+              {group ? 'ग्रुप संपादन (Edit Group)' : 'नवीन उपासना संग्रह'}
             </span>
             <h3 className="font-black text-lg text-[var(--text-primary)] font-devanagari">
-              {group ? group.name : 'नवीन आरती ग्रुप तयार करा'}
+              {group ? group.name : 'नवीन आरती व स्तोत्र ग्रुप तयार करा'}
             </h3>
           </div>
           <button
@@ -135,7 +129,7 @@ export function GroupEditorModal({ isOpen, onClose, group }: GroupEditorModalPro
               required
               value={name}
               onChange={e => setName(e.target.value)}
-              placeholder="उदा. माझी सकाळची पूजा, शनिवार हनुमान भजन..."
+              placeholder="उदा. माझी सकाळची पूजा, शनिवार मारुती भजन..."
               className="w-full px-3.5 py-2.5 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] text-[var(--text-primary)] text-sm font-devanagari font-bold focus:outline-hidden focus:ring-2 focus:ring-saffron-500/50"
             />
           </div>
@@ -149,17 +143,17 @@ export function GroupEditorModal({ isOpen, onClose, group }: GroupEditorModalPro
               type="text"
               value={description}
               onChange={e => setDescription(e.target.value)}
-              placeholder="उदा. दैनंदिन सकाळ-संध्याकाळ पूजेसाठी सलग आरत्यांचा क्रम..."
+              placeholder="उदा. दैनंदिन सकाळ-संध्याकाळ पूजेसाठी सलग स्तोत्र व आरत्यांचा क्रम..."
               className="w-full px-3.5 py-2 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] text-[var(--text-primary)] text-xs focus:outline-hidden focus:ring-2 focus:ring-saffron-500/50"
             />
           </div>
 
-          {/* SEARCH & ADD AARTIS SECTION */}
+          {/* SEARCH & ADD AARTIS / STOTRAS SECTION */}
           <div className="p-3.5 rounded-2xl border border-saffron-500/30 bg-saffron-500/5 space-y-2.5">
             <div className="flex items-center justify-between">
               <label className="text-xs font-bold text-saffron-700 dark:text-saffron-300 flex items-center gap-1.5">
                 <Search className="w-3.5 h-3.5 text-saffron-600" />
-                <span>आरती शोधा आणि ग्रुपमध्ये जोडा (Search & Add)</span>
+                <span>स्तोत्र व आरती शोधा आणि जोडा (Search & Add)</span>
               </label>
               <span className="text-[10px] font-semibold text-[var(--text-secondary)]">
                 {selectedIds.length} जोडलेल्या
@@ -173,7 +167,7 @@ export function GroupEditorModal({ isOpen, onClose, group }: GroupEditorModalPro
                 type="text"
                 value={pickerSearch}
                 onChange={e => setPickerSearch(e.target.value)}
-                placeholder="आरतीचे नाव, देवता किंवा शब्द शोधा (उदा. गणपती, सुखकर्ता)..."
+                placeholder="आरतीचे नाव, देवता किंवा शब्द शोधा (उदा. गणपती, सुखकर्ता, रामरक्षा)..."
                 className="w-full pl-9 pr-8 py-2 text-xs rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-hidden focus:ring-2 focus:ring-saffron-500"
               />
               {pickerSearch && (
@@ -188,11 +182,12 @@ export function GroupEditorModal({ isOpen, onClose, group }: GroupEditorModalPro
             </div>
 
             {/* Matching Results List */}
-            <div className="max-h-44 overflow-y-auto divide-y divide-[var(--border-main)] rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] px-2">
+            <div className="max-h-48 overflow-y-auto divide-y divide-[var(--border-main)] rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] px-2">
               {filteredPickerAartis.length > 0 ? (
                 filteredPickerAartis.map(item => {
                   const isSelected = selectedIds.includes(item.id);
                   const deity = deities.find(d => d.id === item.deity);
+                  const typeBadge = getHymnTypeBadge(item.type, true);
 
                   return (
                     <div
@@ -204,8 +199,11 @@ export function GroupEditorModal({ isOpen, onClose, group }: GroupEditorModalPro
                           <span className="font-devanagari font-bold text-xs text-[var(--text-primary)]">
                             {item.titleDevanagari}
                           </span>
+                          <span className={`text-[9px] font-bold px-1.5 py-0.2 rounded ${typeBadge.className}`}>
+                            {typeBadge.label}
+                          </span>
                           {deity && (
-                            <span className="text-[9px] px-1.5 py-0.2 rounded bg-saffron-500/10 text-saffron-600 font-devanagari">
+                            <span className="text-[9px] px-1.5 py-0.2 rounded bg-stone-100 dark:bg-stone-800 text-[var(--text-secondary)] font-devanagari">
                               {deity.nameDevanagari}
                             </span>
                           )}
@@ -218,21 +216,21 @@ export function GroupEditorModal({ isOpen, onClose, group }: GroupEditorModalPro
                       <button
                         type="button"
                         onClick={() => toggleAartiSelection(item.id)}
-                        className={`px-2.5 py-1 rounded-lg text-xs font-bold flex items-center gap-1 transition-all shrink-0 ${
+                        className={`p-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1 shrink-0 ${
                           isSelected
-                            ? 'bg-emerald-600 text-white'
+                            ? 'bg-emerald-500/15 text-emerald-600 border border-emerald-500/30'
                             : 'bg-saffron-600 text-white hover:bg-saffron-700'
                         }`}
                       >
                         {isSelected ? (
                           <>
-                            <Check className="w-3 h-3" />
-                            <span>जोडली</span>
+                            <Check className="w-3.5 h-3.5" />
+                            <span className="text-[10px]">जोडली</span>
                           </>
                         ) : (
                           <>
-                            <Plus className="w-3 h-3" />
-                            <span>जोडा</span>
+                            <Plus className="w-3.5 h-3.5" />
+                            <span className="text-[10px]">जोडा</span>
                           </>
                         )}
                       </button>
@@ -240,26 +238,37 @@ export function GroupEditorModal({ isOpen, onClose, group }: GroupEditorModalPro
                   );
                 })
               ) : (
-                <p className="py-3 text-center text-xs text-[var(--text-secondary)]">
-                  कोणतीही आरती सापडली नाही.
-                </p>
+                <div className="py-4 text-center text-xs text-[var(--text-secondary)]">
+                  कोणतीही रचना सापडली नाही (No matching hymns)
+                </div>
               )}
             </div>
           </div>
 
-          {/* CONFIGURED SEQUENCE LIST (WITH UP / DOWN / REMOVE) */}
+          {/* CHOSEN SEQUENCE ORDER */}
           <div>
-            <div className="flex items-center justify-between mb-2">
-              <label className="text-xs font-bold text-[var(--text-secondary)]">
-                आरत्यांचा अनुक्रम (Chanting Sequence: {selectedIds.length} आरत्या)
+            <div className="flex items-center justify-between mb-1.5">
+              <label className="text-xs font-bold text-[var(--text-secondary)] flex items-center gap-1">
+                <GripVertical className="w-3.5 h-3.5 text-saffron-600" />
+                <span>पठणाचा सलग क्रम (Sequential Order - {selectedIds.length})</span>
               </label>
-              <span className="text-[10px] text-[var(--text-secondary)]">
-                वर-खाली करण्यासाठी ▲ ▼ वापरा
-              </span>
+              {selectedIds.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => setSelectedIds([])}
+                  className="text-[10px] text-rose-500 hover:underline font-semibold"
+                >
+                  सर्व काढा (Clear all)
+                </button>
+              )}
             </div>
 
-            {selectedIds.length > 0 ? (
-              <div className="space-y-1.5 max-h-56 overflow-y-auto pr-1">
+            {selectedIds.length === 0 ? (
+              <div className="p-4 rounded-xl border border-dashed border-[var(--border-main)] text-center text-xs text-[var(--text-secondary)]">
+                वरील शोधपेटीतून स्तोत्रे व आरत्या निवडा आणि क्रम तयार करा.
+              </div>
+            ) : (
+              <div className="space-y-1.5 max-h-48 overflow-y-auto">
                 {selectedIds.map((id, index) => {
                   const item = aartis.find(a => a.id === id);
                   if (!item) return null;
@@ -267,27 +276,21 @@ export function GroupEditorModal({ isOpen, onClose, group }: GroupEditorModalPro
                   return (
                     <div
                       key={id}
-                      className="flex items-center justify-between p-2.5 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] text-xs transition-colors"
+                      className="flex items-center justify-between p-2 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-xs gap-2 group"
                     >
-                      <div className="flex items-center gap-2 flex-1 min-w-0">
-                        <span className="w-5 h-5 rounded-full bg-saffron-600 text-white font-bold flex items-center justify-center text-[10px] shrink-0">
-                          {index + 1}
-                        </span>
-                        <div className="min-w-0">
-                          <p className="font-bold truncate font-devanagari text-[var(--text-primary)]">
-                            {item.titleDevanagari}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-1 shrink-0 ml-2">
+                      <span className="w-5 text-center font-bold text-saffron-600 shrink-0">
+                        {index + 1}.
+                      </span>
+                      <span className="flex-1 font-bold text-[var(--text-primary)] truncate font-devanagari">
+                        {item.titleDevanagari}
+                      </span>
+                      <div className="flex items-center gap-0.5 shrink-0">
                         <button
                           type="button"
                           disabled={index === 0}
                           onClick={() => moveItem(index, 'up')}
-                          aria-label="Move up"
-                          title="Move up"
-                          className="p-1 rounded-lg border border-[var(--border-main)] hover:bg-black/5 dark:hover:bg-white/5 disabled:opacity-20 text-[var(--text-secondary)]"
+                          aria-label="Move Up"
+                          className="p-1 rounded hover:bg-black/5 dark:hover:bg-white/5 disabled:opacity-30"
                         >
                           <ArrowUp className="w-3.5 h-3.5" />
                         </button>
@@ -295,18 +298,16 @@ export function GroupEditorModal({ isOpen, onClose, group }: GroupEditorModalPro
                           type="button"
                           disabled={index === selectedIds.length - 1}
                           onClick={() => moveItem(index, 'down')}
-                          aria-label="Move down"
-                          title="Move down"
-                          className="p-1 rounded-lg border border-[var(--border-main)] hover:bg-black/5 dark:hover:bg-white/5 disabled:opacity-20 text-[var(--text-secondary)]"
+                          aria-label="Move Down"
+                          className="p-1 rounded hover:bg-black/5 dark:hover:bg-white/5 disabled:opacity-30"
                         >
                           <ArrowDown className="w-3.5 h-3.5" />
                         </button>
                         <button
                           type="button"
                           onClick={() => removeItem(id)}
-                          aria-label="Remove from group"
-                          title="Remove"
-                          className="p-1 rounded-lg border border-rose-200 dark:border-rose-900/50 bg-rose-500/10 text-rose-600 hover:bg-rose-500/20 ml-1"
+                          aria-label="Remove Item"
+                          className="p-1 rounded text-rose-500 hover:bg-rose-500/10 ml-1"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
                         </button>
@@ -315,42 +316,40 @@ export function GroupEditorModal({ isOpen, onClose, group }: GroupEditorModalPro
                   );
                 })}
               </div>
-            ) : (
-              <div className="text-center py-4 px-3 border border-dashed border-[var(--border-main)] rounded-xl text-xs text-[var(--text-secondary)]">
-                या ग्रुपमध्ये अद्याप आरत्या जोडलेल्या नाहीत. वरील शोधातून आरत्या जोडा.
-              </div>
             )}
           </div>
 
-          {/* Modal Action Buttons */}
-          <div className="flex gap-2.5 pt-3 border-t border-[var(--border-main)] shrink-0">
-            <button
-              type="submit"
-              disabled={!name.trim()}
-              className="flex-1 py-2.5 rounded-xl bg-saffron-600 hover:bg-saffron-700 text-white font-bold text-xs shadow-md shadow-saffron-600/20 active:scale-98 transition-all disabled:opacity-50"
-            >
-              {group ? 'बदल जतन करा (Save Changes)' : 'ग्रुप तयार करा (Create Group)'}
-            </button>
-
-            {group && (
+          {/* Modal Actions */}
+          <div className="pt-3 border-t border-[var(--border-main)] flex items-center justify-between gap-3">
+            {group ? (
               <button
                 type="button"
                 onClick={handleDelete}
-                aria-label="Delete group"
-                title="हा ग्रुप हटवा"
-                className="p-2.5 rounded-xl border border-rose-200 dark:border-rose-900 bg-rose-500/10 text-rose-600 hover:bg-rose-500/20 text-xs font-bold transition-colors"
+                className="px-3.5 py-2 rounded-xl text-xs font-bold text-rose-600 hover:bg-rose-500/10 transition-colors flex items-center gap-1.5"
               >
                 <Trash2 className="w-4 h-4" />
+                <span>ग्रुप हटवा</span>
               </button>
+            ) : (
+              <div />
             )}
 
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-4 py-2.5 rounded-xl border border-[var(--border-main)] text-[var(--text-secondary)] text-xs font-bold hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
-            >
-              रद्द
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={onClose}
+                className="px-4 py-2 rounded-xl text-xs font-bold border border-[var(--border-main)] text-[var(--text-secondary)] hover:bg-black/5 dark:hover:bg-white/5"
+              >
+                रद्द करा
+              </button>
+              <button
+                type="submit"
+                disabled={!name.trim() || selectedIds.length === 0}
+                className="px-5 py-2 rounded-xl text-xs font-bold bg-saffron-600 text-white hover:bg-saffron-700 shadow-md shadow-saffron-600/20 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {group ? 'बदल जतन करा (Save Changes)' : 'ग्रुप तयार करा (Create Group)'}
+              </button>
+            </div>
           </div>
         </form>
       </div>

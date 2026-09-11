@@ -96,4 +96,31 @@ describe('Data Integrity & Schema Validation', () => {
     expect(slugs).toContain('aarti-parvati-mata');
     expect(slugs).toContain('aarti-kartikeya-swami');
   });
+
+  it('includes iconic Stotras, Ashtakas, and Mantras across deities', () => {
+    const slugs = aartis.map(a => a.slug);
+    const expectedStotras = [
+      'ganapati-atharvashirsha',
+      'sankata-nashana-ganesh-stotra',
+      'ram-raksha-stotra',
+      'maruti-stotra-bhimrupi',
+      'hanuman-chalisa',
+      'shiva-tandava-stotra',
+      'bilvashtakam',
+      'mahishasuramardini-stotra',
+      'shree-suktam',
+      'aditya-hridaya-stotra',
+      'madhurashtakam',
+      'achyutashtakam',
+      'pasayadan-dnyaneshwar',
+      'swami-samarth-tarak-mantra',
+      'ghora-kashtoddharana-stotra',
+      'shani-stotra-dasharatha',
+      'saraswati-vandana',
+    ];
+
+    expectedStotras.forEach(slug => {
+      expect(slugs).toContain(slug);
+    });
+  });
 });
