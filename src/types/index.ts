@@ -6,7 +6,17 @@ export type LineSpacingType = 'compact' | 'normal' | 'relaxed';
 
 export type TextAlignType = 'center' | 'left';
 
-export type HymnType = 'aarti' | 'chalisa' | 'stotra' | 'ashtak' | 'mantra';
+export type HymnType =
+  | 'aarti'
+  | 'chalisa'
+  | 'stotra'
+  | 'ashtak'
+  | 'mantra'
+  | 'sukta'
+  | 'kavach'
+  | 'namavali'
+  | 'abhang'
+  | 'bhajan';
 
 export type DeityId =
   | 'ganesha'
