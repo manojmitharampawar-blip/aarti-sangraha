@@ -22,7 +22,12 @@ export type DeityId =
   | 'tukaram'
   | 'ramdas'
   | 'nityanand'
-  | 'khandoba';
+  | 'khandoba'
+  | 'shanidev'
+  | 'saraswati'
+  | 'santoshimata'
+  | 'eknath'
+  | 'gayatri';
 
 export interface Stanza {
   stanzaNumber: number;

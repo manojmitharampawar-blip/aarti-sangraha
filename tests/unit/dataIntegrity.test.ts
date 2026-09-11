@@ -66,4 +66,14 @@ describe('Data Integrity & Schema Validation', () => {
     expect(slugs).toContain('shirdi-sai-dhoop-aarti');
     expect(slugs).toContain('shirdi-sai-shej-aarti');
   });
+
+  it('includes aartis for Surya Dev, Shani Dev, Saraswati, Santoshi Mata, Gayatri, and Sant Eknath', () => {
+    const slugs = aartis.map(a => a.slug);
+    expect(slugs).toContain('aarti-surya-dev');
+    expect(slugs).toContain('aarti-shani-dev');
+    expect(slugs).toContain('aarti-saraswati-mata');
+    expect(slugs).toContain('aarti-santoshi-mata');
+    expect(slugs).toContain('aarti-gayatri-mata');
+    expect(slugs).toContain('aarti-sant-eknath');
+  });
 });
