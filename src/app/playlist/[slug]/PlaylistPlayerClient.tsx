@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ChevronLeft, ChevronRight, CheckCircle, Type, Sun } from 'lucide-react';
+import { ArrowLeft, ChevronLeft, ChevronRight, CheckCircle, Type, Sun, Sparkles } from 'lucide-react';
 import { Playlist, AartiItem } from '@/types';
 import { aartis } from '@/data/aartis';
 import { useThemeContext } from '@/components/ThemeProvider';
@@ -18,10 +18,10 @@ interface PlaylistPlayerClientProps {
 export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
   const { script, toggleScript, fontSize, diyaGlow } = useThemeContext();
   const { isLocked, isSupported: wakeLockSupported, requestLock, releaseLock } = useWakeLock();
-  const { isScrolling, speed, setSpeed, toggle: toggleAutoScroll } = useAutoScroll(1);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFontModalOpen, setIsFontModalOpen] = useState(false);
+  const [transitionMessage, setTransitionMessage] = useState<string | null>(null);
 
   // Map playlist IDs to AartiItem objects
   const playlistAartis: AartiItem[] = playlist.aartiIds
@@ -29,6 +29,36 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
     .filter((a): a is AartiItem => !!a);
 
   const currentAarti = playlistAartis[currentIndex] || playlistAartis[0];
+
+  const handleReachEnd = useCallback(() => {
+    if (currentIndex < playlistAartis.length - 1) {
+      const nextHymn = playlistAartis[currentIndex + 1];
+      const nextTitle =
+        script === 'devanagari' ? nextHymn.titleDevanagari : nextHymn.titleTransliteration;
+
+      setTransitionMessage(`पुढील आरती: ${nextTitle} सुरू होत आहे...`);
+
+      setTimeout(() => {
+        setCurrentIndex(prev => prev + 1);
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        resetEndTrigger();
+        setTransitionMessage(null);
+      }, 1200);
+    } else {
+      stopAutoScroll();
+      setTransitionMessage('पूजा संपन्न! (Pooja Completed) 🙏');
+      setTimeout(() => setTransitionMessage(null), 3000);
+    }
+  }, [currentIndex, playlistAartis, script]);
+
+  const {
+    isScrolling,
+    speed,
+    setSpeed,
+    toggle: toggleAutoScroll,
+    stop: stopAutoScroll,
+    resetEndTrigger,
+  } = useAutoScroll(1, handleReachEnd);
 
   useEffect(() => {
     if (wakeLockSupported) {
@@ -47,17 +77,27 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
   const goToPrev = () => {
     if (currentIndex > 0) {
       setCurrentIndex(prev => prev - 1);
+      resetEndTrigger();
     }
   };
 
   const goToNext = () => {
     if (currentIndex < playlistAartis.length - 1) {
       setCurrentIndex(prev => prev + 1);
+      resetEndTrigger();
     }
   };
 
   return (
     <div className={`space-y-6 max-w-lg mx-auto pb-16 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>
+      {/* Floating Transition Alert */}
+      {transitionMessage && (
+        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-2xl bg-amber-600 text-white text-xs font-bold shadow-2xl flex items-center gap-2 animate-bounce border border-amber-400">
+          <Sparkles className="w-4 h-4 text-yellow-200" />
+          <span>{transitionMessage}</span>
+        </div>
+      )}
+
       {/* Header & Playlist Stepper Indicator */}
       <div className="flex items-center justify-between pb-3 border-b border-[var(--border-main)]">
         <Link

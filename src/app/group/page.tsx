@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import {
@@ -13,6 +13,7 @@ import {
   Edit3,
   Plus,
   FolderOpen,
+  Sparkles,
 } from 'lucide-react';
 import { AartiItem } from '@/types';
 import { aartis } from '@/data/aartis';
@@ -31,11 +32,11 @@ function GroupPlayerContent() {
   const { groups, isLoaded } = useCustomGroups();
   const { script, toggleScript, fontSize, diyaGlow } = useThemeContext();
   const { isLocked, isSupported: wakeLockSupported, requestLock, releaseLock } = useWakeLock();
-  const { isScrolling, speed, setSpeed, toggle: toggleAutoScroll } = useAutoScroll(1);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFontModalOpen, setIsFontModalOpen] = useState(false);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
+  const [transitionMessage, setTransitionMessage] = useState<string | null>(null);
 
   const group = groups.find(g => g.id === groupId);
 
@@ -45,6 +46,39 @@ function GroupPlayerContent() {
     .filter((a): a is AartiItem => !!a);
 
   const currentAarti = orderedAartis[currentIndex] || orderedAartis[0];
+
+  // Callback when auto-scrolling reaches the bottom of the current aarti
+  const handleReachEnd = useCallback(() => {
+    if (currentIndex < orderedAartis.length - 1) {
+      const nextHymn = orderedAartis[currentIndex + 1];
+      const nextTitle =
+        script === 'devanagari' ? nextHymn.titleDevanagari : nextHymn.titleTransliteration;
+
+      setTransitionMessage(`पुढील आरती: ${nextTitle} सुरू होत आहे...`);
+
+      // 1.2 second breathing pause, then move to next aarti, scroll to top, and continue auto-scrolling
+      setTimeout(() => {
+        setCurrentIndex(prev => prev + 1);
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        resetEndTrigger();
+        setTransitionMessage(null);
+      }, 1200);
+    } else {
+      // Reached end of last aarti in group
+      stopAutoScroll();
+      setTransitionMessage('पूजा संपन्न! (Pooja Completed) 🙏');
+      setTimeout(() => setTransitionMessage(null), 3000);
+    }
+  }, [currentIndex, orderedAartis, script]);
+
+  const {
+    isScrolling,
+    speed,
+    setSpeed,
+    toggle: toggleAutoScroll,
+    stop: stopAutoScroll,
+    resetEndTrigger,
+  } = useAutoScroll(1, handleReachEnd);
 
   useEffect(() => {
     if (wakeLockSupported) {
@@ -62,12 +96,14 @@ function GroupPlayerContent() {
   const goToPrev = () => {
     if (currentIndex > 0) {
       setCurrentIndex(prev => prev - 1);
+      resetEndTrigger();
     }
   };
 
   const goToNext = () => {
     if (currentIndex < orderedAartis.length - 1) {
       setCurrentIndex(prev => prev + 1);
+      resetEndTrigger();
     }
   };
 
@@ -130,6 +166,14 @@ function GroupPlayerContent() {
 
   return (
     <div className={`space-y-6 max-w-lg mx-auto pb-16 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>
+      {/* Floating Transition Alert */}
+      {transitionMessage && (
+        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-2xl bg-amber-600 text-white text-xs font-bold shadow-2xl flex items-center gap-2 animate-bounce border border-amber-400">
+          <Sparkles className="w-4 h-4 text-yellow-200" />
+          <span>{transitionMessage}</span>
+        </div>
+      )}
+
       {/* Top App Bar */}
       <div className="flex items-center justify-between pb-3 border-b border-[var(--border-main)]">
         <Link

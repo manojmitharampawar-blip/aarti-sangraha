@@ -6,6 +6,10 @@ describe('useAutoScroll Hook', () => {
   beforeEach(() => {
     vi.useFakeTimers();
     window.scrollBy = vi.fn();
+    window.scrollTo = vi.fn();
+    Object.defineProperty(window, 'innerHeight', { value: 800, writable: true });
+    Object.defineProperty(window, 'scrollY', { value: 0, writable: true });
+    Object.defineProperty(document.documentElement, 'scrollHeight', { value: 2000, writable: true });
   });
 
   afterEach(() => {
@@ -55,5 +59,29 @@ describe('useAutoScroll Hook', () => {
     });
 
     expect(window.scrollBy).toHaveBeenCalled();
+  });
+
+  it('triggers onReachEnd callback when reaching the bottom of the page', () => {
+    const onReachEnd = vi.fn();
+    const { result } = renderHook(() => useAutoScroll(1, { onReachEnd, threshold: 20 }));
+
+    act(() => {
+      result.current.start();
+    });
+
+    // Simulate scroll reaching bottom: innerHeight (800) + scrollY (1190) >= scrollHeight (2000) - threshold (20)
+    window.scrollY = 1190;
+
+    act(() => {
+      vi.advanceTimersByTime(60);
+    });
+
+    expect(onReachEnd).toHaveBeenCalledTimes(1);
+
+    // Verify it doesn't fire repeatedly in a tight loop on subsequent ticks
+    act(() => {
+      vi.advanceTimersByTime(100);
+    });
+    expect(onReachEnd).toHaveBeenCalledTimes(1);
   });
 });
