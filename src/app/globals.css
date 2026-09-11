@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-main: #fdfbf7;
+    --card-main: #ffffff;
+    --border-main: #f0e9dc;
+    --text-primary: #1c1917;
+    --text-secondary: #78716c;
+    --accent: #ea580c;
+  }
+
+  html.theme-dark {
+    --bg-main: #090d16;
+    --card-main: #111827;
+    --border-main: #1f2937;
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --accent: #fb923c;
+  }
+
+  html.theme-pooja {
+    --bg-main: #180902;
+    --card-main: #2b1104;
+    --border-main: #4a1c06;
+    --text-primary: #fef3c7;
+    --text-secondary: #fcd34d;
+    --accent: #f59e0b;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    -webkit-tap-highlight-color: transparent;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom Scrollbar for Devotional View */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(234, 88, 12, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(234, 88, 12, 0.5);
+}
+
+/* Diya Aura Effect */
+.diya-aura {
+  box-shadow: 0 0 50px 15px rgba(245, 158, 11, 0.25);
+}
