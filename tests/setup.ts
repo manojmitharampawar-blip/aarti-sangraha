@@ -1,5 +1,10 @@
 import '@testing-library/jest-dom';
 
+// Mock scrollTo
+if (typeof window !== 'undefined') {
+  window.scrollTo = () => {};
+}
+
 // Mock matchMedia
 Object.defineProperty(window, 'matchMedia', {
   writable: true,

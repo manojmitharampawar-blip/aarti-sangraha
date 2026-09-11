@@ -108,7 +108,7 @@ export default function HomePage() {
           {deities.slice(0, 8).map(deity => (
             <Link
               key={deity.id}
-              href={`/search?deity=${deity.id}`}
+              href={`/deities?id=${deity.id}`}
               className="flex flex-col items-center text-center p-2.5 rounded-2xl border border-[var(--border-main)] bg-[var(--card-main)] hover:border-saffron-500/50 hover:shadow-sm transition-all group"
             >
               <div className="w-11 h-11 rounded-full bg-gradient-to-tr from-saffron-500/20 to-gold-500/30 flex items-center justify-center text-saffron-700 dark:text-saffron-300 font-bold group-hover:scale-105 transition-transform">
