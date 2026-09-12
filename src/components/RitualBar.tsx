@@ -2,9 +2,10 @@
 
 import React, { useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { Bell, Flame, Wind, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
+import { Bell, Wind, ChevronLeft, ChevronRight } from 'lucide-react';
 import { playTempleBell, playShankh } from '@/lib/audioBell';
 import { useThemeContext } from '@/components/ThemeProvider';
+import { useScrollDirection } from '@/hooks/useScrollDirection';
 
 export function RitualBar() {
   const pathname = usePathname();
@@ -12,9 +13,7 @@ export function RitualBar() {
   const [shankhBlowing, setShankhBlowing] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const { diyaGlow, toggleDiyaGlow, zenMode } = useThemeContext();
-
-  // If in reader zen mode or bottom island hud is active, keep ritual bar discreet
-  const isReaderPage = pathname?.startsWith('/aarti/');
+  const isNavVisible = useScrollDirection(8);
 
   if (zenMode) return null;
 
@@ -39,11 +38,11 @@ export function RitualBar() {
 
   return (
     <div
-      className={`fixed z-30 transition-all duration-300 ${
-        isReaderPage ? 'bottom-20 right-3' : 'bottom-20 right-3'
+      className={`fixed z-30 transition-all duration-300 ease-in-out right-3 ${
+        isNavVisible ? 'bottom-20' : 'bottom-4'
       }`}
     >
-      <div className="flex items-center gap-1.5 p-1 rounded-full border border-amber-500/30 bg-[var(--card-main)]/90 backdrop-blur-md shadow-xl shadow-black/10">
+      <div className="flex items-center gap-1.5 p-1 rounded-full border border-amber-500/30 bg-[var(--card-main)] shadow-xl shadow-black/10">
         {/* Toggle Expand / Collapse Arrow */}
         <button
           onClick={() => setIsExpanded(prev => !prev)}
@@ -99,7 +98,7 @@ export function RitualBar() {
                   : 'border-amber-500/30 bg-amber-500/10 text-amber-600 hover:scale-105'
               }`}
             >
-              <Flame className={`w-4 h-4 ${diyaGlow ? 'fill-current animate-pulse' : ''}`} />
+              <span className="text-sm">🪔</span>
             </button>
           </div>
         )}

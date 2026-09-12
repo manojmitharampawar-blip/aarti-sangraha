@@ -2,11 +2,13 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Sparkles, Moon, Sun, Flame, Sliders } from 'lucide-react';
+import { Moon, Sun, Flame, Sliders } from 'lucide-react';
 import { useThemeContext } from '@/components/ThemeProvider';
+import { useScrollDirection } from '@/hooks/useScrollDirection';
 
 export function Header() {
   const { theme, setTheme, script, toggleScript } = useThemeContext();
+  const isVisible = useScrollDirection(8);
 
   const cycleTheme = () => {
     if (theme === 'light') setTheme('pooja');
@@ -15,7 +17,11 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b backdrop-blur-md transition-colors duration-300 border-[var(--border-main)] bg-[var(--bg-main)]/90">
+    <header
+      className={`sticky top-0 z-40 w-full border-b border-[var(--border-main)] bg-[var(--bg-main)] shadow-xs transition-transform duration-300 ease-in-out ${
+        isVisible ? 'translate-y-0' : '-translate-y-full'
+      }`}
+    >
       <div className="max-w-xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 group">
           <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-saffron-600 to-gold-500 flex items-center justify-center text-white shadow-md shadow-saffron-600/20 group-hover:scale-105 transition-transform">

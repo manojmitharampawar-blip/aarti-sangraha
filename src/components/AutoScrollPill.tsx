@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { Play, Pause, FastForward } from 'lucide-react';
-import { useThemeContext, UNIFORM_SCROLL_SPEEDS } from '@/components/ThemeProvider';
+import { useThemeContext } from '@/components/ThemeProvider';
+import { useScrollDirection } from '@/hooks/useScrollDirection';
 
 interface AutoScrollPillProps {
   isScrolling: boolean;
@@ -17,7 +18,8 @@ export function AutoScrollPill({
   onToggle,
   onSpeedChange,
 }: AutoScrollPillProps) {
-  const { autoScrollSpeed, setAutoScrollSpeed, cycleAutoScrollSpeed } = useThemeContext();
+  const { autoScrollSpeed, cycleAutoScrollSpeed } = useThemeContext();
+  const isNavVisible = useScrollDirection(8);
 
   const currentSpeed = propSpeed ?? autoScrollSpeed;
 
@@ -29,7 +31,11 @@ export function AutoScrollPill({
   };
 
   return (
-    <div className="fixed bottom-20 left-4 z-30 flex items-center bg-[var(--card-main)]/95 backdrop-blur-md border border-[var(--border-main)] rounded-full shadow-lg shadow-black/10 px-3 py-1.5 gap-2 animate-fade-in">
+    <div
+      className={`fixed left-4 z-30 flex items-center bg-[var(--card-main)] border border-[var(--border-main)] rounded-full shadow-lg shadow-black/10 px-3 py-1.5 gap-2 animate-fade-in transition-all duration-300 ease-in-out ${
+        isNavVisible ? 'bottom-20' : 'bottom-4'
+      }`}
+    >
       {/* Play/Pause Button */}
       <button
         onClick={onToggle}

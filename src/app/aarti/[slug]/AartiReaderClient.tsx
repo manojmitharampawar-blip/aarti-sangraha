@@ -35,6 +35,7 @@ import { NextAartiCountdown } from '@/components/NextAartiCountdown';
 import { getHymnTypeBadge } from '@/components/AartiCard';
 import { deities } from '@/data/deities';
 import { playTempleBell } from '@/lib/audioBell';
+import { useScrollDirection } from '@/hooks/useScrollDirection';
 
 interface AartiReaderClientProps {
   aarti: AartiItem;
@@ -60,6 +61,7 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
 
   const { isFavorite, toggleFavorite } = useFavorites();
   const { isLocked, isSupported: wakeLockSupported, requestLock, releaseLock } = useWakeLock();
+  const isNavVisible = useScrollDirection(8);
 
   const [isReadingSettingsOpen, setIsReadingSettingsOpen] = useState(false);
   const [isGroupModalOpen, setIsGroupModalOpen] = useState(false);
@@ -517,8 +519,12 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
       )}
 
       {/* Modern Kindle/Apple Books Floating Liquid Glass Island HUD */}
-      <div className="fixed bottom-20 left-4 right-4 z-40 max-w-sm mx-auto animate-fade-in pointer-events-auto">
-        <div className="flex items-center justify-between gap-1.5 p-1.5 rounded-full bg-[var(--card-main)]/90 backdrop-blur-xl border border-[var(--border-main)] shadow-2xl shadow-black/20 text-xs">
+      <div
+        className={`fixed left-4 right-4 z-40 max-w-sm mx-auto animate-fade-in pointer-events-auto transition-all duration-300 ease-in-out ${
+          isNavVisible ? 'bottom-20' : 'bottom-4'
+        }`}
+      >
+        <div className="flex items-center justify-between gap-1.5 p-1.5 rounded-full bg-[var(--card-main)] border border-[var(--border-main)] shadow-2xl shadow-black/20 text-xs">
           {/* Active Stanza Pill */}
           <div className="flex items-center gap-1 px-3 py-1 text-xs font-bold text-[var(--text-primary)]">
             <span className="text-saffron-600 font-devanagari">चरण</span>

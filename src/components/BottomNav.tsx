@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Home, Layers, ListMusic, Heart, Search } from 'lucide-react';
+import { useScrollDirection } from '@/hooks/useScrollDirection';
 
 const navItems = [
   { href: '/', label: 'होम', sublabel: 'Home', icon: Home },
@@ -15,9 +16,14 @@ const navItems = [
 
 export function BottomNav() {
   const pathname = usePathname();
+  const isVisible = useScrollDirection(8);
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 border-t backdrop-blur-lg transition-colors duration-300 border-[var(--border-main)] bg-[var(--card-main)]/95 pb-safe">
+    <nav
+      className={`fixed bottom-0 left-0 right-0 z-40 border-t border-[var(--border-main)] bg-[var(--card-main)] pb-safe shadow-lg shadow-black/10 transition-transform duration-300 ease-in-out ${
+        isVisible ? 'translate-y-0' : 'translate-y-full'
+      }`}
+    >
       <div className="max-w-xl mx-auto px-2 flex justify-around items-center h-16">
         {navItems.map(item => {
           const isActive =
