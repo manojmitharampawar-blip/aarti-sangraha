@@ -167,15 +167,20 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
     setShowNextCountdown(false);
   }, []);
 
-  // Auto request wakeLock on mount if supported
+  // Keep screen display awake during reading mode
   useEffect(() => {
-    if (wakeLockSupported) {
-      requestLock();
-    }
+    requestLock();
     return () => {
       releaseLock();
     };
-  }, [wakeLockSupported, requestLock, releaseLock]);
+  }, [requestLock, releaseLock]);
+
+  // When auto navigation / auto-scroll is actively running, ensure wake lock is held
+  useEffect(() => {
+    if (isScrolling) {
+      requestLock();
+    }
+  }, [isScrolling, requestLock]);
 
   const handleShare = async () => {
     if (navigator.share) {

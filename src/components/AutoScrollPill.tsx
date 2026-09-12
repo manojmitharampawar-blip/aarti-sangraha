@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Play, Pause, FastForward } from 'lucide-react';
+import { Play, Pause, FastForward, Sun } from 'lucide-react';
 import { useThemeContext } from '@/components/ThemeProvider';
 import { useScrollDirection } from '@/hooks/useScrollDirection';
 
@@ -18,8 +18,9 @@ export function AutoScrollPill({
   onToggle,
   onSpeedChange,
 }: AutoScrollPillProps) {
-  const { autoScrollSpeed, cycleAutoScrollSpeed } = useThemeContext();
+  const { autoScrollSpeed, cycleAutoScrollSpeed, script } = useThemeContext();
   const isNavVisible = useScrollDirection(8);
+  const isDevanagari = script === 'devanagari';
 
   const currentSpeed = propSpeed ?? autoScrollSpeed;
 
@@ -60,6 +61,17 @@ export function AutoScrollPill({
         <FastForward className="w-3 h-3" />
         <span>{currentSpeed}x</span>
       </button>
+
+      {/* Screen Stay Awake Indicator during auto navigation */}
+      {isScrolling && (
+        <span
+          title={isDevanagari ? 'स्क्रीन चालू राहील (Display will stay on)' : 'Screen will not lock'}
+          aria-label="Screen stay-awake active"
+          className="flex items-center gap-1 text-[10px] font-semibold text-amber-500 pl-0.5 border-l border-[var(--border-main)]"
+        >
+          <Sun className="w-3.5 h-3.5 animate-pulse" />
+        </span>
+      )}
     </div>
   );
 }

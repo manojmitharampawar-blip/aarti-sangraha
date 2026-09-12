@@ -122,13 +122,18 @@ function GroupPlayerContent() {
   }, [autoScrollSpeed, setSpeed]);
 
   useEffect(() => {
-    if (wakeLockSupported) {
-      requestLock();
-    }
+    requestLock();
     return () => {
       releaseLock();
     };
-  }, [wakeLockSupported, requestLock, releaseLock]);
+  }, [requestLock, releaseLock]);
+
+  // When auto navigation is active, keep screen display awake on mobile and desktop
+  useEffect(() => {
+    if (isScrolling) {
+      requestLock();
+    }
+  }, [isScrolling, requestLock]);
 
   const goToPrev = () => {
     if (currentIndex > 0) {
