@@ -52,7 +52,7 @@ describe('Reading Settings & Kindle/Apple Books Modern UX Engine', () => {
     expect(screen.getByTestId('current-theme').textContent).toBe('light');
     expect(screen.getByTestId('current-script').textContent).toBe('devanagari');
     expect(screen.getByTestId('current-font').textContent).toBe('sans');
-    expect(screen.getByTestId('current-spotlight').textContent).toBe('true');
+    expect(screen.getByTestId('current-spotlight').textContent).toBe('false');
 
     // Select Sepia / Parchment Paper Theme
     const sepiaBtn = screen.getByTitle('हस्तलिखित सेपिया');
@@ -79,7 +79,7 @@ describe('Reading Settings & Kindle/Apple Books Modern UX Engine', () => {
     // Toggle Chanting Spotlight
     const spotlightToggle = screen.getByRole('button', { name: '' });
     fireEvent.click(spotlightToggle);
-    expect(screen.getByTestId('current-spotlight').textContent).toBe('false');
+    expect(screen.getByTestId('current-spotlight').textContent).toBe('true');
   });
 
   it('toggles Zen / Distraction-Free reading mode correctly', () => {

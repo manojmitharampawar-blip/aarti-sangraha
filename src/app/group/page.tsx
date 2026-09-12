@@ -363,7 +363,7 @@ function GroupPlayerContent() {
               className={`p-4 sm:p-5 rounded-3xl transition-all cursor-pointer ${
                 stanza.isChorus
                   ? 'bg-amber-500/10 border-2 border-amber-500/30 font-bold'
-                  : 'border border-[var(--border-main)] bg-[var(--card-main)]'
+                  : isActive ? 'border-2 border-saffron-500/80 bg-[var(--card-main)] shadow-sm' : 'border border-[var(--border-main)] bg-[var(--card-main)]'
               } ${
                 spotlightMode
                   ? isActive

@@ -44,7 +44,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [fontFamily, setFontFamilyState] = useState<FontFamilyType>('sans');
   const [lineSpacing, setLineSpacingState] = useState<LineSpacingType>('normal');
   const [textAlign, setTextAlignState] = useState<TextAlignType>('center');
-  const [spotlightMode, setSpotlightModeState] = useState<boolean>(true);
+  const [spotlightMode, setSpotlightModeState] = useState<boolean>(false);
   const [zenMode, setZenModeState] = useState<boolean>(false);
   const [diyaGlow, setDiyaGlow] = useState<boolean>(false);
   const [autoScrollSpeed, setAutoScrollSpeedState] = useState<number>(1);

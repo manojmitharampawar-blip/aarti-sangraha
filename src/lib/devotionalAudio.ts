@@ -1,63 +1,81 @@
 // Procedural Web Audio Synthesizer for Devotional Temple Music:
-// 1. Harmonium (सुर/संवादिनी) - Warm phase-detuned sawtooth oscillators with bellows LFO
-// 2. Mridang / Pakhawaj (मृदुंग) - Deep bass frequency drops & crisp slaps
-// 3. Taal / Manjira (झांज / टाळ) - Inharmonic metallic brass ring
+// 1. Harmonium (सुर/संवादिनी) - Warm phase-detuned oscillators with acoustic bellows LFO
+// 2. Mridang / Pakhawaj (मृदुंग) - Dual-tone punchy bass & crisp resonant slaps audible on mobile speakers
+// 3. Taal / Manjira (झांज / टाळ) - Metallic brass chime with rhythmic traditional theka
 
 let audioCtx: AudioContext | null = null;
 let isPlaying = false;
 let masterGain: GainNode | null = null;
-let harmoniumNodes: { oscs: OscillatorNode[]; gain: GainNode } | null = null;
-let scheduleIntervalId: NodeJS.Timeout | null = null;
+let harmoniumNodes: { oscs: (OscillatorNode | GainNode)[]; gain: GainNode } | null = null;
+let scheduleIntervalId: ReturnType<typeof setInterval> | null = null;
 let currentBpm = 82; // Traditional moderate devotional tempo
 let nextBeatTime = 0;
 let currentBeat = 0;
 
 function getAudioContext(): AudioContext | null {
   if (typeof window === 'undefined') return null;
-  if (!audioCtx) {
+  if (!audioCtx || audioCtx.state === 'closed') {
     const AudioContextClass =
       window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
     if (AudioContextClass) {
       audioCtx = new AudioContextClass();
     }
   }
-  if (audioCtx && audioCtx.state === 'suspended') {
-    audioCtx.resume().catch(() => {});
-  }
   return audioCtx;
 }
 
-// 1. HARMONIUM DRONE (Sa-Pa C3/G3 or D3/A3 chord drone with acoustic bellows)
+// 1. HARMONIUM DRONE (Sa-Pa chord drone with acoustic bellows LFO)
+// Tuned for high acoustic clarity on phone speakers and rich warmth on headphones
 function startHarmoniumDrone(ctx: AudioContext, parentGain: GainNode) {
   const droneGain = ctx.createGain();
-  droneGain.gain.setValueAtTime(0.12, ctx.currentTime);
+  droneGain.gain.setValueAtTime(0.28, ctx.currentTime);
 
   const filter = ctx.createBiquadFilter();
   filter.type = 'lowpass';
-  filter.frequency.setValueAtTime(450, ctx.currentTime);
-  filter.Q.setValueAtTime(2, ctx.currentTime);
+  filter.frequency.setValueAtTime(1100, ctx.currentTime);
+  filter.Q.setValueAtTime(1.5, ctx.currentTime);
 
-  // Frequencies: Root D3 (146.83Hz), Fifth A3 (220Hz), Octave D4 (293.66Hz)
-  const baseFreqs = [146.83, 147.2, 220.0, 220.5, 293.66];
-  const oscs: OscillatorNode[] = [];
+  // Sa-Pa Frequencies: D3 (146.8Hz), A3 (220Hz), D4 (293.66Hz), F#4 (369.99Hz)
+  const baseFreqs = [
+    { freq: 146.83, type: 'sawtooth' as OscillatorType, vol: 0.22 },
+    { freq: 147.2, type: 'sawtooth' as OscillatorType, vol: 0.18 },
+    { freq: 220.0, type: 'sawtooth' as OscillatorType, vol: 0.25 },
+    { freq: 220.4, type: 'triangle' as OscillatorType, vol: 0.20 },
+    { freq: 293.66, type: 'triangle' as OscillatorType, vol: 0.30 },
+  ];
 
-  baseFreqs.forEach(freq => {
-    const osc = ctx.createOscillator();
-    osc.type = 'sawtooth';
-    osc.frequency.setValueAtTime(freq, ctx.currentTime);
-    osc.connect(filter);
-    osc.start();
-    oscs.push(osc);
+  const oscs: (OscillatorNode | GainNode)[] = [];
+
+  baseFreqs.forEach(({ freq, type, vol }) => {
+    try {
+      const osc = ctx.createOscillator();
+      const oscGain = ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+      oscGain.gain.setValueAtTime(vol, ctx.currentTime);
+
+      osc.connect(oscGain);
+      oscGain.connect(filter);
+      osc.start();
+      oscs.push(osc, oscGain);
+    } catch {
+      // ignore
+    }
   });
 
-  // Gentle bellows pumping LFO (air flow variation every ~3 seconds)
-  const lfo = ctx.createOscillator();
-  const lfoGain = ctx.createGain();
-  lfo.frequency.setValueAtTime(0.35, ctx.currentTime);
-  lfoGain.gain.setValueAtTime(0.04, ctx.currentTime);
-  lfo.connect(droneGain.gain);
-  lfo.start();
-  oscs.push(lfo);
+  // Bellows pumping LFO (gentle devotional breathing variation every ~2.8 seconds)
+  try {
+    const lfo = ctx.createOscillator();
+    const lfoGain = ctx.createGain();
+    lfo.frequency.setValueAtTime(0.36, ctx.currentTime);
+    lfoGain.gain.setValueAtTime(0.06, ctx.currentTime);
+    lfo.connect(lfoGain);
+    lfoGain.connect(droneGain.gain);
+    lfo.start();
+    oscs.push(lfo, lfoGain);
+  } catch {
+    // ignore
+  }
 
   filter.connect(droneGain);
   droneGain.connect(parentGain);
@@ -65,65 +83,120 @@ function startHarmoniumDrone(ctx: AudioContext, parentGain: GainNode) {
   return { oscs, gain: droneGain };
 }
 
-// 2. MRIDANG SOUNDS
+// 2. MRIDANG SOUNDS (Acoustically shaped for phone speakers & deep bass)
 function playMridangBass(ctx: AudioContext, time: number, parentGain: GainNode) {
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
+  try {
+    const safeTime = Math.max(time, ctx.currentTime + 0.005);
 
-  // Pitch envelope drop: 120Hz -> 58Hz
-  osc.frequency.setValueAtTime(120, time);
-  osc.frequency.exponentialRampToValueAtTime(58, time + 0.16);
+    // Fundamental drop
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(160, safeTime);
+    osc.frequency.exponentialRampToValueAtTime(75, safeTime + 0.18);
 
-  gain.gain.setValueAtTime(0.45, time);
-  gain.gain.exponentialRampToValueAtTime(0.001, time + 0.28);
+    gain.gain.setValueAtTime(0.65, safeTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, safeTime + 0.26);
 
-  osc.connect(gain);
-  gain.connect(parentGain);
+    // Mid harmonic punch (allows mobile phone speakers to hear the bass attack)
+    const midOsc = ctx.createOscillator();
+    const midGain = ctx.createGain();
+    midOsc.type = 'triangle';
+    midOsc.frequency.setValueAtTime(320, safeTime);
+    midOsc.frequency.exponentialRampToValueAtTime(150, safeTime + 0.12);
 
-  osc.start(time);
-  osc.stop(time + 0.3);
+    midGain.gain.setValueAtTime(0.35, safeTime);
+    midGain.gain.exponentialRampToValueAtTime(0.001, safeTime + 0.16);
+
+    osc.connect(gain);
+    midOsc.connect(midGain);
+    gain.connect(parentGain);
+    midGain.connect(parentGain);
+
+    osc.start(safeTime);
+    midOsc.start(safeTime);
+    osc.stop(safeTime + 0.28);
+    midOsc.stop(safeTime + 0.20);
+
+    setTimeout(() => {
+      try {
+        gain.disconnect();
+        midGain.disconnect();
+      } catch {
+        // ignore
+      }
+    }, 350);
+  } catch {
+    // ignore
+  }
 }
 
 function playMridangSlap(ctx: AudioContext, time: number, parentGain: GainNode) {
-  // Crisp resonant slap tone
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
+  try {
+    const safeTime = Math.max(time, ctx.currentTime + 0.005);
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
 
-  osc.type = 'triangle';
-  osc.frequency.setValueAtTime(340, time);
-  osc.frequency.exponentialRampToValueAtTime(180, time + 0.08);
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(480, safeTime);
+    osc.frequency.exponentialRampToValueAtTime(220, safeTime + 0.09);
 
-  gain.gain.setValueAtTime(0.35, time);
-  gain.gain.exponentialRampToValueAtTime(0.001, time + 0.1);
+    gain.gain.setValueAtTime(0.55, safeTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, safeTime + 0.14);
 
-  osc.connect(gain);
-  gain.connect(parentGain);
+    osc.connect(gain);
+    gain.connect(parentGain);
 
-  osc.start(time);
-  osc.stop(time + 0.11);
+    osc.start(safeTime);
+    osc.stop(safeTime + 0.15);
+
+    setTimeout(() => {
+      try {
+        gain.disconnect();
+      } catch {
+        // ignore
+      }
+    }, 250);
+  } catch {
+    // ignore
+  }
 }
 
 // 3. TAAL / MANJIRA BRASS CHIME
 function playTaalManjira(ctx: AudioContext, time: number, parentGain: GainNode) {
-  const freqs = [3150, 3850, 5200];
-  const manjiraGain = ctx.createGain();
-  manjiraGain.gain.setValueAtTime(0.22, time);
-  manjiraGain.gain.exponentialRampToValueAtTime(0.001, time + 0.38);
+  try {
+    const safeTime = Math.max(time, ctx.currentTime + 0.005);
+    const freqs = [2600, 3650, 5200];
+    const manjiraGain = ctx.createGain();
 
-  freqs.forEach(f => {
-    const osc = ctx.createOscillator();
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(f, time);
-    osc.connect(manjiraGain);
-    osc.start(time);
-    osc.stop(time + 0.4);
-  });
+    manjiraGain.gain.setValueAtTime(0.35, safeTime);
+    manjiraGain.gain.exponentialRampToValueAtTime(0.001, safeTime + 0.32);
 
-  manjiraGain.connect(parentGain);
+    freqs.forEach(f => {
+      const osc = ctx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(f, safeTime);
+      osc.connect(manjiraGain);
+      osc.start(safeTime);
+      osc.stop(safeTime + 0.34);
+    });
+
+    manjiraGain.connect(parentGain);
+
+    setTimeout(() => {
+      try {
+        manjiraGain.disconnect();
+      } catch {
+        // ignore
+      }
+    }, 450);
+  } catch {
+    // ignore
+  }
 }
 
 // RHYTHM SCHEDULER: Traditional 4/4 Devotional Aarti Theka
-// Beat 0: Dha (Bass + Slap) + Taal
+// Beat 0: Dha (Bass + Slap) + Taal (झांज)
 // Beat 1: Ghe (Bass)
 // Beat 2: Na (Slap) + Taal
 // Beat 3: Ti (Gentle Slap)
@@ -131,7 +204,12 @@ function scheduleBeats() {
   if (!audioCtx || !isPlaying || !masterGain) return;
 
   const secondsPerBeat = 60.0 / currentBpm;
-  const scheduleAheadTime = 0.2; // 200ms lookahead
+  const scheduleAheadTime = 0.25; // 250ms lookahead
+
+  // If clock drifted behind (tab in background or device throttled), resync cleanly
+  if (nextBeatTime < audioCtx.currentTime) {
+    nextBeatTime = audioCtx.currentTime + 0.02;
+  }
 
   while (nextBeatTime < audioCtx.currentTime + scheduleAheadTime) {
     switch (currentBeat % 4) {
@@ -162,16 +240,25 @@ export interface DevotionalMusicOptions {
   volume?: number;
 }
 
-export function startDevotionalMusic(options?: DevotionalMusicOptions) {
+export async function startDevotionalMusic(options?: DevotionalMusicOptions) {
   const ctx = getAudioContext();
   if (!ctx) return;
+
+  // Crucial for iOS Safari & Android Chrome: resume inside the click gesture
+  if (ctx.state === 'suspended') {
+    try {
+      await ctx.resume();
+    } catch {
+      // continue anyway
+    }
+  }
 
   if (isPlaying) {
     stopDevotionalMusic();
   }
 
   currentBpm = options?.bpm || 82;
-  const initialVolume = options?.volume !== undefined ? options.volume : 0.6;
+  const initialVolume = options?.volume !== undefined ? options.volume : 0.7;
 
   masterGain = ctx.createGain();
   masterGain.gain.setValueAtTime(initialVolume, ctx.currentTime);
@@ -181,11 +268,11 @@ export function startDevotionalMusic(options?: DevotionalMusicOptions) {
   harmoniumNodes = startHarmoniumDrone(ctx, masterGain);
 
   isPlaying = true;
-  nextBeatTime = ctx.currentTime + 0.05;
+  nextBeatTime = ctx.currentTime + 0.03;
   currentBeat = 0;
 
-  // Run scheduler loop every 50ms
-  scheduleIntervalId = setInterval(scheduleBeats, 50);
+  // Run scheduler loop every 40ms
+  scheduleIntervalId = setInterval(scheduleBeats, 40);
 }
 
 export function stopDevotionalMusic() {
@@ -197,10 +284,12 @@ export function stopDevotionalMusic() {
   }
 
   if (harmoniumNodes) {
-    harmoniumNodes.oscs.forEach(osc => {
+    harmoniumNodes.oscs.forEach(node => {
       try {
-        osc.stop();
-        osc.disconnect();
+        if ('stop' in node) {
+          node.stop();
+        }
+        node.disconnect();
       } catch {
         // ignore
       }
@@ -224,7 +313,11 @@ export function isDevotionalMusicPlaying(): boolean {
 
 export function setDevotionalMusicVolume(volume: number) {
   if (masterGain && audioCtx) {
-    masterGain.gain.setTargetAtTime(Math.max(0, Math.min(1, volume)), audioCtx.currentTime, 0.05);
+    try {
+      masterGain.gain.setTargetAtTime(Math.max(0, Math.min(1, volume)), audioCtx.currentTime, 0.05);
+    } catch {
+      // ignore
+    }
   }
 }
 

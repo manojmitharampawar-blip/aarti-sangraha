@@ -173,6 +173,31 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
     }
   };
 
+  // On mobile & desktop scroll, track the visible stanza in reading viewport
+  useEffect(() => {
+    if (!spotlightMode || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const idx = Number(entry.target.getAttribute("data-stanza-index"));
+            if (!isNaN(idx)) {
+              setActiveStanzaIndex(idx);
+            }
+          }
+        });
+      },
+      { rootMargin: "-15% 0px -40% 0px", threshold: 0.1 }
+    );
+
+    const elements = document.querySelectorAll("[data-stanza-index]");
+    elements.forEach(el => observer.observe(el));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [spotlightMode, aarti.id]);
+
   const handleBellRing = (e: React.MouseEvent) => {
     e.stopPropagation();
     playTempleBell({ enableHaptics: true });
@@ -373,6 +398,8 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
               className={`p-4 sm:p-5 rounded-3xl transition-all cursor-pointer relative ${
                 stanza.isChorus
                   ? 'bg-amber-500/10 border-2 border-amber-500/30'
+                  : isActive
+                  ? 'border-2 border-saffron-500/80 bg-[var(--card-main)] shadow-sm'
                   : 'border border-[var(--border-main)] bg-[var(--card-main)]'
               } ${
                 isSpotlightApplied

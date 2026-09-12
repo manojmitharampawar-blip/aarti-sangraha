@@ -77,13 +77,18 @@ export function DevotionalAudioBar({
   }, []);
 
   // Toggle Background Devotional Music
-  const toggleMusic = () => {
+  const toggleMusic = async () => {
     if (isMusicPlaying) {
       stopDevotionalMusic();
       setIsMusicPlaying(false);
     } else {
-      startDevotionalMusic({ bpm: musicTempo, volume: musicVolume });
       setIsMusicPlaying(true);
+      try {
+        await startDevotionalMusic({ bpm: musicTempo, volume: musicVolume });
+      } catch (err) {
+        console.error("Failed to start devotional music:", err);
+        setIsMusicPlaying(false);
+      }
     }
   };
 
