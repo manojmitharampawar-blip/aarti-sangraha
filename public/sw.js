@@ -1,5 +1,5 @@
-// Aarti Sangraha Service Worker for PWA Offline & Install Support
-const CACHE_NAME = 'aarti-sangraha-v2';
+// Aarti Sangraha Service Worker for PWA Offline, Instant Updates & Install Support
+const CACHE_NAME = 'aarti-sangraha-v3';
 const STATIC_ASSETS = [
   './',
   'manifest.json',
@@ -7,10 +7,10 @@ const STATIC_ASSETS = [
   'icon-512.png',
 ];
 
+// Install: Cache initial shell and immediately prepare for activation
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
-      // Use individual caching to prevent complete failure if any single asset fails
       return Promise.allSettled(
         STATIC_ASSETS.map(asset => cache.add(asset).catch(err => console.warn('SW cache skip:', asset, err)))
       );
@@ -19,6 +19,7 @@ self.addEventListener('install', event => {
   self.skipWaiting();
 });
 
+// Activate: Delete old caches from previous builds so users never see stale content
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys => {
@@ -30,18 +31,25 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
+// Listen for SKIP_WAITING message sent from client when new update is accepted
+self.addEventListener('message', event => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
+
+// Fetch: Instant freshness strategy without requiring hard reload
 self.addEventListener('fetch', event => {
-  // Only handle GET requests
   if (event.request.method !== 'GET') return;
 
   const url = new URL(event.request.url);
 
-  // Cache first for static assets (images, icons, chunks, manifests)
+  // 1. Next.js static chunks & assets (immutable hashes): Cache First
   if (
     url.pathname.includes('/_next/static/') ||
     url.pathname.endsWith('.png') ||
     url.pathname.endsWith('.svg') ||
-    url.pathname.endsWith('.json')
+    url.pathname.endsWith('.woff2')
   ) {
     event.respondWith(
       caches.match(event.request).then(cachedResponse => {
@@ -60,9 +68,10 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // General pages: Network first with cache fallback
+  // 2. HTML navigation & JSON data: Network-First (cache: no-cache) with offline cache fallback
+  // This guarantees new website updates are fetched immediately without needing a hard reload
   event.respondWith(
-    fetch(event.request)
+    fetch(event.request, { cache: 'no-cache' })
       .then(networkResponse => {
         if (networkResponse && networkResponse.status === 200) {
           const clone = networkResponse.clone();

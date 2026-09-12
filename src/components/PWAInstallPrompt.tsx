@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Download, X, Share, PlusSquare, Sparkles, Check, Smartphone } from 'lucide-react';
+import { Download, X, Share, PlusSquare, Sparkles, Check, RefreshCw } from 'lucide-react';
 import { useThemeContext } from '@/components/ThemeProvider';
 
 interface BeforeInstallPromptEvent extends Event {
@@ -20,28 +20,90 @@ export function PWAInstallPrompt() {
   const isDevanagari = script === 'devanagari';
 
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
-  const [isStandalone, setIsStandalone] = useState(false);
+  const [isInstalled, setIsInstalled] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
   const [showIOSModal, setShowIOSModal] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
   const [installedSuccessfully, setInstalledSuccessfully] = useState(false);
 
+  // New update available state
+  const [newUpdateAvailable, setNewUpdateAvailable] = useState(false);
+  const [waitingWorker, setWaitingWorker] = useState<ServiceWorker | null>(null);
+
   useEffect(() => {
-    // 1. Check if already installed / running in standalone PWA mode
+    if (typeof window === 'undefined') return;
+
+    // 1. Check if running in standalone PWA window or previously marked as installed
     const isStandaloneMode =
       window.matchMedia('(display-mode: standalone)').matches ||
-      (window.navigator as unknown as { standalone?: boolean }).standalone === true;
-    setIsStandalone(isStandaloneMode);
+      (window.navigator as unknown as { standalone?: boolean }).standalone === true ||
+      document.referrer.includes('android-app://');
 
-    // 2. Register Service Worker with dynamic base path support (GitHub Pages / custom domain)
+    const previouslyInstalled = localStorage.getItem('aarti_pwa_installed') === 'true';
+
+    if (isStandaloneMode || previouslyInstalled) {
+      setIsInstalled(true);
+    }
+
+    // Check modern Chromium installed apps API
+    if ('getInstalledRelatedApps' in navigator) {
+      (navigator as unknown as { getInstalledRelatedApps: () => Promise<unknown[]> })
+        .getInstalledRelatedApps()
+        .then(apps => {
+          if (apps && apps.length > 0) {
+            setIsInstalled(true);
+            localStorage.setItem('aarti_pwa_installed', 'true');
+          }
+        })
+        .catch(() => {});
+    }
+
+    // Check if user dismissed prompt within the last 14 days
+    const dismissedUntil = localStorage.getItem('aarti_pwa_dismissed_until');
+    if (dismissedUntil && Number(dismissedUntil) > Date.now()) {
+      setIsDismissed(true);
+    }
+
+    // 2. Register Service Worker with updateViaCache: 'none' (never cache sw.js on browser HTTP layer)
     if ('serviceWorker' in navigator) {
       const isGitHubPages = window.location.pathname.startsWith('/aarti-sangraha');
       const basePath = isGitHubPages ? '/aarti-sangraha' : '';
       const swUrl = `${basePath}/sw.js`;
+
       navigator.serviceWorker
-        .register(swUrl, { scope: `${basePath}/` })
-        .then(reg => console.log('SW registered with scope:', reg.scope))
+        .register(swUrl, { scope: `${basePath}/`, updateViaCache: 'none' })
+        .then(reg => {
+          // Check for newer service worker on load
+          reg.update().catch(() => {});
+
+          // Detect new worker waiting to activate
+          if (reg.waiting && navigator.serviceWorker.controller) {
+            setWaitingWorker(reg.waiting);
+            setNewUpdateAvailable(true);
+          }
+
+          reg.addEventListener('updatefound', () => {
+            const newWorker = reg.installing;
+            if (newWorker) {
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  setWaitingWorker(newWorker);
+                  setNewUpdateAvailable(true);
+                }
+              });
+            }
+          });
+        })
         .catch(err => console.log('SW registration error:', err));
+
+      // Reload page once when new worker takes control (instant update)
+      let refreshing = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (!refreshing) {
+          refreshing = true;
+          window.location.reload();
+        }
+      });
     }
 
     // 3. Detect iOS
@@ -52,11 +114,16 @@ export function PWAInstallPrompt() {
     // 4. Capture beforeinstallprompt for Android/Chrome/Edge
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
-      setDeferredPrompt(e as BeforeInstallPromptEvent);
+      // If already verified installed, don't keep prompt
+      if (!isStandaloneMode && !previouslyInstalled) {
+        setDeferredPrompt(e as BeforeInstallPromptEvent);
+      }
     };
 
     const handleAppInstalled = () => {
       setDeferredPrompt(null);
+      setIsInstalled(true);
+      localStorage.setItem('aarti_pwa_installed', 'true');
       setInstalledSuccessfully(true);
       setTimeout(() => setInstalledSuccessfully(false), 5000);
     };
@@ -82,6 +149,8 @@ export function PWAInstallPrompt() {
       const choiceResult = await deferredPrompt.userChoice;
       if (choiceResult.outcome === 'accepted') {
         setDeferredPrompt(null);
+        setIsInstalled(true);
+        localStorage.setItem('aarti_pwa_installed', 'true');
       }
     } else if (isIOS) {
       setShowIOSModal(true);
@@ -94,7 +163,41 @@ export function PWAInstallPrompt() {
     }
   };
 
-  // If installed successfully, show brief congratulatory badge
+  const handleDismissBanner = () => {
+    setIsDismissed(true);
+    // Don't show again for 14 days
+    localStorage.setItem('aarti_pwa_dismissed_until', (Date.now() + 14 * 86400000).toString());
+  };
+
+  const handleApplyUpdate = () => {
+    if (waitingWorker) {
+      waitingWorker.postMessage({ type: 'SKIP_WAITING' });
+    } else {
+      window.location.reload();
+    }
+  };
+
+  // 1. Toast for instant update without hard refresh
+  if (newUpdateAvailable) {
+    return (
+      <div className="fixed top-20 left-4 right-4 z-50 max-w-sm mx-auto p-3.5 rounded-2xl bg-saffron-600 text-white shadow-2xl flex items-center justify-between gap-3 text-xs font-bold animate-slide-up border border-white/20">
+        <div className="flex items-center gap-2">
+          <RefreshCw className="w-4 h-4 animate-spin shrink-0" />
+          <span>
+            {isDevanagari ? 'नवीन आवृत्ती उपलब्ध आहे!' : 'New version available!'}
+          </span>
+        </div>
+        <button
+          onClick={handleApplyUpdate}
+          className="px-3 py-1.5 rounded-xl bg-white text-saffron-700 hover:bg-amber-100 font-bold active:scale-95 transition-all shadow-xs shrink-0"
+        >
+          {isDevanagari ? 'अपडेट करा' : 'Update Now'}
+        </button>
+      </div>
+    );
+  }
+
+  // 2. If installed successfully, show brief congratulatory badge
   if (installedSuccessfully) {
     return (
       <div className="fixed top-20 left-4 right-4 z-50 max-w-sm mx-auto p-3 rounded-2xl bg-emerald-600 text-white shadow-xl flex items-center gap-2.5 text-xs font-bold animate-fade-in">
@@ -106,10 +209,10 @@ export function PWAInstallPrompt() {
 
   return (
     <>
-      {/* Floating Modern PWA Install Banner - Shown if not in standalone and not dismissed */}
-      {!isStandalone && !isDismissed && (
+      {/* Floating Modern PWA Install Banner - ONLY shown if NOT installed and NOT dismissed */}
+      {!isInstalled && !isDismissed && (
         <div className="fixed top-18 left-3 right-3 z-40 max-w-lg mx-auto animate-fade-in">
-          <div className="flex items-center justify-between gap-3 p-3 sm:px-4 rounded-2xl border border-amber-500/30 bg-[var(--card-main)]/95 backdrop-blur-md shadow-xl shadow-saffron-500/10">
+          <div className="flex items-center justify-between gap-3 p-3 sm:px-4 rounded-2xl border border-amber-500/30 bg-[var(--card-main)] shadow-xl shadow-saffron-500/10">
             <div className="flex items-center gap-2.5 min-w-0 flex-1">
               <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-saffron-500 to-amber-500 flex items-center justify-center text-white shrink-0 shadow-xs">
                 <Download className="w-4 h-4 animate-bounce" />
@@ -135,7 +238,7 @@ export function PWAInstallPrompt() {
               </button>
 
               <button
-                onClick={() => setIsDismissed(true)}
+                onClick={handleDismissBanner}
                 aria-label="Dismiss install banner"
                 className="p-1.5 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
               >
@@ -191,9 +294,9 @@ export function PWAInstallPrompt() {
 
             <button
               onClick={() => setShowIOSModal(false)}
-              className="w-full py-2.5 rounded-xl bg-saffron-600 text-white font-bold text-xs shadow-md"
+              className="w-full py-2.5 rounded-xl bg-saffron-600 text-white font-bold text-xs shadow-xs"
             >
-              समजले (Got it)
+              {isDevanagari ? 'समजले' : 'Got it'}
             </button>
           </div>
         </div>
