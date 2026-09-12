@@ -28,15 +28,18 @@ const mukta = Mukta({
   variable: '--font-mukta',
 });
 
+const githubRepo = process.env.GITHUB_REPOSITORY ? process.env.GITHUB_REPOSITORY.split('/')[1] : '';
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ? `/${process.env.NEXT_PUBLIC_BASE_PATH}` : githubRepo ? `/${githubRepo}` : '';
+
 export const metadata: Metadata = {
   title: 'आरती संग्रह (Aarti Sangraha) — Nitya Pooja & Prayers',
   description: 'A serene, distraction-free, mobile-first Aarti Sangraha web app with auto-scroll, dual-script support, and offline capabilities.',
   keywords: ['aarti sangraha', 'ganesh aarti', 'marathi aarti', 'sukhkarta dukhharta', 'durga aarti', 'hanuman chalisa'],
   authors: [{ name: 'Aarti Sangraha Team' }],
-  manifest: '/manifest.json',
+  manifest: `${basePath}/manifest.json`,
   icons: {
-    icon: '/icon-192.png',
-    apple: '/icon-192.png',
+    icon: `${basePath}/icon-192.png`,
+    apple: `${basePath}/icon-192.png`,
   },
   appleWebApp: {
     capable: true,
@@ -59,6 +62,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="mr" suppressHydrationWarning className={`${notoSans.variable} ${notoSerif.variable} ${mukta.variable}`}>
+      <head>
+        <link rel="manifest" href="./manifest.json" />
+        <link rel="apple-touch-icon" href="./icon-192.png" />
+      </head>
       <body className="antialiased min-h-screen flex flex-col font-sans transition-colors duration-300">
         <ThemeProvider>
           <div className="flex-1 flex flex-col max-w-xl mx-auto w-full min-h-screen relative shadow-2xl shadow-black/5 pb-24">

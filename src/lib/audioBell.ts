@@ -5,20 +5,10 @@ interface BellOptions {
   volume?: number;
 }
 
-let sharedAudioCtx: AudioContext | null = null;
+import { getSharedAudioContext } from '@/lib/audioContext';
 
 function getAudioContext(): AudioContext | null {
-  if (typeof window === 'undefined') return null;
-  const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
-  if (!AudioCtx) return null;
-
-  if (!sharedAudioCtx || sharedAudioCtx.state === 'closed') {
-    sharedAudioCtx = new AudioCtx();
-  }
-  if (sharedAudioCtx.state === 'suspended') {
-    sharedAudioCtx.resume().catch(() => {});
-  }
-  return sharedAudioCtx;
+  return getSharedAudioContext();
 }
 
 /**

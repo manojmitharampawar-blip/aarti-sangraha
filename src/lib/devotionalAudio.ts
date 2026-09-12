@@ -3,6 +3,8 @@
 // 2. Mridang / Pakhawaj (मृदुंग) - Dual-tone punchy bass & crisp resonant slaps audible on mobile speakers
 // 3. Taal / Manjira (झांज / टाळ) - Metallic brass chime with rhythmic traditional theka
 
+import { getSharedAudioContext } from '@/lib/audioContext';
+
 let audioCtx: AudioContext | null = null;
 let isPlaying = false;
 let masterGain: GainNode | null = null;
@@ -13,14 +15,7 @@ let nextBeatTime = 0;
 let currentBeat = 0;
 
 function getAudioContext(): AudioContext | null {
-  if (typeof window === 'undefined') return null;
-  if (!audioCtx || audioCtx.state === 'closed') {
-    const AudioContextClass =
-      window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-    if (AudioContextClass) {
-      audioCtx = new AudioContextClass();
-    }
-  }
+  audioCtx = getSharedAudioContext();
   return audioCtx;
 }
 
@@ -240,17 +235,13 @@ export interface DevotionalMusicOptions {
   volume?: number;
 }
 
-export async function startDevotionalMusic(options?: DevotionalMusicOptions) {
+export function startDevotionalMusic(options?: DevotionalMusicOptions) {
   const ctx = getAudioContext();
   if (!ctx) return;
 
-  // Crucial for iOS Safari & Android Chrome: resume inside the click gesture
+  // Crucial for iOS Safari & Android: trigger resume inside the click gesture synchronously
   if (ctx.state === 'suspended') {
-    try {
-      await ctx.resume();
-    } catch {
-      // continue anyway
-    }
+    ctx.resume().catch(() => {});
   }
 
   if (isPlaying) {

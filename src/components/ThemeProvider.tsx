@@ -51,6 +51,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Disable automatic scroll restoration on mobile browsers so next aarti reliably starts at top
+    if (typeof window !== 'undefined' && 'scrollRestoration' in history) {
+      try {
+        history.scrollRestoration = 'manual';
+      } catch {
+        // ignore
+      }
+    }
     try {
       const savedTheme = localStorage.getItem('aarti_theme') as ThemeType;
       if (savedTheme) setThemeState(savedTheme);

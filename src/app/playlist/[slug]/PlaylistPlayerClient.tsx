@@ -71,18 +71,6 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
   const isDevanagari = script === 'devanagari';
   const isDual = script === 'dual';
 
-  const proceedToNext = useCallback(() => {
-    setPendingNextAarti(null);
-    setCurrentIndex(prev => prev + 1);
-    setActiveStanzaIndex(0);
-    window.scrollTo({ top: 0, behavior: 'instant' });
-    resetEndTrigger();
-  }, []);
-
-  const cancelCountdown = useCallback(() => {
-    setPendingNextAarti(null);
-  }, []);
-
   const handleReachEnd = useCallback(() => {
     if (currentIndex < playlistAartis.length - 1) {
       setPendingNextAarti(playlistAartis[currentIndex + 1]);
@@ -101,6 +89,18 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
     resetEndTrigger,
   } = useAutoScroll(autoScrollSpeed, handleReachEnd);
 
+  const proceedToNext = useCallback(() => {
+    stopAutoScroll();
+    setPendingNextAarti(null);
+    setCurrentIndex(prev => prev + 1);
+    setActiveStanzaIndex(0);
+    resetEndTrigger();
+  }, [stopAutoScroll, resetEndTrigger]);
+
+  const cancelCountdown = useCallback(() => {
+    setPendingNextAarti(null);
+  }, []);
+
   // Keep autoScroll speed synced with ThemeContext
   useEffect(() => {
     setSpeed(autoScrollSpeed);
@@ -117,19 +117,37 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
 
   const goToPrev = () => {
     if (currentIndex > 0) {
+      stopAutoScroll();
       setCurrentIndex(prev => prev - 1);
       setActiveStanzaIndex(0);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   const goToNext = () => {
     if (currentIndex < playlistAartis.length - 1) {
+      stopAutoScroll();
       setCurrentIndex(prev => prev + 1);
       setActiveStanzaIndex(0);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
+
+  // Dedicated cross-platform scroll to top on aarti switch (iOS Safari, Android Chrome & Edge)
+  useEffect(() => {
+    const scrollToTop = () => {
+      window.scrollTo(0, 0);
+      if (document.documentElement) document.documentElement.scrollTop = 0;
+      if (document.body) document.body.scrollTop = 0;
+    };
+
+    scrollToTop();
+    const frameId = requestAnimationFrame(scrollToTop);
+    const timerId = setTimeout(scrollToTop, 60);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      clearTimeout(timerId);
+    };
+  }, [currentIndex]);
 
   if (playlistAartis.length === 0) {
     return (

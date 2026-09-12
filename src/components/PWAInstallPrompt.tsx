@@ -33,10 +33,13 @@ export function PWAInstallPrompt() {
       (window.navigator as unknown as { standalone?: boolean }).standalone === true;
     setIsStandalone(isStandaloneMode);
 
-    // 2. Register Service Worker
+    // 2. Register Service Worker with dynamic base path support (GitHub Pages / custom domain)
     if ('serviceWorker' in navigator) {
+      const isGitHubPages = window.location.pathname.startsWith('/aarti-sangraha');
+      const basePath = isGitHubPages ? '/aarti-sangraha' : '';
+      const swUrl = `${basePath}/sw.js`;
       navigator.serviceWorker
-        .register('/sw.js')
+        .register(swUrl, { scope: `${basePath}/` })
         .then(reg => console.log('SW registered with scope:', reg.scope))
         .catch(err => console.log('SW registration error:', err));
     }

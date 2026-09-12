@@ -129,6 +129,7 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
     speed,
     setSpeed,
     toggle: toggleAutoScroll,
+    stop: stopAutoScroll,
   } = useAutoScroll(autoScrollSpeed, handleReachEnd);
 
   // Keep auto-scroll speed synchronized with ThemeContext
@@ -137,11 +138,30 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
   }, [autoScrollSpeed, setSpeed]);
 
   const proceedToNext = useCallback(() => {
+    stopAutoScroll();
     if (nextAarti) {
       setShowNextCountdown(false);
       router.push(`/aarti/${nextAarti.slug}`);
     }
-  }, [nextAarti, router]);
+  }, [nextAarti, router, stopAutoScroll]);
+
+  // Dedicated scroll-to-top on reading slug change for iOS Safari & Android
+  useEffect(() => {
+    const scrollToTop = () => {
+      window.scrollTo(0, 0);
+      if (document.documentElement) document.documentElement.scrollTop = 0;
+      if (document.body) document.body.scrollTop = 0;
+    };
+
+    scrollToTop();
+    const frameId = requestAnimationFrame(scrollToTop);
+    const timerId = setTimeout(scrollToTop, 60);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      clearTimeout(timerId);
+    };
+  }, [aarti.slug]);
 
   const cancelCountdown = useCallback(() => {
     setShowNextCountdown(false);
