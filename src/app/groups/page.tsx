@@ -2,55 +2,62 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
-import { useSearchParams, useRouter } from 'next/navigation';
-import {
-  Play,
-  Edit3,
-  Trash2,
-  Plus,
-  ListMusic,
-  Share2,
-  CheckCircle,
-  Send,
-} from 'lucide-react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useCustomGroups } from '@/hooks/useCustomGroups';
-import { useThemeContext } from '@/components/ThemeProvider';
-import { GroupEditorModal } from '@/components/GroupEditorModal';
-import { ShareGroupModal } from '@/components/ShareGroupModal';
-import { ImportGroupModal } from '@/components/ImportGroupModal';
 import { CustomGroup } from '@/types';
 import { aartis } from '@/data/aartis';
+import { useThemeContext } from '@/components/ThemeProvider';
+import {
+  Plus,
+  Play,
+  Share2,
+  Trash2,
+  Edit3,
+  ListMusic,
+  CheckCircle,
+  Clock,
+  Sparkles,
+  ArrowRight,
+  FolderHeart,
+} from 'lucide-react';
+import { GroupEditorModal } from '@/components/GroupEditorModal';
+import { ShareGroupModal } from '@/components/ShareGroupModal';
 import { parseGroupShareParams, ShareableGroup } from '@/lib/groupSharing';
 
 function GroupsContent() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
   const { groups, isLoaded, deleteGroup, createGroup } = useCustomGroups();
   const { script } = useThemeContext();
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
   const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [selectedGroup, setSelectedGroup] = useState<CustomGroup | null>(null);
 
-  // Sharing state
-  const [sharingGroup, setSharingGroup] = useState<ShareableGroup | null>(null);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [sharingGroup, setSharingGroup] = useState<{
+    name: string;
+    description?: string;
+    aartiIds: string[];
+  } | null>(null);
 
-  // Receiving/Importing state
+  // Incoming Shared Group Import Prompt State
   const [importingGroup, setImportingGroup] = useState<ShareableGroup | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  // Detect shared group from query params
-  useEffect(() => {
-    const shared = parseGroupShareParams(searchParams);
-    if (shared) {
-      setImportingGroup(shared);
-    }
-  }, [searchParams]);
-
   const showToast = (msg: string) => {
     setToastMessage(msg);
-    setTimeout(() => setToastMessage(null), 4000);
+    setTimeout(() => setToastMessage(null), 3500);
   };
+
+  // Check URL query parameters for WhatsApp import payload
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const parsed = parseGroupShareParams(new URLSearchParams(window.location.search));
+      if (parsed) {
+        setImportingGroup(parsed);
+      }
+    }
+  }, [searchParams]);
 
   const handleOpenCreate = () => {
     setSelectedGroup(null);
@@ -78,9 +85,9 @@ function GroupsContent() {
   const handleDelete = (groupId: string, e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (confirm('हा ग्रुप नक्की हटवायचा आहे का? (Delete this group?)')) {
+    if (confirm('हा संग्रह नक्की हटवायचा आहे का? (Delete this collection?)')) {
       deleteGroup(groupId);
-      showToast('ग्रुप हटवला गेला.');
+      showToast('संग्रह हटवला गेला.');
     }
   };
 
@@ -92,7 +99,7 @@ function GroupsContent() {
     );
     setImportingGroup(null);
     router.replace('/groups');
-    showToast(`'${newGroup.name}' ग्रुप यशस्वीरित्या सेव्ह झाला!`);
+    showToast(`'${newGroup.name}' संग्रह यशस्वीरीत्या सेव्ह झाला!`);
   };
 
   const handlePlayImportedGroup = (groupToImport: ShareableGroup) => {
@@ -124,11 +131,11 @@ function GroupsContent() {
       <div className="flex items-start justify-between gap-3">
         <div>
           <h1 className="text-xl sm:text-2xl font-black text-[var(--text-primary)] font-devanagari">
-            {script === 'devanagari' ? 'माझे आरती व स्तोत्र ग्रुप' : 'My Hymn Groups'}
+            {script === 'devanagari' ? 'माझे वैयक्तिक संग्रह' : 'My Custom Collections'}
           </h1>
           <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">
             {script === 'devanagari'
-              ? 'आपल्या पसंतीनुसार स्तोत्रे व आरत्यांचा क्रम तयार करा, सलग म्हणा व WhatsApp वर शेअर करा'
+              ? 'आपल्या पसंतीनुसार स्तोत्रे व आरत्यांचा संग्रह तयार करा, सलग म्हणा व WhatsApp वर शेअर करा'
               : 'Create custom sequences, chant sequentially, and share with family on WhatsApp'}
           </p>
         </div>
@@ -138,20 +145,20 @@ function GroupsContent() {
           className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-saffron-600 hover:bg-saffron-700 text-white text-xs font-bold shadow-md shadow-saffron-600/20 active:scale-95 transition-all shrink-0"
         >
           <Plus className="w-4 h-4" />
-          <span>नवीन ग्रुप (New)</span>
+          <span>नवीन संग्रह (New)</span>
         </button>
       </div>
 
-      {/* Tabs linking Built-in Sequences and Custom Groups */}
+      {/* Tabs linking Built-in Collections and Custom Collections */}
       <div className="flex gap-2 p-1 rounded-xl bg-black/5 dark:bg-white/5 text-xs font-bold">
         <Link
           href="/playlists"
           className="flex-1 py-2 text-center rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
         >
-          पारंपरिक क्रम (Built-in Sequences)
+          पारंपरिक संग्रह
         </Link>
         <div className="flex-1 py-2 text-center rounded-lg bg-[var(--card-main)] text-saffron-600 shadow-xs">
-          माझे वैयक्तिक ग्रुप (My Groups)
+          माझे वैयक्तिक संग्रह
         </div>
       </div>
 
@@ -184,16 +191,15 @@ function GroupsContent() {
                     )}
                   </div>
 
-                  {/* Action Buttons: WhatsApp Share, Edit, and Delete */}
+                  {/* Action buttons: Edit, Share, Delete */}
                   <div className="flex items-center gap-1.5 shrink-0">
                     <button
                       onClick={e => handleOpenShare(group, e)}
-                      aria-label="Share group on WhatsApp"
-                      title="व्हॉट्सॲपवर शेअर करा"
-                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 text-xs font-bold transition-colors"
+                      aria-label="Share group sequence"
+                      title="WhatsApp वर शेअर करा"
+                      className="p-1.5 rounded-xl border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 transition-colors"
                     >
-                      <Send className="w-3.5 h-3.5" />
-                      <span className="hidden sm:inline">WhatsApp</span>
+                      <Share2 className="w-4 h-4" />
                     </button>
 
                     <button
@@ -236,7 +242,7 @@ function GroupsContent() {
                   </div>
                 ) : (
                   <p className="text-xs text-[var(--text-secondary)] italic">
-                    या ग्रुपमध्ये अजून आरत्या किंवा स्तोत्रे जोडलेली नाहीत.
+                    या संग्रहामध्ये अजून आरत्या किंवा स्तोत्रे जोडलेली नाहीत.
                   </p>
                 )}
 
@@ -275,10 +281,10 @@ function GroupsContent() {
           </div>
           <div className="space-y-1">
             <h2 className="text-base font-bold text-[var(--text-primary)]">
-              अद्याप कोणताही आरती ग्रुप तयार केलेला नाही
+              अद्याप कोणताही संग्रह तयार केलेला नाही
             </h2>
             <p className="text-xs text-[var(--text-secondary)] max-w-sm mx-auto">
-              आपल्या नित्य पूजेसाठी किंवा सणांसाठी आवडत्या आरत्या व स्तोत्रांचा स्वतःचा ग्रुप बनवा आणि नातेवाईकांना शेअर करा.
+              आपल्या नित्य पूजेसाठी किंवा सणांसाठी आवडत्या आरत्या व स्तोत्रांचा स्वतःचा संग्रह बनवा आणि नातेवाईकांना शेअर करा.
             </p>
           </div>
           <button
@@ -286,7 +292,7 @@ function GroupsContent() {
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-saffron-600 text-white font-bold text-xs shadow-md shadow-saffron-600/20 hover:bg-saffron-700 transition-all"
           >
             <Plus className="w-4 h-4" />
-            <span>पहिला ग्रुप तयार करा (Create Group)</span>
+            <span>पहिला संग्रह तयार करा (Create Collection)</span>
           </button>
         </div>
       )}
@@ -305,21 +311,75 @@ function GroupsContent() {
         group={sharingGroup}
       />
 
-      {/* Incoming Import Modal */}
-      <ImportGroupModal
-        isOpen={!!importingGroup}
-        group={importingGroup}
-        onSave={handleSaveImportedGroup}
-        onPlayDirectly={handlePlayImportedGroup}
-        onClose={handleCloseImport}
-      />
+      {/* Incoming Shared Group Import Confirmation Dialog */}
+      {importingGroup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 animate-fade-in">
+          <div className="w-full max-w-md rounded-3xl border border-[var(--border-main)] bg-[var(--card-main)] p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center gap-2 text-saffron-600 font-bold text-sm">
+              <Sparkles className="w-5 h-5" />
+              <span>नवीन आरती संग्रह प्राप्त झाला! (Shared Collection)</span>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-black text-[var(--text-primary)] font-devanagari">
+                {importingGroup.name}
+              </h3>
+              {importingGroup.description && (
+                <p className="text-xs text-[var(--text-secondary)] mt-1">
+                  {importingGroup.description}
+                </p>
+              )}
+            </div>
+
+            <div className="p-3.5 rounded-2xl bg-black/5 dark:bg-white/5 space-y-2">
+              <span className="text-xs font-bold text-[var(--text-secondary)]">
+                या संग्रहातील आरत्या ({importingGroup.aartiIds.length}):
+              </span>
+              <ul className="text-xs space-y-1 text-[var(--text-primary)] font-devanagari max-h-36 overflow-y-auto">
+                {importingGroup.aartiIds.map((id, index) => {
+                  const item = aartis.find(a => a.id === id);
+                  return (
+                    <li key={id} className="flex items-center gap-2">
+                      <span className="w-4 text-[var(--text-secondary)] font-sans">{index + 1}.</span>
+                      <span>{item ? item.titleDevanagari : id}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+
+            <div className="flex flex-col gap-2 pt-2">
+              <button
+                onClick={() => handleSaveImportedGroup(importingGroup)}
+                className="w-full py-2.5 rounded-xl bg-saffron-600 hover:bg-saffron-700 text-white font-bold text-xs shadow-md active:scale-95 transition-all"
+              >
+                माझ्या संग्रहामध्ये सेव्ह करा (Save to My Sangrah)
+              </button>
+
+              <button
+                onClick={() => handlePlayImportedGroup(importingGroup)}
+                className="w-full py-2.5 rounded-xl border border-saffron-500/30 text-saffron-600 hover:bg-saffron-500/10 font-bold text-xs transition-all"
+              >
+                आत्ताच सलग म्हणा (Chant Now)
+              </button>
+
+              <button
+                onClick={handleCloseImport}
+                className="w-full py-2 text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              >
+                रद्द करा (Dismiss)
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
 export default function GroupsPage() {
   return (
-    <Suspense fallback={<div className="py-12 text-center text-xs text-[var(--text-secondary)]">लोड होत आहे...</div>}>
+    <Suspense fallback={<div className="p-4 text-center text-xs">लोड होत आहे...</div>}>
       <GroupsContent />
     </Suspense>
   );

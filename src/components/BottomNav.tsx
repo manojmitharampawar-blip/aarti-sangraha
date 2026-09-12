@@ -8,7 +8,7 @@ import { Home, Layers, ListMusic, Heart, Search } from 'lucide-react';
 const navItems = [
   { href: '/', label: 'होम', sublabel: 'Home', icon: Home },
   { href: '/deities', label: 'देवता', sublabel: 'Deities', icon: Layers },
-  { href: '/playlists', label: 'क्रम व ग्रुप', sublabel: 'Sequences', icon: ListMusic },
+  { href: '/playlists', label: 'माझे संग्रह', sublabel: 'My Sangrah', icon: ListMusic },
   { href: '/search', label: 'शोध', sublabel: 'Search', icon: Search },
   { href: '/favorites', label: 'आवडते', sublabel: 'Saved', icon: Heart },
 ];
@@ -30,16 +30,19 @@ export function BottomNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex flex-col items-center justify-center flex-1 py-1 transition-all ${
+              className={`flex flex-col items-center justify-center w-16 h-full transition-all duration-200 ${
                 isActive
-                  ? 'text-saffron-600 font-semibold'
-                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] opacity-80'
+                  ? 'text-saffron-600 font-bold scale-105'
+                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
               }`}
             >
-              <div className={`p-1 rounded-xl transition-all ${isActive ? 'bg-saffron-500/10 scale-110' : ''}`}>
-                <Icon className={`w-5 h-5 ${isActive ? 'stroke-[2.5]' : 'stroke-2'}`} />
+              <div className="relative">
+                <Icon className={`w-5 h-5 transition-transform duration-200 ${isActive ? 'stroke-[2.5]' : 'stroke-2'}`} />
+                {isActive && (
+                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-saffron-600 rounded-full" />
+                )}
               </div>
-              <span className="text-[10px] tracking-tight mt-0.5">
+              <span className="text-[10px] mt-1 tracking-tight font-devanagari">
                 {item.label}
               </span>
             </Link>

@@ -24,7 +24,7 @@ export default function PlaylistsPage() {
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
           <h1 className="text-xl sm:text-2xl font-black text-[var(--text-primary)] font-devanagari">
-            {isDevanagari ? 'आरती संग्रह व उपासना क्रम' : 'Aarti Playlists & Sequences'}
+            {isDevanagari ? 'माझे संग्रह व उपासना क्रम' : 'My Sangrah & Sequences'}
           </h1>
           <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">
             {isDevanagari
@@ -38,20 +38,20 @@ export default function PlaylistsPage() {
           className="flex items-center gap-1 px-3 py-2 rounded-xl border border-saffron-500/30 bg-saffron-500/10 text-saffron-600 text-xs font-bold hover:bg-saffron-500/20 active:scale-95 transition-all shrink-0"
         >
           <FolderPlus className="w-3.5 h-3.5" />
-          <span>{isDevanagari ? 'माझे ग्रुप' : 'My Groups'}</span>
+          <span>{isDevanagari ? 'माझे संग्रह' : 'My Sangrah'}</span>
         </Link>
       </div>
 
       {/* Tabs */}
       <div className="flex gap-2 p-1 rounded-2xl bg-black/5 dark:bg-white/5 text-xs font-bold">
         <div className="flex-1 py-2 text-center rounded-xl bg-[var(--card-main)] text-saffron-600 shadow-xs">
-          {isDevanagari ? 'पारंपरिक क्रम (Built-in Sequences)' : 'Built-in Sequences'}
+          {isDevanagari ? 'पारंपरिक संग्रह' : 'Built-in Collections'}
         </div>
         <Link
           href="/groups"
           className="flex-1 py-2 text-center rounded-xl text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
         >
-          {isDevanagari ? 'माझे वैयक्तिक ग्रुप (My Groups)' : 'My Custom Groups'}
+          {isDevanagari ? 'माझे वैयक्तिक संग्रह' : 'My Custom Collections'}
         </Link>
       </div>
 
