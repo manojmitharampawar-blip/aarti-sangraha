@@ -2,30 +2,34 @@
 
 import React from 'react';
 import { Play, Pause, FastForward } from 'lucide-react';
+import { useThemeContext, UNIFORM_SCROLL_SPEEDS } from '@/components/ThemeProvider';
 
 interface AutoScrollPillProps {
   isScrolling: boolean;
-  speed: number;
+  speed?: number;
   onToggle: () => void;
-  onSpeedChange: (speed: number) => void;
+  onSpeedChange?: (speed: number) => void;
 }
-
-const speeds = [0.5, 1, 1.5, 2];
 
 export function AutoScrollPill({
   isScrolling,
-  speed,
+  speed: propSpeed,
   onToggle,
   onSpeedChange,
 }: AutoScrollPillProps) {
-  const nextSpeed = () => {
-    const currentIndex = speeds.indexOf(speed);
-    const nextIndex = (currentIndex + 1) % speeds.length;
-    onSpeedChange(speeds[nextIndex]);
+  const { autoScrollSpeed, setAutoScrollSpeed, cycleAutoScrollSpeed } = useThemeContext();
+
+  const currentSpeed = propSpeed ?? autoScrollSpeed;
+
+  const handleNextSpeed = () => {
+    const nextSpeed = cycleAutoScrollSpeed();
+    if (onSpeedChange) {
+      onSpeedChange(nextSpeed);
+    }
   };
 
   return (
-    <div className="fixed bottom-20 left-4 z-30 flex items-center bg-[var(--card-main)]/95 backdrop-blur-md border border-[var(--border-main)] rounded-full shadow-lg shadow-black/10 px-3 py-1.5 gap-2">
+    <div className="fixed bottom-20 left-4 z-30 flex items-center bg-[var(--card-main)]/95 backdrop-blur-md border border-[var(--border-main)] rounded-full shadow-lg shadow-black/10 px-3 py-1.5 gap-2 animate-fade-in">
       {/* Play/Pause Button */}
       <button
         onClick={onToggle}
@@ -40,14 +44,15 @@ export function AutoScrollPill({
         <span>{isScrolling ? 'थांबवा' : 'स्वयं-स्क्रोल'}</span>
       </button>
 
-      {/* Speed Selector */}
+      {/* Speed Selector (Uniform: 0.5x, 1x, 1.5x, 2x) */}
       <button
-        onClick={nextSpeed}
-        aria-label={`Current speed ${speed}x. Click to change speed.`}
+        onClick={handleNextSpeed}
+        aria-label={`Current scroll speed ${currentSpeed}x. Click to change speed.`}
+        title="स्क्रोल गती बदला"
         className="flex items-center gap-1 text-[11px] font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] px-2 py-0.5 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
       >
         <FastForward className="w-3 h-3" />
-        <span>{speed}x</span>
+        <span>{currentSpeed}x</span>
       </button>
     </div>
   );

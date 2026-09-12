@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { UNIFORM_SCROLL_SPEEDS } from '@/components/ThemeProvider';
 
 export interface UseAutoScrollOptions {
   threshold?: number;
@@ -41,6 +42,14 @@ export function useAutoScroll(
     });
   }, []);
 
+  const cycleSpeed = useCallback(() => {
+    setSpeed(current => {
+      const idx = UNIFORM_SCROLL_SPEEDS.indexOf(current as (typeof UNIFORM_SCROLL_SPEEDS)[number]);
+      const nextIdx = (idx + 1) % UNIFORM_SCROLL_SPEEDS.length;
+      return UNIFORM_SCROLL_SPEEDS[nextIdx];
+    });
+  }, []);
+
   const resetEndTrigger = useCallback(() => {
     hasTriggeredEndRef.current = false;
   }, []);
@@ -48,13 +57,15 @@ export function useAutoScroll(
   useEffect(() => {
     if (!isScrolling) return;
 
-    const interval = Math.max(16, Math.floor(50 / speed));
+    // Interval inversely proportional to speed (e.g. 1x = 45ms, 0.5x = 90ms, 1.5x = 30ms, 2x = 22ms)
+    const interval = Math.max(16, Math.floor(45 / speed));
 
     const intervalId = setInterval(() => {
       if (typeof window !== 'undefined') {
         const windowHeight = window.innerHeight || 800;
         const scrollY = window.scrollY || window.pageYOffset || 0;
-        const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight || 1000;
+        const scrollHeight =
+          document.documentElement.scrollHeight || document.body.scrollHeight || 1000;
 
         // Check if reached the bottom of page
         if (windowHeight + scrollY >= scrollHeight - threshold) {
@@ -87,6 +98,7 @@ export function useAutoScroll(
     isScrolling,
     speed,
     setSpeed,
+    cycleSpeed,
     start,
     stop,
     toggle,

@@ -43,6 +43,8 @@ function GroupPlayerContent() {
     textAlign,
     spotlightMode,
     diyaGlow,
+    autoScrollSpeed,
+    cycleAutoScrollSpeed,
   } = useThemeContext();
   const { isLocked, isSupported: wakeLockSupported, requestLock, releaseLock } = useWakeLock();
 
@@ -63,11 +65,11 @@ function GroupPlayerContent() {
     : (customGroup?.name || 'आरती संग्रह');
 
   // Map group's ordered aartiIds or filter by deity
-  const orderedAartis: AartiItem[] = deityId
-    ? aartis.filter(a => a.deity === deityId)
-    : (customGroup?.aartiIds || [])
-        .map(id => aartis.find(a => a.id === id))
-        .filter((a): a is AartiItem => !!a);
+  const orderedAartis: AartiItem[] = deityInfo
+    ? aartis.filter(a => a.deity === deityInfo.id)
+    : (customGroup?.aartiIds
+        ?.map(id => aartis.find(a => a.id === id))
+        ?.filter((a): a is AartiItem => !!a) || []);
 
   const currentAarti = orderedAartis[currentIndex] || orderedAartis[0];
 
@@ -84,7 +86,6 @@ function GroupPlayerContent() {
   const isDevanagari = script === 'devanagari';
   const isDual = script === 'dual';
 
-  // Transition handler when user or timer confirms moving to next aarti
   const proceedToNext = useCallback(() => {
     setPendingNextAarti(null);
     setCurrentIndex(prev => prev + 1);
@@ -97,13 +98,10 @@ function GroupPlayerContent() {
     setPendingNextAarti(null);
   }, []);
 
-  // Callback when auto-scrolling reaches the bottom of the current aarti
   const handleReachEnd = useCallback(() => {
     if (currentIndex < orderedAartis.length - 1) {
-      const nextHymn = orderedAartis[currentIndex + 1];
-      setPendingNextAarti(nextHymn);
+      setPendingNextAarti(orderedAartis[currentIndex + 1]);
     } else {
-      stopAutoScroll();
       setIsCompletedToast(true);
       setTimeout(() => setIsCompletedToast(false), 4000);
     }
@@ -116,7 +114,12 @@ function GroupPlayerContent() {
     toggle: toggleAutoScroll,
     stop: stopAutoScroll,
     resetEndTrigger,
-  } = useAutoScroll(1, handleReachEnd);
+  } = useAutoScroll(autoScrollSpeed, handleReachEnd);
+
+  // Keep autoScroll speed synced with ThemeContext
+  useEffect(() => {
+    setSpeed(autoScrollSpeed);
+  }, [autoScrollSpeed, setSpeed]);
 
   useEffect(() => {
     if (wakeLockSupported) {
@@ -140,153 +143,168 @@ function GroupPlayerContent() {
       setCurrentIndex(prev => prev + 1);
       setActiveStanzaIndex(0);
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      setIsCompletedToast(true);
-      setTimeout(() => setIsCompletedToast(false), 4000);
     }
   };
 
-  if (!isLoaded) {
+  if (!isLoaded && groupId) {
     return (
-      <div className="text-center py-12 text-sm text-[var(--text-secondary)]">
-        लोड होत आहे...
+      <div className="text-center py-12 space-y-3">
+        <p className="text-[var(--text-secondary)] text-sm">संग्रह लोड होत आहे...</p>
       </div>
     );
   }
 
-  if (orderedAartis.length === 0 || !currentAarti) {
+  if (orderedAartis.length === 0) {
     return (
-      <div className="space-y-6 max-w-lg mx-auto text-center py-16 px-4">
-        <h2 className="text-lg font-bold text-[var(--text-primary)]">
-          या ग्रुपमध्ये कोणत्याही आरत्या आढळल्या नाहीत.
-        </h2>
-        <p className="text-xs text-[var(--text-secondary)]">
-          कृपया ग्रुपमध्ये आरत्या जोडा किंवा क्रम संपादित करा.
+      <div className="text-center py-12 space-y-4">
+        <p className="text-[var(--text-secondary)]">
+          {customGroup
+            ? 'या संग्रहात अद्याप कोणत्याही आरत्या जोडलेल्या नाहीत.'
+            : 'या देवतेसाठी आरत्या सापडल्या नाहीत.'}
         </p>
-        <Link
-          href="/groups"
-          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-saffron-600 text-white font-semibold text-xs"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>ग्रुप यादीकडे परत जा</span>
+        <Link href="/groups" className="text-saffron-600 font-bold underline">
+          माझे वैयक्तिक संग्रह यादीकडे परत जा
         </Link>
       </div>
     );
   }
-
-  const backLink = deityId ? `/deities?id=${deityId}` : '/groups';
 
   return (
-    <div className={`space-y-6 max-w-lg mx-auto pb-24 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>
-      {/* Gentle Bottom Transition Countdown Banner */}
-      {pendingNextAarti && (
-        <NextAartiCountdown
-          nextTitle={isDevanagari ? pendingNextAarti.titleDevanagari : pendingNextAarti.titleTransliteration}
-          totalSeconds={12}
-          onProceed={proceedToNext}
-          onCancel={cancelCountdown}
-        />
-      )}
-
-      {/* Completion Toast */}
-      {isCompletedToast && (
-        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-2xl bg-emerald-600 text-white text-xs font-bold shadow-2xl flex items-center gap-2 border border-emerald-400">
-          <CheckCircle className="w-4 h-4" />
-          <span>पूजा संपन्न! संपूर्ण आरती संग्रह पूर्ण झाला. 🙏</span>
-        </div>
-      )}
-
-      {/* Top App Bar */}
-      <div className="flex items-center justify-between pb-3 border-b border-[var(--border-main)]">
+    <div className="space-y-6 max-w-xl mx-auto pb-32">
+      {/* Top Navigation Bar */}
+      <div className="flex items-center justify-between gap-2 pt-2">
         <Link
-          href={backLink}
-          aria-label="Back"
-          className="p-2 -ml-2 rounded-xl text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          href="/groups"
+          className="flex items-center gap-1.5 text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors p-2 -ml-2 rounded-xl hover:bg-black/5 dark:hover:bg-white/5"
         >
-          <ArrowLeft className="w-5 h-5" />
+          <ArrowLeft className="w-4 h-4" />
+          <span>संग्रह (Collections)</span>
         </Link>
 
-        {/* Step Counter Pill */}
-        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-saffron-500/10 text-saffron-600 text-xs font-bold">
-          <span>आरती {currentIndex + 1} / {orderedAartis.length}</span>
-        </div>
-
         <div className="flex items-center gap-1.5">
-          {wakeLockSupported && (
-            <button
-              onClick={() => (isLocked ? releaseLock() : requestLock())}
-              aria-label="Toggle wake lock"
-              title="Keep screen awake"
-              className={`p-2 rounded-xl border text-xs font-semibold ${
-                isLocked
-                  ? 'border-amber-500/40 bg-amber-500/10 text-amber-600'
-                  : 'border-[var(--border-main)] text-[var(--text-secondary)]'
-              }`}
-            >
-              <Sun className="w-4 h-4" />
-            </button>
-          )}
-
-          {customGroup && (
-            <button
-              onClick={() => setIsShareModalOpen(true)}
-              aria-label="Share group on WhatsApp"
-              title="व्हॉट्सॲपवर शेअर करा"
-              className="p-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 hover:bg-emerald-500/20 transition-colors"
-            >
-              <Send className="w-4 h-4" />
-            </button>
-          )}
-
-          {/* Edit Group Sequence (for custom groups) */}
-          {customGroup && (
-            <button
-              onClick={() => setIsEditorOpen(true)}
-              aria-label="Edit group sequence"
-              title="Edit group sequence"
-              className="p-2 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)]"
-            >
-              <Edit3 className="w-4 h-4" />
-            </button>
-          )}
-
+          {/* Quick Script Toggle Button */}
           <button
             onClick={toggleScript}
-            aria-label="Switch script"
-            className="px-2.5 py-1.5 rounded-xl border text-xs font-bold border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)] flex items-center gap-1"
+            aria-label="Toggle script view"
+            title="मराठी / Dual / English लिपी बदला"
+            className="px-2.5 py-1.5 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-xs font-bold text-[var(--text-primary)] hover:border-saffron-500/50"
           >
-            {script === 'dual' ? (
-              <>
-                <Sparkles className="w-3 h-3 text-amber-500" />
-                <span>दोन्ही</span>
-              </>
-            ) : isDevanagari ? (
+            {script === 'devanagari' ? (
               'मराठी'
+            ) : script === 'dual' ? (
+              <span className="flex items-center gap-1 text-saffron-600">
+                <Sparkles className="w-3 h-3 text-amber-500" />
+                Dual
+              </span>
             ) : (
               'ENG'
             )}
           </button>
 
+          {/* Reading Aa Button */}
           <button
             onClick={() => setIsReadingSettingsOpen(true)}
-            aria-label="Adjust font size and reading theme"
+            aria-label="Adjust reading font and paper theme"
             title="वाचन व अक्षर रचना (Aa)"
-            className="p-2 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)]"
+            className="p-2 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)] hover:border-saffron-500/50"
           >
-            <Type className="w-4 h-4" />
+            <Type className="w-4 h-4 text-saffron-600" />
           </button>
+
+          {/* Edit Group Button (Only for custom groups) */}
+          {customGroup && (
+            <>
+              <button
+                onClick={() => setIsEditorOpen(true)}
+                aria-label="Edit custom group"
+                title="संग्रह संपादन करा"
+                className="p-2 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-secondary)] hover:text-saffron-600 hover:border-saffron-500/50"
+              >
+                <Edit3 className="w-4 h-4" />
+              </button>
+
+              <button
+                onClick={() => setIsShareModalOpen(true)}
+                aria-label="Share group on WhatsApp"
+                title="व्हाट्सॲपवर संग्रह शेअर करा"
+                className="p-2 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-secondary)] hover:text-emerald-600 hover:border-emerald-500/50"
+              >
+                <Send className="w-4 h-4" />
+              </button>
+            </>
+          )}
         </div>
       </div>
 
-      {/* Group Progress Bar */}
-      <div className="w-full bg-stone-200 dark:bg-stone-800 h-1.5 rounded-full overflow-hidden">
-        <div
-          className="bg-saffron-600 h-full transition-all duration-300 rounded-full"
-          style={{ width: `${((currentIndex + 1) / orderedAartis.length) * 100}%` }}
-        />
+      {/* Group Progress Indicator */}
+      <div className="p-4 rounded-3xl border border-[var(--border-main)] bg-[var(--card-main)] space-y-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-bold text-saffron-600 uppercase tracking-wider">
+              {groupTitle}
+            </span>
+          </div>
+          <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-saffron-500/10 text-saffron-700 dark:text-saffron-300">
+            {currentIndex + 1} / {orderedAartis.length}
+          </span>
+        </div>
+
+        {/* Horizontal Progress Bar */}
+        <div className="h-1.5 w-full bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
+          <div
+            className="h-full bg-saffron-600 transition-all duration-300 rounded-full"
+            style={{ width: `${((currentIndex + 1) / orderedAartis.length) * 100}%` }}
+          />
+        </div>
+
+        {/* Carousel / Quick Track Dots */}
+        <div className="flex items-center gap-1.5 overflow-x-auto py-1 scrollbar-none">
+          {orderedAartis.map((aarti, idx) => (
+            <button
+              key={aarti.id}
+              onClick={() => {
+                setCurrentIndex(idx);
+                setActiveStanzaIndex(0);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className={`px-3 py-1 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                currentIndex === idx
+                  ? 'bg-saffron-600 text-white shadow-xs'
+                  : 'bg-black/5 dark:bg-white/5 text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+              }`}
+            >
+              {idx + 1}. {isDevanagari ? aarti.titleDevanagari : aarti.titleTransliteration}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* Aarti Title & Group Name */}
+      {/* Completion Toast Notification */}
+      {isCompletedToast && (
+        <div className="p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-xs font-bold flex items-center justify-between animate-fade-in shadow-md">
+          <div className="flex items-center gap-2">
+            <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span>अभिनंदन! या संग्रहातील सर्व आरत्या संपन्न झाल्या आहेत.</span>
+          </div>
+          <button
+            onClick={() => setIsCompletedToast(false)}
+            className="text-[10px] underline ml-2 shrink-0"
+          >
+            बंद करा
+          </button>
+        </div>
+      )}
+
+      {/* Countdown to Next Hymn Overlay Modal */}
+      {pendingNextAarti && (
+        <NextAartiCountdown
+          nextTitle={isDevanagari ? pendingNextAarti.titleDevanagari : pendingNextAarti.titleTransliteration}
+          onProceed={proceedToNext}
+          onCancel={cancelCountdown}
+        />
+      )}
+
+      {/* Current Aarti Title */}
       <div className="text-center space-y-1 pt-1">
         <p className="text-xs font-semibold text-saffron-600 font-devanagari flex items-center justify-center gap-1">
           <Sparkles className="w-3.5 h-3.5" />
@@ -309,6 +327,20 @@ function GroupPlayerContent() {
       <DevotionalAudioBar
         stanzas={currentAarti.stanzas}
         script={script === 'dual' ? 'devanagari' : script}
+        isAutoScrolling={isScrolling}
+        onToggleAutoScroll={toggleAutoScroll}
+        autoScrollSpeed={speed}
+        onCycleScrollSpeed={() => {
+          const nextSpd = cycleAutoScrollSpeed();
+          setSpeed(nextSpd);
+        }}
+        onStanzaChange={stanzaIndex => {
+          setActiveStanzaIndex(stanzaIndex);
+          const el = document.getElementById(`group-stanza-${stanzaIndex}`);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }}
         onSpeechComplete={handleReachEnd}
       />
 
@@ -326,6 +358,7 @@ function GroupPlayerContent() {
           return (
             <div
               key={sIdx}
+              id={`group-stanza-${sIdx}`}
               onClick={() => setActiveStanzaIndex(sIdx)}
               className={`p-4 sm:p-5 rounded-3xl transition-all cursor-pointer ${
                 stanza.isChorus
@@ -355,12 +388,11 @@ function GroupPlayerContent() {
                     >
                       {devLine}
                     </p>
-                    <p
-                      style={{ fontSize: `${Math.max(13, fontSize - 6)}px` }}
-                      className="text-[var(--text-secondary)] italic font-sans opacity-85"
-                    >
-                      {stanza.transliteration[lIdx] || ''}
-                    </p>
+                    {stanza.transliteration[lIdx] && (
+                      <p className="text-xs sm:text-sm font-sans text-[var(--text-secondary)] italic opacity-90">
+                        {stanza.transliteration[lIdx]}
+                      </p>
+                    )}
                   </div>
                 ))
               ) : isDevanagari ? (
@@ -391,12 +423,12 @@ function GroupPlayerContent() {
         })}
       </article>
 
-      {/* Sequence Steppers */}
+      {/* Consecutive Flow Steppers */}
       <div className="flex items-center justify-between gap-3 pt-6 border-t border-[var(--border-main)]">
         <button
           onClick={goToPrev}
           disabled={currentIndex === 0}
-          className="flex-1 flex items-center justify-center gap-1.5 py-3 px-4 rounded-2xl border border-[var(--border-main)] bg-[var(--card-main)] font-bold text-xs text-[var(--text-primary)] disabled:opacity-30 disabled:cursor-not-allowed hover:border-saffron-500 transition-colors"
+          className="flex-1 flex items-center justify-center gap-1.5 py-3 px-4 rounded-2xl border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)] font-bold text-xs disabled:opacity-40 disabled:cursor-not-allowed hover:border-saffron-500 transition-colors"
         >
           <ChevronLeft className="w-4 h-4" />
           <span>मागील (Prev)</span>

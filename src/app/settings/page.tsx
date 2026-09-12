@@ -11,13 +11,23 @@ import {
   Smartphone,
   Download,
   CheckCircle,
+  FastForward,
 } from 'lucide-react';
 import { useThemeContext, ThemeType } from '@/components/ThemeProvider';
 import { playTempleBell } from '@/lib/audioBell';
 import { triggerPWAInstall } from '@/components/PWAInstallPrompt';
 
 export default function SettingsPage() {
-  const { theme, setTheme, script, setScript, fontSize, setFontSize } = useThemeContext();
+  const {
+    theme,
+    setTheme,
+    script,
+    setScript,
+    fontSize,
+    setFontSize,
+    autoScrollSpeed,
+    setAutoScrollSpeed,
+  } = useThemeContext();
 
   const isDevanagari = script === 'devanagari';
 
@@ -42,6 +52,13 @@ export default function SettingsPage() {
     },
   ];
 
+  const scrollSpeeds = [
+    { val: 0.5, label: '0.5x', desc: 'मंद (Slow)' },
+    { val: 1, label: '1.0x', desc: 'सामान्य (Normal)' },
+    { val: 1.5, label: '1.5x', desc: 'मध्यम (Medium)' },
+    { val: 2, label: '2.0x', desc: 'जलद (Fast)' },
+  ];
+
   return (
     <div className="space-y-6 max-w-lg mx-auto pb-12">
       <div>
@@ -49,7 +66,7 @@ export default function SettingsPage() {
           {isDevanagari ? 'सेटिंग्ज व प्राधान्ये' : 'Settings & Preferences'}
         </h1>
         <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">
-          {isDevanagari ? 'ॲप रूप, फॉन्ट, ध्वनी व ऑफलाइन इन्स्टॉलेशन' : 'Appearance, Font Scale, Audio & PWA Install'}
+          {isDevanagari ? 'ॲप रूप, फॉन्ट, स्क्रोल गती, ध्वनी व ऑफलाइन इन्स्टॉलेशन' : 'Appearance, Font Scale, Auto-scroll, Audio & PWA Install'}
         </p>
       </div>
 
@@ -183,6 +200,35 @@ export default function SettingsPage() {
           >
             सुखकर्ता दुःखहर्ता वार्ता विघ्नाची
           </p>
+        </div>
+      </section>
+
+      {/* Synchronized Auto-Scroll Speed Preference */}
+      <section className="space-y-3">
+        <div className="flex items-center justify-between">
+          <h2 className="text-xs font-bold text-[var(--text-secondary)] uppercase tracking-wider flex items-center gap-1.5">
+            <FastForward className="w-4 h-4 text-saffron-600" />
+            <span>स्वयं-स्क्रोल गती (Auto-Scroll Speed: {autoScrollSpeed}x)</span>
+          </h2>
+          <span className="text-xs font-bold text-saffron-600 font-sans">
+            {autoScrollSpeed}x
+          </span>
+        </div>
+        <div className="grid grid-cols-4 gap-2">
+          {scrollSpeeds.map(item => (
+            <button
+              key={item.val}
+              onClick={() => setAutoScrollSpeed(item.val)}
+              className={`p-3 rounded-2xl border text-center transition-all ${
+                autoScrollSpeed === item.val
+                  ? 'border-saffron-600 bg-saffron-500/10 text-saffron-600 font-bold shadow-xs ring-1 ring-saffron-500/30'
+                  : 'border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-saffron-500/40'
+              }`}
+            >
+              <div className="text-sm font-black">{item.label}</div>
+              <div className="text-[10px] opacity-80 font-devanagari mt-0.5">{item.desc.split(' ')[0]}</div>
+            </button>
+          ))}
         </div>
       </section>
 

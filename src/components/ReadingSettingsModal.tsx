@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { X, Type, Check, Sparkles, AlignCenter, AlignLeft, Eye } from 'lucide-react';
-import { useThemeContext, ThemeType } from '@/components/ThemeProvider';
+import { X, Type, Check, Sparkles, AlignCenter, AlignLeft, Eye, FastForward } from 'lucide-react';
+import { useThemeContext, ThemeType, UNIFORM_SCROLL_SPEEDS } from '@/components/ThemeProvider';
 import { FontFamilyType, LineSpacingType, ScriptType, TextAlignType } from '@/types';
 
 interface ReadingSettingsModalProps {
@@ -38,6 +38,13 @@ const lineSpacingOptions: { id: LineSpacingType; label: string; devLabel: string
   { id: 'relaxed', label: 'Relaxed', devLabel: 'ऐसपैस (२.६x)', height: '2.6' },
 ];
 
+const scrollSpeedOptions = [
+  { val: 0.5, label: '0.5x', desc: 'मंद (Slow)' },
+  { val: 1, label: '1.0x', desc: 'सामान्य (Normal)' },
+  { val: 1.5, label: '1.5x', desc: 'मध्यम (Medium)' },
+  { val: 2, label: '2.0x', desc: 'जलद (Fast)' },
+];
+
 export function ReadingSettingsModal({ isOpen, onClose }: ReadingSettingsModalProps) {
   const {
     theme,
@@ -54,13 +61,15 @@ export function ReadingSettingsModal({ isOpen, onClose }: ReadingSettingsModalPr
     setTextAlign,
     spotlightMode,
     toggleSpotlightMode,
+    autoScrollSpeed,
+    setAutoScrollSpeed,
   } = useThemeContext();
 
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs overflow-y-auto">
-      <div className="w-full max-w-md rounded-3xl border border-[var(--border-main)] bg-[var(--card-main)] p-5 sm:p-6 shadow-2xl space-y-5 animate-fade-in my-auto">
+      <div className="w-full max-w-md rounded-3xl border border-[var(--border-main)] bg-[var(--card-main)] p-5 sm:p-6 shadow-2xl space-y-5 animate-fade-in my-auto max-h-[90vh] overflow-y-auto">
         {/* Modal Header */}
         <div className="flex items-center justify-between pb-3 border-b border-[var(--border-main)]">
           <div className="flex items-center gap-2">
@@ -262,7 +271,36 @@ export function ReadingSettingsModal({ isOpen, onClose }: ReadingSettingsModalPr
           </div>
         </div>
 
-        {/* 5. Line Height (Leading) & Alignment */}
+        {/* 5. Auto-Scroll Speed Controls (Uniform: 0.5x, 1x, 1.5x, 2x) */}
+        <div className="space-y-1.5">
+          <div className="flex items-center justify-between">
+            <label className="text-xs font-bold text-[var(--text-secondary)] uppercase tracking-wider flex items-center gap-1.5">
+              <FastForward className="w-3.5 h-3.5 text-saffron-600" />
+              <span>स्वयं-स्क्रोल गती (Auto-Scroll Speed)</span>
+            </label>
+            <span className="text-xs font-bold text-saffron-600 font-sans">
+              {autoScrollSpeed}x
+            </span>
+          </div>
+          <div className="grid grid-cols-4 gap-1.5">
+            {scrollSpeedOptions.map(item => (
+              <button
+                key={item.val}
+                onClick={() => setAutoScrollSpeed(item.val)}
+                className={`py-2 px-1 rounded-xl border text-center transition-all ${
+                  autoScrollSpeed === item.val
+                    ? 'border-saffron-600 bg-saffron-500/10 text-saffron-600 font-bold shadow-xs ring-1 ring-saffron-500/30'
+                    : 'border-[var(--border-main)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                }`}
+              >
+                <div className="text-xs font-black">{item.label}</div>
+                <div className="text-[10px] opacity-80 font-devanagari mt-0.5">{item.desc.split(' ')[0]}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* 6. Line Height (Leading) & Alignment */}
         <div className="grid grid-cols-2 gap-3">
           {/* Spacing */}
           <div className="space-y-1">
@@ -318,7 +356,7 @@ export function ReadingSettingsModal({ isOpen, onClose }: ReadingSettingsModalPr
           </div>
         </div>
 
-        {/* 6. Active Stanza Focus / Spotlight Toggle */}
+        {/* 7. Active Stanza Focus / Spotlight Toggle */}
         <div className="p-3 rounded-2xl border border-[var(--border-main)] bg-[var(--bg-main)] flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 min-w-0">
             <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center shrink-0">
@@ -348,12 +386,12 @@ export function ReadingSettingsModal({ isOpen, onClose }: ReadingSettingsModalPr
           </button>
         </div>
 
-        {/* Close CTA */}
+        {/* Close Button */}
         <button
           onClick={onClose}
-          className="w-full py-3 rounded-2xl bg-saffron-600 hover:bg-saffron-700 text-white font-bold text-xs shadow-lg shadow-saffron-600/20 active:scale-98 transition-all"
+          className="w-full py-2.5 rounded-2xl bg-saffron-600 text-white font-bold text-xs shadow-md shadow-saffron-600/20 active:scale-98 transition-all"
         >
-          बदल लागू करा (Apply Settings)
+          पूर्ण झाले (Save & Apply)
         </button>
       </div>
     </div>

@@ -5,6 +5,9 @@ import { ScriptType, FontFamilyType, LineSpacingType, TextAlignType } from '@/ty
 
 export type ThemeType = 'light' | 'sepia' | 'pooja' | 'dark' | 'oled';
 
+export const UNIFORM_SCROLL_SPEEDS = [0.5, 1, 1.5, 2] as const;
+export type AutoScrollSpeedType = typeof UNIFORM_SCROLL_SPEEDS[number];
+
 interface ThemeContextProps {
   theme: ThemeType;
   setTheme: (theme: ThemeType) => void;
@@ -27,6 +30,9 @@ interface ThemeContextProps {
   toggleZenMode: () => void;
   diyaGlow: boolean;
   toggleDiyaGlow: () => void;
+  autoScrollSpeed: number;
+  setAutoScrollSpeed: (speed: number) => void;
+  cycleAutoScrollSpeed: () => number;
 }
 
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
@@ -41,6 +47,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [spotlightMode, setSpotlightModeState] = useState<boolean>(true);
   const [zenMode, setZenModeState] = useState<boolean>(false);
   const [diyaGlow, setDiyaGlow] = useState<boolean>(false);
+  const [autoScrollSpeed, setAutoScrollSpeedState] = useState<number>(1);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -68,6 +75,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
       const savedZen = localStorage.getItem('aarti_zen_mode');
       if (savedZen !== null) setZenModeState(savedZen === 'true');
+
+      const savedSpeed = localStorage.getItem('aarti_autoscroll_speed');
+      if (savedSpeed !== null) {
+        const parsed = Number(savedSpeed);
+        if (UNIFORM_SCROLL_SPEEDS.includes(parsed as AutoScrollSpeedType)) {
+          setAutoScrollSpeedState(parsed);
+        }
+      }
     } catch {
       // ignore storage access errors
     } finally {
@@ -179,6 +194,21 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setDiyaGlow(prev => !prev);
   };
 
+  const setAutoScrollSpeed = (spd: number) => {
+    setAutoScrollSpeedState(spd);
+    try {
+      localStorage.setItem('aarti_autoscroll_speed', String(spd));
+    } catch {}
+  };
+
+  const cycleAutoScrollSpeed = (): number => {
+    const currentIndex = UNIFORM_SCROLL_SPEEDS.indexOf(autoScrollSpeed as AutoScrollSpeedType);
+    const nextIndex = (currentIndex + 1) % UNIFORM_SCROLL_SPEEDS.length;
+    const nextSpeed = UNIFORM_SCROLL_SPEEDS[nextIndex];
+    setAutoScrollSpeed(nextSpeed);
+    return nextSpeed;
+  };
+
   return (
     <ThemeContext.Provider
       value={{
@@ -203,6 +233,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         toggleZenMode,
         diyaGlow,
         toggleDiyaGlow,
+        autoScrollSpeed,
+        setAutoScrollSpeed,
+        cycleAutoScrollSpeed,
       }}
     >
       {children}
@@ -213,7 +246,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 export function useThemeContext() {
   const context = useContext(ThemeContext);
   if (!context) {
-    throw new Error('useThemeContext must be used within ThemeProvider');
+    throw new Error('useThemeContext must be used within a ThemeProvider');
   }
   return context;
 }

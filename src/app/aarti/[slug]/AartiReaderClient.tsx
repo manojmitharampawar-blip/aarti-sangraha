@@ -54,6 +54,8 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
     zenMode,
     toggleZenMode,
     diyaGlow,
+    autoScrollSpeed,
+    cycleAutoScrollSpeed,
   } = useThemeContext();
 
   const { isFavorite, toggleFavorite } = useFavorites();
@@ -125,7 +127,12 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
     speed,
     setSpeed,
     toggle: toggleAutoScroll,
-  } = useAutoScroll(1, handleReachEnd);
+  } = useAutoScroll(autoScrollSpeed, handleReachEnd);
+
+  // Keep auto-scroll speed synchronized with ThemeContext
+  useEffect(() => {
+    setSpeed(autoScrollSpeed);
+  }, [autoScrollSpeed, setSpeed]);
 
   const proceedToNext = useCallback(() => {
     if (nextAarti) {
@@ -168,84 +175,59 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
 
   const handleBellRing = (e: React.MouseEvent) => {
     e.stopPropagation();
-    playTempleBell({ enableHaptics: true, volume: 0.65 });
+    playTempleBell({ enableHaptics: true });
     setBellRung(true);
-    setTimeout(() => setBellRung(false), 600);
+    setTimeout(() => setBellRung(false), 800);
   };
 
   return (
-    <div className={`space-y-6 max-w-lg mx-auto pb-28 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>
-      {/* 1. Thin Kindle-Style Reading Progress Line (Pinned to Top) */}
-      <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-black/5 dark:bg-white/5">
-        <div
-          className="h-full bg-gradient-to-r from-amber-500 to-saffron-600 transition-all duration-150"
-          style={{ width: `${scrollProgress}%` }}
-        />
-      </div>
+    <div className={`space-y-5 max-w-xl mx-auto pb-32 transition-all relative ${zenMode ? 'pt-4' : ''}`}>
+      {/* Top Reading Progress Bar */}
+      <div
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-saffron-500 via-amber-400 to-saffron-600 z-50 transition-all duration-150"
+        style={{ width: `${scrollProgress}%` }}
+        role="progressbar"
+        aria-valuenow={scrollProgress}
+        aria-valuemin={0}
+        aria-valuemax={100}
+      />
 
-      {/* Gentle Next Aarti Countdown */}
-      {showNextCountdown && nextAarti && (
-        <NextAartiCountdown
-          nextTitle={isDevanagari ? nextAarti.titleDevanagari : nextAarti.titleTransliteration}
-          totalSeconds={12}
-          onProceed={proceedToNext}
-          onCancel={cancelCountdown}
-        />
-      )}
-
-      {/* 2. Reader Top Action Bar (Auto-hides gracefully in Zen mode) */}
+      {/* Top Navigation & Toolbar (Hidden in Zen Mode for distraction-free chanting) */}
       {!zenMode && (
-        <div className="flex items-center justify-between pb-3 border-b border-[var(--border-main)] animate-fade-in">
+        <div className="flex items-center justify-between gap-2 pt-2 animate-fade-in">
           <Link
             href="/"
-            aria-label="Back to home"
-            className="p-2 -ml-2 rounded-xl text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+            className="flex items-center gap-1.5 text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors p-2 -ml-2 rounded-xl hover:bg-black/5 dark:hover:bg-white/5"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4" />
+            <span>मागे (Home)</span>
           </Link>
 
-          {/* Action Controls */}
           <div className="flex items-center gap-1.5">
-            {/* WakeLock Status Indicator */}
-            {wakeLockSupported && (
-              <button
-                onClick={() => (isLocked ? releaseLock() : requestLock())}
-                aria-label={`Screen wake lock is ${isLocked ? 'active' : 'inactive'}. Tap to toggle.`}
-                title={isLocked ? 'स्क्रीन चालू आहे' : 'स्क्रीन चालू ठेवा'}
-                className={`p-2 rounded-xl border text-xs font-semibold flex items-center gap-1 transition-all ${
-                  isLocked
-                    ? 'border-amber-500/40 bg-amber-500/10 text-amber-600'
-                    : 'border-[var(--border-main)] text-[var(--text-secondary)]'
-                }`}
-              >
-                <Sun className={`w-4 h-4 ${isLocked ? 'animate-spin-slow text-amber-500' : ''}`} />
-              </button>
-            )}
-
-            {/* Add to Group Button */}
+            {/* Add to Custom Group */}
             <button
               onClick={() => setIsGroupModalOpen(true)}
-              aria-label="Add to custom group"
-              title="ग्रुपमध्ये जोडा"
-              className="p-2 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)] hover:border-saffron-500/50"
+              aria-label="Add to custom hymn group"
+              title="माझ्या संग्रहात जोडा"
+              className="p-2 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-secondary)] hover:text-saffron-600 hover:border-saffron-500/50"
             >
-              <FolderPlus className="w-4 h-4 text-saffron-600" />
+              <FolderPlus className="w-4 h-4" />
             </button>
 
-            {/* Script Switcher (Devanagari, Dual, English) */}
+            {/* Quick Script Toggle Button */}
             <button
               onClick={toggleScript}
-              aria-label="Switch script"
-              title="लिपी बदला (मराठी / दोन्ही एकत्र / English)"
-              className="px-2.5 py-1.5 rounded-xl border text-xs font-bold border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)] flex items-center gap-1"
+              aria-label="Toggle script view"
+              title="मराठी / Dual / English लिपी बदला"
+              className="px-2.5 py-1.5 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-xs font-bold text-[var(--text-primary)] hover:border-saffron-500/50"
             >
-              {script === 'dual' ? (
-                <>
-                  <Sparkles className="w-3 h-3 text-amber-500" />
-                  <span>दोन्ही</span>
-                </>
-              ) : script === 'devanagari' ? (
+              {script === 'devanagari' ? (
                 'मराठी'
+              ) : script === 'dual' ? (
+                <span className="flex items-center gap-1 text-saffron-600">
+                  <Sparkles className="w-3 h-3 text-amber-500" />
+                  Dual
+                </span>
               ) : (
                 'ENG'
               )}
@@ -349,10 +331,24 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
         )}
       </div>
 
-      {/* Devotional Audio & Speech Recitation Toolbar */}
+      {/* Devotional Audio, Natural Speech Recitation & Quick Auto-Scroll Toolbar */}
       <DevotionalAudioBar
         stanzas={aarti.stanzas}
         script={script === 'dual' ? 'devanagari' : script}
+        isAutoScrolling={isScrolling}
+        onToggleAutoScroll={toggleAutoScroll}
+        autoScrollSpeed={speed}
+        onCycleScrollSpeed={() => {
+          const nextSpd = cycleAutoScrollSpeed();
+          setSpeed(nextSpd);
+        }}
+        onStanzaChange={stanzaIndex => {
+          setActiveStanzaIndex(stanzaIndex);
+          const el = document.getElementById(`stanza-${stanzaIndex}`);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }}
       />
 
       {/* Aarti / Stotra Lyrics Canvas with Kindle-Grade Typography & Spotlight Focus */}
@@ -371,6 +367,7 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
           return (
             <div
               key={sIdx}
+              id={`stanza-${sIdx}`}
               data-stanza-index={sIdx}
               onClick={() => setActiveStanzaIndex(sIdx)}
               className={`p-4 sm:p-5 rounded-3xl transition-all cursor-pointer relative ${
@@ -418,48 +415,35 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
                       <p
                         className={`font-semibold tracking-wide ${
                           stanza.isChorus
-                            ? 'text-saffron-700 dark:text-saffron-300 font-bold'
+                            ? 'text-amber-950 dark:text-amber-100 font-bold'
                             : 'text-[var(--text-primary)]'
                         }`}
                       >
                         {devLine}
                       </p>
-                      <p
-                        style={{ fontSize: `${Math.max(13, fontSize - 6)}px` }}
-                        className="text-[var(--text-secondary)] italic font-sans opacity-85"
-                      >
-                        {stanza.transliteration[lIdx] || ''}
-                      </p>
+                      {stanza.transliteration[lIdx] && (
+                        <p className="text-xs sm:text-sm font-sans text-[var(--text-secondary)] italic opacity-90">
+                          {stanza.transliteration[lIdx]}
+                        </p>
+                      )}
                     </div>
                   ))
-                ) : isDevanagari ? (
-                  /* Devanagari Only */
-                  stanza.devanagari.map((line, lIdx) => (
-                    <p
-                      key={lIdx}
-                      className={`font-semibold tracking-wide ${
-                        stanza.isChorus
-                          ? 'text-saffron-700 dark:text-saffron-300 font-bold'
-                          : 'text-[var(--text-primary)]'
-                      }`}
-                    >
-                      {line}
-                    </p>
-                  ))
                 ) : (
-                  /* English Transliteration Only */
-                  stanza.transliteration.map((line, lIdx) => (
-                    <p
-                      key={lIdx}
-                      className={`font-medium tracking-wide ${
-                        stanza.isChorus
-                          ? 'text-saffron-700 dark:text-saffron-300 font-bold'
-                          : 'text-[var(--text-primary)]'
-                      }`}
-                    >
-                      {line}
-                    </p>
-                  ))
+                  /* Single Script Mode */
+                  (isDevanagari ? stanza.devanagari : stanza.transliteration).map(
+                    (line, lIdx) => (
+                      <p
+                        key={lIdx}
+                        className={`font-semibold tracking-wide ${
+                          stanza.isChorus
+                            ? 'text-amber-950 dark:text-amber-100 font-bold'
+                            : 'text-[var(--text-primary)]'
+                        }`}
+                      >
+                        {line}
+                      </p>
+                    )
+                  )
                 )}
               </div>
             </div>
@@ -467,56 +451,49 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
         })}
       </article>
 
-      {/* Meaning & Significance Accordion */}
+      {/* Meaning Accordion (Expandable) */}
       {aarti.meaningSummary && (
-        <div className="rounded-2xl border border-[var(--border-main)] bg-[var(--card-main)] overflow-hidden">
+        <div className="rounded-3xl border border-[var(--border-main)] bg-[var(--card-main)] overflow-hidden transition-all shadow-xs">
           <button
             onClick={() => setShowMeaning(prev => !prev)}
             aria-expanded={showMeaning}
-            className="w-full flex items-center justify-between p-4 text-left font-bold text-sm text-[var(--text-primary)] hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+            className="w-full flex items-center justify-between p-4 text-left hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
           >
             <div className="flex items-center gap-2">
-              <Eye className="w-4 h-4 text-saffron-600" />
-              <span>भावार्थ व महत्त्व (Meaning & Significance)</span>
+              <Sparkles className="w-4 h-4 text-amber-500" />
+              <span className="text-xs font-bold text-[var(--text-primary)] uppercase tracking-wider font-devanagari">
+                {isDevanagari ? 'भावार्थ व महत्त्व (Devotional Essence)' : 'Spiritual Meaning & Context'}
+              </span>
             </div>
-            {showMeaning ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+            {showMeaning ? (
+              <ChevronUp className="w-4 h-4 text-[var(--text-secondary)]" />
+            ) : (
+              <ChevronDown className="w-4 h-4 text-[var(--text-secondary)]" />
+            )}
           </button>
+
           {showMeaning && (
-            <div className="p-4 pt-1 border-t border-[var(--border-main)] text-sm text-[var(--text-secondary)] leading-relaxed font-devanagari">
-              {aarti.meaningSummary}
+            <div className="p-4 pt-1 border-t border-[var(--border-main)] text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed space-y-2 animate-fade-in font-devanagari">
+              <p>{aarti.meaningSummary}</p>
             </div>
           )}
         </div>
       )}
 
-      {/* Next Recommended Hymn in Sequence */}
-      {nextAarti && (
-        <div className="pt-4">
-          <p className="text-xs font-bold text-[var(--text-secondary)] uppercase tracking-wider mb-2">
-            पुढील उपासना (Next Upasana)
-          </p>
-          <Link
-            href={`/aarti/${nextAarti.slug}`}
-            className="flex items-center justify-between p-4 rounded-2xl border border-saffron-500/30 bg-gradient-to-r from-saffron-500/10 to-amber-500/5 hover:border-saffron-500 group transition-all"
-          >
-            <div>
-              <p className="text-xs text-saffron-600 font-semibold">पुढील उपासना क्रम</p>
-              <h3 className="text-base font-bold text-[var(--text-primary)] font-devanagari">
-                {isDevanagari ? nextAarti.titleDevanagari : nextAarti.titleTransliteration}
-              </h3>
-            </div>
-            <div className="w-8 h-8 rounded-full bg-saffron-600 text-white flex items-center justify-center group-hover:translate-x-1 transition-transform">
-              <ChevronRight className="w-4 h-4" />
-            </div>
-          </Link>
-        </div>
+      {/* Next Up in Sequence Countdown Alert */}
+      {showNextCountdown && nextAarti && (
+        <NextAartiCountdown
+          nextTitle={isDevanagari ? nextAarti.titleDevanagari : nextAarti.titleTransliteration}
+          onProceed={proceedToNext}
+          onCancel={cancelCountdown}
+        />
       )}
 
-      {/* 3. Apple Books-Inspired Liquid Glass Floating Island HUD */}
-      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-md">
-        <div className="p-2 rounded-full border border-[var(--border-main)]/80 liquid-glass-island shadow-2xl flex items-center justify-between gap-2 px-3">
-          {/* Stanza Counter Step */}
-          <div className="flex items-center gap-1.5 pl-1 text-xs font-bold text-[var(--text-primary)]">
+      {/* Modern Kindle/Apple Books Floating Liquid Glass Island HUD */}
+      <div className="fixed bottom-20 left-4 right-4 z-40 max-w-sm mx-auto animate-fade-in pointer-events-auto">
+        <div className="flex items-center justify-between gap-1.5 p-1.5 rounded-full bg-[var(--card-main)]/90 backdrop-blur-xl border border-[var(--border-main)] shadow-2xl shadow-black/20 text-xs">
+          {/* Active Stanza Pill */}
+          <div className="flex items-center gap-1 px-3 py-1 text-xs font-bold text-[var(--text-primary)]">
             <span className="text-saffron-600 font-devanagari">चरण</span>
             <span>{activeStanzaIndex + 1}/{aarti.stanzas.length}</span>
             <span className="text-[10px] text-[var(--text-secondary)] font-normal hidden sm:inline">
@@ -536,29 +513,35 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
             <Bell className="w-4 h-4 fill-current" />
           </button>
 
-          {/* Auto-scroll Play / Pause Toggle */}
-          <button
-            onClick={toggleAutoScroll}
-            aria-label={isScrolling ? 'Pause auto scroll' : 'Start auto scroll'}
-            title={isScrolling ? 'स्क्रोल थांबवा' : 'ऑटो-स्क्रोल सुरू करा'}
-            className={`px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 transition-all ${
-              isScrolling
-                ? 'bg-amber-500 text-white shadow-md shadow-amber-500/30'
-                : 'bg-saffron-600 text-white shadow-md shadow-saffron-600/30'
-            }`}
-          >
-            {isScrolling ? (
-              <>
+          {/* Auto-scroll Play / Pause Toggle & Speed Pill */}
+          <div className="flex items-center rounded-full bg-saffron-600 text-white shadow-md shadow-saffron-600/30 overflow-hidden">
+            <button
+              onClick={toggleAutoScroll}
+              aria-label={isScrolling ? 'Pause auto scroll' : 'Start auto scroll'}
+              title={isScrolling ? 'स्क्रोल थांबवा' : 'स्वयं-स्क्रोल सुरू करा'}
+              className={`px-3 py-1.5 text-xs font-bold flex items-center gap-1.5 transition-all ${
+                isScrolling ? 'bg-amber-500 hover:bg-amber-600' : 'hover:bg-saffron-700'
+              }`}
+            >
+              {isScrolling ? (
                 <Pause className="w-3.5 h-3.5 fill-current" />
-                <span>{speed}x</span>
-              </>
-            ) : (
-              <>
+              ) : (
                 <Play className="w-3.5 h-3.5 fill-current" />
-                <span>स्क्रोल</span>
-              </>
-            )}
-          </button>
+              )}
+              <span>{isScrolling ? 'थांबवा' : 'स्क्रोल'}</span>
+            </button>
+            <button
+              onClick={() => {
+                const nextSpd = cycleAutoScrollSpeed();
+                setSpeed(nextSpd);
+              }}
+              aria-label={`Scroll speed ${speed}x. Click to change.`}
+              title="स्क्रोल गती बदला"
+              className="px-2 py-1.5 text-[11px] font-black border-l border-white/25 hover:bg-black/10 transition-colors"
+            >
+              {speed}x
+            </button>
+          </div>
 
           {/* Reading Aa Settings Button */}
           <button

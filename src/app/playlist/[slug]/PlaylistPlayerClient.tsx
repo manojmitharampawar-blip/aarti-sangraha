@@ -2,16 +2,26 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ChevronLeft, ChevronRight, CheckCircle, Type, Sun, Send, Sparkles } from 'lucide-react';
+import {
+  ArrowLeft,
+  ChevronRight,
+  ChevronLeft,
+  Share2,
+  CheckCircle,
+  Type,
+  Eye,
+  EyeOff,
+  Sparkles,
+} from 'lucide-react';
 import { Playlist, AartiItem } from '@/types';
 import { aartis } from '@/data/aartis';
 import { useThemeContext } from '@/components/ThemeProvider';
-import { useWakeLock } from '@/hooks/useWakeLock';
 import { useAutoScroll } from '@/hooks/useAutoScroll';
 import { AutoScrollPill } from '@/components/AutoScrollPill';
 import { ReadingSettingsModal } from '@/components/ReadingSettingsModal';
-import { ShareGroupModal } from '@/components/ShareGroupModal';
+import { useWakeLock } from '@/hooks/useWakeLock';
 import { NextAartiCountdown } from '@/components/NextAartiCountdown';
+import { ShareGroupModal } from '@/components/ShareGroupModal';
 import { DevotionalAudioBar } from '@/components/DevotionalAudioBar';
 
 interface PlaylistPlayerClientProps {
@@ -28,6 +38,8 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
     textAlign,
     spotlightMode,
     diyaGlow,
+    autoScrollSpeed,
+    cycleAutoScrollSpeed,
   } = useThemeContext();
 
   const { isLocked, isSupported: wakeLockSupported, requestLock, releaseLock } = useWakeLock();
@@ -73,10 +85,8 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
 
   const handleReachEnd = useCallback(() => {
     if (currentIndex < playlistAartis.length - 1) {
-      const nextHymn = playlistAartis[currentIndex + 1];
-      setPendingNextAarti(nextHymn);
+      setPendingNextAarti(playlistAartis[currentIndex + 1]);
     } else {
-      stopAutoScroll();
       setIsCompletedToast(true);
       setTimeout(() => setIsCompletedToast(false), 4000);
     }
@@ -89,7 +99,12 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
     toggle: toggleAutoScroll,
     stop: stopAutoScroll,
     resetEndTrigger,
-  } = useAutoScroll(1, handleReachEnd);
+  } = useAutoScroll(autoScrollSpeed, handleReachEnd);
+
+  // Keep autoScroll speed synced with ThemeContext
+  useEffect(() => {
+    setSpeed(autoScrollSpeed);
+  }, [autoScrollSpeed, setSpeed]);
 
   useEffect(() => {
     if (wakeLockSupported) {
@@ -113,123 +128,127 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
       setCurrentIndex(prev => prev + 1);
       setActiveStanzaIndex(0);
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      setIsCompletedToast(true);
-      setTimeout(() => setIsCompletedToast(false), 4000);
     }
   };
 
-  if (!currentAarti) {
+  if (playlistAartis.length === 0) {
     return (
-      <div className="text-center py-12 text-sm text-[var(--text-secondary)]">
-        या क्रमामधील आरत्या उपलब्ध नाहीत.
+      <div className="text-center py-12 space-y-4">
+        <p className="text-[var(--text-secondary)]">या संग्रहात कोणत्याही आरत्या उपलब्ध नाहीत.</p>
+        <Link href="/playlists" className="text-saffron-600 font-bold underline">
+          संग्रह यादीकडे परत जा
+        </Link>
       </div>
     );
   }
 
   return (
-    <div className={`space-y-6 max-w-lg mx-auto pb-24 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>
-      {/* Next Aarti Countdown Transition */}
-      {pendingNextAarti && (
-        <NextAartiCountdown
-          nextTitle={isDevanagari ? pendingNextAarti.titleDevanagari : pendingNextAarti.titleTransliteration}
-          totalSeconds={12}
-          onProceed={proceedToNext}
-          onCancel={cancelCountdown}
-        />
-      )}
-
-      {/* Completion Toast */}
-      {isCompletedToast && (
-        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-2xl bg-emerald-600 text-white text-xs font-bold shadow-2xl flex items-center gap-2 border border-emerald-400">
-          <CheckCircle className="w-4 h-4" />
-          <span>पूजा संपन्न! संपूर्ण आरती संग्रह पूर्ण झाला. 🙏</span>
-        </div>
-      )}
-
-      {/* Header & Playlist Stepper Indicator */}
-      <div className="flex items-center justify-between pb-3 border-b border-[var(--border-main)]">
+    <div className="space-y-6 max-w-xl mx-auto pb-32">
+      {/* Top Navigation & Playlist Header */}
+      <div className="flex items-center justify-between gap-2 pt-2">
         <Link
           href="/playlists"
-          aria-label="Back to playlists"
-          className="p-2 -ml-2 rounded-xl text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          className="flex items-center gap-1.5 text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors p-2 -ml-2 rounded-xl hover:bg-black/5 dark:hover:bg-white/5"
         >
-          <ArrowLeft className="w-5 h-5" />
+          <ArrowLeft className="w-4 h-4" />
+          <span>संग्रह (Collections)</span>
         </Link>
 
-        {/* Step Progress Pill */}
-        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-saffron-500/10 text-saffron-600 text-xs font-bold">
-          <span>आरती {currentIndex + 1} / {playlistAartis.length}</span>
-        </div>
-
         <div className="flex items-center gap-1.5">
-          {wakeLockSupported && (
-            <button
-              onClick={() => (isLocked ? releaseLock() : requestLock())}
-              aria-label="Toggle wake lock"
-              title="Keep screen awake"
-              className={`p-2 rounded-xl border text-xs font-semibold ${
-                isLocked
-                  ? 'border-amber-500/40 bg-amber-500/10 text-amber-600'
-                  : 'border-[var(--border-main)] text-[var(--text-secondary)]'
-              }`}
-            >
-              <Sun className="w-4 h-4" />
-            </button>
-          )}
-
-          <button
-            onClick={() => setIsShareModalOpen(true)}
-            aria-label="Share sequence on WhatsApp"
-            title="व्हॉट्सॲपवर शेअर करा"
-            className="p-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 hover:bg-emerald-500/20 transition-colors"
-          >
-            <Send className="w-4 h-4" />
-          </button>
-
+          {/* Quick Script Toggle Button */}
           <button
             onClick={toggleScript}
-            aria-label="Switch script"
-            className="px-2.5 py-1.5 rounded-xl border text-xs font-bold border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)] flex items-center gap-1"
+            aria-label="Toggle script view"
+            title="मराठी / Dual / English लिपी बदला"
+            className="px-2.5 py-1.5 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-xs font-bold text-[var(--text-primary)] hover:border-saffron-500/50"
           >
-            {script === 'dual' ? (
-              <>
-                <Sparkles className="w-3 h-3 text-amber-500" />
-                <span>दोन्ही</span>
-              </>
-            ) : isDevanagari ? (
+            {script === 'devanagari' ? (
               'मराठी'
+            ) : script === 'dual' ? (
+              <span className="flex items-center gap-1 text-saffron-600">
+                <Sparkles className="w-3 h-3 text-amber-500" />
+                Dual
+              </span>
             ) : (
               'ENG'
             )}
           </button>
 
+          {/* Reading Aa Button */}
           <button
             onClick={() => setIsReadingSettingsOpen(true)}
-            aria-label="Adjust font size and reading theme"
-            className="p-2 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)]"
+            aria-label="Adjust reading font and paper theme"
+            title="वाचन व अक्षर रचना (Aa)"
+            className="p-2 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)] hover:border-saffron-500/50"
           >
-            <Type className="w-4 h-4" />
+            <Type className="w-4 h-4 text-saffron-600" />
+          </button>
+
+          {/* WhatsApp Share Button */}
+          <button
+            onClick={() => setIsShareModalOpen(true)}
+            aria-label="Share entire sequence on WhatsApp"
+            title="व्हाट्सॲपवर संग्रह शेअर करा"
+            className="p-2 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-secondary)] hover:text-emerald-600 hover:border-emerald-500/50 transition-colors"
+          >
+            <Share2 className="w-4 h-4" />
           </button>
         </div>
       </div>
 
-      {/* Progress Bar */}
-      <div className="w-full bg-stone-200 dark:bg-stone-800 h-1.5 rounded-full overflow-hidden">
-        <div
-          className="bg-saffron-600 h-full transition-all duration-300 rounded-full"
-          style={{ width: `${((currentIndex + 1) / playlistAartis.length) * 100}%` }}
-        />
+      {/* Playlist Progress & Counter Header */}
+      <div className="p-4 rounded-3xl border border-[var(--border-main)] bg-[var(--card-main)] space-y-3">
+        <div className="flex items-center justify-between">
+          <span className="text-xs font-bold text-saffron-600 uppercase tracking-wider">
+            {playlist.titleDevanagari}
+          </span>
+          <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-saffron-500/10 text-saffron-700 dark:text-saffron-300">
+            {currentIndex + 1} / {playlistAartis.length}
+          </span>
+        </div>
+
+        {/* Progress Bar */}
+        <div className="h-1.5 w-full bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
+          <div
+            className="h-full bg-saffron-600 transition-all duration-300 rounded-full"
+            style={{ width: `${((currentIndex + 1) / playlistAartis.length) * 100}%` }}
+          />
+        </div>
       </div>
 
-      {/* Aarti Title */}
-      <div className="text-center space-y-1 pt-1">
-        <p className="text-xs font-semibold text-saffron-600">
-          {isDevanagari ? playlist.titleDevanagari : playlist.title}
-        </p>
+      {/* Completion Toast Notification */}
+      {isCompletedToast && (
+        <div className="p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-xs font-bold flex items-center justify-between animate-fade-in shadow-md">
+          <div className="flex items-center gap-2">
+            <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span>अभिनंदन! या संग्रहातील सर्व आरत्या व स्तोत्रे संपन्न झाली आहेत.</span>
+          </div>
+          <button
+            onClick={() => setIsCompletedToast(false)}
+            className="text-[10px] underline ml-2 shrink-0"
+          >
+            बंद करा
+          </button>
+        </div>
+      )}
+
+      {/* Countdown to Next Hymn Overlay Modal */}
+      {pendingNextAarti && (
+        <NextAartiCountdown
+          nextTitle={isDevanagari ? pendingNextAarti.titleDevanagari : pendingNextAarti.titleTransliteration}
+          onProceed={proceedToNext}
+          onCancel={cancelCountdown}
+        />
+      )}
+
+      {/* Current Aarti Title */}
+      <div className="text-center space-y-1">
+        <span className="text-xs text-[var(--text-secondary)] font-medium">
+          {currentIndex + 1} पैकी {playlistAartis.length}
+        </span>
         <h1
-          style={{ fontSize: `${Math.min(fontSize + 6, 34)}px` }}
-          className={`font-black text-[var(--text-primary)] leading-snug ${fontClass}`}
+          style={{ fontSize: `${Math.min(fontSize + 6, 32)}px` }}
+          className={`font-black text-[var(--text-primary)] leading-tight ${fontClass}`}
         >
           {isDevanagari ? currentAarti.titleDevanagari : currentAarti.titleTransliteration}
         </h1>
@@ -239,6 +258,20 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
       <DevotionalAudioBar
         stanzas={currentAarti.stanzas}
         script={script === 'dual' ? 'devanagari' : script}
+        isAutoScrolling={isScrolling}
+        onToggleAutoScroll={toggleAutoScroll}
+        autoScrollSpeed={speed}
+        onCycleScrollSpeed={() => {
+          const nextSpd = cycleAutoScrollSpeed();
+          setSpeed(nextSpd);
+        }}
+        onStanzaChange={stanzaIndex => {
+          setActiveStanzaIndex(stanzaIndex);
+          const el = document.getElementById(`playlist-stanza-${stanzaIndex}`);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }}
         onSpeechComplete={handleReachEnd}
       />
 
@@ -256,6 +289,7 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
           return (
             <div
               key={sIdx}
+              id={`playlist-stanza-${sIdx}`}
               onClick={() => setActiveStanzaIndex(sIdx)}
               className={`p-4 sm:p-5 rounded-3xl transition-all cursor-pointer ${
                 stanza.isChorus
@@ -285,12 +319,11 @@ export function PlaylistPlayerClient({ playlist }: PlaylistPlayerClientProps) {
                     >
                       {devLine}
                     </p>
-                    <p
-                      style={{ fontSize: `${Math.max(13, fontSize - 6)}px` }}
-                      className="text-[var(--text-secondary)] italic font-sans opacity-85"
-                    >
-                      {stanza.transliteration[lIdx] || ''}
-                    </p>
+                    {stanza.transliteration[lIdx] && (
+                      <p className="text-xs sm:text-sm font-sans text-[var(--text-secondary)] italic opacity-90">
+                        {stanza.transliteration[lIdx]}
+                      </p>
+                    )}
                   </div>
                 ))
               ) : isDevanagari ? (
