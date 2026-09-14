@@ -12,6 +12,9 @@ export function sanitizeChantingText(rawText: string): string {
   if (!rawText) return '';
 
   return rawText
+    // Remove refrain indicators like धृ. or ध्रु. or Dhru.
+    .replace(/[ध|द][ृ|्रु][.]?/gi, '')
+    .replace(/\bDhru[.]?\b/gi, '')
     // Remove verse numbering like ॥ १ ॥, || 1 ||, (१), (1), [1], etc.
     .replace(/[॥|।]\s*[\d०-९]+\s*[॥|।]/g, '')
     .replace(/\(\s*[\d०-९]+\s*\)/g, '')
@@ -23,6 +26,8 @@ export function sanitizeChantingText(rawText: string): string {
     // Remove stray brackets and dashes
     .replace(/[()[\]{}]/g, '')
     .replace(/\s*-\s*/g, ' ')
+    // Phonetic smoothing for natural chanting:
+    .replace(/दुःख/g, 'दुख')
     // Collapse whitespace
     .replace(/\s+/g, ' ')
     .trim();
@@ -99,7 +104,7 @@ export function useAartiSpeech() {
   const [isSupported, setIsSupported] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [rate, setRate] = useState(0.88); // Unhurried, meditative tempo for human-like devotional chanting
+  const [rate, setRate] = useState(0.86); // Devotional, unhurried chanting laya
   const [currentStanzaIndex, setCurrentStanzaIndex] = useState(-1);
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
 
@@ -157,11 +162,11 @@ export function useAartiSpeech() {
   }, []);
 
   /**
-   * Internal sequential stanza chanter.
-   * Chanting stanza-by-stanza:
-   * 1. Prevents Chrome 15-second TTS timeout on long stotras
-   * 2. Allows natural 400ms pause between verses
-   * 3. Syncs active stanza highlighting and auto-scrolls along with chanting
+   * Line-by-line melodic chanter with traditional Laya & Swara:
+   * - Aroha (आरोह - elevation): Odd lines sung with elevated pitch (1.06)
+   * - Avaroha (अवरोह - resolution): Even lines sung with resolving pitch (0.93)
+   * - Chorus / Dhruvapada (ध्रुवपद): Resonant elevated joy (1.11)
+   * - 180ms micro-pause at metrical caesura (यती), 380ms breath between stanzas
    */
   const speakStanzaAt = useCallback(
     (index: number) => {
@@ -186,7 +191,7 @@ export function useAartiSpeech() {
       const rawLines =
         scriptRef.current === 'devanagari' ? stanza.devanagari : stanza.transliteration;
 
-      // Clean lines: strip dandas, numbers, and format with commas for natural breathing pauses
+      // Clean lines: strip dandas, numbering, and format
       const cleanedLines = rawLines
         .map(sanitizeChantingText)
         .filter(l => l.length > 0);
@@ -197,45 +202,75 @@ export function useAartiSpeech() {
         return;
       }
 
-      // Joining with comma creates a natural 250ms prosodic breath pause; period at end creates restful cadence
-      const phraseText = cleanedLines.join(', ') + '.';
-      const utterance = new SpeechSynthesisUtterance(phraseText);
-
-      // Select natural voice
       const bestVoice = selectBestChantingVoice(
         voices.length > 0 ? voices : window.speechSynthesis.getVoices(),
         scriptRef.current
       );
 
-      if (bestVoice) {
-        utterance.voice = bestVoice;
-        utterance.lang = bestVoice.lang;
-      } else if (scriptRef.current === 'devanagari') {
-        utterance.lang = 'hi-IN';
-      } else {
-        utterance.lang = 'en-IN';
-      }
-
-      utterance.rate = rate;
-      utterance.pitch = 0.98; // Warm, natural human pitch
-
-      utterance.onend = () => {
+      const speakLineAt = (lineIdx: number) => {
         if (isCanceledRef.current) return;
-        // Natural 350ms devotional pause before the next stanza
-        setTimeout(() => {
-          if (!isCanceledRef.current) {
-            speakStanzaAt(index + 1);
-          }
-        }, 350);
-      };
-
-      utterance.onerror = () => {
-        if (!isCanceledRef.current) {
-          speakStanzaAt(index + 1);
+        if (lineIdx >= cleanedLines.length) {
+          // Stanza finished -> 380ms meditative pause before next stanza
+          setTimeout(() => {
+            if (!isCanceledRef.current) {
+              speakStanzaAt(index + 1);
+            }
+          }, 380);
+          return;
         }
+
+        const lineText = cleanedLines[lineIdx];
+        const isChorusLine = stanza.isChorus || /जय\s*देव|धृ|dhru|jai\s*dev/i.test(lineText);
+
+        // Devotional Swara and Laya modulation:
+        let linePitch = 0.98;
+        let lineRate = rate;
+
+        if (isChorusLine) {
+          linePitch = 1.11; // Joyous bhakti chorus lift
+          lineRate = Math.min(1.0, rate * 1.02);
+        } else if (lineIdx % 2 === 0) {
+          linePitch = 1.06; // Aroha (melodic rise in the opening half-verse)
+          lineRate = rate;
+        } else {
+          linePitch = 0.93; // Avaroha (peaceful resolution to tonic Sa)
+          lineRate = Math.max(0.74, rate * 0.94);
+        }
+
+        const utterance = new SpeechSynthesisUtterance(lineText);
+
+        if (bestVoice) {
+          utterance.voice = bestVoice;
+          utterance.lang = bestVoice.lang;
+        } else if (scriptRef.current === 'devanagari') {
+          utterance.lang = 'hi-IN';
+        } else {
+          utterance.lang = 'en-IN';
+        }
+
+        utterance.pitch = linePitch;
+        utterance.rate = lineRate;
+
+        utterance.onend = () => {
+          if (isCanceledRef.current) return;
+          // Natural 180ms breath pause between poetic lines
+          setTimeout(() => {
+            if (!isCanceledRef.current) {
+              speakLineAt(lineIdx + 1);
+            }
+          }, 180);
+        };
+
+        utterance.onerror = () => {
+          if (!isCanceledRef.current) {
+            speakLineAt(lineIdx + 1);
+          }
+        };
+
+        window.speechSynthesis.speak(utterance);
       };
 
-      window.speechSynthesis.speak(utterance);
+      speakLineAt(0);
     },
     [voices, rate]
   );

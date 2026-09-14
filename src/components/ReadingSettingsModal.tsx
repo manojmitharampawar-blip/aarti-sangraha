@@ -39,9 +39,12 @@ const lineSpacingOptions: { id: LineSpacingType; label: string; devLabel: string
 ];
 
 const scrollSpeedOptions = [
-  { val: 0.5, label: '0.5x', desc: 'मंद (Slow)' },
+  { val: 0.5, label: '0.5x', desc: 'अति मंद (Slow)' },
+  { val: 0.75, label: '0.75x', desc: 'मंद (Gentle)' },
   { val: 1, label: '1.0x', desc: 'सामान्य (Normal)' },
+  { val: 1.25, label: '1.25x', desc: 'संतुलित (Steady)' },
   { val: 1.5, label: '1.5x', desc: 'मध्यम (Medium)' },
+  { val: 1.75, label: '1.75x', desc: 'तीव्र (Brisk)' },
   { val: 2, label: '2.0x', desc: 'जलद (Fast)' },
 ];
 
@@ -271,7 +274,7 @@ export function ReadingSettingsModal({ isOpen, onClose }: ReadingSettingsModalPr
           </div>
         </div>
 
-        {/* 5. Auto-Scroll Speed Controls (Uniform: 0.5x, 1x, 1.5x, 2x) */}
+        {/* 5. Auto-Scroll Speed Controls (Uniform 7 Speeds: 0.5x, 0.75x, 1x, 1.25x, 1.5x, 1.75x, 2x) */}
         <div className="space-y-1.5">
           <div className="flex items-center justify-between">
             <label className="text-xs font-bold text-[var(--text-secondary)] uppercase tracking-wider flex items-center gap-1.5">
@@ -282,7 +285,7 @@ export function ReadingSettingsModal({ isOpen, onClose }: ReadingSettingsModalPr
               {autoScrollSpeed}x
             </span>
           </div>
-          <div className="grid grid-cols-4 gap-1.5">
+          <div className="grid grid-cols-4 sm:grid-cols-7 gap-1.5">
             {scrollSpeedOptions.map(item => (
               <button
                 key={item.val}
@@ -294,7 +297,7 @@ export function ReadingSettingsModal({ isOpen, onClose }: ReadingSettingsModalPr
                 }`}
               >
                 <div className="text-xs font-black">{item.label}</div>
-                <div className="text-[10px] opacity-80 font-devanagari mt-0.5">{item.desc.split(' ')[0]}</div>
+                <div className="text-[9px] sm:text-[10px] opacity-80 font-devanagari mt-0.5">{item.desc.split(' ')[0]}</div>
               </button>
             ))}
           </div>

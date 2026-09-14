@@ -158,4 +158,62 @@ describe('Data Integrity & Schema Validation', () => {
       expect(slugs).toContain(slug);
     });
   });
+
+  it('ensures Ram Raksha Stotra has complete 38 shlokas and viniyoga', () => {
+    const ramraksha = aartis.find(a => a.slug === 'ram-raksha-stotra');
+    expect(ramraksha).toBeDefined();
+    expect(ramraksha?.stanzas.length).toBe(7);
+    const allDevanagari = ramraksha?.stanzas.flatMap(s => s.devanagari).join(' ') || '';
+    expect(allDevanagari).toContain('अस्य श्रीरामरक्षास्तोत्रमन्त्रस्य');
+    expect(allDevanagari).toContain('चरितं रघुनाथस्य');
+    expect(allDevanagari).toContain('शिरो मे राघवः पातु');
+    expect(allDevanagari).toContain('रामो दाशरथिः शूरो');
+    expect(allDevanagari).toContain('मनोजवं मारुततुल्यवेगं');
+    expect(allDevanagari).toContain('रामो राजमणिः सदा विजयते');
+    expect(allDevanagari).toContain('राम रामेति रामेति रमे रामे मनोरमे');
+  });
+
+  it('ensures Maruti Stotra Bhimrupi has Samarth Ramdas Swamis complete 17 verses', () => {
+    const maruti = aartis.find(a => a.slug === 'maruti-stotra-bhimrupi');
+    expect(maruti).toBeDefined();
+    expect(maruti?.stanzas.length).toBe(4);
+    const allDevanagari = maruti?.stanzas.flatMap(s => s.devanagari).join(' ') || '';
+    expect(allDevanagari).toContain('भीमरूपी महारुद्रा');
+    expect(allDevanagari).toContain('ब्रह्मांडें माइलीं नेणों');
+    expect(allDevanagari).toContain('आणिला मागुती नेला');
+    expect(allDevanagari).toContain('हे धरा पंधरा श्लोकी');
+    expect(allDevanagari).toContain('रामदासी अग्रगण्यू');
+  });
+
+  it('ensures Bilvashtakam has all 8 verses and Phalashruti', () => {
+    const bilva = aartis.find(a => a.slug === 'bilvashtakam');
+    expect(bilva).toBeDefined();
+    expect(bilva?.stanzas.length).toBe(9);
+    const allDevanagari = bilva?.stanzas.flatMap(s => s.devanagari).join(' ') || '';
+    expect(allDevanagari).toContain('त्रिदलं त्रिगुणाकारं');
+    expect(allDevanagari).toContain('मूलतो ब्रह्मरूपाय');
+    expect(allDevanagari).toContain('बिल्वाष्टकमिदं पुण्यं');
+  });
+
+  it('ensures Vitthal Aarti Yei Ho Vitthale has all 5 complete stanzas', () => {
+    const vitthal = aartis.find(a => a.slug === 'yei-ho-vitthale');
+    expect(vitthal).toBeDefined();
+    expect(vitthal?.stanzas.length).toBe(5);
+    const allDevanagari = vitthal?.stanzas.flatMap(s => s.devanagari).join(' ') || '';
+    expect(allDevanagari).toContain('येई हो विठ्ठले माझे माउली ये');
+    expect(allDevanagari).toContain('पिंवळा पीतांबर कैसा गगनीं झळकला');
+    expect(allDevanagari).toContain('विठोबाचे राज्य आम्हां नित्य दिपवाळी');
+    expect(allDevanagari).toContain('असो नसो भाव आम्हां तुझिया ठायां');
+    expect(allDevanagari).toContain('नामा म्हणे सांगूं काय तुझी लीला');
+  });
+
+  it('ensures concluding prayers Ghalin Lotangan and Mantra Pushpanjali have structured stanzas', () => {
+    const ghalin = aartis.find(a => a.slug === 'ghalin-lotangan');
+    expect(ghalin).toBeDefined();
+    expect(ghalin?.stanzas.length).toBe(5);
+
+    const mantra = aartis.find(a => a.slug === 'mantra-pushpanjali');
+    expect(mantra).toBeDefined();
+    expect(mantra?.stanzas.length).toBe(4);
+  });
 });

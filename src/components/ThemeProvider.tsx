@@ -5,7 +5,7 @@ import { ScriptType, FontFamilyType, LineSpacingType, TextAlignType } from '@/ty
 
 export type ThemeType = 'light' | 'sepia' | 'pooja' | 'dark' | 'oled';
 
-export const UNIFORM_SCROLL_SPEEDS = [0.5, 1, 1.5, 2] as const;
+export const UNIFORM_SCROLL_SPEEDS = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2] as const;
 export type AutoScrollSpeedType = typeof UNIFORM_SCROLL_SPEEDS[number];
 
 interface ThemeContextProps {

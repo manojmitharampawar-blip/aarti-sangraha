@@ -92,7 +92,7 @@ export function DevotionalAudioBar({
     }
   };
 
-  // Toggle Text-to-Speech Recitation (Natural human-like recitation with pause prosody)
+  // Toggle Text-to-Speech Recitation (Devotional singing with laya, swara and harmonium accompaniment)
   const toggleSpeech = () => {
     if (isSpeaking) {
       if (isPaused) {
@@ -101,6 +101,15 @@ export function DevotionalAudioBar({
         pauseSpeech();
       }
     } else {
+      // Accompany Aarti recitation with temple harmonium drone & soft taal for authentic melodic singing
+      if (!isMusicPlaying) {
+        try {
+          startDevotionalMusic({ bpm: musicTempo, volume: 0.35 });
+          setIsMusicPlaying(true);
+        } catch {
+          // ignore
+        }
+      }
       speak(stanzas, script, {
         onStanzaChange,
         onComplete: onSpeechComplete,
@@ -194,7 +203,7 @@ export function DevotionalAudioBar({
               <button
                 onClick={toggleSpeech}
                 aria-label="Toggle text to speech natural recitation"
-                title="नैसर्गिक ऑडिओ पठण"
+                title="नैसर्गिक ऑडिओ पठण (स्वर व लयांसह)"
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                   isSpeaking && !isPaused
                     ? 'bg-emerald-600 text-white shadow-sm shadow-emerald-600/30 animate-pulse'
@@ -285,7 +294,7 @@ export function DevotionalAudioBar({
               <div className="flex gap-1">
                 {[
                   { label: '0.8x शांत', rate: 0.8 },
-                  { label: '0.9x ध्यान', rate: 0.88 },
+                  { label: '0.9x ध्यान', rate: 0.86 },
                   { label: '1.0x सामान्य', rate: 1.0 },
                 ].map(r => (
                   <button
