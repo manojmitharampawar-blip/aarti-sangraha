@@ -22,6 +22,7 @@ import { deities } from '@/data/deities';
 import { aartis } from '@/data/aartis';
 import { playlists } from '@/data/playlists';
 import { AartiCard } from '@/components/AartiCard';
+import { DailySadhanaCard } from '@/components/DailySadhanaCard';
 import { useThemeContext } from '@/components/ThemeProvider';
 import {
   CATEGORY_REGISTRY,
@@ -122,8 +123,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className={`space-y-6 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>
-      {/* 1. Time-Aware Devotional Greeting Banner */}
+    <div className={`space-y-6 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>\n      {/* 1. Time-Aware Devotional Greeting Banner */}
       <div className="flex items-center justify-between px-1">
         <div className="flex items-center gap-2.5">
           <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-saffron-500/20 to-amber-500/30 border border-saffron-500/30 flex items-center justify-center text-saffron-600 shadow-xs">
@@ -161,6 +161,9 @@ export default function HomePage() {
         </span>
       </Link>
 
+      {/* Phase 5: Daily Sadhana, Hindu Panchang & Muhurat Recommendation */}
+      <DailySadhanaCard />
+
       {/* 3. Deity Story Avatar Carousel (आराध्य देवता दर्शन) */}
       <div className="space-y-2">
         <div className="flex items-center justify-between px-1">
@@ -180,7 +183,7 @@ export default function HomePage() {
           {/* "All" Deity Reset Pill */}
           <button
             onClick={() => setSelectedDeityFilter('all')}
-            className={`flex flex-col items-center gap-1.5 shrink-0 transition-transform active:scale-95 ${
+            className={`flex flex-col items-center gap-1.5 shrink-0 transition-all active:scale-95 ${
               selectedDeityFilter === 'all' ? 'scale-105' : 'opacity-80 hover:opacity-100'
             }`}
           >
@@ -206,7 +209,7 @@ export default function HomePage() {
                 key={deity.id}
                 onClick={() => setSelectedDeityFilter(isSelected ? 'all' : deity.id)}
                 className={`flex flex-col items-center gap-1.5 shrink-0 transition-all active:scale-95 ${
-                  isSelected ? 'scale-105' : 'opacity-85 hover:opacity-100'
+                  isSelected ? 'scale-105' : 'opacity-80 hover:opacity-100'
                 }`}
               >
                 <div
