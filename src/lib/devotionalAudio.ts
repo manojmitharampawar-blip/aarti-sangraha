@@ -1,58 +1,75 @@
 // Procedural Web Audio Synthesizer for Devotional Temple Music:
-// 1. Harmonium (सुर/संवादिनी) - Warm phase-detuned oscillators with acoustic bellows LFO
+// 1. Harmonium (सूर/संवादिनी) - Warm phase-detuned oscillators with acoustic bellows LFO and Adaptive Sur
 // 2. Mridang / Pakhawaj (मृदुंग) - Dual-tone punchy bass & crisp resonant slaps audible on mobile speakers
 // 3. Taal / Manjira (झांज / टाळ) - Metallic brass chime with rhythmic traditional theka
 
 import { getSharedAudioContext } from '@/lib/audioContext';
+import { IndianSur, INDIAN_SUR_REGISTRY } from '@/lib/pitchDetector';
 
 let audioCtx: AudioContext | null = null;
 let isPlaying = false;
 let masterGain: GainNode | null = null;
-let harmoniumNodes: { oscs: (OscillatorNode | GainNode)[]; gain: GainNode } | null = null;
+
+interface HarmoniumOscillatorInfo {
+  osc: OscillatorNode;
+  multiplier: number;
+}
+
+let harmoniumState: {
+  oscs: HarmoniumOscillatorInfo[];
+  allNodes: (OscillatorNode | GainNode)[];
+  gain: GainNode;
+} | null = null;
+
 let scheduleIntervalId: ReturnType<typeof setInterval> | null = null;
 let currentBpm = 82; // Traditional moderate devotional tempo
 let nextBeatTime = 0;
 let currentBeat = 0;
+let currentSur: IndianSur = INDIAN_SUR_REGISTRY[2]; // Default: पांढरी २ (D3, 146.83Hz)
 
 function getAudioContext(): AudioContext | null {
   audioCtx = getSharedAudioContext();
   return audioCtx;
 }
 
-// 1. HARMONIUM DRONE (Sa-Pa chord drone with acoustic bellows LFO)
-// Tuned for high acoustic clarity on phone speakers and rich warmth on headphones
-function startHarmoniumDrone(ctx: AudioContext, parentGain: GainNode) {
+// 1. HARMONIUM DRONE (Sa-Pa chord drone with acoustic bellows LFO and Adaptive Sur)
+function startHarmoniumDrone(ctx: AudioContext, parentGain: GainNode, sur: IndianSur) {
   const droneGain = ctx.createGain();
   droneGain.gain.setValueAtTime(0.28, ctx.currentTime);
 
   const filter = ctx.createBiquadFilter();
   filter.type = 'lowpass';
-  filter.frequency.setValueAtTime(1100, ctx.currentTime);
+  filter.frequency.setValueAtTime(1150, ctx.currentTime);
   filter.Q.setValueAtTime(1.5, ctx.currentTime);
 
-  // Sa-Pa Frequencies: D3 (146.8Hz), A3 (220Hz), D4 (293.66Hz), F#4 (369.99Hz)
-  const baseFreqs = [
-    { freq: 146.83, type: 'sawtooth' as OscillatorType, vol: 0.22 },
-    { freq: 147.2, type: 'sawtooth' as OscillatorType, vol: 0.18 },
-    { freq: 220.0, type: 'sawtooth' as OscillatorType, vol: 0.25 },
-    { freq: 220.4, type: 'triangle' as OscillatorType, vol: 0.20 },
-    { freq: 293.66, type: 'triangle' as OscillatorType, vol: 0.30 },
+  // Sa-Pa Harmonic Multipliers:
+  // Root Sa (1.0), Detuned Sa (1.0025), Fifth Pa (1.4983), Detuned Pa (1.501), Octave Sa' (2.0)
+  const harmonicProfiles = [
+    { mult: 1.0, type: 'sawtooth' as OscillatorType, vol: 0.22 },
+    { mult: 1.0025, type: 'sawtooth' as OscillatorType, vol: 0.18 },
+    { mult: 1.4983, type: 'sawtooth' as OscillatorType, vol: 0.25 },
+    { mult: 1.501, type: 'triangle' as OscillatorType, vol: 0.20 },
+    { mult: 2.0, type: 'triangle' as OscillatorType, vol: 0.30 },
   ];
 
-  const oscs: (OscillatorNode | GainNode)[] = [];
+  const oscInfos: HarmoniumOscillatorInfo[] = [];
+  const allNodes: (OscillatorNode | GainNode)[] = [];
 
-  baseFreqs.forEach(({ freq, type, vol }) => {
+  harmonicProfiles.forEach(({ mult, type, vol }) => {
     try {
       const osc = ctx.createOscillator();
       const oscGain = ctx.createGain();
       osc.type = type;
-      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+      const targetFreq = sur.freq * mult;
+      osc.frequency.setValueAtTime(targetFreq, ctx.currentTime);
       oscGain.gain.setValueAtTime(vol, ctx.currentTime);
 
       osc.connect(oscGain);
       oscGain.connect(filter);
       osc.start();
-      oscs.push(osc, oscGain);
+
+      oscInfos.push({ osc, multiplier: mult });
+      allNodes.push(osc, oscGain);
     } catch {
       // ignore
     }
@@ -67,7 +84,7 @@ function startHarmoniumDrone(ctx: AudioContext, parentGain: GainNode) {
     lfo.connect(lfoGain);
     lfoGain.connect(droneGain.gain);
     lfo.start();
-    oscs.push(lfo, lfoGain);
+    allNodes.push(lfo, lfoGain);
   } catch {
     // ignore
   }
@@ -75,7 +92,7 @@ function startHarmoniumDrone(ctx: AudioContext, parentGain: GainNode) {
   filter.connect(droneGain);
   droneGain.connect(parentGain);
 
-  return { oscs, gain: droneGain };
+  return { oscs: oscInfos, allNodes, gain: droneGain };
 }
 
 // 2. MRIDANG SOUNDS (Acoustically shaped for phone speakers & deep bass)
@@ -191,24 +208,19 @@ function playTaalManjira(ctx: AudioContext, time: number, parentGain: GainNode) 
 }
 
 // RHYTHM SCHEDULER: Traditional 4/4 Devotional Aarti Theka
-// Beat 0: Dha (Bass + Slap) + Taal (झांज)
-// Beat 1: Ghe (Bass)
-// Beat 2: Na (Slap) + Taal
-// Beat 3: Ti (Gentle Slap)
 function scheduleBeats() {
   if (!audioCtx || !isPlaying || !masterGain) return;
 
   const secondsPerBeat = 60.0 / currentBpm;
   const scheduleAheadTime = 0.25; // 250ms lookahead
 
-  // If clock drifted behind (tab in background or device throttled), resync cleanly
   if (nextBeatTime < audioCtx.currentTime) {
     nextBeatTime = audioCtx.currentTime + 0.02;
   }
 
   while (nextBeatTime < audioCtx.currentTime + scheduleAheadTime) {
     switch (currentBeat % 4) {
-      case 0: // Strong beat
+      case 0: // Strong beat (सम)
         playMridangBass(audioCtx, nextBeatTime, masterGain);
         playMridangSlap(audioCtx, nextBeatTime, masterGain);
         playTaalManjira(audioCtx, nextBeatTime, masterGain);
@@ -233,13 +245,13 @@ function scheduleBeats() {
 export interface DevotionalMusicOptions {
   bpm?: number;
   volume?: number;
+  sur?: IndianSur;
 }
 
 export function startDevotionalMusic(options?: DevotionalMusicOptions) {
   const ctx = getAudioContext();
   if (!ctx) return;
 
-  // Crucial for iOS Safari & Android: trigger resume inside the click gesture synchronously
   if (ctx.state === 'suspended') {
     ctx.resume().catch(() => {});
   }
@@ -249,20 +261,22 @@ export function startDevotionalMusic(options?: DevotionalMusicOptions) {
   }
 
   currentBpm = options?.bpm || 82;
+  if (options?.sur) {
+    currentSur = options.sur;
+  }
   const initialVolume = options?.volume !== undefined ? options.volume : 0.7;
 
   masterGain = ctx.createGain();
   masterGain.gain.setValueAtTime(initialVolume, ctx.currentTime);
   masterGain.connect(ctx.destination);
 
-  // Start Harmonium Drone
-  harmoniumNodes = startHarmoniumDrone(ctx, masterGain);
+  // Start Harmonium Drone with current Indian Sur
+  harmoniumState = startHarmoniumDrone(ctx, masterGain, currentSur);
 
   isPlaying = true;
   nextBeatTime = ctx.currentTime + 0.03;
   currentBeat = 0;
 
-  // Run scheduler loop every 40ms
   scheduleIntervalId = setInterval(scheduleBeats, 40);
 }
 
@@ -274,8 +288,8 @@ export function stopDevotionalMusic() {
     scheduleIntervalId = null;
   }
 
-  if (harmoniumNodes) {
-    harmoniumNodes.oscs.forEach(node => {
+  if (harmoniumState) {
+    harmoniumState.allNodes.forEach(node => {
       try {
         if ('stop' in node) {
           node.stop();
@@ -285,7 +299,7 @@ export function stopDevotionalMusic() {
         // ignore
       }
     });
-    harmoniumNodes = null;
+    harmoniumState = null;
   }
 
   if (masterGain) {
@@ -314,4 +328,27 @@ export function setDevotionalMusicVolume(volume: number) {
 
 export function setDevotionalMusicTempo(bpm: number) {
   currentBpm = Math.max(50, Math.min(130, bpm));
+}
+
+export function getCurrentDevotionalSur(): IndianSur {
+  return currentSur;
+}
+
+/**
+ * Dynamically retunes the Harmonium drone to a new Indian Sur without audio glitches
+ */
+export function setDevotionalMusicSur(targetSur: IndianSur) {
+  currentSur = targetSur;
+
+  if (isPlaying && harmoniumState && audioCtx) {
+    const now = audioCtx.currentTime;
+    harmoniumState.oscs.forEach(item => {
+      try {
+        const newFreq = targetSur.freq * item.multiplier;
+        item.osc.frequency.setTargetAtTime(newFreq, now, 0.12);
+      } catch {
+        // ignore
+      }
+    });
+  }
 }

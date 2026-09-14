@@ -4,27 +4,26 @@ import React, { useState, useEffect } from 'react';
 import {
   Music,
   Volume2,
-  VolumeX,
   Sliders,
   Play,
   Pause,
   Square,
   Sparkles,
-  ChevronDown,
-  ChevronUp,
-  FastForward,
-  ArrowDown,
+  Mic,
+  MicOff,
+  Radio,
 } from 'lucide-react';
 import {
   startDevotionalMusic,
   stopDevotionalMusic,
-  isDevotionalMusicPlaying,
   setDevotionalMusicVolume,
   setDevotionalMusicTempo,
 } from '@/lib/devotionalAudio';
 import { useAartiSpeech } from '@/hooks/useAartiSpeech';
+import { useAdaptiveSur } from '@/hooks/useAdaptiveSur';
 import { useThemeContext } from '@/components/ThemeProvider';
 import { Stanza, ScriptType } from '@/types';
+import { INDIAN_SUR_REGISTRY, IndianSur } from '@/lib/pitchDetector';
 
 interface DevotionalAudioBarProps {
   stanzas?: Stanza[];
@@ -56,6 +55,18 @@ export function DevotionalAudioBar({
   const [musicVolume, setMusicVolume] = useState(0.5);
   const [musicTempo, setMusicTempo] = useState(82);
   const [showSettings, setShowSettings] = useState(false);
+  const [showAllSurs, setShowAllSurs] = useState(false);
+
+  const {
+    currentSur,
+    setSur,
+    isListening: isDetectingSur,
+    detectedPitchHz,
+    detectedSurInfo,
+    statusMessage: surStatusMessage,
+    startSurDetection,
+    stopSurDetection,
+  } = useAdaptiveSur();
 
   const {
     isSupported: speechSupported,
@@ -69,12 +80,13 @@ export function DevotionalAudioBar({
     stop: stopSpeech,
   } = useAartiSpeech();
 
-  // Clean up audio on unmount
+  // Clean up audio & mic on unmount
   useEffect(() => {
     return () => {
       stopDevotionalMusic();
+      stopSurDetection();
     };
-  }, []);
+  }, [stopSurDetection]);
 
   // Toggle Background Devotional Music
   const toggleMusic = () => {
@@ -84,15 +96,15 @@ export function DevotionalAudioBar({
     } else {
       setIsMusicPlaying(true);
       try {
-        startDevotionalMusic({ bpm: musicTempo, volume: musicVolume });
+        startDevotionalMusic({ bpm: musicTempo, volume: musicVolume, sur: currentSur });
       } catch (err) {
-        console.error("Failed to start devotional music:", err);
+        console.error('Failed to start devotional music:', err);
         setIsMusicPlaying(false);
       }
     }
   };
 
-  // Toggle Text-to-Speech Recitation (Devotional singing with laya, swara and harmonium accompaniment)
+  // Toggle Text-to-Speech Recitation
   const toggleSpeech = () => {
     if (isSpeaking) {
       if (isPaused) {
@@ -101,10 +113,9 @@ export function DevotionalAudioBar({
         pauseSpeech();
       }
     } else {
-      // Accompany Aarti recitation with temple harmonium drone & soft taal for authentic melodic singing
       if (!isMusicPlaying) {
         try {
-          startDevotionalMusic({ bpm: musicTempo, volume: 0.35 });
+          startDevotionalMusic({ bpm: musicTempo, volume: 0.35, sur: currentSur });
           setIsMusicPlaying(true);
         } catch {
           // ignore
@@ -135,6 +146,17 @@ export function DevotionalAudioBar({
     }
   };
 
+  const handleSurSelect = (sur: IndianSur) => {
+    setSur(sur);
+  };
+
+  const POPULAR_SURS = [
+    INDIAN_SUR_REGISTRY[2], // पांढरी २ (D)
+    INDIAN_SUR_REGISTRY[1], // काळी १ (C#)
+    INDIAN_SUR_REGISTRY[8], // काळी ४ (G#)
+    INDIAN_SUR_REGISTRY[10], // काळी ५ (A#)
+  ];
+
   return (
     <div className="rounded-2xl border border-[var(--border-main)] bg-[var(--card-main)] p-3 shadow-xs space-y-3">
       <div className="flex items-center justify-between gap-2 flex-wrap">
@@ -157,8 +179,12 @@ export function DevotionalAudioBar({
           <button
             onClick={() => setShowSettings(prev => !prev)}
             aria-label="Adjust audio settings"
-            title="ऑडिओ व ताल सेटिंग्ज"
-            className="p-1.5 rounded-lg border border-[var(--border-main)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-black/5 dark:hover:bg-white/5"
+            title="ऑडिओ, सूर व ताल सेटिंग्ज"
+            className={`p-1.5 rounded-lg border transition-colors ${
+              showSettings
+                ? 'border-saffron-500 bg-saffron-500/10 text-saffron-600'
+                : 'border-[var(--border-main)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-black/5 dark:hover:bg-white/5'
+            }`}
           >
             <Sliders className="w-3.5 h-3.5" />
           </button>
@@ -239,9 +265,91 @@ export function DevotionalAudioBar({
         </div>
       </div>
 
-      {/* Expanded Audio Settings */}
+      {/* Expanded Audio & Harmonizer Settings */}
       {showSettings && (
-        <div className="pt-2 border-t border-[var(--border-main)] space-y-3 text-xs">
+        <div className="pt-2 border-t border-[var(--border-main)] space-y-3.5 text-xs">
+          {/* AI Adaptive Sur (Harmonium Tuning) */}
+          <div className="p-2.5 rounded-xl bg-saffron-500/5 dark:bg-saffron-950/20 border border-saffron-500/20 space-y-2">
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center gap-1.5 font-bold text-saffron-800 dark:text-saffron-300">
+                <Sparkles className="w-3.5 h-3.5 text-saffron-600" />
+                <span>सूर व संवादिनी जुळणी (Adaptive Sur):</span>
+                <span className="text-[11px] font-extrabold text-saffron-700 dark:text-saffron-200 px-2 py-0.5 rounded-md bg-saffron-500/15">
+                  {currentSur.nameMr}
+                </span>
+              </div>
+
+              {/* Live Mic Pitch Detector Button */}
+              <button
+                onClick={isDetectingSur ? stopSurDetection : startSurDetection}
+                className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-bold text-[10px] transition-all ${
+                  isDetectingSur
+                    ? 'bg-rose-600 text-white animate-pulse shadow-xs'
+                    : 'bg-saffron-600 text-white hover:bg-saffron-700 active:scale-95'
+                }`}
+              >
+                {isDetectingSur ? (
+                  <>
+                    <MicOff className="w-3 h-3" />
+                    <span>ऐकणे थांबवा</span>
+                  </>
+                ) : (
+                  <>
+                    <Mic className="w-3 h-3" />
+                    <span>माझा सूर ओळखा (AI)</span>
+                  </>
+                )}
+              </button>
+            </div>
+
+            {/* Live Detection Feedback Bar */}
+            {isDetectingSur && (
+              <div className="flex items-center gap-2 p-2 rounded-lg bg-white/80 dark:bg-stone-900/80 border border-saffron-500/30 text-xs">
+                <Radio className="w-3.5 h-3.5 text-rose-600 animate-ping shrink-0" />
+                <div className="flex-1 truncate">
+                  <span className="font-semibold text-rose-700 dark:text-rose-400">
+                    आवाज ऐकत आहे... (सा म्हणा)
+                  </span>
+                  {detectedPitchHz && (
+                    <span className="ml-2 text-[10px] font-bold text-stone-600 dark:text-stone-300">
+                      {detectedPitchHz} Hz ({detectedSurInfo?.sur.nameMr})
+                    </span>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {surStatusMessage && !isDetectingSur && (
+              <div className="text-[11px] font-medium text-saffron-700 dark:text-saffron-300">
+                {surStatusMessage}
+              </div>
+            )}
+
+            {/* Quick Scale Selector Chips */}
+            <div className="flex items-center gap-1.5 flex-wrap pt-0.5">
+              {(showAllSurs ? INDIAN_SUR_REGISTRY : POPULAR_SURS).map(sur => (
+                <button
+                  key={sur.key}
+                  onClick={() => handleSurSelect(sur)}
+                  className={`px-2 py-1 rounded-lg text-[10px] font-bold border transition-colors ${
+                    currentSur.key === sur.key
+                      ? 'border-saffron-600 bg-saffron-600 text-white shadow-xs'
+                      : 'border-saffron-500/30 bg-[var(--card-main)] text-[var(--text-secondary)] hover:border-saffron-500'
+                  }`}
+                >
+                  {sur.nameMr}
+                </button>
+              ))}
+
+              <button
+                onClick={() => setShowAllSurs(!showAllSurs)}
+                className="text-[10px] font-bold text-saffron-600 hover:underline px-1 py-0.5"
+              >
+                {showAllSurs ? 'कमी पर्याय' : 'इतर १२ सूर...'}
+              </button>
+            </div>
+          </div>
+
           {/* Music Volume Slider */}
           <div className="flex items-center justify-between gap-3">
             <span className="text-[var(--text-secondary)] font-semibold flex items-center gap-1">
