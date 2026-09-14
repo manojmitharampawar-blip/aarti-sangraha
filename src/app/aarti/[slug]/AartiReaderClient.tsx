@@ -32,6 +32,7 @@ import { ReadingSettingsModal } from '@/components/ReadingSettingsModal';
 import { AddToGroupModal } from '@/components/AddToGroupModal';
 import { DevotionalAudioBar } from '@/components/DevotionalAudioBar';
 import { NextAartiCountdown } from '@/components/NextAartiCountdown';
+import { VirtualAartiModal } from '@/components/VirtualAartiModal';
 import { getHymnTypeBadge } from '@/components/AartiCard';
 import { deities } from '@/data/deities';
 import { playTempleBell } from '@/lib/audioBell';
@@ -65,6 +66,7 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
 
   const [isReadingSettingsOpen, setIsReadingSettingsOpen] = useState(false);
   const [isGroupModalOpen, setIsGroupModalOpen] = useState(false);
+  const [isVirtualAartiOpen, setIsVirtualAartiOpen] = useState(false);
   const [showMeaning, setShowMeaning] = useState(false);
   const [copied, setCopied] = useState(false);
   const [showNextCountdown, setShowNextCountdown] = useState(false);
@@ -167,15 +169,7 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
     setShowNextCountdown(false);
   }, []);
 
-  // Keep screen display awake during reading mode
-  useEffect(() => {
-    requestLock();
-    return () => {
-      releaseLock();
-    };
-  }, [requestLock, releaseLock]);
-
-  // When auto navigation / auto-scroll is actively running, ensure wake lock is held
+  // Keep screen wake lock active while auto-scroll is reading
   useEffect(() => {
     if (isScrolling) {
       requestLock();
@@ -202,22 +196,22 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
 
   // On mobile & desktop scroll, track the visible stanza in reading viewport
   useEffect(() => {
-    if (!spotlightMode || typeof IntersectionObserver === "undefined") return;
+    if (!spotlightMode || typeof IntersectionObserver === 'undefined') return;
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            const idx = Number(entry.target.getAttribute("data-stanza-index"));
+            const idx = Number(entry.target.getAttribute('data-stanza-index'));
             if (!isNaN(idx)) {
               setActiveStanzaIndex(idx);
             }
           }
         });
       },
-      { rootMargin: "-15% 0px -40% 0px", threshold: 0.1 }
+      { rootMargin: '-15% 0px -40% 0px', threshold: 0.1 }
     );
 
-    const elements = document.querySelectorAll("[data-stanza-index]");
+    const elements = document.querySelectorAll('[data-stanza-index]');
     elements.forEach(el => observer.observe(el));
 
     return () => {
@@ -256,6 +250,16 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
           </Link>
 
           <div className="flex items-center gap-1.5">
+            {/* Touchless Virtual Aarti Camera Trigger */}
+            <button
+              onClick={() => setIsVirtualAartiOpen(true)}
+              aria-label="Open touchless virtual aarti"
+              title="स्पर्शविरहित व्हर्च्युअल आरती (कॅमेरा हस्तमुद्रा)"
+              className="p-2 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20 active:scale-95 transition-all"
+            >
+              <Sparkles className="w-4 h-4 text-amber-500 animate-pulse" />
+            </button>
+
             {/* Add to Custom Group */}
             <button
               onClick={() => setIsGroupModalOpen(true)}
@@ -414,127 +418,82 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
       >
         {aarti.stanzas.map((stanza, sIdx) => {
           const isActive = activeStanzaIndex === sIdx;
-          const isSpotlightApplied = spotlightMode;
+          const showSpotlightDimming = spotlightMode && !isActive;
 
           return (
             <div
               key={sIdx}
               id={`stanza-${sIdx}`}
               data-stanza-index={sIdx}
-              onClick={() => setActiveStanzaIndex(sIdx)}
-              className={`p-4 sm:p-5 rounded-3xl transition-all cursor-pointer relative ${
-                stanza.isChorus
-                  ? 'bg-amber-500/10 border-2 border-amber-500/30'
-                  : isActive
-                  ? 'border-2 border-saffron-500/80 bg-[var(--card-main)] shadow-sm'
-                  : 'border border-[var(--border-main)] bg-[var(--card-main)]'
+              className={`p-4 sm:p-5 rounded-2xl transition-all duration-300 relative border ${
+                isActive
+                  ? 'border-saffron-500/40 bg-saffron-500/5 dark:bg-saffron-950/20 shadow-xs'
+                  : 'border-transparent'
               } ${
-                isSpotlightApplied
-                  ? isActive
-                    ? 'stanza-spotlight-active'
-                    : 'stanza-spotlight-dimmed'
-                  : ''
+                showSpotlightDimming
+                  ? 'opacity-80 transition-opacity duration-300'
+                  : 'opacity-100'
               }`}
             >
-              {/* Section Header or Chorus Indicator */}
-              <div className="flex items-center justify-between gap-2 mb-3">
-                {stanza.sectionTitle ? (
-                  <span className="text-xs font-extrabold uppercase tracking-wider text-saffron-700 dark:text-saffron-300 py-0.5 px-3 rounded-full bg-saffron-500/15 border border-saffron-500/25">
-                    {stanza.sectionTitle}
-                  </span>
-                ) : stanza.isChorus ? (
-                  <span className="text-xs font-extrabold text-amber-700 dark:text-amber-300 py-0.5 px-2.5 rounded-full bg-amber-500/20 border border-amber-500/30">
-                    ॥ ध्रुवपद (Chorus) ॥
-                  </span>
-                ) : (
-                  <span className="text-[11px] font-bold text-saffron-600/70">
-                    ॥ चरण {sIdx + 1} ॥
-                  </span>
-                )}
+              {/* Devanagari Lyrics */}
+              {(script === 'devanagari' || isDual) && (
+                <div className="space-y-2">
+                  {stanza.devanagari.map((line, lIdx) => (
+                    <p
+                      key={lIdx}
+                      className={`font-semibold tracking-wide transition-colors ${
+                        isActive
+                          ? 'text-[var(--text-primary)] font-bold'
+                          : 'text-[var(--text-primary)]/90'
+                      }`}
+                    >
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              )}
 
-                {isActive && spotlightMode && (
-                  <span className="flex items-center gap-1 text-[10px] font-bold text-saffron-600 uppercase tracking-widest animate-pulse">
-                    <span className="w-1.5 h-1.5 rounded-full bg-saffron-500" />
-                    <span>चालू कडवे</span>
-                  </span>
-                )}
-              </div>
-
-              {/* Stanza Lines: Dual-Script Interlinear or Single Script */}
-              <div className="space-y-2">
-                {isDual ? (
-                  /* Interlinear Mode: Devanagari line + phonetic English underneath */
-                  stanza.devanagari.map((devLine, lIdx) => (
-                    <div key={lIdx} className="space-y-0.5">
-                      <p
-                        className={`font-semibold tracking-wide ${
-                          stanza.isChorus
-                            ? 'text-amber-950 dark:text-amber-100 font-bold'
-                            : 'text-[var(--text-primary)]'
-                        }`}
-                      >
-                        {devLine}
-                      </p>
-                      {stanza.transliteration[lIdx] && (
-                        <p className="text-xs sm:text-sm font-sans text-[var(--text-secondary)] italic opacity-90">
-                          {stanza.transliteration[lIdx]}
-                        </p>
-                      )}
-                    </div>
-                  ))
-                ) : (
-                  /* Single Script Mode */
-                  (isDevanagari ? stanza.devanagari : stanza.transliteration).map(
-                    (line, lIdx) => (
-                      <p
-                        key={lIdx}
-                        className={`font-semibold tracking-wide ${
-                          stanza.isChorus
-                            ? 'text-amber-950 dark:text-amber-100 font-bold'
-                            : 'text-[var(--text-primary)]'
-                        }`}
-                      >
-                        {line}
-                      </p>
-                    )
-                  )
-                )}
-              </div>
+              {/* Transliteration Lyrics */}
+              {(script === 'transliteration' || isDual) && (
+                <div className={`space-y-1.5 ${isDual ? 'pt-2.5 border-t border-[var(--border-main)]/40 mt-2.5' : ''}`}>
+                  {stanza.transliteration.map((line, lIdx) => (
+                    <p
+                      key={lIdx}
+                      className={`font-normal tracking-wide ${
+                        isDual
+                          ? 'text-xs text-[var(--text-secondary)] italic'
+                          : 'text-[var(--text-primary)] font-medium'
+                      }`}
+                    >
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              )}
             </div>
           );
         })}
       </article>
 
-      {/* Meaning Accordion (Expandable) */}
+      {/* Meaning Accordion (if available) */}
       {aarti.meaningSummary && (
-        <div className="rounded-3xl border border-[var(--border-main)] bg-[var(--card-main)] overflow-hidden transition-all shadow-xs">
+        <div className="rounded-2xl border border-[var(--border-main)] bg-[var(--card-main)] overflow-hidden">
           <button
             onClick={() => setShowMeaning(prev => !prev)}
-            aria-expanded={showMeaning}
-            className="w-full flex items-center justify-between p-4 text-left hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+            className="w-full flex items-center justify-between p-4 text-xs font-bold text-[var(--text-primary)] hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
           >
-            <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-amber-500" />
-              <span className="text-xs font-bold text-[var(--text-primary)] uppercase tracking-wider font-devanagari">
-                {isDevanagari ? 'भावार्थ व महत्त्व (Devotional Essence)' : 'Spiritual Meaning & Context'}
-              </span>
-            </div>
-            {showMeaning ? (
-              <ChevronUp className="w-4 h-4 text-[var(--text-secondary)]" />
-            ) : (
-              <ChevronDown className="w-4 h-4 text-[var(--text-secondary)]" />
-            )}
+            <span>{isDevanagari ? 'भावार्थ व महत्त्व' : 'Meaning & Spiritual Significance'}</span>
+            {showMeaning ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </button>
-
           {showMeaning && (
-            <div className="p-4 pt-1 border-t border-[var(--border-main)] text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed space-y-2 animate-fade-in font-devanagari">
-              <p>{aarti.meaningSummary}</p>
+            <div className="p-4 pt-0 text-xs leading-relaxed text-[var(--text-secondary)] border-t border-[var(--border-main)] font-devanagari">
+              {aarti.meaningSummary}
             </div>
           )}
         </div>
       )}
 
-      {/* Next Up in Sequence Countdown Alert */}
+      {/* Next Aarti Countdown Card */}
       {showNextCountdown && nextAarti && (
         <NextAartiCountdown
           nextTitle={isDevanagari ? nextAarti.titleDevanagari : nextAarti.titleTransliteration}
@@ -543,10 +502,10 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
         />
       )}
 
-      {/* Modern Kindle/Apple Books Floating Liquid Glass Island HUD */}
+      {/* Floating Bottom Control Bar (Hidden when scrolling downward) */}
       <div
-        className={`fixed left-4 right-4 z-40 max-w-sm mx-auto animate-fade-in pointer-events-auto transition-all duration-300 ease-in-out ${
-          isNavVisible ? 'bottom-20' : 'bottom-4'
+        className={`fixed bottom-4 left-0 right-0 max-w-sm mx-auto px-4 z-40 transition-transform duration-300 ease-in-out ${
+          isNavVisible ? 'translate-y-0' : 'translate-y-24'
         }`}
       >
         <div className="flex items-center justify-between gap-1.5 p-1.5 rounded-full bg-[var(--card-main)] border border-[var(--border-main)] shadow-2xl shadow-black/20 text-xs">
@@ -569,6 +528,16 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
             }`}
           >
             <Bell className="w-4 h-4 fill-current" />
+          </button>
+
+          {/* Touchless Virtual Aarti Quick Trigger */}
+          <button
+            onClick={() => setIsVirtualAartiOpen(true)}
+            aria-label="Start virtual aarti"
+            title="स्पर्शविरहित व्हर्च्युअल आरती"
+            className="p-2 rounded-full border border-amber-500/30 bg-amber-500/15 text-amber-600 hover:bg-amber-500/25 active:scale-90 transition-all flex items-center justify-center text-xs"
+          >
+            <span>🪔</span>
           </button>
 
           {/* Auto-scroll Play / Pause Toggle & Speed Pill */}
@@ -595,18 +564,18 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
               }}
               aria-label={`Scroll speed ${speed}x. Click to change.`}
               title="स्क्रोल गती बदला"
-              className="px-2 py-1.5 text-[11px] font-black border-l border-white/25 hover:bg-black/10 transition-colors"
+              className="px-2 py-1.5 text-[10px] font-black border-l border-white/20 hover:bg-black/10 transition-colors"
             >
               {speed}x
             </button>
           </div>
 
-          {/* Reading Aa Settings Button */}
+          {/* Reading Font Size / Mode Aa Modal Trigger */}
           <button
             onClick={() => setIsReadingSettingsOpen(true)}
-            aria-label="Reading settings"
-            title="वाचन रचना (Aa)"
-            className="p-2 rounded-full border border-[var(--border-main)] hover:border-saffron-500 text-[var(--text-primary)] hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+            aria-label="Change text size and fonts"
+            title="वाचन पर्याय (Aa)"
+            className="p-2 rounded-full border border-[var(--border-main)] text-[var(--text-secondary)] hover:text-saffron-600"
           >
             <Type className="w-4 h-4" />
           </button>
@@ -626,6 +595,13 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
           </button>
         </div>
       </div>
+
+      {/* Touchless Virtual Aarti Camera Modal */}
+      <VirtualAartiModal
+        isOpen={isVirtualAartiOpen}
+        onClose={() => setIsVirtualAartiOpen(false)}
+        aarti={aarti}
+      />
 
       {/* Reading & Typography Aa Settings Modal */}
       <ReadingSettingsModal
