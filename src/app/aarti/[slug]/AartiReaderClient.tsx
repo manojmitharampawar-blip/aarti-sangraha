@@ -22,12 +22,15 @@ import {
   Sparkles,
   Maximize2,
   Minimize2,
+  Mic,
+  MicOff,
 } from 'lucide-react';
 import { AartiItem } from '@/types';
 import { useThemeContext } from '@/components/ThemeProvider';
 import { useFavorites } from '@/hooks/useFavorites';
 import { useWakeLock } from '@/hooks/useWakeLock';
 import { useAutoScroll } from '@/hooks/useAutoScroll';
+import { useVoiceChantingFollower } from '@/hooks/useVoiceChantingFollower';
 import { ReadingSettingsModal } from '@/components/ReadingSettingsModal';
 import { AddToGroupModal } from '@/components/AddToGroupModal';
 import { DevotionalAudioBar } from '@/components/DevotionalAudioBar';
@@ -130,9 +133,34 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
     isScrolling,
     speed,
     setSpeed,
-    toggle: toggleAutoScroll,
+    start: startAutoScroll,
     stop: stopAutoScroll,
+    toggle: toggleAutoScroll,
   } = useAutoScroll(autoScrollSpeed, handleReachEnd);
+
+  // Phase 4: Hands-free Voice-Activated Chanting Follower
+  const {
+    isActive: isVoiceFollowerActive,
+    isChanting,
+    lastRecognizedPhrase,
+    toggleFollower: toggleVoiceFollower,
+  } = useVoiceChantingFollower({
+    stanzas: aarti.stanzas,
+    onVoiceActivityChange: isVoiceChanting => {
+      if (isVoiceChanting) {
+        startAutoScroll();
+      } else {
+        stopAutoScroll();
+      }
+    },
+    onStanzaMatch: matchedIndex => {
+      setActiveStanzaIndex(matchedIndex);
+      const el = document.getElementById(`stanza-${matchedIndex}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    },
+  });
 
   // Keep auto-scroll speed synchronized with ThemeContext
   useEffect(() => {
@@ -169,12 +197,12 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
     setShowNextCountdown(false);
   }, []);
 
-  // Keep screen wake lock active while auto-scroll is reading
+  // Keep screen wake lock active while auto-scroll is reading or voice follower is active
   useEffect(() => {
-    if (isScrolling) {
+    if (isScrolling || isVoiceFollowerActive) {
       requestLock();
     }
-  }, [isScrolling, requestLock]);
+  }, [isScrolling, isVoiceFollowerActive, requestLock]);
 
   const handleShare = async () => {
     if (navigator.share) {
@@ -398,6 +426,9 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
           const nextSpd = cycleAutoScrollSpeed();
           setSpeed(nextSpd);
         }}
+        isVoiceFollowerActive={isVoiceFollowerActive}
+        isVoiceChanting={isChanting}
+        onToggleVoiceFollower={toggleVoiceFollower}
         onStanzaChange={stanzaIndex => {
           setActiveStanzaIndex(stanzaIndex);
           const el = document.getElementById(`stanza-${stanzaIndex}`);
@@ -406,6 +437,23 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
           }
         }}
       />
+
+      {/* Live Voice Follower Chanting Feedback Banner */}
+      {isVoiceFollowerActive && (
+        <div className="flex items-center justify-between gap-2 px-3.5 py-2 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 text-xs text-emerald-800 dark:text-emerald-200 animate-fade-in shadow-xs">
+          <div className="flex items-center gap-2">
+            <span className={`w-2.5 h-2.5 rounded-full ${isChanting ? 'bg-emerald-500 animate-ping' : 'bg-emerald-400'}`} />
+            <span className="font-semibold">
+              {isChanting ? '🎙️ गायन सुरू • स्क्रोल चालू' : '🎙️ आवाज ऐकत आहे... (गायन सुरू करा)'}
+            </span>
+          </div>
+          {lastRecognizedPhrase && (
+            <span className="text-[11px] font-medium opacity-85 truncate max-w-[160px] sm:max-w-xs font-devanagari">
+              &quot;{lastRecognizedPhrase}&quot;
+            </span>
+          )}
+        </div>
+      )}
 
       {/* Aarti / Stotra Lyrics Canvas with Kindle-Grade Typography & Spotlight Focus */}
       <article
@@ -538,6 +586,22 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
             className="p-2 rounded-full border border-amber-500/30 bg-amber-500/15 text-amber-600 hover:bg-amber-500/25 active:scale-90 transition-all flex items-center justify-center text-xs"
           >
             <span>🪔</span>
+          </button>
+
+          {/* Hands-Free Voice Chanting Follower Button */}
+          <button
+            onClick={toggleVoiceFollower}
+            aria-label="Toggle voice chanting follower"
+            title={isVoiceFollowerActive ? 'वाणी अनुसरक थांबवा' : 'वाणी अनुसरक (गायन ऐकून स्क्रोल)'}
+            className={`p-2 rounded-full border transition-all active:scale-90 flex items-center justify-center ${
+              isVoiceFollowerActive
+                ? isChanting
+                  ? 'border-emerald-500 bg-emerald-600 text-white animate-pulse shadow-md shadow-emerald-500/30'
+                  : 'border-emerald-500/50 bg-emerald-500/20 text-emerald-700 dark:text-emerald-300'
+                : 'border-[var(--border-main)] text-[var(--text-secondary)] hover:text-emerald-600'
+            }`}
+          >
+            <Mic className="w-4 h-4" />
           </button>
 
           {/* Auto-scroll Play / Pause Toggle & Speed Pill */}

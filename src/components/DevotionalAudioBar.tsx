@@ -35,6 +35,9 @@ interface DevotionalAudioBarProps {
   onToggleAutoScroll?: () => void;
   autoScrollSpeed?: number;
   onCycleScrollSpeed?: () => void;
+  isVoiceFollowerActive?: boolean;
+  isVoiceChanting?: boolean;
+  onToggleVoiceFollower?: () => void;
 }
 
 export function DevotionalAudioBar({
@@ -47,6 +50,9 @@ export function DevotionalAudioBar({
   onToggleAutoScroll,
   autoScrollSpeed: propAutoScrollSpeed,
   onCycleScrollSpeed,
+  isVoiceFollowerActive = false,
+  isVoiceChanting = false,
+  onToggleVoiceFollower,
 }: DevotionalAudioBarProps) {
   const { autoScrollSpeed: contextAutoScrollSpeed, cycleAutoScrollSpeed } = useThemeContext();
   const currentScrollSpeed = propAutoScrollSpeed ?? contextAutoScrollSpeed;
@@ -190,8 +196,37 @@ export function DevotionalAudioBar({
           </button>
         </div>
 
-        {/* Recitation and Auto-Scroll Group */}
+        {/* Recitation, Voice Follower and Auto-Scroll Group */}
         <div className="flex items-center gap-1.5 flex-wrap">
+          {/* Hands-Free Voice Chanting Follower Button */}
+          {onToggleVoiceFollower && (
+            <button
+              onClick={onToggleVoiceFollower}
+              aria-label="Toggle voice-activated hands-free auto-scroller"
+              title={
+                isVoiceFollowerActive
+                  ? 'वाणी अनुसरक थांबवा'
+                  : 'वाणी अनुसरक सुरू करा (गायन ऐकून आपोआप स्क्रोल)'
+              }
+              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                isVoiceFollowerActive
+                  ? isVoiceChanting
+                    ? 'bg-emerald-600 text-white shadow-sm shadow-emerald-600/30 animate-pulse'
+                    : 'bg-emerald-600/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/40'
+                  : 'border border-[var(--border-main)] bg-[var(--bg-main)] text-[var(--text-primary)] hover:border-emerald-500/50'
+              }`}
+            >
+              <Mic className={`w-3.5 h-3.5 ${isVoiceChanting ? 'animate-bounce text-yellow-200' : 'text-emerald-600'}`} />
+              <span>
+                {isVoiceFollowerActive
+                  ? isVoiceChanting
+                    ? 'गायन चालू'
+                    : 'वाणी अनुसरक'
+                  : 'वाणी स्क्रोल'}
+              </span>
+            </button>
+          )}
+
           {/* Direct Auto-Scroll Button for Stotra & Aarti */}
           {onToggleAutoScroll && (
             <div className="flex items-center rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] overflow-hidden">
