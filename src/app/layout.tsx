@@ -8,30 +8,27 @@ import { RitualBar } from '@/components/RitualBar';
 import { PWAInstallPrompt } from '@/components/PWAInstallPrompt';
 
 const notoSans = Noto_Sans_Devanagari({
+  subsets: ['devanagari'],
   weight: ['400', '500', '600', '700', '800'],
-  subsets: ['devanagari', 'latin'],
+  variable: '--font-devanagari',
   display: 'swap',
-  variable: '--font-noto-sans',
 });
 
 const notoSerif = Noto_Serif_Devanagari({
+  subsets: ['devanagari'],
   weight: ['400', '600', '700'],
-  subsets: ['devanagari', 'latin'],
+  variable: '--font-serif-devanagari',
   display: 'swap',
-  variable: '--font-noto-serif',
 });
 
 const mukta = Mukta({
-  weight: ['400', '500', '600', '700', '800'],
-  subsets: ['devanagari', 'latin'],
-  display: 'swap',
+  subsets: ['devanagari'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-mukta',
+  display: 'swap',
 });
 
-// basePath is injected by next.config.mjs (empty for custom domain like vediconline.com)
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH
-  ? `/${process.env.NEXT_PUBLIC_BASE_PATH.replace(/^\/+|\/+$/g, '')}`
-  : '';
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://vediconline.com'),
@@ -148,6 +145,11 @@ export default function RootLayout({
   return (
     <html lang="mr" className="h-full" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if(typeof window!=='undefined'&&location.protocol==='http:'&&location.hostname!=='localhost'&&location.hostname!=='127.0.0.1'){location.replace('https://'+location.host+location.pathname+location.search+location.hash);}`,
+          }}
+        />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-title" content="आरती संग्रह" />
         <meta name="application-name" content="आरती संग्रह" />

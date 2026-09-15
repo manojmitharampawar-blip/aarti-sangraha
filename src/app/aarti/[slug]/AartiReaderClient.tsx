@@ -143,14 +143,14 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
     isActive: isVoiceFollowerActive,
     isChanting,
     lastRecognizedPhrase,
-    toggleFollower: toggleVoiceFollower,
+    errorMessage: voiceFollowerError,
+    clearErrorMessage: clearVoiceFollowerError,
+    toggleFollower: toggleVoiceFollowerRaw,
   } = useVoiceChantingFollower({
     stanzas: aarti.stanzas,
     onVoiceActivityChange: isVoiceChanting => {
       if (isVoiceChanting) {
         startAutoScroll();
-      } else {
-        stopAutoScroll();
       }
     },
     onStanzaMatch: matchedIndex => {
@@ -161,6 +161,16 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
       }
     },
   });
+
+  const toggleVoiceFollower = useCallback(() => {
+    if (isVoiceFollowerActive) {
+      toggleVoiceFollowerRaw();
+      stopAutoScroll();
+    } else {
+      toggleVoiceFollowerRaw();
+      startAutoScroll();
+    }
+  }, [isVoiceFollowerActive, toggleVoiceFollowerRaw, startAutoScroll, stopAutoScroll]);
 
   // Keep auto-scroll speed synchronized with ThemeContext
   useEffect(() => {
@@ -444,7 +454,7 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
           <div className="flex items-center gap-2">
             <span className={`w-2.5 h-2.5 rounded-full ${isChanting ? 'bg-emerald-500 animate-ping' : 'bg-emerald-400'}`} />
             <span className="font-semibold">
-              {isChanting ? '🎙️ गायन सुरू • स्क्रोल चालू' : '🎙️ आवाज ऐकत आहे... (गायन सुरू करा)'}
+              {isChanting ? '🎙️ गायन सुरू • वाणी स्क्रोल चालू' : '🎙️ आवाज ऐकत आहे... (पठण सुरू करा)'}
             </span>
           </div>
           {lastRecognizedPhrase && (
@@ -452,6 +462,23 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
               &quot;{lastRecognizedPhrase}&quot;
             </span>
           )}
+        </div>
+      )}
+
+      {/* Voice Follower Error / Permission Banner */}
+      {voiceFollowerError && (
+        <div className="flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-xs text-rose-800 dark:text-rose-200 animate-fade-in shadow-xs">
+          <div className="flex items-center gap-2">
+            <span className="text-sm">⚠️</span>
+            <span className="font-medium">{voiceFollowerError}</span>
+          </div>
+          <button
+            onClick={clearVoiceFollowerError}
+            aria-label="Dismiss error"
+            className="p-1 rounded-lg hover:bg-rose-500/20 transition-colors shrink-0 text-xs font-bold"
+          >
+            ✕
+          </button>
         </div>
       )}
 

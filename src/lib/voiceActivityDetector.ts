@@ -14,9 +14,9 @@ export interface VADMetrics {
 }
 
 export class DevotionalVoiceActivityDetector {
-  private energyThreshold = 0.015; // Minimum RMS energy for vocal chant
-  private zcrMin = 0.003; // Allows low-pitch devotional swaras (down to 80Hz)
-  private zcrMax = 0.45; // Vocal singing boundary (avoids high-frequency hiss/fans)
+  private energyThreshold = 0.008; // Sensitive threshold for devotional recitation & quiet swaras
+  private zcrMin = 0.002; // Allows low-pitch devotional swaras (down to 70Hz)
+  private zcrMax = 0.48; // Vocal singing boundary (avoids high-frequency hiss/fans)
   private consecutiveActiveFrames = 0;
   private consecutiveSilenceFrames = 0;
   private isCurrentlyActive = false;
@@ -63,8 +63,8 @@ export class DevotionalVoiceActivityDetector {
       this.consecutiveSilenceFrames++;
       this.consecutiveActiveFrames = 0;
 
-      // Gentle pause hangover (~18-24 frames / ~400-500ms) to prevent jitter during breath pauses
-      if (this.consecutiveSilenceFrames >= 18) {
+      // Devotional breathing pause hangover (~50 frames / ~800-1000ms) to maintain smooth reading flow
+      if (this.consecutiveSilenceFrames >= 50) {
         this.isCurrentlyActive = false;
       }
     }
