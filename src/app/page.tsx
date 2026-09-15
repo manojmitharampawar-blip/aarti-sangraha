@@ -8,19 +8,13 @@ import {
   Flame,
   Calendar,
   Search,
-  BookOpen,
-  Music,
-  Clock,
-  Layers,
-  Shield,
-  Sun,
-  Moon,
-  Sunset,
   Sunrise,
+  Sun,
+  Sunset,
+  Moon,
 } from 'lucide-react';
 import { deities } from '@/data/deities';
 import { aartis } from '@/data/aartis';
-import { playlists } from '@/data/playlists';
 import { AartiCard } from '@/components/AartiCard';
 import { DailySadhanaCard } from '@/components/DailySadhanaCard';
 import { useThemeContext } from '@/components/ThemeProvider';
@@ -123,7 +117,8 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className={`space-y-6 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>\n      {/* 1. Time-Aware Devotional Greeting Banner */}
+    <div className={`space-y-6 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>
+      {/* 1. Time-Aware Devotional Greeting Banner */}
       <div className="flex items-center justify-between px-1">
         <div className="flex items-center gap-2.5">
           <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-saffron-500/20 to-amber-500/30 border border-saffron-500/30 flex items-center justify-center text-saffron-600 shadow-xs">
