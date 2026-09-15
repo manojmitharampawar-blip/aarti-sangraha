@@ -21,8 +21,10 @@ import { useCustomGroups } from '@/hooks/useCustomGroups';
 import { useThemeContext } from '@/components/ThemeProvider';
 import { useWakeLock } from '@/hooks/useWakeLock';
 import { useAutoScroll } from '@/hooks/useAutoScroll';
+import { useVoiceChantingFollower } from '@/hooks/useVoiceChantingFollower';
 import { AutoScrollPill } from '@/components/AutoScrollPill';
 import { ReadingSettingsModal } from '@/components/ReadingSettingsModal';
+import { VirtualAartiModal } from '@/components/VirtualAartiModal';
 import { GroupEditorModal } from '@/components/GroupEditorModal';
 import { ShareGroupModal } from '@/components/ShareGroupModal';
 import { NextAartiCountdown } from '@/components/NextAartiCountdown';
@@ -51,6 +53,7 @@ function GroupPlayerContent() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeStanzaIndex, setActiveStanzaIndex] = useState(0);
   const [isReadingSettingsOpen, setIsReadingSettingsOpen] = useState(false);
+  const [isVirtualAartiOpen, setIsVirtualAartiOpen] = useState(false);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [pendingNextAarti, setPendingNextAarti] = useState<AartiItem | null>(null);
@@ -99,10 +102,35 @@ function GroupPlayerContent() {
     isScrolling,
     speed,
     setSpeed,
-    toggle: toggleAutoScroll,
+    start: startAutoScroll,
     stop: stopAutoScroll,
+    toggle: toggleAutoScroll,
     resetEndTrigger,
   } = useAutoScroll(autoScrollSpeed, handleReachEnd);
+
+  // Phase 4: Hands-free Voice-Activated Chanting Follower (AI)
+  const {
+    isActive: isVoiceFollowerActive,
+    isChanting,
+    lastRecognizedPhrase,
+    toggleFollower: toggleVoiceFollower,
+  } = useVoiceChantingFollower({
+    stanzas: currentAarti?.stanzas || [],
+    onVoiceActivityChange: isChantingNow => {
+      if (isChantingNow) {
+        startAutoScroll();
+      } else {
+        stopAutoScroll();
+      }
+    },
+    onStanzaMatch: matchedIndex => {
+      setActiveStanzaIndex(matchedIndex);
+      const el = document.getElementById(`group-stanza-${matchedIndex}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    },
+  });
 
   const proceedToNext = useCallback(() => {
     stopAutoScroll();
@@ -128,12 +156,12 @@ function GroupPlayerContent() {
     };
   }, [requestLock, releaseLock]);
 
-  // When auto navigation is active, keep screen display awake on mobile and desktop
+  // When auto navigation or voice follower is active, keep screen display awake
   useEffect(() => {
-    if (isScrolling) {
+    if (isScrolling || isVoiceFollowerActive) {
       requestLock();
     }
-  }, [isScrolling, requestLock]);
+  }, [isScrolling, isVoiceFollowerActive, requestLock]);
 
   const goToPrev = () => {
     if (currentIndex > 0) {
@@ -224,6 +252,16 @@ function GroupPlayerContent() {
             )}
           </button>
 
+          {/* Touchless Virtual Aarti Camera Trigger (AI) */}
+          <button
+            onClick={() => setIsVirtualAartiOpen(true)}
+            aria-label="Open touchless virtual aarti"
+            title="स्पर्शविरहित व्हर्च्युअल आरती (AI कॅमेरा हस्तमुद्रा)"
+            className="p-2 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20 active:scale-95 transition-all"
+          >
+            <Sparkles className="w-4 h-4 text-amber-500 animate-pulse" />
+          </button>
+
           {/* Reading Aa Button */}
           <button
             onClick={() => setIsReadingSettingsOpen(true)}
@@ -249,7 +287,7 @@ function GroupPlayerContent() {
               <button
                 onClick={() => setIsShareModalOpen(true)}
                 aria-label="Share group on WhatsApp"
-                title="व्हाट्सॲपवर संग्रह शेअर करा"
+                title="व्हॉट्सअ‍ॅपवर संग्रह शेअर करा"
                 className="p-2 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-secondary)] hover:text-emerald-600 hover:border-emerald-500/50"
               >
                 <Send className="w-4 h-4" />
@@ -307,7 +345,7 @@ function GroupPlayerContent() {
         <div className="p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-xs font-bold flex items-center justify-between animate-fade-in shadow-md">
           <div className="flex items-center gap-2">
             <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
-            <span>अभिनंदन! या संग्रहातील सर्व आरत्या संपन्न झाल्या आहेत.</span>
+            <span>अभिनंदन! या संग्रहातील सर्व आरत्या व स्तोत्रे संपन्न झाली आहेत.</span>
           </div>
           <button
             onClick={() => setIsCompletedToast(false)}
@@ -346,7 +384,7 @@ function GroupPlayerContent() {
         )}
       </div>
 
-      {/* Devotional Audio & Speech Recitation Toolbar */}
+      {/* Devotional Audio, AI Voice Follower & Speech Recitation Toolbar */}
       <DevotionalAudioBar
         stanzas={currentAarti.stanzas}
         script={script === 'dual' ? 'devanagari' : script}
@@ -357,6 +395,9 @@ function GroupPlayerContent() {
           const nextSpd = cycleAutoScrollSpeed();
           setSpeed(nextSpd);
         }}
+        isVoiceFollowerActive={isVoiceFollowerActive}
+        isVoiceChanting={isChanting}
+        onToggleVoiceFollower={toggleVoiceFollower}
         onStanzaChange={stanzaIndex => {
           setActiveStanzaIndex(stanzaIndex);
           const el = document.getElementById(`group-stanza-${stanzaIndex}`);
@@ -366,6 +407,23 @@ function GroupPlayerContent() {
         }}
         onSpeechComplete={handleReachEnd}
       />
+
+      {/* Live Voice Follower Chanting Feedback Banner */}
+      {isVoiceFollowerActive && (
+        <div className="flex items-center justify-between gap-2 px-3.5 py-2 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 text-xs text-emerald-800 dark:text-emerald-200 animate-fade-in shadow-xs">
+          <div className="flex items-center gap-2">
+            <span className={`w-2.5 h-2.5 rounded-full ${isChanting ? 'bg-emerald-500 animate-ping' : 'bg-emerald-400'}`} />
+            <span className="font-semibold">
+              {isChanting ? '🎙️ गायन सुरू • स्क्रोल चालू (AI)' : '🎙️ आवाज ऐकत आहे... (गायन सुरू करा)'}
+            </span>
+          </div>
+          {lastRecognizedPhrase && (
+            <span className="text-[11px] font-medium opacity-85 truncate max-w-[160px] sm:max-w-xs font-devanagari">
+              &quot;{lastRecognizedPhrase}&quot;
+            </span>
+          )}
+        </div>
+      )}
 
       {/* Lyrics Canvas with Kindle Typography and Spotlight Focus */}
       <article
@@ -473,17 +531,28 @@ function GroupPlayerContent() {
         )}
       </div>
 
-      {/* Auto Scroll Floating Pill */}
+      {/* Auto Scroll & AI Controls Floating Pill */}
       <AutoScrollPill
         isScrolling={isScrolling}
         speed={speed}
         onToggle={toggleAutoScroll}
         onSpeedChange={setSpeed}
+        isVoiceFollowerActive={isVoiceFollowerActive}
+        isVoiceChanting={isChanting}
+        onToggleVoiceFollower={toggleVoiceFollower}
+        onOpenVirtualAarti={() => setIsVirtualAartiOpen(true)}
       />
 
       <ReadingSettingsModal
         isOpen={isReadingSettingsOpen}
         onClose={() => setIsReadingSettingsOpen(false)}
+      />
+
+      {/* Touchless Virtual Aarti Camera Modal (AI) */}
+      <VirtualAartiModal
+        isOpen={isVirtualAartiOpen}
+        onClose={() => setIsVirtualAartiOpen(false)}
+        aarti={currentAarti}
       />
 
       {customGroup && (

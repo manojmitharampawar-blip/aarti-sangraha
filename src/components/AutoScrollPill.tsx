@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Play, Pause, FastForward, Sun } from 'lucide-react';
+import { Play, Pause, FastForward, Sun, Mic } from 'lucide-react';
 import { useThemeContext } from '@/components/ThemeProvider';
 import { useScrollDirection } from '@/hooks/useScrollDirection';
 
@@ -10,6 +10,10 @@ interface AutoScrollPillProps {
   speed?: number;
   onToggle: () => void;
   onSpeedChange?: (speed: number) => void;
+  isVoiceFollowerActive?: boolean;
+  isVoiceChanting?: boolean;
+  onToggleVoiceFollower?: () => void;
+  onOpenVirtualAarti?: () => void;
 }
 
 export function AutoScrollPill({
@@ -17,6 +21,10 @@ export function AutoScrollPill({
   speed: propSpeed,
   onToggle,
   onSpeedChange,
+  isVoiceFollowerActive,
+  isVoiceChanting,
+  onToggleVoiceFollower,
+  onOpenVirtualAarti,
 }: AutoScrollPillProps) {
   const { autoScrollSpeed, cycleAutoScrollSpeed, script } = useThemeContext();
   const isNavVisible = useScrollDirection(8);
@@ -37,6 +45,40 @@ export function AutoScrollPill({
         isNavVisible ? 'bottom-20' : 'bottom-4'
       }`}
     >
+      {/* Touchless Virtual Aarti Trigger (AI) */}
+      {onOpenVirtualAarti && (
+        <button
+          onClick={onOpenVirtualAarti}
+          aria-label="Start touchless virtual aarti"
+          title="स्पर्शविरहित व्हर्च्युअल आरती (AI)"
+          className="p-1.5 rounded-full border border-amber-500/30 bg-amber-500/15 text-amber-600 hover:bg-amber-500/25 active:scale-90 transition-all flex items-center justify-center text-xs"
+        >
+          <span>🪔</span>
+        </button>
+      )}
+
+      {/* Voice Chanting Follower Button (AI) */}
+      {onToggleVoiceFollower && (
+        <button
+          onClick={onToggleVoiceFollower}
+          aria-label="Toggle voice chanting follower"
+          title={
+            isVoiceFollowerActive
+              ? 'वाणी अनुसरक थांबवा'
+              : 'वाणी अनुसरक (AI गायन ऐकून आपोआप स्क्रोल)'
+          }
+          className={`p-1.5 rounded-full border transition-all active:scale-90 flex items-center justify-center ${
+            isVoiceFollowerActive
+              ? isVoiceChanting
+                ? 'border-emerald-500 bg-emerald-600 text-white animate-pulse shadow-md shadow-emerald-500/30'
+                : 'border-emerald-500/50 bg-emerald-500/20 text-emerald-700 dark:text-emerald-300'
+              : 'border-[var(--border-main)] text-[var(--text-secondary)] hover:text-emerald-600'
+          }`}
+        >
+          <Mic className="w-3.5 h-3.5" />
+        </button>
+      )}
+
       {/* Play/Pause Button */}
       <button
         onClick={onToggle}
@@ -51,7 +93,7 @@ export function AutoScrollPill({
         <span>{isScrolling ? 'थांबवा' : 'स्वयं-स्क्रोल'}</span>
       </button>
 
-      {/* Speed Selector (Uniform: 0.5x, 1x, 1.5x, 2x) */}
+      {/* Speed Selector (Uniform: 0.5x, 0.75x, 1x, 1.25x, 1.5x, 1.75x, 2x) */}
       <button
         onClick={handleNextSpeed}
         aria-label={`Current scroll speed ${currentSpeed}x. Click to change speed.`}

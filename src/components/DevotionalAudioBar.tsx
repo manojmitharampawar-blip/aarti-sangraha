@@ -185,7 +185,7 @@ export function DevotionalAudioBar({
           <button
             onClick={() => setShowSettings(prev => !prev)}
             aria-label="Adjust audio settings"
-            title="ऑडिओ, सूर व ताल सेटिंग्ज"
+            title="ऑडिओ, सूर व ताल सेटिंग्ज (AI)"
             className={`p-1.5 rounded-lg border transition-colors ${
               showSettings
                 ? 'border-saffron-500 bg-saffron-500/10 text-saffron-600'
@@ -206,7 +206,7 @@ export function DevotionalAudioBar({
               title={
                 isVoiceFollowerActive
                   ? 'वाणी अनुसरक थांबवा'
-                  : 'वाणी अनुसरक सुरू करा (गायन ऐकून आपोआप स्क्रोल)'
+                  : 'वाणी अनुसरक सुरू करा (AI गायन ऐकून आपोआप स्क्रोल)'
               }
               className={`flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
                 isVoiceFollowerActive
@@ -222,7 +222,7 @@ export function DevotionalAudioBar({
                   ? isVoiceChanting
                     ? 'गायन चालू'
                     : 'वाणी अनुसरक'
-                  : 'वाणी स्क्रोल'}
+                  : 'वाणी स्क्रोल (AI)'}
               </span>
             </button>
           )}
