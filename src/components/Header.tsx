@@ -2,9 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Moon, Sun, Flame, Sliders } from 'lucide-react';
+import { Moon, Sun, Flame, Sliders, HelpCircle } from 'lucide-react';
 import { useThemeContext } from '@/components/ThemeProvider';
 import { useScrollDirection } from '@/hooks/useScrollDirection';
+import { openAppGuide } from '@/components/AppIntroductionModal';
 
 export function Header() {
   const { theme, setTheme, script, toggleScript } = useThemeContext();
@@ -57,6 +58,16 @@ export function Header() {
             {theme === 'light' && <Sun className="w-4 h-4 text-amber-600" />}
             {theme === 'pooja' && <Flame className="w-4 h-4 text-amber-500 fill-amber-500 animate-diya-glow" />}
             {theme === 'dark' && <Moon className="w-4 h-4 text-indigo-400" />}
+          </button>
+
+          {/* App Guide / Introduction Walkthrough */}
+          <button
+            onClick={openAppGuide}
+            aria-label="ॲप मार्गदर्शक व माहिती (App Guide)"
+            title="ॲप मार्गदर्शक (App Guide)"
+            className="p-2 rounded-lg border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-primary)] hover:border-saffron-500/50 transition-colors shadow-sm"
+          >
+            <HelpCircle className="w-4 h-4 text-amber-600 dark:text-amber-400" />
           </button>
 
           <Link

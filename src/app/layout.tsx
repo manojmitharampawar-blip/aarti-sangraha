@@ -6,6 +6,7 @@ import { Header } from '@/components/Header';
 import { BottomNav } from '@/components/BottomNav';
 import { RitualBar } from '@/components/RitualBar';
 import { PWAInstallPrompt } from '@/components/PWAInstallPrompt';
+import { AppIntroductionModal } from '@/components/AppIntroductionModal';
 
 const notoSans = Noto_Sans_Devanagari({
   subsets: ['devanagari'],
@@ -203,6 +204,7 @@ export default function RootLayout({
             <BottomNav />
           </div>
           <PWAInstallPrompt />
+          <AppIntroductionModal />
         </ThemeProvider>
       </body>
     </html>

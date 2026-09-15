@@ -21,6 +21,8 @@ import {
 import { useThemeContext, ThemeType } from '@/components/ThemeProvider';
 import { playTempleBell } from '@/lib/audioBell';
 import { triggerPWAInstall } from '@/components/PWAInstallPrompt';
+import { openAppGuide } from '@/components/AppIntroductionModal';
+import { HelpCircle } from 'lucide-react';
 import { useAppPermissions, PermissionStatusType } from '@/hooks/useAppPermissions';
 
 export default function SettingsPage() {
@@ -448,6 +450,26 @@ export default function SettingsPage() {
             ध्वनी तपासा (Ring)
           </button>
         </div>
+      </section>
+
+      {/* Interactive App Guide & Tour */}
+      <section className="p-4 rounded-2xl border border-[var(--border-main)] bg-[var(--card-main)] space-y-2">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 text-xs font-bold text-amber-600 dark:text-amber-400">
+            <HelpCircle className="w-4 h-4" />
+            <span>ॲप वापर मार्गदर्शक व फिचर्स (Interactive App Guide)</span>
+          </div>
+        </div>
+        <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+          शोध कसा वापरावा, नित्य संग्रह कसे तयार करावे, AI वाणी स्क्रोल व स्पर्शविरहित आरती कशी वापरावी याचे सविस्तर मार्गदर्शन पुन्हा पाहा.
+        </p>
+        <button
+          onClick={openAppGuide}
+          className="w-full mt-2 py-2 px-3 rounded-xl border border-saffron-500/40 bg-saffron-500/10 hover:bg-saffron-500/20 text-saffron-700 dark:text-saffron-300 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
+        >
+          <HelpCircle className="w-4 h-4" />
+          <span>मार्गदर्शक टूर पुन्हा सुरू करा (Open Tour)</span>
+        </button>
       </section>
 
       {/* Offline & App Info */}
