@@ -17,6 +17,7 @@ import { deities } from '@/data/deities';
 import { aartis } from '@/data/aartis';
 import { AartiCard } from '@/components/AartiCard';
 import { DailySadhanaCard } from '@/components/DailySadhanaCard';
+import { DevotionalHeroBanner } from "@/components/DevotionalHeroBanner";
 import { useThemeContext } from '@/components/ThemeProvider';
 import {
   CATEGORY_REGISTRY,
@@ -118,6 +119,9 @@ export default function HomePage() {
 
   return (
     <div className={`space-y-6 transition-all ${diyaGlow ? 'diya-aura' : ''}`}>
+      {/* Devotional Small Hero Banner */}
+      <DevotionalHeroBanner />
+
       {/* 1. Time-Aware Devotional Greeting Banner */}
       <div className="flex items-center justify-between px-1">
         <div className="flex items-center gap-2.5">
