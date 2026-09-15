@@ -34,10 +34,66 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH
   : '';
 
 export const metadata: Metadata = {
-  title: 'आरती संग्रह (Aarti Sangraha) — Nitya Pooja & Prayers',
-  description: 'A serene, distraction-free, mobile-first Aarti Sangraha web app with auto-scroll, dual-script support, and offline capabilities.',
-  keywords: ['aarti sangraha', 'ganesh aarti', 'marathi aarti', 'sukhkarta dukhharta', 'durga aarti', 'hanuman chalisa'],
-  authors: [{ name: 'Aarti Sangraha Team' }],
+  metadataBase: new URL('https://vediconline.com'),
+  title: {
+    default: 'संपूर्ण आरती संग्रह मराठी | Vedic Online (Aarti Sangraha, Stotras & Panchang)',
+    template: '%s | Vedic Online',
+  },
+  description:
+    'सर्व देवी-देवतांच्या मराठी आरत्या, स्तोत्रे, मंत्र, दैनिक पंचांग व नित्य उपासना संग्रह. सूर-ताल ऑडिओ, व्हर्च्युअल आरती, AI वाणी स्क्रोल व इंग्रजी उच्चारणासह (Dual-script).',
+  keywords: [
+    'आरती संग्रह',
+    'संपूर्ण आरती संग्रह',
+    'मराठी आरत्या लिरिक्स',
+    'marathi aarti lyrics',
+    'vedic online',
+    'गणपती आरती',
+    'sukhkarta dukhharta lyrics',
+    'durga aarti',
+    'maruti stotra marathi',
+    'hanuman chalisa marathi',
+    'nitya upasana aarti',
+    'daily panchang marathi',
+    'aarti sangraha app',
+  ],
+  authors: [{ name: 'Vedic Online Team', url: 'https://vediconline.com' }],
+  creator: 'Vedic Online',
+  publisher: 'Vedic Online',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: 'https://vediconline.com/',
+  },
+  openGraph: {
+    title: 'संपूर्ण आरती संग्रह मराठी | Vedic Online',
+    description:
+      'सर्व देवी-देवतांच्या मराठी आरत्या, स्तोत्रे, मंत्र व नित्य उपासना संग्रह. सूर-ताल ऑडिओ, व्हर्च्युअल आरती व AI स्क्रोलसह.',
+    url: 'https://vediconline.com/',
+    siteName: 'Vedic Online | आरती संग्रह',
+    locale: 'mr_IN',
+    alternateLocale: ['en_US', 'hi_IN'],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'संपूर्ण आरती संग्रह मराठी | Vedic Online',
+    description:
+      'सर्व देवी-देवतांच्या मराठी आरत्या, स्तोत्रे, मंत्र व नित्य उपासना संग्रह.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   manifest: `${basePath}/manifest.json`,
   icons: {
     icon: `${basePath}/icon-192.png`,
@@ -62,6 +118,33 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Global Structured Data for Google Sitelinks Search Box and Brand Authority
+  const jsonLdWebsite = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Vedic Online | आरती संग्रह',
+    alternateName: ['Aarti Sangraha', 'Vedic Online', 'वैदिक ऑनलाइन', 'Aarti Sangrah'],
+    url: 'https://vediconline.com/',
+    inLanguage: 'mr-IN',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://vediconline.com/search/?q={search_term_string}',
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
+  const jsonLdOrganization = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Vedic Online',
+    alternateName: 'वैदिक ऑनलाइन',
+    url: 'https://vediconline.com/',
+    logo: 'https://vediconline.com/icon-512.png',
+  };
+
   return (
     <html lang="mr" className="h-full" suppressHydrationWarning>
       <head>
@@ -69,6 +152,14 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="आरती संग्रह" />
         <meta name="application-name" content="आरती संग्रह" />
         <link rel="apple-touch-icon" href={`${basePath}/icon-192.png`} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebsite) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }}
+        />
       </head>
       <body
         className={`${notoSans.variable} ${notoSerif.variable} ${mukta.variable} font-sans h-full bg-[var(--bg-main)] text-[var(--text-primary)] antialiased transition-colors duration-300`}
