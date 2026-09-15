@@ -1,0 +1,1554 @@
+import { AartiItem } from '@/types';
+
+export const deviAartis: AartiItem[] = [
+  {
+    "id": "devi-durge-durgat",
+    "slug": "durge-durgat-bhari",
+    "titleDevanagari": "दुर्गे दुर्घट भारी तुजवीण संसारी (दुर्गा देवी आरती)",
+    "titleTransliteration": "Durge Durgat Bhari Tujvin Sansari",
+    "firstLineDevanagari": "दुर्गे दुर्घटभारी तुजवीण संसारी । अनाथ नाथे अम्बे करुणाविस्तारी ॥",
+    "firstLineTransliteration": "Durge durghatabharee tujveen sansaree | Anatha nathe ambe karunavistaree ||",
+    "deity": "devi",
+    "type": "aarti",
+    "language": "marathi",
+    "author": "नरहरी सोनार (Narahari Sonar)",
+    "meaningSummary": "महिषासुरमर्दिनी आई दुर्गेची संकटनाशक प्रसिद्ध व मंगलमय आरती.",
+    "tags": [
+      "durga",
+      "devi",
+      "navratri",
+      "narahari sonar",
+      "friday"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": true,
+        "devanagari": [
+          "दुर्गे दुर्घटभारी तुजवीण संसारी ।",
+          "अनाथ नाथे अम्बे करुणाविस्तारी ।",
+          "वारी वारी जन्म मरणांते वारी ।",
+          "हारी पडलो आता संकट नेवारी ॥ १ ॥",
+          "जय देवी जय देवी महिषासुरमथिनि ।",
+          "सुरवर ईश्वर वरदे तारकसंजीवनी ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Durge durghatabharee tujaveena sansaree |",
+          "Anatha nathe ambe karunavistaree |",
+          "Varee varee janma maranante varee |",
+          "Haree padalo aata sankata nevaree || १ ||",
+          "Jaya devee jaya devee mahishasuramathini |",
+          "Suravara eeshvara varade tarakasanjeevanee || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "तुजवीण भुवनी पाहता तुज ऐसे नाही ।",
+          "चारी श्रमले परंतु न बोलवे काही ।",
+          "साही विवाद करिता पडले प्रवाही ।",
+          "ते तू भक्तालागी पावसि लवलाही ॥ २ ॥",
+          "जय देवी जय देवी महिषासुरमथिनि ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Tujaveena bhuvanee pahata tuja aise nahee |",
+          "Charee shramale parantu na bolave kahee |",
+          "Sahee vivada karita padale pravahee |",
+          "Te too bhaktalagee pavasi lavalahee || २ ||",
+          "Jaya devee jaya devee mahishasuramathini || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 3,
+        "isChorus": false,
+        "devanagari": [
+          "प्रसन्न वदने प्रसन्न होसी निजदासा ।",
+          "क्लेशांपासुनी सोडवी तोडी भवपाशा ।",
+          "अम्बे तुजवाचून कोण पुरवील आशा ।",
+          "नरहरी तल्लीन झाला पदपंकजलेशा ॥ ३ ॥",
+          "जय देवी जय देवी महिषासुरमथिनि ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Prasanna vadane prasanna hosee nijadasa |",
+          "Kleshampasunee sodavee todee bhavapasha |",
+          "Ambe tujavachoona kona puraveela aasha |",
+          "Naraharee talleena jhala padapankajalesha || ३ ||",
+          "Jaya devee jaya devee mahishasuramathini || dhru. ||"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "devi-mahalakshmi",
+    "slug": "jai-devi-mahalakshmi",
+    "titleDevanagari": "जय देवी जय देवी जय महालक्ष्मी (कोल्हापूर आरती)",
+    "titleTransliteration": "Jai Devi Jai Devi Jai Mahalakshmi",
+    "firstLineDevanagari": "जय देवी जय देवी जय महालक्ष्मी",
+    "firstLineTransliteration": "Jai devi jai devi jai mahalakshmi",
+    "deity": "devi",
+    "type": "aarti",
+    "language": "marathi",
+    "meaningSummary": "करवीर निवासिनी महालक्ष्मीची आरती; सुख, समृद्धी आणि भक्तांचे कल्याण करणारी जगन्माता.",
+    "tags": [
+      "devi",
+      "mahalakshmi",
+      "diwali",
+      "kolhapur",
+      "wealth"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": true,
+        "devanagari": [
+          "जय देवी जय देवी जय महालक्ष्मी ।",
+          "करवीरपुरवासिनी सुरवरनरनमी ॥ धृ. ॥",
+          "पूर्णब्रह्म सनातन निर्गुण निराकार ।",
+          "भक्तजनांसाठी धरिला आकार ॥ १ ॥",
+          "जय देवी जय देवी जय महालक्ष्मी ।",
+          "करवीरपुरवासिनी सुरवरनरनमी ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Jai devi jai devi jai mahalakshmi |",
+          "Karaveerapuravasini suravaranaranami || Dhru. ||",
+          "Poornabrahma sanatana nirguna nirakara |",
+          "Bhaktajanansathi dharila aakara || 1 ||",
+          "Jai devi jai devi jai mahalakshmi |",
+          "Karaveerapuravasini suravaranaranami || Dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "सिंधुदुहिता प्रगटली क्षीरसागरामधुनी ।",
+          "विष्णूची अर्धांगी शोभे त्रिभुवनी ।",
+          "कमलासन शोभित हाती घेउनी कमळा ।",
+          "आरती ओवाळू देवी तुज चरणकमळा ॥ २ ॥",
+          "जय देवी जय देवी जय महालक्ष्मी ।",
+          "करवीरपुरवासिनी सुरवरनरनमी ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Sindhuduhita pragatali ksheerasagaramadhuni |",
+          "Vishnoochi ardhangi shobhe tribhuvani |",
+          "Kamalasana shobhita haati gheuni kamala |",
+          "Aarti ovaloo devi tuja charanakamala || 2 ||",
+          "Jai devi jai devi jai mahalakshmi |",
+          "Karaveerapuravasini suravaranaranami || Dhru. ||"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gauri-aarti",
+    "slug": "aarti-gauri-mata",
+    "titleDevanagari": "गौरी मातेची आरती (भाद्रपद महालक्ष्मी)",
+    "titleTransliteration": "Aarti Gauri Mata (Bhadrapad Mahalakshmi)",
+    "firstLineDevanagari": "जय देवी जय देवी जय महालक्ष्मी । गौरी गणपती पूजितो आंम्ही",
+    "firstLineTransliteration": "Jai devi jai devi jai mahalakshmi | Gauri ganapati poojito aamhi",
+    "deity": "gauri",
+    "type": "aarti",
+    "language": "marathi",
+    "meaningSummary": "भाद्रपद महिन्यात घरोघरी गणरायाच्या पाठोपाठ येणाऱ्या कुलस्वामिनी ज्येष्ठा-कनिष्ठा गौरींची पारंपरिक मंगल आरती.",
+    "tags": [
+      "gauri",
+      "bhadrapad",
+      "mahalakshmi",
+      "utsav",
+      "marathi"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": true,
+        "devanagari": [
+          "जय देवी जय देवी जय महालक्ष्मी ।",
+          "गौरी गणपती पूजितो आंम्ही ॥ ध्रु० ॥",
+          "भाद्रपद मासीं अनुराधा नक्षत्रीं ।",
+          "गौरी आगमन झाले घरांत पवित्र ॥ १ ॥"
+        ],
+        "transliteration": [
+          "Jai devi jai devi jai mahalakshmi |",
+          "Gauri ganapati poojito aamhi || Dhru. ||",
+          "Bhadrapada maasi anuradha nakshatri |",
+          "Gauri aagamana jhale gharanta pavitra || 1 ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "सुवर्णाचे ताट रत्नजडित दीप ।",
+          "ओवाळिती नारी हरिखे अमूप ॥ २ ॥",
+          "जय देवी जय देवी जय महालक्ष्मी ॥ ध्रु० ॥"
+        ],
+        "transliteration": [
+          "Suvarnache taata ratnajadita deepa |",
+          "Ovaliti naari harikhe amoopa || 2 ||",
+          "Jai devi jai devi jai mahalakshmi || Dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 3,
+        "isChorus": false,
+        "devanagari": [
+          "सोळा भाज्यांचा नैवेद्य दाविला ।",
+          "गौरी मातेचा आनंद जाहला ॥ ३ ॥",
+          "सौभाग्य संपत्ती देई निरंतर ।",
+          "दास अनन्य चरणीं लीन निरंतर ॥ ४ ॥",
+          "जय देवी जय देवी जय महालक्ष्मी ॥ ध्रु० ॥"
+        ],
+        "transliteration": [
+          "Sola bhajanchan naivedya daavila |",
+          "Gauri matecha aananda jaahala || 3 ||",
+          "Saubhagya sampatti deyi nirantara |",
+          "Dasa ananya charani leena nirantara || 4 ||",
+          "Jai devi jai devi jai mahalakshmi || Dhru. ||"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "devi-ambe-mata-navratri",
+    "slug": "aarti-ambe-mata-navratri",
+    "titleDevanagari": "अंबे मातेची आरती (नवरात्री विशेष आरती)",
+    "titleTransliteration": "Aarti Ambe Mata (Navratri Special Aarti)",
+    "firstLineDevanagari": "अंबे कृपा करीं अंबे कृपा करीं । नवरानीच्या दिनीं वास करीं अंतरीं",
+    "firstLineTransliteration": "Ambe kripa kari ambe kripa kari | Navratrichya dini vaas kari antari",
+    "deity": "devi",
+    "type": "aarti",
+    "language": "marathi",
+    "meaningSummary": "शैलपुत्री ते सिद्धीदात्री अशा नवदुर्गा रूपांची आराधना करणारी, नऊ रात्रींच्या घटस्थापनेची विशेष मंगल आरती.",
+    "tags": [
+      "navratri",
+      "ambe",
+      "durga",
+      "devi",
+      "marathi"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": true,
+        "devanagari": [
+          "अंबे कृपा करीं अंबे कृपा करीं ।",
+          "नवरानीच्या दिनीं वास करीं अंतरीं ॥ ध्रु० ॥",
+          "प्रथम शैलपुत्री दुसरी ब्रह्मचारिणी ।",
+          "तिसरी चंद्रघंटा कुष्मांडा तारिणी ॥ १ ॥"
+        ],
+        "transliteration": [
+          "Ambe kripa kari ambe kripa kari |",
+          "Navratrichya dini vaas kari antari || Dhru. ||",
+          "Prathama shailaputri doosari brahmacharini |",
+          "Tisari chandraghanta kooshmanda tarini || 1 ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "पंचमी स्कंदमाता षष्ठी कात्यायनी ।",
+          "सप्तमी कालरात्री महागौरी पावनी ॥ २ ॥",
+          "नवमी सिद्धीदात्री नवदुर्गा रूप ।",
+          "अनंत महिमा तुझा अपार प्रताप ॥ ३ ॥",
+          "अंबे कृपा करीं अंबे कृपा करीं ॥ ध्रु० ॥"
+        ],
+        "transliteration": [
+          "Panchami skandamata shashthi katyayani |",
+          "Saptami kalaratri mahagauri pavani || 2 ||",
+          "Navami siddhidatri navadurga roopa |",
+          "Ananta mahima tujha apaara pratapa || 3 ||",
+          "Ambe kripa kari ambe kripa kari || Dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 3,
+        "isChorus": false,
+        "devanagari": [
+          "घटस्थापना केली तुळजापूर वासिनी ।",
+          "भक्तांच्या संकटी धावे सिंहवाहिनी ॥ ४ ॥",
+          "दास अनन्य तुझा चरणीं लीन झाला ।",
+          "जय जय दुर्गे माते भवतारक आला ॥ ५ ॥",
+          "अंबे कृपा करीं अंबे कृपा करीं ॥ ध्रु० ॥"
+        ],
+        "transliteration": [
+          "Ghatasthapana keli tuljapur vasini |",
+          "Bhaktanchya sankati dhaave simhavahini || 4 ||",
+          "Dasa ananya tujha charani leena jhala |",
+          "Jai jai durge maate bhavataraka aala || 5 ||",
+          "Ambe kripa kari ambe kripa kari || Dhru. ||"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "santoshimata-aarti",
+    "slug": "aarti-santoshi-mata",
+    "titleDevanagari": "श्री संतोषी मातेची आरती (जय देवी श्री देवी संतोषी माते)",
+    "titleTransliteration": "Aarti Santoshi Mata (Jay Devi Shri Devi)",
+    "firstLineDevanagari": "जय देवी श्री देवी संतोषी माते । वंदन भावें माझें तव पदकमलातें ॥",
+    "firstLineTransliteration": "Jaya devee shree devee santoshee mate | Vandana bhaven majhen tava padakamalaten ||",
+    "deity": "santoshimata",
+    "type": "aarti",
+    "language": "marathi",
+    "author": "मिलिंद माधव (Milind Madhav)",
+    "meaningSummary": "शुक्रवारच्या व्रतासाठी संतोषी मातेची सुख-समाधान देणारी मराठी आरती.",
+    "tags": [
+      "santoshi mata",
+      "friday",
+      "vrat",
+      "devi"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": true,
+        "devanagari": [
+          "जय देवी श्री देवी संतोषी माते ।",
+          "वंदन भावें माझें तव पदकमलातें ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Jaya devee shree devee santoshee mate |",
+          "Vandana bhaven majhen tava padakamalaten || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "श्रीलक्ष्मीदेवी तूं श्रीविष्णूपत्नी ।",
+          "पावसी भक्तालागीं अति सोप्या यत्नीं ।",
+          "जननी विश्वाची तूं जीवन चिच्छक्ती ।",
+          "शरण तुला मी आलों नुरवी आपत्ती ॥ १ ॥",
+          "जय देवी श्री देवी संतोषी माते ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Shreelakshmeedevee toon shreevishnoopatnee |",
+          "Pavasee bhaktalageen ati sopya yatneen |",
+          "Jananee vishvachee toon jeevana chichchhaktee |",
+          "Sharana tula mee aalon nuravee aapattee || १ ||",
+          "Jaya devee shree devee santoshee mate || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 3,
+        "isChorus": false,
+        "devanagari": [
+          "भृगुवारीं श्रद्धेनें उपास तव करिती ।",
+          "आंबट कोणी कांहीं अन्न न सेवीती ।",
+          "गूळ चण्याचा साधा प्रसाद भक्षीती ।",
+          "मंगल व्हावें म्हणुनि कथा श्रवण करिती ॥ २ ॥",
+          "जय देवी श्री देवी संतोषी माते ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Bhruguvareen shraddhenen upasa tava karitee |",
+          "Aambata konee kanheen anna na seveetee |",
+          "Goola chanyacha sadha prasada bhaksheetee |",
+          "Mangala vhaven mhanuni katha shravana karitee || २ ||",
+          "Jaya devee shree devee santoshee mate || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 4,
+        "isChorus": false,
+        "devanagari": [
+          "जे कोणी नरनारी व्रत तव आचरिती ।",
+          "अनन्य भावें तुजला स्मरुनी प्रार्थीती ।",
+          "त्याच्या हांकेला तूं धांवुनियां येअसी ।",
+          "संतति वैभव कीर्ती धनदौलत देसी ॥ ३ ॥",
+          "जय देवी श्री देवी संतोषी माते ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Je konee naranaree vrata tava aacharitee |",
+          "Ananya bhaven tujala smarunee prartheetee |",
+          "Tyachya hankela toon dhanvuniyan yeasee |",
+          "Santati vaibhava keertee dhanadaulata desee || ३ ||",
+          "Jaya devee shree devee santoshee mate || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 5,
+        "isChorus": false,
+        "devanagari": [
+          "विश्वाधारे माते प्रसन्न तूं व्हावें ।",
+          "भवभय हरुनी आम्हां सदैव रक्षावें ।",
+          "मनींची इच्छा व्हावी परिपूर्ण सगळी ।",
+          "म्हणुनी मिलिंदमाधव आरती ओवाळी ॥ ४ ॥",
+          "जय देवी श्री देवी संतोषी माते ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Vishvadhare mate prasanna toon vhaven |",
+          "Bhavabhaya harunee aamhan sadaiva rakshaven |",
+          "Maneenchee ichchha vhavee paripoorna sagalee |",
+          "Mhanunee milindamadhava aaratee ovalee || ४ ||",
+          "Jaya devee shree devee santoshee mate || dhru. ||"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gayatri-mata-aarti",
+    "slug": "aarti-gayatri-mata",
+    "titleDevanagari": "आरती गायत्री मातेची (जयति जय गायत्री माता)",
+    "titleTransliteration": "Aarti Gayatri Matechi (Jayati Jai Gayatri Mata)",
+    "firstLineDevanagari": "जयति जय गायत्री माता जयति जय गायत्री माता । सत्-चित्-आनंद रूपिणी भुक्ति मुक्ति दाता",
+    "firstLineTransliteration": "Jayati jai gayatri mata jayati jai gayatri mata | Sat-chit-anand roopini bhukti mukti data",
+    "deity": "gayatri",
+    "type": "aarti",
+    "language": "hindi",
+    "meaningSummary": "वेदांची जननी, सद्बुद्धी व प्रकाश प्रदायिनी वेदमाता गायत्रीची परम पावन आरती.",
+    "tags": [
+      "gayatri",
+      "vedmata",
+      "gayatri mantra",
+      "devi",
+      "hindi"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": true,
+        "devanagari": [
+          "जयति जय गायत्री माता, जयति जय गायत्री माता ।",
+          "सत्-चित्-आनंद रूपिणी, भुक्ति मुक्ति दाता ॥ ध्रु० ॥",
+          "श्वेत वसन कमलासनि, देवि प्रभा-पुंजा ।",
+          "अक्ष-सूत्र कमंडलु, कर-कमल मंजु ॥ १ ॥"
+        ],
+        "transliteration": [
+          "Jayati jai gayatri mata, jayati jai gayatri mata |",
+          "Sat-chit-anand roopini, bhukti mukti data || Dhru. ||",
+          "Shveta vasana kamalasani, devi prabha-punja |",
+          "Aksha-sootra kamandalu, kara-kamala manju || 1 ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "वेद-त्रयी की जननी, ज्ञान-गंग-धारा ।",
+          "ऋषि-मुनि-सुर-नर ध्यावत, पावन संसारा ॥ २ ॥",
+          "सद्बुद्धि का वर पावे, जो नित गुण गावै ।",
+          "भव-बंधन से छूटै, परम पद पावै ॥ ३ ॥",
+          "जयति जय गायत्री माता ॥ ध्रु० ॥"
+        ],
+        "transliteration": [
+          "Veda-trayi ki janani, dnyana-ganga-dhara |",
+          "Rishi-muni-sura-nara dhyavat, pavana sansara || 2 ||",
+          "Sadbuddhi ka var paave, jo nit guna gaavai |",
+          "Bhava-bandhan se chhoote, param pada paavai || 3 ||",
+          "Jayati jai gayatri mata || Dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 3,
+        "isChorus": false,
+        "devanagari": [
+          "शरण पड़े की रक्षा, कीजो कल्याणी ।",
+          "हृदय में वास करो हे, महा-वरदानी ॥ ४ ॥",
+          "जयति जय गायत्री माता ॥ ध्रु० ॥"
+        ],
+        "transliteration": [
+          "Sharan pade ki raksha, keejo kalyani |",
+          "Hriday mein vaas karo he, maha-varadani || 4 ||",
+          "Jayati jai gayatri mata || Dhru. ||"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kolhapur-ambabai-karveer-aarti",
+    "slug": "kolhapur-ambabai-karveer-aarti",
+    "titleDevanagari": "करवीर निवासिनी कोल्हापूर महालक्ष्मी मुख्य आरती (वससी व्यापकरुपे)",
+    "titleTransliteration": "Kolhapur Karveer Nivasini Mahalakshmi Main Aarti",
+    "firstLineDevanagari": "जय देवी जय देवी जय महालक्ष्मी । वससी व्यापकरुपे तू स्थूलसूक्ष्मी",
+    "firstLineTransliteration": "Jai devi jai devi jai mahalakshmi | Vasasi vyapakarupe too sthoolasookshmi",
+    "deity": "devi",
+    "type": "aarti",
+    "language": "marathi",
+    "meaningSummary": "कोल्हापूर येथील श्री महालक्ष्मी (अंबाबाई) मंदिरात नित्य गायली जाणारी आद्य ऐतिहासिक महाआरती.",
+    "tags": [
+      "kolhapur",
+      "ambabai",
+      "mahalakshmi",
+      "karveer",
+      "devi"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": true,
+        "devanagari": [
+          "जय देवी जय देवी जय महालक्ष्मी ।",
+          "वससी व्यापकरुपे तू स्थूलसूक्ष्मी ॥ ध्रु० ॥",
+          "करवीरपुरवासिनी सुरवरमुनिमाता ।",
+          "पुरहरवरदायिनी मुरहरप्रियकांता ॥ १ ॥"
+        ],
+        "transliteration": [
+          "Jai devi jai devi jai mahalakshmi |",
+          "Vasasi vyapakarupe too sthoolasookshmi || Dhru. ||",
+          "Karveerapuravasini suravaramunimata |",
+          "Puraharavaradayini muraharpriyakanta || 1 ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "मातुलिंग गदा खेटक रविकिरणीं ।",
+          "झळके हाटकवाटी पीयुषरसपाणी ॥",
+          "माणिकरसना सुरंगवसना मृगनयनी ।",
+          "शशिकरवदना राजस मदनाची जननी ॥ २ ॥",
+          "जय देवी जय देवी जय महालक्ष्मी ॥ ध्रु० ॥"
+        ],
+        "transliteration": [
+          "Matulinga gada khetaka ravikirani |",
+          "Jhalake hatakavati peeyusharasapani ||",
+          "Manikarasana surangavasana mriganayani |",
+          "Shashikaravadana rajasa madanachi janani || 2 ||",
+          "Jai devi jai devi jai mahalakshmi || Dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 3,
+        "isChorus": false,
+        "devanagari": [
+          "चतुराननें कुश्चित कर्माच्या ओळी ।",
+          "लिहिल्या असतील माते माझे निजभाळी ॥",
+          "पुसोनि कुंकुमटीळा लाविसि या भाळी ।",
+          "तोडी भवबंधन या बाळकाची वेळी ॥ ३ ॥",
+          "जय देवी जय देवी जय महालक्ष्मी । वससी व्यापकरुपे तू स्थूलसूक्ष्मी ॥ ध्रु० ॥"
+        ],
+        "transliteration": [
+          "Chaturanane kuschita karmachya oli |",
+          "Lihilya asateel maate majhe nijabhali ||",
+          "Pusoni kunkumatila lavisi ya bhali |",
+          "Todi bhavabandhana ya balakachi veli || 3 ||",
+          "Jai devi jai devi jai mahalakshmi | Vasasi vyapakarupe too sthoolasookshmi || Dhru. ||"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kolhapur-ambabai-kakad-aarti",
+    "slug": "kolhapur-ambabai-kakad-aarti",
+    "titleDevanagari": "कोल्हापूर अंबाबाई काकड आरती (उठा उठा हो अंबे माते)",
+    "titleTransliteration": "Kolhapur Ambabai Kakad Aarti (Utha Utha Ho Ambe Mate)",
+    "firstLineDevanagari": "उठा उठा हो अंबे माते जाहली प्रभात । दर्शन घ्याया भक्त पातले उभे तव द्वारात",
+    "firstLineTransliteration": "Utha utha ho ambe maate jahalee prabhaat | Darshan dhyaya bhakt paatale ubhe tav dwaaraat",
+    "deity": "devi",
+    "type": "aarti",
+    "language": "marathi",
+    "meaningSummary": "कोल्हापूर मंदिरात पहाटे ५:०० वाजता अंबाबाईला जागे करताना गायली जाणारी पवित्र प्रभात काकड भूपाळी.",
+    "tags": [
+      "kolhapur",
+      "ambabai",
+      "kakad aarti",
+      "morning",
+      "devi"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": true,
+        "devanagari": [
+          "उठा उठा हो अंबे माते, जाहली प्रभात ।",
+          "दर्शन घ्याया भक्त पातले, उभे तव द्वारात ॥ ध्रु० ॥",
+          "पूर्व दिशेला अरुणोदय झाला, मिटली अंधारी रात ।",
+          "सकल सुरासुर करिती वंदन, जोडूनियां दोनी हात ॥ १ ॥"
+        ],
+        "transliteration": [
+          "Utha utha ho ambe maate, jahalee prabhaat |",
+          "Darshan dhyaya bhakt paatale, ubhe tav dwaaraat || Dhru. ||",
+          "Poorva dishela arunodaya jhala, mitali andhari raat |",
+          "Sakala surasura kariti vandana, joduniya doni haat || 1 ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "करवीर नगरी आनंदली, वाहे पंचगंगा पावन ।",
+          "मंगल काकड आरती तव चरणी, करुनी घेई जीवन ॥ २ ॥",
+          "उठा जगन्माते महालक्ष्मी, कुलस्वामिनी तू भवानी ।",
+          "कृपादृष्टी आम्हांवरी असू दे, हे करवीर निवासिनी ॥ ३ ॥",
+          "उठा उठा हो अंबे माते, जाहली प्रभात ॥ ध्रु० ॥"
+        ],
+        "transliteration": [
+          "Karveera nagari aanandali, vaahe panchaganga paavan |",
+          "Mangala kakada aarti tava charani, karuni gheyi jeevan || 2 ||",
+          "Utha jaganmaate mahalakshmi, kulaswamini too bhavani |",
+          "Kripadrishti aamhanvari asoo de, he karveera nivasini || 3 ||",
+          "Utha utha ho ambe maate, jahalee prabhaat || Dhru. ||"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tuljabhavani-aarti",
+    "slug": "tuljabhavani-aarti",
+    "titleDevanagari": "आई तुळजाभवानीची आरती (जय देवी जय देवी जय तुळजाभवानी)",
+    "titleTransliteration": "Aarti Tuljabhavanichi (Jai Devi Jai Bhavani)",
+    "firstLineDevanagari": "जय देवी जय देवी जय तुळजाभवानी । महिषासुरमर्दिनी त्रिभुवनजननी",
+    "firstLineTransliteration": "Jai devi jai devi jai tuljabhavani | Mahishasuramardini tribhuvanajanani",
+    "deity": "devi",
+    "type": "aarti",
+    "language": "marathi",
+    "meaningSummary": "छत्रपती शिवाजी महाराजांचे कुलदैवत, महाराष्ट्राची आद्य कुलस्वामिनी आई तुळजाभवानीची आरती.",
+    "tags": [
+      "tuljapur",
+      "bhavani",
+      "kulswamini",
+      "devi",
+      "marathi"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": true,
+        "devanagari": [
+          "जय देवी जय देवी जय तुळजाभवानी ।",
+          "महिषासुरमर्दिनी त्रिभुवनजननी ॥ ध्रु० ॥",
+          "तुळजापुर निवासिनी भक्तांची माऊली ।",
+          "संकट समयी धावूनि धरिशी कृपेची सावली ॥ १ ॥"
+        ],
+        "transliteration": [
+          "Jai devi jai devi jai tuljabhavani |",
+          "Mahishasuramardini tribhuvanajanani || Dhru. ||",
+          "Tuljapura nivasini bhaktanchi mauli |",
+          "Sankata samayi dhavooni dharishi kripechi saavali || 1 ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "हातीं त्रिशूळ खड्ग चक्र गदा शोभे ।",
+          "सिंहावर आरूढ रूप पाहतां मन लोभे ॥ २ ॥",
+          "महिषासुर दैत्यासी क्षणात संहारिले ।",
+          "इंद्र देव देवांसी निर्भय केले ॥ ३ ॥",
+          "जय देवी जय देवी जय तुळजाभवानी ॥ ध्रु० ॥"
+        ],
+        "transliteration": [
+          "Haati trishoola khadga chakra gada shobhe |",
+          "Sinhavara aaroodha roopa pahata mana lobhe || 2 ||",
+          "Mahishasura daityasi kshanata sanhaarile |",
+          "Indra deva devansi nirbhaya kele || 3 ||",
+          "Jai devi jai devi jai tuljabhavani || Dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 3,
+        "isChorus": false,
+        "devanagari": [
+          "शिवछत्रपतींना दिधली भवानी तलवार ।",
+          "स्वराज्याची स्थापना झाली महाराष्ट्रांत साचार ॥ ४ ॥",
+          "दास अनन्य भावे चरणीं ठेवी माथा ।",
+          "सुखी ठेव सर्वांसी हे जगन्माता ॥ ५ ॥",
+          "जय देवी जय देवी जय तुळजाभवानी ॥ ध्रु० ॥"
+        ],
+        "transliteration": [
+          "Shivachhatrapatinna didhali bhavani talwara |",
+          "Swarajyachi sthapana jhali maharashtranta saachara || 4 ||",
+          "Dasa ananya bhaave charani thevi matha |",
+          "Sukhi theva sarvansi he jaganmata || 5 ||",
+          "Jai devi jai devi jai tuljabhavani || Dhru. ||"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "parvati-aarti",
+    "slug": "aarti-parvati-mata",
+    "titleDevanagari": "आरती पार्वती मातेची (जय देवी जय देवी जय उमा पार्वती)",
+    "titleTransliteration": "Aarti Parvati Matechi (Jai Devi Jai Uma Parvati)",
+    "firstLineDevanagari": "जय देवी जय देवी जय उमा पार्वती । ओवाळू आरती शंकराची प्रिया सती",
+    "firstLineTransliteration": "Jai devi jai devi jai uma parvati | Ovaloo aarti shankarachi priya sati",
+    "deity": "parvati",
+    "type": "aarti",
+    "language": "marathi",
+    "meaningSummary": "महादेवाची अर्धांगिनी, हरतालिका व मंगळागौरीच्या व्रतात अखंड सौभाग्यासाठी गायली जाणारी माता उमा-पार्वतीची पावन आरती.",
+    "tags": [
+      "parvati",
+      "uma",
+      "hartalika",
+      "mangalagaur",
+      "shiva",
+      "marathi"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": true,
+        "devanagari": [
+          "जय देवी जय देवी जय उमा पार्वती ।",
+          "ओवाळू आरती शंकराची प्रिया सती ॥ ध्रु० ॥",
+          "सती रूप घेऊनि दक्ष यज्ञासी गेली ।",
+          "शंकराचा अपमान पाहोनि देहाहुती दिधली ॥ १ ॥"
+        ],
+        "transliteration": [
+          "Jai devi jai devi jai uma parvati |",
+          "Ovaloo aarti shankarachi priya sati || Dhru. ||",
+          "Sati roopa gheuni daksha yadnyasi geli |",
+          "Shankaracha apamana pahoni dehahuti didhali || 1 ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "हिमालय घरीं जन्म घेऊनि पार्वती झाली ।",
+          "घोर तपश्चर्या करुनी शंकरा वरियेली ॥ २ ॥",
+          "अर्धांगी बैसोनी शोभे जगन्माता ।",
+          "दर्शन मात्रे हरशी भक्तांची भवचिंता ॥ ३ ॥",
+          "जय देवी जय देवी जय उमा पार्वती ॥ ध्रु० ॥"
+        ],
+        "transliteration": [
+          "Himalaya ghari janma gheuni parvati jhali |",
+          "Ghora tapascharya karuni shankara variyeli || 2 ||",
+          "Ardhangi baisoni shobhe jaganmata |",
+          "Darshana maatre harashi bhaktanchi bhavachinta || 3 ||",
+          "Jai devi jai devi jai uma parvati || Dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 3,
+        "isChorus": false,
+        "devanagari": [
+          "हरतालिका पूजती कुमारिका सुवासिनी ।",
+          "अखंड सौभाग्य लाभे पार्वतीच्या चरणीं ॥ ४ ॥",
+          "गणेश कार्तिकेय दोघे सुपुत्र पाशीं ।",
+          "सदा कृपा असो हे माते आमुच्या शिरीं ॥ ५ ॥",
+          "जय देवी जय देवी जय उमा पार्वती । ओवाळू आरती शंकराची प्रिया सती ॥ ध्रु० ॥"
+        ],
+        "transliteration": [
+          "Hartalika poojati kumarika suvasini |",
+          "Akhanda saubhagya labhe parvatichya charani || 4 ||",
+          "Ganesha kartikeya doghe suputra paashi |",
+          "Sada kripa aso he maate aamuchya shiree || 5 ||",
+          "Jai devi jai devi jai uma parvati | Ovaloo aarti shankarachi priya sati || Dhru. ||"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mahishasuramardini-stotra",
+    "slug": "mahishasuramardini-stotra",
+    "titleDevanagari": "महिषासुरमर्दिनी स्तोत्र (अयि गिरिनन्दिनि)",
+    "titleTransliteration": "Mahishasuramardini Stotra (Aigiri Nandini)",
+    "firstLineDevanagari": "अयि गिरिनन्दिनि नन्दितमेदिनि विश्वविनोदिनि नन्दसुते",
+    "firstLineTransliteration": "Ayi girinandini nanditamedini vishvavinodini nandasute",
+    "deity": "devi",
+    "type": "stotra",
+    "language": "sanskrit",
+    "author": "आदि शंकराचार्य (Adi Shankaracharya)",
+    "meaningSummary": "आदिशक्ती भगवती दुर्गेचे ओजस्वी, नादमय व पराक्रमयुक्त महिषासुरमर्दिनी स्तोत्र.",
+    "tags": [
+      "devi",
+      "durga",
+      "navratri",
+      "stotra",
+      "sanskrit"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": true,
+        "devanagari": [
+          "अयि गिरिनन्दिनि नन्दितमेदिनि विश्वविनोदिनि नन्दसुते",
+          "गिरिवरविन्ध्यशिरोऽधिनिवासिनि विष्णुविलासिनि जिष्णुनुते ।",
+          "भगवति हे शितिकण्ठकुटुम्बिनि भूरिकुटुम्बिनि भूरिकृते",
+          "जय जय हे महिषासुरमर्दिनि रम्यकपर्दिनि शैलसुते ॥ १ ॥"
+        ],
+        "transliteration": [
+          "Ayi girinandini nanditamedini vishvavinodini nandasute",
+          "Girivaravindhyashirodhivasini vishnuvilasini jishnunute |",
+          "Bhagavati he shitikanthakutumbini bhoorikutumbini bhoorikrite",
+          "Jaya jaya he mahishasuramardini ramyakapardini shailasute || 1 ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "सुरवरवर्षिणि दुर्धरधर्षिणि दुर्मुखमर्षिणि हर्षरते",
+          "त्रिभुवनपोषिणि शङ्करतोषिणि किल्बिषमोषिणि घोषरते ।",
+          "दनुजनिरोषिणि दितिसुतरोषिणि दुर्मदशोषिणि सिन्धुसुते",
+          "जय जय हे महिषासुरमर्दिनि रम्यकपर्दिनि शैलसुते ॥ २ ॥"
+        ],
+        "transliteration": [
+          "Suravaravarshini durdharadharshini durmukhamarshini harsharate",
+          "Tribhuvanaposhini shankaratoshini kilbishamoshini ghosharate |",
+          "Danujaniroshini ditisutaroshini durmadashoshini sindhusute",
+          "Jaya jaya he mahishasuramardini ramyakapardini shailasute || 2 ||"
+        ]
+      },
+      {
+        "stanzaNumber": 3,
+        "isChorus": false,
+        "devanagari": [
+          "अयि निजहुङ्कृतिमात्रनिराकृतधूम्रविलोचनधूम्रशते",
+          "समरविशोषितशोणितबीजसमुद्भवशोणितबीजपते ।",
+          "शिवशिवशुम्भनिशुम्भमहाहवतर्पितभूतपिशाचरते",
+          "जय जय हे महिषासुरमर्दिनि रम्यकपर्दिनि शैलसुते ॥ ३ ॥"
+        ],
+        "transliteration": [
+          "Ayi nijahunkritimaatraniraakritadhoomravilochanadhoomrashate",
+          "Samaravishoshitashonitabeejasamudbhavashonitabeejapate |",
+          "Shivashivashumbhanishumbhamahaahavatar pitabhootapishaacharate",
+          "Jaya jaya he mahishasuramardini ramyakapardini shailasute || 3 ||"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "shree-suktam",
+    "slug": "shree-suktam",
+    "titleDevanagari": "श्री सूक्तम् (हिरण्यवर्णां हरिणीं - लक्ष्मी सूक्त)",
+    "titleTransliteration": "Shree Suktam (Rigveda Parishishta)",
+    "firstLineDevanagari": "ॐ हिरण्यवर्णां हरिणीं सुवर्णरजतस्रजाम् । चन्द्रां हिरण्मयीं लक्ष्मीं जातवेदो म आवह",
+    "firstLineTransliteration": "Om hiranyavarnaam harineem suvarnarajatasrajaam | Chandraam hiranmayeem lakshmeem jaatavedo ma aavaha",
+    "deity": "devi",
+    "type": "mantra",
+    "language": "sanskrit",
+    "author": "ऋग्वेद परिशिष्ट (Rigveda Parishishta)",
+    "meaningSummary": "ऋग्वेदातील माता महालक्ष्मीची कृपा व अष्टैश्वर्य प्राप्ती करून देणारे आद्य वैदिक सूक्त.",
+    "tags": [
+      "devi",
+      "mahalakshmi",
+      "suktam",
+      "vedic",
+      "sanskrit",
+      "diwali"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": false,
+        "devanagari": [
+          "ॐ हिरण्यवर्णां हरिणीं सुवर्णरजतस्रजाम् ।",
+          "चन्द्रां हिरण्मयीं लक्ष्मीं जातवेदो म आवह ॥ १ ॥",
+          "तां म आवह जातवेदो लक्ष्मीमनपगामिनीम् ।",
+          "यस्यां हिरण्यं विन्देयं गामश्वं पुरुषानहम् ॥ २ ॥",
+          "अश्वपूर्वां रथमध्यां हस्तिनादप्रबोधिनीम् ।",
+          "श्रियं देवीमुपह्वये श्रीर्मा देवी जुषताम् ॥ ३ ॥"
+        ],
+        "transliteration": [
+          "Om hiranyavarnaam harineem suvarnarajatasrajaam |",
+          "Chandraam hiranmayeem lakshmeem jaatavedo ma aavaha || 1 ||",
+          "Taam ma aavaha jaatavedo lakshmeemanapagaamineem |",
+          "Yasyaam hiranyam vindeyam gaamashvam purushaanaham || 2 ||",
+          "Ashvapoorvaam rathamadhyaam hastinaadaprabodhineem |",
+          "Shriyam deveemupahvaye shreerma devee jushtaam || 3 ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "कां सोस्मितां हिरण्यप्राकारामार्द्रां ज्वलन्तीं तृप्तां तर्पयन्तीम् ।",
+          "पद्मे स्थितां पद्मवर्णां तामिहोपह्वये श्रियम् ॥ ४ ॥",
+          "चन्द्रां प्रभासां यशसा ज्वलन्तीं श्रियं लोके देवजुष्टामुदाराम् ।",
+          "तां पद्मिनीमीं शरणमहं प्रपद्येऽलक्ष्मीर्मे नश्यतां त्वां वृणे ॥ ५ ॥",
+          "आदित्यवर्णे तपसोऽधिजातो वनस्पतिस्तव वृक्षोऽथ बिल्वः ।",
+          "तस्य फलानि तपसानुदन्तु मायान्तरायाश्च बाह्या अलक्ष्मीः ॥ ६ ॥"
+        ],
+        "transliteration": [
+          "Kaam sosmitaam hiranyapraakaaraamaardraam jvalanteem triptaam tarpayantim |",
+          "Padme sthitaam padmavarnaam taamihopahvaye shriyam || 4 ||",
+          "Chandraam prabhaasaam yashasaa jvalanteem shriyam loke devajushtaamudaaraam |",
+          "Taam padmineemeem sharanamaham prapadye lakshmeerme nashyataam tvaam vrine || 5 ||",
+          "Aadityavarne tapasodhijaato vanaspatistava vrikshotha bilvah |",
+          "Tasya phalaani tapasaanudantu maayaantaraayaashcha baahyaa alakshmeeh || 6 ||"
+        ]
+      },
+      {
+        "stanzaNumber": 3,
+        "sectionTitle": "॥ महालक्ष्मी प्रार्थना ॥",
+        "isChorus": false,
+        "devanagari": [
+          "ॐ महालक्ष्मै च विद्महे विष्णुपत्नी च धीमहि ।",
+          "तन्नो लक्ष्मीः प्रचोदयात् ॥",
+          "ॐ शान्तिः शान्तिः शान्तिः ॥"
+        ],
+        "transliteration": [
+          "Om mahalakshmyai cha vidmahe vishnupatnyai cha dheemahi |",
+          "Tanno lakshmeeh prachodayaat ||",
+          "Om shaantih shaantih shaantih ||"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "devi-amba-sukhsadane",
+    "slug": "aarti-ambe-sukhsadane",
+    "titleDevanagari": "सुखसदने शशिवदने अंबे मृगनयने (श्री अंबा आरती)",
+    "titleTransliteration": "Sukhsadane Shashivadane Ambe (Amba Aarti)",
+    "firstLineDevanagari": "सुखसदने शशिवदने अंबे मृगनयने । गजगमने सुरनमने कोल्हापुरमथने ॥",
+    "firstLineTransliteration": "Sukhasadane shashivadane ambe mruganayane | Gajagamane suranamane kolhapuramathane ||",
+    "deity": "devi",
+    "type": "aarti",
+    "language": "marathi",
+    "author": "त्र्यंबक मधुकर (Trimbak Madhukar)",
+    "meaningSummary": "कोल्हापूरच्या अंबाबाईचे नयनरम्य शृंगार आणि अष्टभुजा स्वरूपाचे वर्णन करणारी सुंदर आरती.",
+    "tags": [
+      "devi",
+      "ambabai",
+      "kolhapur",
+      "navratri",
+      "trimbak madhukar"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": true,
+        "devanagari": [
+          "सुखसदने शशिवदने अंबे मृगनयने ।",
+          "गजगमने सुरनमने कोल्हापुरमथने ।",
+          "सुरवर वर्षति सुमनें करुनियां नमनें ।",
+          "भयहरणे सुखकरणे सुंदरी शिवरमणे ॥ १ ॥",
+          "जय देवी जय देवी वो जय अंबे ।",
+          "कोल्हापुराधिसामिणि तुज वो जगदंबे ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Sukhasadane shashivadane ambe mruganayane |",
+          "Gajagamane suranamane kolhapuramathane |",
+          "Suravara varshati sumanen karuniyan namanen |",
+          "Bhayaharane sukhakarane sundaree shivaramane || १ ||",
+          "Jaya devee jaya devee vo jaya ambe |",
+          "Kolhapuradhisamini tuja vo jagadambe || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "मृगमदमिश्रित केशर शोभत तें भाळीं ।",
+          "कुंचित केश विराजित मुगुटांतून भाळीं ।",
+          "रत्नजडित सुंदर अंगी कांचोळी ।",
+          "चिद्गगनाचा गाभा अंबा वेल्हाळी ॥ २ ॥",
+          "जय देवी जय देवी वो जय अंबे ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Mrugamadamishrita keshara shobhata ten bhaleen |",
+          "Kunchita kesha virajita mugutantoona bhaleen |",
+          "Ratnajadita sundara angee kancholee |",
+          "Chidgaganacha gabha amba velhalee || २ ||",
+          "Jaya devee jaya devee vo jaya ambe || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 3,
+        "isChorus": false,
+        "devanagari": [
+          "कंठी विलसत सगुण मुक्ता सुविशेषें ।",
+          "पीतांबर सुंदर कसियेला काँसे ।",
+          "कटितटि कांची किंकिणि ध्वनि मंजुळ भासे ।",
+          "पदमकमल लावण्ये अंबा शोभतसे ॥ ३ ॥",
+          "जय देवी जय देवी वो जय अंबे ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Kanthee vilasata saguna mukta suvisheshen |",
+          "Peetambara sundara kasiyela kanse |",
+          "Katitati kanchee kinkini dhvani manjula bhase |",
+          "Padamakamala lavanye amba shobhatase || ३ ||",
+          "Jaya devee jaya devee vo jaya ambe || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 4,
+        "isChorus": false,
+        "devanagari": [
+          "झळझळझळझळ झळकति तानवडें कर्णी ।",
+          "तेजा लोपुनि गेले रविशशि निज करणीं ।",
+          "ब्रह्महरिहर सकळीक नेणति तव करणी ।",
+          "अद्भुत लीला लिहितां न पुरे ही धरणी ॥ ४ ॥",
+          "जय देवी जय देवी वो जय अंबे ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Jhalajhalajhalajhala jhalakati tanavaden karnee |",
+          "Teja lopuni gele ravishashi nija karaneen |",
+          "Brahmaharihara sakaleeka nenati tava karanee |",
+          "Adbhuta leela lihitan na pure hee dharanee || ४ ||",
+          "Jaya devee jaya devee vo jaya ambe || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 5,
+        "isChorus": false,
+        "devanagari": [
+          "अष्टहि भूजा सुंदर शोभतसे ।",
+          "झगझगझगझगझगझगती लावण्यगाभा ।",
+          "म्हाम्हाम्हाम्हाम्हाम्हाम्हागीत समनांची शोभा ।",
+          "त्र्यंबक मधुकर होऊनि वर्णितसे अंबा ॥ ५ ॥",
+          "जय देवी जय देवी वो जय अंबे ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Ashtahi bhooja sundara shobhatase |",
+          "Jhagajhagajhagajhagajhagajhagatee lavanyagabha |",
+          "Mhamhamhamhamhamhamhageeta samananchee shobha |",
+          "Tryambaka madhukara hoooni varnitase amba || ५ ||",
+          "Jaya devee jaya devee vo jaya ambe || dhru. ||"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "devi-navratra-ashwin-shuddha",
+    "slug": "aarti-navratra-ashwin-shuddha",
+    "titleDevanagari": "आश्विनशुद्धपक्षीं अंबा बैसली सिंहासनी (संपूर्ण १० दिवसांची नवरात्र आरती)",
+    "titleTransliteration": "Aarti Navratra Ashwin Shuddha (10 Days Complete)",
+    "firstLineDevanagari": "आश्विनशुद्धपक्षीं अंबा बैसली सिंहासनी हो । प्रतिपदेपासून घटस्थापना ती करूनि हो ॥",
+    "firstLineTransliteration": "Aashvinashuddhapakasheen amba baisalee sinhasanee ho | Pratipadepasoon ghatasthapana tee karoonee ho ||",
+    "deity": "devi",
+    "type": "aarti",
+    "language": "marathi",
+    "author": "विप्र रामदास (Vipra Ramdas)",
+    "meaningSummary": "नवरात्रीच्या प्रतिपदेपासून ते विजयादशमीपर्यंतच्या १० दिवसांचे अचूक वर्णन करणारी अखंड गायली जाणारी पारंपरिक आरती.",
+    "tags": [
+      "navratri",
+      "devi",
+      "ghatasthapana",
+      "dasara",
+      "10 days"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": true,
+        "devanagari": [
+          "आश्विनशुद्धपक्षीं अंबा बैसली सिंहासनी हो ।",
+          "प्रतिपदेपासून घटस्थापना ती करूनि हो ।",
+          "मूलमंत्रजप करूनी भोवतें रक्षक ठेऊनि हो ।",
+          "ब्रह्माविष्णुरुद्र आईंचे पूजन करिती हो ॥ १ ॥",
+          "उदो बोला उदो अंबाबाई माऊलीचा हो ।",
+          "उदोकारें गर्जती काय महिमा वर्णू तिचा हो ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Aashvinashuddhapaksheen amba baisalee sinhasanee ho |",
+          "Pratipadepasoona ghatasthapana tee karooni ho |",
+          "Moolamantrajapa karoonee bhovaten rakshaka theooni ho |",
+          "Brahmavishnurudra aaeenche poojana karitee ho || १ ||",
+          "Udo bola udo ambabaee maooleecha ho |",
+          "Udokaren garjatee kaya mahima varnoo ticha ho || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "द्वितीयेचे दिवशीं मिळती चौसष्ट योगिनि हो ।",
+          "सकळांमध्ये श्रेष्ठ परशुरामाची जननी हो ।",
+          "कस्तुरीमळवट भांगी शेंदुर भरूनी हो ।",
+          "उदोकारें गर्जती सकळ चामुंडा मिळुनि हो ॥ २ ॥",
+          "उदो बोला उदो अंबाबाई माऊलीचा हो ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Dviteeyeche divasheen milatee chausashta yogini ho |",
+          "Sakalammadhye shreshtha parashuramachee jananee ho |",
+          "Kastureemalavata bhangee shendura bharoonee ho |",
+          "Udokaren garjatee sakala chamunda miluni ho || २ ||",
+          "Udo bola udo ambabaee maooleecha ho || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 3,
+        "isChorus": false,
+        "devanagari": [
+          "तृतीयेचे दिवशीं अंबे शृंगार मांडिला हो ।",
+          "मळकट पातळ चोळी कंठी हार मुक्ताफळा हो ।",
+          "कंठीची पदके कांसे पीतांबर पिवळा हो ।",
+          "अष्टभुजा मिरविती अंबे सुंदर दिसे लीला हो ॥ ३ ॥",
+          "उदो बोला उदो अंबाबाई माऊलीचा हो ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Truteeyeche divasheen ambe shrungara mandila ho |",
+          "Malakata patala cholee kanthee hara muktaphala ho |",
+          "Kantheechee padake kanse peetambara pivala ho |",
+          "Ashtabhuja miravitee ambe sundara dise leela ho || ३ ||",
+          "Udo bola udo ambabaee maooleecha ho || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 4,
+        "isChorus": false,
+        "devanagari": [
+          "चतुर्थीचे दिवशीं विश्वव्यापक जननी हो ।",
+          "उपासकां पाहसी अंबे प्रसन्न अंतःकरणीं हो ।",
+          "पूर्ण कृपें पाहसी जगन्माते मनमोहिनी हो ।",
+          "भक्तांच्या माऊलि सुर ते येती लोटांगणी हो ॥ ४ ॥",
+          "उदो बोला उदो अंबाबाई माऊलीचा हो ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Chaturtheeche divasheen vishvavyapaka jananee ho |",
+          "Upasakan pahasee ambe prasanna anthkaraneen ho |",
+          "Poorna krupen pahasee jaganmate manamohinee ho |",
+          "Bhaktanchya maooli sura te yetee lotanganee ho || ४ ||",
+          "Udo bola udo ambabaee maooleecha ho || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 5,
+        "isChorus": false,
+        "devanagari": [
+          "पंचमीचे दिवशीं व्रत तें उपांगलालिता हो ।",
+          "अर्घ्यपाद्यपूजनें तुजला भवानी स्तविती हो ।",
+          "रात्रीचे समयीं करिती जागरण हरिकथा हो ।",
+          "आनंदें प्रेम तें आलें सद्भावें क्रीडता हो ॥ ५ ॥",
+          "उदो बोला उदो अंबाबाई माऊलीचा हो ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Panchameeche divasheen vrata ten upangalalita ho |",
+          "Arghyapadyapoojanen tujala bhavanee stavitee ho |",
+          "Ratreeche samayeen karitee jagarana harikatha ho |",
+          "Aananden prema ten aalen sadbhaven kreedata ho || ५ ||",
+          "Udo bola udo ambabaee maooleecha ho || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 6,
+        "isChorus": false,
+        "devanagari": [
+          "षष्ठीचे दिवशीं भक्तां आनंद वर्तला हो ।",
+          "घेऊनि दिवट्या हस्ती हर्षे गोंधळ घातला हो ।",
+          "कवडी एक अर्पितां देसी हार मुक्ताफळांचा हो ।",
+          "जोगवा मागतां प्रसन्न झाली भक्तकुळा हो ॥ ६ ॥",
+          "उदो बोला उदो अंबाबाई माऊलीचा हो ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Shashtheeche divasheen bhaktan aananda vartala ho |",
+          "Gheooni divatya hastee harshe gondhala ghatala ho |",
+          "Kavadee eka arpitan desee hara muktaphalancha ho |",
+          "Jogava magatan prasanna jhalee bhaktakula ho || ६ ||",
+          "Udo bola udo ambabaee maooleecha ho || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 7,
+        "isChorus": false,
+        "devanagari": [
+          "सप्तमीचे दिवशीं सप्तशृंगगडावरी हो ।",
+          "तेथें तूं नांदसी भोवतें पुष्पें नानापरी हो ।",
+          "जाईजुईशेवंती पूजा रेखियली बरवी हो ।",
+          "भक्तसंकटी पडतां झेलूनि घेसी वरचे वरी हो ॥ ७ ॥",
+          "उदो बोला उदो अंबाबाई माऊलीचा हो ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Saptameeche divasheen saptashrungagadavaree ho |",
+          "Tethen toon nandasee bhovaten pushpen nanaparee ho |",
+          "Jaeejueeshevantee pooja rekhiyalee baravee ho |",
+          "Bhaktasankatee padatan jhelooni ghesee varache varee ho || ७ ||",
+          "Udo bola udo ambabaee maooleecha ho || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 8,
+        "isChorus": false,
+        "devanagari": [
+          "अष्टमीचे दिवशीं अष्टभुजां नारायणी हो ।",
+          "सह्याद्रीपर्वती पाहिली उभी जगज्जननी हो ।",
+          "मन माझें मोहिलें शरण आलों तुजलागुनी हो ।",
+          "स्तनपान देऊनि सुखी केली अंतःकरणीं हो ॥ ८ ॥",
+          "उदो बोला उदो अंबाबाई माऊलीचा हो ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Ashtameeche divasheen ashtabhujan narayanee ho |",
+          "Sahyadreeparvatee pahilee ubhee jagajjananee ho |",
+          "Mana majhen mohilen sharana aalon tujalagunee ho |",
+          "Stanapana deooni sukhee kelee anthkaraneen ho || ८ ||",
+          "Udo bola udo ambabaee maooleecha ho || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 9,
+        "isChorus": false,
+        "devanagari": [
+          "नवमीचे दिवशीं नवदिवसांचें पारणें हो ।",
+          "सप्तशतीजप होम हवनें सद्भक्ती करूनी हो ।",
+          "षड्रस अन्न नैवेद्यासी अर्पियली भोजनी हो ।",
+          "आचार्यब्राह्मणां तृप्त केलें कृपेंकरूनी हो ॥ ९ ॥",
+          "उदो बोला उदो अंबाबाई माऊलीचा हो ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Navameeche divasheen navadivasanchen paranen ho |",
+          "Saptashateejapa homa havanen sadbhaktee karoonee ho |",
+          "Shadrasa anna naivedyasee arpiyalee bhojanee ho |",
+          "Aacharyabrahmanan trupta kelen krupenkaroonee ho || ९ ||",
+          "Udo bola udo ambabaee maooleecha ho || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 10,
+        "isChorus": false,
+        "devanagari": [
+          "दशमीच्या दिवशीं अंबा निघे सीमोल्लंघनी हो ।",
+          "सिंहारूढे दारुण शस्त्रें अंबे त्वां घेऊनी हो ।",
+          "शुंभनिशुंभादिक राक्षसा किती मारिसी रणी हो ।",
+          "विप्रा रामदासा आश्रय दिधला तो चरणी हो ॥ १० ॥",
+          "उदो बोला उदो अंबाबाई माऊलीचा हो ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Dashameechya divasheen amba nighe seemollanghanee ho |",
+          "Sinharoodhe daruna shastren ambe tvan gheoonee ho |",
+          "Shumbhanishumbhadika rakshasa kitee marisee ranee ho |",
+          "Vipra ramadasa aashraya didhala to charanee ho || १० ||",
+          "Udo bola udo ambabaee maooleecha ho || dhru. ||"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "devi-mangalagauri",
+    "slug": "aarti-mangalagauri",
+    "titleDevanagari": "जय देवी मंगळागौरी ओवाळीन सोनियाताटीं (मंगळागौरी आरती)",
+    "titleTransliteration": "Jay Devi Mangalagauri (Mangalagauri Aarti)",
+    "firstLineDevanagari": "जय देवी मंगळागौरी । ओवाळीन सोनियाताटीं । रत्नांचे दिवे । माणिकांच्या वाती ॥",
+    "firstLineTransliteration": "Jaya devee mngalagaufee | Ovaleen soniyataateen | Ratnanche dive | Manikanhya vaatee ||",
+    "deity": "parvati",
+    "type": "aarti",
+    "language": "marathi",
+    "author": "पारंपरिक (Traditional)",
+    "meaningSummary": "श्रावण मंगळवारी नवविवाहितांनी करावयाच्या मंगळागौरी व्रताची अखंड सौभाग्य देणारी ७ कडव्यांची पारंपरिक आरती.",
+    "tags": [
+      "mangalagauri",
+      "shravan",
+      "parvati",
+      "tuesday",
+      "saubhagya"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": true,
+        "devanagari": [
+          "जय देवी मंगळागौरी । ओवाळीन सोनियाताटीं ।",
+          "रत्नांचे दिवे । माणिकांच्या वाती । हिरेया ज्योती ॥ धृ. ॥",
+          "मंगळमूर्ती उपजली कार्या । प्रसन्न झाली अल्पायुषी राया ।",
+          "तिष्ठली राज्यकाळी । अयोधन द्यावया ॥ १ ॥"
+        ],
+        "transliteration": [
+          "Jaya devee mangalagauree | ovaleena soniyatateen |",
+          "Ratnanche dive | manikanchya vatee | hireya jyotee || dhru. ||",
+          "Mangalamoortee upajalee karya | prasanna jhalee alpayushee raya |",
+          "Tishthalee rajyakalee | ayodhana dyavaya || १ ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "पूजेला ग आणिली जाईजुईच्या कळ्या । सोळा तिकटीं सोळा दूर्वा ।",
+          "सोळा परींची पत्री । जाई जुई आबुल्या शेवंती नागचांफे ।",
+          "पारिजातकें मनोहरें । नंदेटें तगरें । पूजेला ग आणिली ॥ २ ॥",
+          "जय देवी मंगळागौरी ओवाळीन सोनियाताटीं ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Poojela ga aanilee jaeejueechya kalya | sola tikateen sola doorva |",
+          "Sola pareenchee patree | jaee juee aabulya shevantee nagachamphe |",
+          "Parijataken manoharen | nandeten tagaren | poojela ga aanilee || २ ||",
+          "Jaya devee mangalagauree ovaleena soniyatateen || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 3,
+        "isChorus": false,
+        "devanagari": [
+          "साळीचे तांदुळ मुगाची डाळ । आळणीं खिचडी रांधिती नारी ।",
+          "आपुल्या पतीलागीं सेवा करिती फार ॥ ३ ॥",
+          "जय देवी मंगळागौरी ओवाळीन सोनियाताटीं ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Saleeche tandula mugachee dala | aalaneen khichadee randhitee naree |",
+          "Aapulya pateelageen seva karitee phara || ३ ||",
+          "Jaya devee mangalagauree ovaleena soniyatateen || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 4,
+        "isChorus": false,
+        "devanagari": [
+          "डुमडुमें डुमडुमें वाजंत्री वाजती । कळावी कांकणें गौरीला शोभती ।",
+          "शोभली बाजुबंद । कानीं कापांचे गवे । त्यायिली अंबा शोभे ॥ ४ ॥",
+          "जय देवी मंगळागौरी ओवाळीन सोनियाताटीं ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Dumadumen dumadumen vajantree vajatee | kalavee kankanen gaureela shobhatee |",
+          "Shobhalee bajubanda | kaneen kapanche gave | tyayilee amba shobhe || ४ ||",
+          "Jaya devee mangalagauree ovaleena soniyatateen || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 5,
+        "isChorus": false,
+        "devanagari": [
+          "न्हाउनी माखुनी मौनी बैसली । पाटाबाची चोळी क्षीरोदक नेसली ।",
+          "स्वच्छ बहुत होऊनी अंबा पूजूं लागली ॥ ५ ॥",
+          "जय देवी मंगळागौरी ओवाळीन सोनियाताटीं ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Nhaunee makhunee maunee baisalee | patabachee cholee ksheerodaka nesalee |",
+          "Svachchha bahuta hooonee amba poojoon lagalee || ५ ||",
+          "Jaya devee mangalagauree ovaleena soniyatateen || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 6,
+        "isChorus": false,
+        "devanagari": [
+          "सोनिया ताटीं घातल्या पंचारती । मध्यें उजळती कापुराच्या वाती ।",
+          "करा धूप दीप । आतां नैवेद्य षड्रस पक्वान्नें । तटीं भरा बोनें ॥ ६ ॥",
+          "जय देवी मंगळागौरी ओवाळीन सोनियाताटीं ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Soniya tateen ghatalya pancharatee | madhyen ujalatee kapurachya vatee |",
+          "Kara dhoopa deepa | aatan naivedya shadrasa pakvannen | tateen bhara bonen || ६ ||",
+          "Jaya devee mangalagauree ovaleena soniyatateen || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 7,
+        "isChorus": false,
+        "devanagari": [
+          "लवलाहें तिघें काशीसी निघाली । माउली मंगळागौर भिजवूं विसरली ।",
+          "मागूती परतुनीयां आली । अंबा स्वयंभू देखिली ।",
+          "देऊळ सोनियाचे । खांब हिरेयांचे । कळस वरती मोतियांचा ॥ ७ ॥",
+          "जय देवी मंगळागौरी ओवाळीन सोनियाताटीं ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Lavalahen tighen kasheesee nighalee | maulee mangalagaura bhijavoon visaralee |",
+          "Magootee paratuneeyan aalee | amba svayambhoo dekhilee |",
+          "Deoola soniyache | khamba hireyanche | kalasa varatee motiyancha || ७ ||",
+          "Jaya devee mangalagauree ovaleena soniyatateen || dhru. ||"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "devi-haritalika",
+    "slug": "aarti-haritalika",
+    "titleDevanagari": "जयदेवी हरितालिके सखी पार्वती अंबिके (हरितालिकेची आरती)",
+    "titleTransliteration": "Jay Devi Haritalike (Haritalika Aarti)",
+    "firstLineDevanagari": "जयदेवी हरितालिके । सखी पार्वती अंबिके । आरती ओवाळीतें । ज्ञानदीपकळिके ॥",
+    "firstLineTransliteration": "Jayadevee haritalike | Sakhee parvatee ambike | Aarti ovaleten | Dnyanadeepakalike ||",
+    "deity": "parvati",
+    "type": "aarti",
+    "language": "marathi",
+    "author": "पारंपरिक (Traditional)",
+    "meaningSummary": "भाद्रपद तृतीयेस केल्या जाणाऱ्या हरितालिका व्रताची संपूर्ण ५ कडव्यांची पारंपरिक आरती.",
+    "tags": [
+      "haritalika",
+      "parvati",
+      "bhadrapad",
+      "vrat",
+      "shiva"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": true,
+        "devanagari": [
+          "जयदेवी हरितालिके । सखी पार्वती अंबिके ।",
+          "आरती ओवाळीतें । ज्ञानदीपकळिके ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Jayadevee haritalike | sakhee parvatee ambike |",
+          "Aaratee ovaleeten | jnyanadeepakalike || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "हरअर्धांगी वससी । जासी यज्ञा माहेरासि ।",
+          "तेथें अपमान पावसी । यज्ञकुंडींत गुप्त होसी ॥ १ ॥",
+          "जयदेवी हरितालिके सखी पार्वती अंबिके ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Haraardhangee vasasee | jasee yajnya maherasi |",
+          "Tethen apamana pavasee | yajnyakundeenta gupta hosee || १ ||",
+          "Jayadevee haritalike sakhee parvatee ambike || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 3,
+        "isChorus": false,
+        "devanagari": [
+          "रिघसी हिमाद्रीच्या पोटी । कन्या होसी तू गोमटी ।",
+          "उग्र तपश्चर्या मोठी । आचरसी उठाउठी ॥ २ ॥",
+          "जयदेवी हरितालिके सखी पार्वती अंबिके ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Righasee himadreechya potee | kanya hosee too gomatee |",
+          "Ugra tapashcharya mothee | aacharasee uthauthee || २ ||",
+          "Jayadevee haritalike sakhee parvatee ambike || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 4,
+        "isChorus": false,
+        "devanagari": [
+          "तापपंचाग्निसाधनें । धूम्रपानें अधोवदनें ।",
+          "केलीं बहू उपोषणें । शंभु भ्रतारकारणे ॥ ३ ॥",
+          "जयदेवी हरितालिके सखी पार्वती अंबिके ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Tapapanchagnisadhanen | dhoomrapanen adhovadanen |",
+          "Keleen bahoo uposhanen | shambhu bhratarakarane || ३ ||",
+          "Jayadevee haritalike sakhee parvatee ambike || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 5,
+        "isChorus": false,
+        "devanagari": [
+          "लीला दाखविसी दृष्टी । हें व्रत करिसी लोकांसाठीं ।",
+          "पुन्हा वरसी धूर्जटी । मज रक्षावें संकटीं ॥ ४ ॥",
+          "जयदेवी हरितालिके सखी पार्वती अंबिके ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Leela dakhavisee drushtee | hen vrata karisee lokansatheen |",
+          "Punha varasee dhoorjatee | maja rakshaven sankateen || ४ ||",
+          "Jayadevee haritalike sakhee parvatee ambike || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 6,
+        "isChorus": false,
+        "devanagari": [
+          "काय वर्णू तव गुण । अल्पमति नारायण ।",
+          "मातें दाखवीं चरण । चुकवावें जन्म मरण ॥ ५ ॥",
+          "जयदेवी हरितालिके सखी पार्वती अंबिके ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Kaya varnoo tava guna | alpamati narayana |",
+          "Maten dakhaveen charana | chukavaven janma marana || ५ ||",
+          "Jayadevee haritalike sakhee parvatee ambike || dhru. ||"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "devi-vatsavitri",
+    "slug": "aarti-vatsavitri",
+    "titleDevanagari": "अश्वपती पुसता झाला नारद सांगताती (वटसावित्री आरती)",
+    "titleTransliteration": "Ashwapati Pusata Jhala (Vatsavitri Aarti)",
+    "firstLineDevanagari": "अश्वपती पुसता झाला । नारद सांगताती तयाला । अल्पायुषी सत्यवंत । सावित्रीनें का प्रणीला ॥",
+    "firstLineTransliteration": "Ashvapatee pusata jhala | Narada sangatatee tayala | Alpayushee satyavanta | Savitreenen ka praneela ||",
+    "deity": "devi",
+    "type": "aarti",
+    "language": "marathi",
+    "author": "पारंपरिक (Traditional)",
+    "meaningSummary": "ज्येष्ठ पौर्णिमेस वटसावित्री व्रतामध्ये यमराजाकडून पतीचे प्राण परत आणणाऱ्या सावित्रीची संपूर्ण ६ कडव्यांची आरती.",
+    "tags": [
+      "vatsavitri",
+      "vrat",
+      "jyeshtha purnima",
+      "pativrata",
+      "devi"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": true,
+        "devanagari": [
+          "अश्वपती पुसता झाला । नारद सांगताती तयाला ।",
+          "अल्पायुषी सत्यवंत । सावित्रीनें का प्रणीला ।",
+          "आणखी वर वरी बाळे । मनीं निश्चय जो केला ।",
+          "आरती वडराजा ॥ १ ॥",
+          "दयावंत यमदूजा । सत्यवंत ही सावित्री ।",
+          "भावें करीन मी पूजा । आरती वडराजा ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Ashvapatee pusata jhala | narada sangatatee tayala |",
+          "Alpayushee satyavanta | savitreenen ka praneela |",
+          "Aanakhee vara varee bale | maneen nishchaya jo kela |",
+          "Aaratee vadaraja || १ ||",
+          "Dayavanta yamadooja | satyavanta hee savitree |",
+          "Bhaven kareena mee pooja | aaratee vadaraja || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "ज्येष्ठामास त्रयोदशी । करिती पूजन वडाशी ।",
+          "त्रिरात्र व्रत करूनिया । जिंकी तूं सत्यवंताशी ।",
+          "आरती वडराजा ॥ २ ॥",
+          "दयावंत यमदूजा । सत्यवंत ही सावित्री ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Jyeshthamasa trayodashee | karitee poojana vadashee |",
+          "Triratra vrata karooniya | jinkee toon satyavantashee |",
+          "Aaratee vadaraja || २ ||",
+          "Dayavanta yamadooja | satyavanta hee savitree || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 3,
+        "isChorus": false,
+        "devanagari": [
+          "स्वर्गावरी जाऊनियां । अग्निखांब कचळीला ।",
+          "धर्मराजा उचकला । हत्या घालील जीवाला ।",
+          "येई ग पतिव्रते । पती नेई गे आपुला ।",
+          "आरती वडराजा ॥ ३ ॥",
+          "दयावंत यमदूजा । सत्यवंत ही सावित्री ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Svargavaree jaooniyan | agnikhamba kachaleela |",
+          "Dharmaraja uchakala | hatya ghaleela jeevala |",
+          "Yeee ga pativrate | patee neee ge aapula |",
+          "Aaratee vadaraja || ३ ||",
+          "Dayavanta yamadooja | satyavanta hee savitree || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 4,
+        "isChorus": false,
+        "devanagari": [
+          "जाऊनियां यमापाशीं । मागतसे आपुला पती ।",
+          "चारी वर देऊनियां । दयावंता द्यावा पती ।",
+          "आरती वडराजा ॥ ४ ॥",
+          "दयावंत यमदूजा । सत्यवंत ही सावित्री ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Jaooniyan yamapasheen | magatase aapula patee |",
+          "Charee vara deooniyan | dayavanta dyava patee |",
+          "Aaratee vadaraja || ४ ||",
+          "Dayavanta yamadooja | satyavanta hee savitree || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 5,
+        "isChorus": false,
+        "devanagari": [
+          "पतिव्रते तुझी कीर्ति । ऐकुनी ज्या नारी ।",
+          "तुझें व्रतें आचरती । तुझीं भुवनें पावती ।",
+          "आरती वडराजा ॥ ५ ॥",
+          "दयावंत यमदूजा । सत्यवंत ही सावित्री ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Pativrate tujhee keerti | aikunee jya naree |",
+          "Tujhen vraten aacharatee | tujheen bhuvanen pavatee |",
+          "Aaratee vadaraja || ५ ||",
+          "Dayavanta yamadooja | satyavanta hee savitree || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 6,
+        "isChorus": false,
+        "devanagari": [
+          "पतिव्रते तुझी स्तुती । त्रिभुवनी ज्या करिती ।",
+          "स्वर्गी पुष्पवृष्टी । करुनियां आणिलासी आपुला पती ।",
+          "अभय देऊनियां । पतिव्रते तारी त्यासी ॥ ६ ॥",
+          "दयावंत यमदूजा । सत्यवंत ही सावित्री ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Pativrate tujhee stutee | tribhuvanee jya karitee |",
+          "Svargee pushpavrushtee | karuniyan aanilasee aapula patee |",
+          "Abhaya deooniyan | pativrate taree tyasee || ६ ||",
+          "Dayavanta yamadooja | satyavanta hee savitree || dhru. ||"
+        ]
+      }
+    ]
+  }
+];

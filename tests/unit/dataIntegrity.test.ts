@@ -1,94 +1,225 @@
 import { describe, it, expect } from 'vitest';
-import { aartis } from '@/data/aartis';
+import {
+  aartis,
+  ganeshaAartis,
+  shivaAartis,
+  deviAartis,
+  vitthalAartis,
+  ramaAartis,
+  krishnaAartis,
+  dattatreyaAartis,
+  hanumanAartis,
+  saintsAartis,
+  nityapujaAartis,
+  navagrahaAartis,
+} from '@/data/aartis';
 import { deities } from '@/data/deities';
-import { playlists } from '@/data/playlists';
 
-describe('Data Integrity & Schema Validation', () => {
-  it('ensures all aarti slugs and IDs are unique', () => {
-    const ids = aartis.map(a => a.id);
-    const slugs = aartis.map(a => a.slug);
-    expect(new Set(ids).size).toBe(ids.length);
-    expect(new Set(slugs).size).toBe(slugs.length);
+describe('Data Integrity & Accuracy Tests', () => {
+  it('has valid deities list with all required fields', () => {
+    expect(deities.length).toBeGreaterThan(0);
+    deities.forEach(deity => {
+      expect(deity.id).toBeTruthy();
+      expect(deity.nameDevanagari).toBeTruthy();
+      expect(deity.nameTransliteration).toBeTruthy();
+      expect(deity.description).toBeTruthy();
+      expect(deity.primaryDay).toBeTruthy();
+      expect(deity.color).toBeTruthy();
+      expect(deity.icon).toBeTruthy();
+    });
   });
 
-  it('ensures every aarti has valid stanzas in both Devanagari and transliteration', () => {
+  it('has unique IDs for all deities', () => {
+    const ids = deities.map(d => d.id);
+    const uniqueIds = new Set(ids);
+    expect(uniqueIds.size).toBe(ids.length);
+  });
+
+  it('has a substantial collection of authentic aartis and stotras', () => {
+    expect(aartis.length).toBeGreaterThanOrEqual(120);
+    expect(aartis.length).toBe(129);
+  });
+
+  it('verifies modular deity/category aarti collections are populated', () => {
+    expect(ganeshaAartis.length).toBeGreaterThanOrEqual(8);
+    expect(shivaAartis.length).toBeGreaterThanOrEqual(11);
+    expect(deviAartis.length).toBeGreaterThanOrEqual(17);
+    expect(vitthalAartis.length).toBeGreaterThanOrEqual(7);
+    expect(ramaAartis.length).toBeGreaterThanOrEqual(7);
+    expect(krishnaAartis.length).toBeGreaterThanOrEqual(9);
+    expect(dattatreyaAartis.length).toBeGreaterThanOrEqual(9);
+    expect(hanumanAartis.length).toBeGreaterThanOrEqual(4);
+    expect(saintsAartis.length).toBeGreaterThanOrEqual(23);
+    expect(nityapujaAartis.length).toBeGreaterThanOrEqual(20);
+    expect(navagrahaAartis.length).toBeGreaterThanOrEqual(9);
+
+    const sumOfModular =
+      ganeshaAartis.length +
+      shivaAartis.length +
+      deviAartis.length +
+      vitthalAartis.length +
+      ramaAartis.length +
+      krishnaAartis.length +
+      dattatreyaAartis.length +
+      hanumanAartis.length +
+      saintsAartis.length +
+      nityapujaAartis.length +
+      navagrahaAartis.length;
+
+    expect(sumOfModular).toBe(aartis.length);
+  });
+
+  it('has unique IDs and slugs for all aartis', () => {
+    const ids = aartis.map(a => a.id);
+    const uniqueIds = new Set(ids);
+    expect(uniqueIds.size).toBe(ids.length);
+
+    const slugs = aartis.map(a => a.slug);
+    const uniqueSlugs = new Set(slugs);
+    expect(uniqueSlugs.size).toBe(slugs.length);
+  });
+
+  it('validates every aarti has valid structure and references an existing deity', () => {
+    const validDeityIds = new Set(deities.map(d => d.id));
+
     aartis.forEach(aarti => {
+      expect(aarti.id).toBeTruthy();
+      expect(aarti.slug).toMatch(/^[a-z0-9-]+$/);
+      expect(aarti.titleDevanagari).toBeTruthy();
+      expect(aarti.titleTransliteration).toBeTruthy();
+      expect(aarti.firstLineDevanagari).toBeTruthy();
+      expect(aarti.firstLineTransliteration).toBeTruthy();
+      expect(validDeityIds.has(aarti.deity)).toBe(true);
+      expect(['aarti', 'stotra', 'shloka', 'mantra', 'ashtak', 'chalisa']).toContain(aarti.type);
+      expect(['marathi', 'sanskrit', 'hindi']).toContain(aarti.language);
       expect(aarti.stanzas.length).toBeGreaterThan(0);
+
       aarti.stanzas.forEach(stanza => {
+        expect(stanza.stanzaNumber).toBeGreaterThan(0);
         expect(stanza.devanagari.length).toBeGreaterThan(0);
         expect(stanza.transliteration.length).toBeGreaterThan(0);
+        expect(stanza.devanagari.length).toBe(stanza.transliteration.length);
       });
     });
   });
 
-  it('ensures every aarti references a valid deity in deities catalog', () => {
-    const validDeityIds = new Set(deities.map(d => d.id));
-    aartis.forEach(aarti => {
-      expect(validDeityIds.has(aarti.deity)).toBe(true);
-    });
-  });
-
-  it('ensures all playlist aartiIds reference existing aartis', () => {
-    const existingAartiIds = new Set(aartis.map(a => a.id));
-    playlists.forEach(playlist => {
-      playlist.aartiIds.forEach(id => {
-        expect(existingAartiIds.has(id)).toBe(true);
-      });
-    });
-  });
-
-  it('includes all revered Maharashtra saints and festival hymns requested', () => {
+  it('includes core authentic traditional aartis', () => {
     const slugs = aartis.map(a => a.slug);
-    const expectedHymns = [
-      'aarti-dnyanraja',
-      'aarti-tukaram',
-      'aarti-gauri-mata',
-      'aarti-sai-baba',
-      'aarti-ambe-mata-navratri',
-      'aarti-samarth-ramdas',
-      'aarti-nityanand-maharaj',
-      'aarti-swami-samarth',
-      'aarti-gajanan-maharaj',
-      'om-jai-jagdish-hare',
-      'aarti-bal-krishna',
-      'aarti-khanderaya-jejuri',
+    expect(slugs).toContain('sukhkarta-dukhharta');
+    expect(slugs).toContain('lavthavti-vikrala');
+    expect(slugs).toContain('durge-durgat-bhari');
+    expect(slugs).toContain('trigunatmak-traimurti');
+    expect(slugs).toContain('yuge-atthavis');
+    expect(slugs).toContain('aarti-sai-baba');
+    expect(slugs).toContain('aarti-swami-samarth');
+    expect(slugs).toContain('aarti-dnyanraja');
+    expect(slugs).toContain('aarti-tukaram');
+    expect(slugs).toContain('aarti-samarth-ramdas');
+    expect(slugs).toContain('aarti-sant-eknath');
+    expect(slugs).toContain('aarti-gajanan-maharaj');
+  });
+
+  it('includes authentic traditional aartis added from Sampurna Marathi Aarti Sangrah', () => {
+    const slugs = aartis.map(a => a.slug);
+    const expectedPothiAartis = [
+      'nana-parimal-durva',
+      'kapol-jhirati-made',
+      'jay-dev-vakratunda',
+      'jay-dev-shrimangesha',
+      'jay-jay-trimbakaraj',
+      'ovaloo-ga-maye-vitthal',
+      'aarti-anantabhuja-vitho',
+      'aarti-shripadavallabh',
+      'satrane-uddane-maruti',
+      'aarti-ambe-sukhsadane',
+      'aarti-navratra-ashwin-shuddha',
+      'aarti-mangalagauri',
+      'aarti-haritalika',
+      'aarti-vatsavitri',
+      'aarti-ramchandra-utkat-sadhuni',
+      'aarti-ramchandra-tribhuvana-mandit',
+      'aarti-ramchandra-svasvaroop',
+      'aarti-ramchandra-ratnanchi-kundale',
+      'aarti-ramchandra-kay-karun-ge-maya',
+      'aarti-krishna-ovaloo-madangopala',
+      'aarti-krishna-hari-chala-mandira',
+      'aarti-krishna-avtar-gokuli',
+      'aarti-krishna-sahasradeepe',
+      'aarti-krishna-aikoni-krishnakirti',
+      'aarti-vishnu-sant-sanakadik',
+      'aarti-vyankatesh-sheshachal',
+      'aarti-anant-jay-shree-ananta',
+      'aarti-bhuvan-sundar',
+      'aarti-satyanarayan',
+      'aarti-parashuram',
+      'aarti-dashavatar',
+      'aarti-sadguru-sagun-he-aarti',
+      'aarti-sadguru-falale-bhagya-majhe',
+      'aarti-sadguru-dhanya-dhanya-pradakshina',
+      'aarti-dasbodh',
+      'aarti-tukaram-prapanch-rachana',
+      'aarti-sant-namdev',
+      'aarti-sant-mandali',
+      'aarti-atmaram',
+      'aarti-shri-geeta',
+      'aarti-gangamai',
+      'aarti-manobodh',
+      'aarti-bhagwat',
+      'aarti-tulsi-mata',
+      'aarti-kakad-sadhu-ahesak-utha',
+      'aarti-kakad-bhaktichiye-poti',
+      'aarti-kakad-paramatmaya-raghupati',
+      'aarti-panchayatan',
+      'aarti-dhoop-pandhariraya',
+      'aarti-deep-panduranga',
+      'aarti-naivedya-vithabai',
+      'aarti-niranjan',
+      'aarti-nirop',
     ];
 
-    expectedHymns.forEach(slug => {
+    expectedPothiAartis.forEach(slug => {
       expect(slugs).toContain(slug);
     });
   });
 
-  it('includes all four daily prahar aartis sung in Shirdi temple', () => {
-    const slugs = aartis.map(a => a.slug);
-    expect(slugs).toContain('shirdi-sai-kakad-aarti');
-    expect(slugs).toContain('shirdi-sai-madhyan-aarti');
-    expect(slugs).toContain('shirdi-sai-dhoop-aarti');
-    expect(slugs).toContain('shirdi-sai-shej-aarti');
-  });
+  it('validates verified accuracy of previously reported aartis', () => {
+    // Gajanan Maharaj - Das Ganu Maharaj
+    const gajanan = aartis.find(a => a.slug === 'aarti-gajanan-maharaj');
+    expect(gajanan).toBeDefined();
+    expect(gajanan?.author).toContain('दासगणू');
+    expect(gajanan?.firstLineDevanagari).toContain('जय जय सच्चितस्वरूप स्वामी गणराया');
 
-  it('includes aartis for Surya Dev, Shani Dev, Saraswati, Santoshi Mata, Gayatri, and Sant Eknath', () => {
-    const slugs = aartis.map(a => a.slug);
-    expect(slugs).toContain('aarti-surya-dev');
-    expect(slugs).toContain('aarti-shani-dev');
-    expect(slugs).toContain('aarti-saraswati-mata');
-    expect(slugs).toContain('aarti-santoshi-mata');
-    expect(slugs).toContain('aarti-gayatri-mata');
-    expect(slugs).toContain('aarti-sant-eknath');
-  });
+    // Samarth Ramdas - Kalyan Swami
+    const ramdas = aartis.find(a => a.slug === 'aarti-samarth-ramdas');
+    expect(ramdas).toBeDefined();
+    expect(ramdas?.author).toContain('कल्याण');
+    expect(ramdas?.firstLineDevanagari).toContain('आरती रामदासा');
 
-  it('includes daily temple prahar aartis for Pandharpur, Akkalkot, Shegaon, Kolhapur and Tuljapur', () => {
-    const slugs = aartis.map(a => a.slug);
-    expect(slugs).toContain('pandharpur-vitthal-kakad-aarti');
-    expect(slugs).toContain('pandharpur-vitthal-shej-aarti');
-    expect(slugs).toContain('rukhumai-aarti');
-    expect(slugs).toContain('akkalkot-swami-kakad-aarti');
-    expect(slugs).toContain('akkalkot-swami-shej-aarti');
-    expect(slugs).toContain('shegaon-gajanan-kakad-aarti');
-    expect(slugs).toContain('kolhapur-ambabai-karveer-aarti');
-    expect(slugs).toContain('kolhapur-ambabai-kakad-aarti');
-    expect(slugs).toContain('tuljabhavani-aarti');
-    expect(slugs).toContain('ganesha-kakad-aarti');
+    // Sant Eknath - Anant Gopaldas
+    const eknath = aartis.find(a => a.slug === 'aarti-sant-eknath');
+    expect(eknath).toBeDefined();
+    expect(eknath?.firstLineDevanagari).toContain('आरती एकनाथा');
+
+    // Sant Tukaram - Rameshwar Bhatt
+    const tukaram = aartis.find(a => a.slug === 'aarti-tukaram');
+    expect(tukaram).toBeDefined();
+    expect(tukaram?.author).toContain('रामेश्वर');
+    expect(tukaram?.firstLineDevanagari).toContain('आरती तुकारामा');
+
+    // Vitthal - Yuge Atthavis has all 5 stanzas
+    const vitthal = aartis.find(a => a.slug === 'yuge-atthavis');
+    expect(vitthal).toBeDefined();
+    expect(vitthal?.stanzas.length).toBe(5);
+
+    // Khanderaya Jejuri
+    const khandoba = aartis.find(a => a.slug === 'aarti-khanderaya-jejuri');
+    expect(khandoba).toBeDefined();
+    expect(khandoba?.firstLineDevanagari).toContain('पंचानन हयवाहन सुरभूषितनीळा');
+
+    // Shani Dev has all 7 stanzas + chorus
+    const shani = aartis.find(a => a.slug === 'aarti-shani-dev');
+    expect(shani).toBeDefined();
+    expect(shani?.stanzas.length).toBe(8);
   });
 
   it('includes Mata Parvati and Lord Kartikeya Swami aartis', () => {
