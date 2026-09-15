@@ -182,7 +182,8 @@ export function getCurrentMuhurat(date: Date = new Date()): MuhuratPeriod {
 export function getSolarTimings(
   lat: number = 18.5204, // Default to Pune/Maharashtra
   lng: number = 73.8567,
-  date: Date = new Date()
+  date: Date = new Date(),
+  tzOffsetHours?: number
 ): SolarTimings {
   const start = new Date(date.getFullYear(), 0, 0);
   const diff = date.getTime() - start.getTime();
@@ -201,8 +202,21 @@ export function getSolarTimings(
   const B = ((360 / 365) * (dayOfYear - 81)) * rad;
   const eotMinutes = 9.87 * Math.sin(2 * B) - 7.53 * Math.cos(B) - 1.5 * Math.sin(B);
 
-  const timezoneOffsetHours = -date.getTimezoneOffset() / 60;
-  const solarNoonHours = 12 + (timezoneOffsetHours * 15 - lng) / 15 - eotMinutes / 60;
+  // Determine timezone offset:
+  // 1. Explicitly supplied offset
+  // 2. Indian coordinates default to Indian Standard Time (IST = UTC +5.5)
+  // 3. User device timezone offset if non-zero
+  // 4. Fallback to longitude-derived local solar timezone
+  const effectiveTzOffset =
+    tzOffsetHours !== undefined
+      ? tzOffsetHours
+      : lat >= 6 && lat <= 38 && lng >= 68 && lng <= 98
+      ? 5.5
+      : date.getTimezoneOffset() !== 0
+      ? -date.getTimezoneOffset() / 60
+      : Math.round((lng / 15) * 2) / 2;
+
+  const solarNoonHours = 12 + (effectiveTzOffset * 15 - lng) / 15 - eotMinutes / 60;
 
   const sunriseHours = solarNoonHours - hourAngleHours;
   const sunsetHours = solarNoonHours + hourAngleHours;
