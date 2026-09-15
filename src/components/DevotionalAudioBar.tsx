@@ -25,6 +25,9 @@ import { useThemeContext } from '@/components/ThemeProvider';
 import { Stanza, ScriptType } from '@/types';
 import { INDIAN_SUR_REGISTRY, IndianSur } from '@/lib/pitchDetector';
 
+// Feature flag: speech recitation ('पठण ऐका') is kept intact for further singing/laya improvements, but hidden from end users for now.
+const SHOW_SPEECH_RECITATION = false;
+
 interface DevotionalAudioBarProps {
   stanzas?: Stanza[];
   script?: ScriptType;
@@ -110,7 +113,7 @@ export function DevotionalAudioBar({
     }
   };
 
-  // Toggle Text-to-Speech Recitation
+  // Toggle Text-to-Speech Recitation (Kept intact for development)
   const toggleSpeech = () => {
     if (isSpeaking) {
       if (isPaused) {
@@ -258,8 +261,8 @@ export function DevotionalAudioBar({
             </div>
           )}
 
-          {/* Text-to-Speech Recitation Button */}
-          {speechSupported && (
+          {/* Text-to-Speech Recitation Button ('पठण ऐका' is hidden from users pending singing laya improvements) */}
+          {SHOW_SPEECH_RECITATION && speechSupported && (
             <div className="flex items-center gap-1">
               <button
                 onClick={toggleSpeech}
@@ -428,8 +431,8 @@ export function DevotionalAudioBar({
             </div>
           </div>
 
-          {/* Speech Rate Control */}
-          {speechSupported && (
+          {/* Speech Rate Control ('पठण ऐका' speed settings hidden along with the recitation button) */}
+          {SHOW_SPEECH_RECITATION && speechSupported && (
             <div className="flex items-center justify-between gap-2 pt-1 border-t border-dashed border-[var(--border-main)]">
               <span className="text-[var(--text-secondary)] font-semibold">
                 वाचन गती (Speech Speed):
