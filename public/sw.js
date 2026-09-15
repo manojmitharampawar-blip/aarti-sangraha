@@ -1,5 +1,5 @@
 // Aarti Sangraha Service Worker for PWA Offline, Instant Updates & Install Support
-const CACHE_NAME = 'aarti-sangraha-v3';
+const CACHE_NAME = 'aarti-sangraha-v4';
 const STATIC_ASSETS = [
   './',
   'manifest.json',
@@ -68,25 +68,46 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // 2. HTML navigation & JSON data: Network-First (cache: no-cache) with offline cache fallback
-  // This guarantees new website updates are fetched immediately without needing a hard reload
-  event.respondWith(
-    fetch(event.request, { cache: 'no-cache' })
-      .then(networkResponse => {
-        if (networkResponse && networkResponse.status === 200) {
-          const clone = networkResponse.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-        }
-        return networkResponse;
-      })
-      .catch(() => {
-        return caches.match(event.request).then(cached => {
-          if (cached) return cached;
-          if (event.request.headers.get('accept')?.includes('text/html')) {
-            return caches.match('./');
+  // 2. HTML navigation pages: Network First with Cache Fallback for instant offline & freshness
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .then(networkResponse => {
+          if (networkResponse && networkResponse.status === 200) {
+            const clone = networkResponse.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
           }
-          return null;
-        });
-      })
+          return networkResponse;
+        })
+        .catch(async () => {
+          const cachedResponse = await caches.match(event.request);
+          if (cachedResponse) return cachedResponse;
+          // Fallback to offline root cache if exact page is not cached
+          const rootCached = await caches.match('./');
+          if (rootCached) return rootCached;
+          return new Response('ऑफलाइन मोड — कृपया इंटरनेट कनेक्शन तपासा.', {
+            status: 503,
+            headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+          });
+        })
+    );
+    return;
+  }
+
+  // 3. Other static assets: Stale While Revalidate
+  event.respondWith(
+    caches.match(event.request).then(cachedResponse => {
+      const fetchPromise = fetch(event.request)
+        .then(networkResponse => {
+          if (networkResponse && networkResponse.status === 200) {
+            const clone = networkResponse.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+          }
+          return networkResponse;
+        })
+        .catch(() => cachedResponse);
+
+      return cachedResponse || fetchPromise;
+    })
   );
 });

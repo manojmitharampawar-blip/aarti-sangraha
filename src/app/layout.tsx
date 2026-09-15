@@ -28,8 +28,10 @@ const mukta = Mukta({
   variable: '--font-mukta',
 });
 
-const githubRepo = process.env.GITHUB_REPOSITORY ? process.env.GITHUB_REPOSITORY.split('/')[1] : '';
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH ? `/${process.env.NEXT_PUBLIC_BASE_PATH}` : githubRepo ? `/${githubRepo}` : '';
+// basePath is injected by next.config.mjs (empty for custom domain like vediconline.com)
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH
+  ? `/${process.env.NEXT_PUBLIC_BASE_PATH.replace(/^\/+|\/+$/g, '')}`
+  : '';
 
 export const metadata: Metadata = {
   title: 'आरती संग्रह (Aarti Sangraha) — Nitya Pooja & Prayers',
@@ -61,22 +63,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="mr" suppressHydrationWarning className={`${notoSans.variable} ${notoSerif.variable} ${mukta.variable}`}>
+    <html lang="mr" className="h-full" suppressHydrationWarning>
       <head>
-        <link rel="manifest" href="./manifest.json" />
-        <link rel="apple-touch-icon" href="./icon-192.png" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="आरती संग्रह" />
+        <meta name="application-name" content="आरती संग्रह" />
+        <link rel="apple-touch-icon" href={`${basePath}/icon-192.png`} />
       </head>
-      <body className="antialiased min-h-screen flex flex-col font-sans transition-colors duration-300">
+      <body
+        className={`${notoSans.variable} ${notoSerif.variable} ${mukta.variable} font-sans h-full bg-[var(--bg-main)] text-[var(--text-primary)] antialiased transition-colors duration-300`}
+      >
         <ThemeProvider>
-          <div className="flex-1 flex flex-col max-w-xl mx-auto w-full min-h-screen relative shadow-2xl shadow-black/5 pb-24">
-            <Header />
-            <PWAInstallPrompt />
-            <main className="flex-1 px-4 py-5 w-full">
-              {children}
-            </main>
-            <RitualBar />
+          <div className="min-h-full flex flex-col justify-between">
+            <div>
+              <Header />
+              <RitualBar />
+              <main className="max-w-3xl mx-auto px-4 sm:px-6 py-4 sm:py-6">{children}</main>
+            </div>
             <BottomNav />
           </div>
+          <PWAInstallPrompt />
         </ThemeProvider>
       </body>
     </html>
