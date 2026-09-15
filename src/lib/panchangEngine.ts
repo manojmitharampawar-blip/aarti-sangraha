@@ -29,6 +29,11 @@ export interface MuhuratPeriod {
   isCurrent: boolean;
 }
 
+export interface SolarTimings {
+  sunrise: string;
+  sunset: string;
+}
+
 const TITHI_NAMES = [
   'प्रतिपदा',
   'द्वितीया',
@@ -169,4 +174,50 @@ export function getCurrentMuhurat(date: Date = new Date()): MuhuratPeriod {
       isCurrent: true,
     };
   }
+}
+
+/**
+ * Astronomical Solar Calculation for exact local Sunrise and Sunset
+ */
+export function getSolarTimings(
+  lat: number = 18.5204, // Default to Pune/Maharashtra
+  lng: number = 73.8567,
+  date: Date = new Date()
+): SolarTimings {
+  const start = new Date(date.getFullYear(), 0, 0);
+  const diff = date.getTime() - start.getTime();
+  const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+  const rad = Math.PI / 180;
+  const declination = -23.44 * Math.cos(((360 / 365) * (dayOfYear + 10)) * rad);
+
+  const latRad = lat * rad;
+  const decRad = declination * rad;
+  const cosH =
+    (Math.cos(90.833 * rad) - Math.sin(latRad) * Math.sin(decRad)) /
+    (Math.cos(latRad) * Math.cos(decRad));
+  const hourAngleHours = Math.acos(Math.max(-1, Math.min(1, cosH))) / rad / 15;
+
+  const B = ((360 / 365) * (dayOfYear - 81)) * rad;
+  const eotMinutes = 9.87 * Math.sin(2 * B) - 7.53 * Math.cos(B) - 1.5 * Math.sin(B);
+
+  const timezoneOffsetHours = -date.getTimezoneOffset() / 60;
+  const solarNoonHours = 12 + (timezoneOffsetHours * 15 - lng) / 15 - eotMinutes / 60;
+
+  const sunriseHours = solarNoonHours - hourAngleHours;
+  const sunsetHours = solarNoonHours + hourAngleHours;
+
+  const formatTime = (h: number) => {
+    const normH = ((h % 24) + 24) % 24;
+    const hours = Math.floor(normH);
+    const minutes = Math.floor((normH - hours) * 60);
+    const padH = String(hours).padStart(2, '0');
+    const padM = String(minutes).padStart(2, '0');
+    return `${padH}:${padM}`;
+  };
+
+  return {
+    sunrise: formatTime(sunriseHours),
+    sunset: formatTime(sunsetHours),
+  };
 }

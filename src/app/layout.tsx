@@ -73,12 +73,31 @@ export const metadata: Metadata = {
     locale: 'mr_IN',
     alternateLocale: ['en_US', 'hi_IN'],
     type: 'website',
+    images: [
+      {
+        url: 'https://vediconline.com/og-image.jpg',
+        secureUrl: 'https://vediconline.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'संपूर्ण आरती संग्रह मराठी | Vedic Online (Aarti Sangraha, Stotras & Panchang)',
+        type: 'image/jpeg',
+      },
+      {
+        url: 'https://vediconline.com/og-image.png',
+        secureUrl: 'https://vediconline.com/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'संपूर्ण आरती संग्रह मराठी | Vedic Online (Aarti Sangraha, Stotras & Panchang)',
+        type: 'image/png',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'संपूर्ण आरती संग्रह मराठी | Vedic Online',
     description:
       'सर्व देवी-देवतांच्या मराठी आरत्या, स्तोत्रे, मंत्र व नित्य उपासना संग्रह.',
+    images: ['https://vediconline.com/og-image.jpg'],
   },
   robots: {
     index: true,
@@ -150,6 +169,14 @@ export default function RootLayout({
             __html: `if(typeof window!=='undefined'&&location.protocol==='http:'&&location.hostname!=='localhost'&&location.hostname!=='127.0.0.1'){location.replace('https://'+location.host+location.pathname+location.search+location.hash);}`,
           }}
         />
+        {/* WhatsApp & Facebook Rich Open Graph Link Preview Image */}
+        <meta property="og:image" content="https://vediconline.com/og-image.jpg" />
+        <meta property="og:image:secure_url" content="https://vediconline.com/og-image.jpg" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="संपूर्ण आरती संग्रह मराठी | Vedic Online" />
+        <meta name="twitter:image" content="https://vediconline.com/og-image.jpg" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-title" content="आरती संग्रह" />
         <meta name="application-name" content="आरती संग्रह" />

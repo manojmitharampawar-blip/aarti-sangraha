@@ -60,11 +60,22 @@ export function generateMetadata({ params }: PageProps): Metadata {
       siteName: 'Vedic Online | आरती संग्रह',
       locale: 'mr_IN',
       type: 'article',
+      images: [
+        {
+          url: 'https://vediconline.com/og-image.jpg',
+          secureUrl: 'https://vediconline.com/og-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: `${playlist.titleDevanagari} - वैदिक ऑनलाईन`,
+          type: 'image/jpeg',
+        },
+      ],
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title: `${pageTitle} | Vedic Online`,
       description: pageDescription,
+      images: ['https://vediconline.com/og-image.jpg'],
     },
   };
 }

@@ -12,10 +12,16 @@ import {
   Download,
   CheckCircle,
   FastForward,
+  Camera,
+  Mic,
+  MapPin,
+  Sparkles,
+  AlertCircle,
 } from 'lucide-react';
 import { useThemeContext, ThemeType } from '@/components/ThemeProvider';
 import { playTempleBell } from '@/lib/audioBell';
 import { triggerPWAInstall } from '@/components/PWAInstallPrompt';
+import { useAppPermissions, PermissionStatusType } from '@/hooks/useAppPermissions';
 
 export default function SettingsPage() {
   const {
@@ -28,6 +34,20 @@ export default function SettingsPage() {
     autoScrollSpeed,
     setAutoScrollSpeed,
   } = useThemeContext();
+
+  const {
+    cameraStatus,
+    micStatus,
+    locationStatus,
+    userLocation,
+    allGranted,
+    isRequestingAll,
+    lastActionMessage,
+    requestCamera,
+    requestMicrophone,
+    requestLocation,
+    requestAllPermissions,
+  } = useAppPermissions();
 
   const isDevanagari = script === 'devanagari';
 
@@ -62,6 +82,31 @@ export default function SettingsPage() {
     { val: 2, label: '2.0x', desc: 'जलद (Fast)' },
   ];
 
+  const renderBadge = (status: PermissionStatusType) => {
+    switch (status) {
+      case 'granted':
+        return (
+          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-[11px] font-bold">
+            <CheckCircle className="w-3.5 h-3.5" />
+            <span>सक्रिय (Active)</span>
+          </span>
+        );
+      case 'denied':
+        return (
+          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-700 dark:text-rose-300 text-[11px] font-bold">
+            <AlertCircle className="w-3.5 h-3.5" />
+            <span>नाकारले</span>
+          </span>
+        );
+      default:
+        return (
+          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-700 dark:text-amber-300 text-[11px] font-bold">
+            <span>परवानगी आवश्यक</span>
+          </span>
+        );
+    }
+  };
+
   return (
     <div className="space-y-6 max-w-lg mx-auto pb-12">
       <div>
@@ -69,9 +114,165 @@ export default function SettingsPage() {
           {isDevanagari ? 'सेटिंग्ज व प्राधान्ये' : 'Settings & Preferences'}
         </h1>
         <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">
-          {isDevanagari ? 'ॲप रूप, फॉन्ट, स्क्रोल गती, ध्वनी व ऑफलाइन इन्स्टॉलेशन' : 'Appearance, Font Scale, Auto-scroll, Audio & PWA Install'}
+          {isDevanagari
+            ? 'ॲप परवानग्या, रंगसंगती, फॉन्ट, स्क्रोल गती, ध्वनी व ऑफलाइन इन्स्टॉलेशन'
+            : 'Permissions, Appearance, Font Scale, Auto-scroll & Offline Install'}
         </p>
       </div>
+
+      {/* Permissions Section: Camera, Voice, Location */}
+      <section className="p-4 rounded-3xl border border-saffron-500/30 bg-gradient-to-br from-saffron-500/10 via-amber-500/5 to-transparent space-y-4 shadow-xs">
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 rounded-xl bg-saffron-500/20 text-saffron-600">
+              <Sparkles className="w-5 h-5" />
+            </div>
+            <div>
+              <h2 className="text-sm font-black text-[var(--text-primary)] font-devanagari">
+                {isDevanagari ? 'ॲप परवानग्या व सुलभता' : 'App Permissions & Capabilities'}
+              </h2>
+              <p className="text-[11px] text-[var(--text-secondary)]">
+                {isDevanagari
+                  ? 'व्हर्च्युअल आरती, वाणी स्क्रोल (AI) व अचूक पंचांग वेळेसाठी'
+                  : 'For Touchless Aarti, AI Voice Scroll & Accurate Local Timings'}
+              </p>
+            </div>
+          </div>
+          {allGranted && (
+            <span className="px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 text-[10px] font-extrabold border border-emerald-500/30">
+              सर्व सक्रिय ✓
+            </span>
+          )}
+        </div>
+
+        {/* Master One-Click Button */}
+        {!allGranted && (
+          <button
+            onClick={requestAllPermissions}
+            disabled={isRequestingAll}
+            className="w-full py-2.5 px-4 rounded-2xl bg-gradient-to-r from-saffron-600 to-amber-600 hover:from-saffron-700 hover:to-amber-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm shadow-saffron-600/20 active:scale-98 transition-all disabled:opacity-60"
+          >
+            <Sparkles className="w-4 h-4" />
+            <span>
+              {isRequestingAll
+                ? 'परवानग्या सुरू करत आहे...'
+                : 'सर्व परवानग्या एकाच क्लिकमध्ये सक्षम करा (Enable All)'}
+            </span>
+          </button>
+        )}
+
+        {/* 3 Permission Controls */}
+        <div className="space-y-2.5">
+          {/* Video / Camera */}
+          <div className="p-3 rounded-2xl border border-[var(--border-main)] bg-[var(--card-main)] flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-xl bg-amber-500/15 text-amber-600 shrink-0">
+                <Camera className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-xs font-bold text-[var(--text-primary)]">
+                  {isDevanagari ? 'व्हिडिओ कॅमेरा (Camera)' : 'Video Camera'}
+                </h3>
+                <p className="text-[11px] text-[var(--text-secondary)]">
+                  {isDevanagari
+                    ? 'स्पर्शविरहित व्हर्च्युअल आरती ओवाळणे व नमस्कार'
+                    : 'Touchless Virtual Aarti gestures'}
+                </p>
+              </div>
+            </div>
+            <div>
+              {cameraStatus === 'granted' ? (
+                renderBadge(cameraStatus)
+              ) : (
+                <button
+                  onClick={requestCamera}
+                  className="px-3 py-1.5 rounded-xl bg-saffron-600 hover:bg-saffron-700 text-white font-bold text-xs shadow-xs active:scale-95 transition-all"
+                >
+                  सुरू करा
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Microphone / Voice */}
+          <div className="p-3 rounded-2xl border border-[var(--border-main)] bg-[var(--card-main)] flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-xl bg-emerald-500/15 text-emerald-600 shrink-0">
+                <Mic className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-xs font-bold text-[var(--text-primary)]">
+                  {isDevanagari ? 'मायक्रोफोन (Voice / Mic)' : 'Microphone (Voice)'}
+                </h3>
+                <p className="text-[11px] text-[var(--text-secondary)]">
+                  {isDevanagari
+                    ? 'वाणी स्क्रोल (AI) — गायन ऐकून आपोआप स्क्रोल'
+                    : 'AI Voice Scroll reciting follower'}
+                </p>
+              </div>
+            </div>
+            <div>
+              {micStatus === 'granted' ? (
+                renderBadge(micStatus)
+              ) : (
+                <button
+                  onClick={requestMicrophone}
+                  className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs active:scale-95 transition-all"
+                >
+                  सुरू करा
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Location */}
+          <div className="p-3 rounded-2xl border border-[var(--border-main)] bg-[var(--card-main)] flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-xl bg-blue-500/15 text-blue-600 shrink-0">
+                <MapPin className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-xs font-bold text-[var(--text-primary)]">
+                  {isDevanagari ? 'स्थान (Location)' : 'Location'}
+                </h3>
+                <p className="text-[11px] text-[var(--text-secondary)]">
+                  {isDevanagari
+                    ? 'स्थानिक सूर्योदय, सूर्यास्त व पंचांग'
+                    : 'Local sunrise, sunset & panchang'}
+                  {userLocation && (
+                    <span className="block text-saffron-600 font-bold mt-0.5">
+                      📍 {userLocation.cityNameMr} ({userLocation.cityNameEn})
+                    </span>
+                  )}
+                </p>
+              </div>
+            </div>
+            <div>
+              {locationStatus === 'granted' ? (
+                renderBadge(locationStatus)
+              ) : (
+                <button
+                  onClick={requestLocation}
+                  className="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-xs active:scale-95 transition-all"
+                >
+                  जोडा
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {lastActionMessage && (
+          <div className="p-2.5 rounded-xl bg-saffron-500/10 border border-saffron-500/20 text-xs text-saffron-800 dark:text-saffron-200 text-center font-medium animate-fade-in">
+            {lastActionMessage}
+          </div>
+        )}
+
+        <div className="flex items-center gap-2 text-[11px] text-[var(--text-secondary)] pt-1">
+          <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+          <span>१००% खाजगी: कोणताही ऑडिओ, व्हिडिओ किंवा डेटा सर्व्हरवर जात नाही.</span>
+        </div>
+      </section>
 
       {/* PWA Direct Installation Card */}
       <section className="p-4 rounded-2xl border border-amber-500/30 bg-gradient-to-br from-amber-500/10 via-saffron-500/5 to-transparent space-y-3 shadow-xs">
@@ -256,15 +457,8 @@ export default function SettingsPage() {
           <span>१००% मोफत व सुरक्षित (100% Free, Static & Offline Ready)</span>
         </div>
         <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-          हे ॲप पूर्णपणे स्टॅटिक असून इंटरनेट नसतानाही काम करते. कोणतीही जाहिरात किंवा ट्रॅकर नाही.
+          हे ॲप पूर्णपणे स्टॅटिक असून इंटरनेट नसतानाही काम करते. कोणतीही जाहिरात किंवा ट्रॅकर नाही. सर्व डेटा केवळ आपल्या डिव्हाइसवर साठवला जातो.
         </p>
-        <div className="pt-2 border-t border-[var(--border-main)] flex items-center justify-between text-xs text-[var(--text-secondary)]">
-          <span>आवृत्ती: १.०.० (PWA Enabled)</span>
-          <span className="flex items-center gap-1 text-emerald-600 font-semibold">
-            <CheckCircle className="w-3.5 h-3.5" />
-            <span>PWA Ready</span>
-          </span>
-        </div>
       </section>
     </div>
   );

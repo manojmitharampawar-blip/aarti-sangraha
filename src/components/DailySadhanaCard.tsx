@@ -9,8 +9,10 @@ import {
   Clock,
   ArrowRight,
   CheckCircle2,
-  BookOpen,
   Music,
+  MapPin,
+  Sunrise,
+  Sunset,
 } from 'lucide-react';
 import {
   getDevotionalRecommendation,
@@ -20,6 +22,9 @@ import {
   SadhanaStreak,
 } from '@/lib/devotionalRecommender';
 import { playTempleBell } from '@/lib/audioBell';
+import { getSolarTimings, SolarTimings } from '@/lib/panchangEngine';
+import { useAppPermissions } from '@/hooks/useAppPermissions';
+import { DevotionalPermissionsModal } from './DevotionalPermissionsModal';
 
 export function DailySadhanaCard() {
   const [recommendation, setRecommendation] = useState<DevotionalRecommendation | null>(null);
@@ -29,12 +34,21 @@ export function DailySadhanaCard() {
     totalSessions: 1,
   });
   const [showCelebration, setShowCelebration] = useState(false);
+  const [isPermissionsModalOpen, setIsPermissionsModalOpen] = useState(false);
+  const [solarTimes, setSolarTimes] = useState<SolarTimings | null>(null);
+
+  const { userLocation, allGranted } = useAppPermissions();
 
   useEffect(() => {
     const rec = getDevotionalRecommendation();
     setRecommendation(rec);
     setStreak(getSadhanaStreak());
-  }, []);
+
+    // Calculate solar timings
+    const lat = userLocation?.latitude || 18.5204;
+    const lng = userLocation?.longitude || 73.8567;
+    setSolarTimes(getSolarTimings(lat, lng));
+  }, [userLocation]);
 
   const handleCompleteSadhana = () => {
     const updated = recordSadhanaSession();
@@ -76,12 +90,34 @@ export function DailySadhanaCard() {
         </div>
       </div>
 
-      {/* Muhurat & Special Vrata Badge */}
+      {/* Muhurat, Solar Timings & Location Badges */}
       <div className="mt-3 flex items-center gap-2 flex-wrap text-[11px]">
         <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800 border border-[var(--border-main)] font-semibold text-[var(--text-secondary)]">
           <Clock className="w-3 h-3 text-saffron-600" />
           <span>{muhurat.nameMr}</span>
         </span>
+
+        {solarTimes && (
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-800 dark:text-amber-200 font-semibold">
+            <Sunrise className="w-3 h-3 text-amber-600" />
+            <span>सूर्योदय {solarTimes.sunrise}</span>
+            <span className="opacity-40">•</span>
+            <Sunset className="w-3 h-3 text-rose-500" />
+            <span>सूर्यास्त {solarTimes.sunset}</span>
+          </span>
+        )}
+
+        {/* Location / Permissions Trigger Pill */}
+        <button
+          onClick={() => setIsPermissionsModalOpen(true)}
+          title="कॅमेरा, आवाज व स्थान परवानग्या व्यवस्थापित करा"
+          className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-saffron-500/30 bg-saffron-500/10 text-saffron-700 dark:text-saffron-300 font-medium hover:bg-saffron-500/20 active:scale-95 transition-all text-[11px]"
+        >
+          <MapPin className="w-3 h-3 text-saffron-600" />
+          <span>
+            {userLocation ? userLocation.cityNameMr : 'स्थान जोडा'}
+          </span>
+        </button>
 
         {specialBadge && (
           <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-amber-500/25 to-rose-500/20 border border-amber-500/40 text-amber-900 dark:text-amber-100 font-bold shadow-xs">
@@ -157,6 +193,12 @@ export function DailySadhanaCard() {
           <span>धन्य! आजची नित्य उपासना पूर्ण झाली. संकल्प अखंड राहो!</span>
         </div>
       )}
+
+      {/* Interactive Permissions Modal */}
+      <DevotionalPermissionsModal
+        isOpen={isPermissionsModalOpen}
+        onClose={() => setIsPermissionsModalOpen(false)}
+      />
     </div>
   );
 }

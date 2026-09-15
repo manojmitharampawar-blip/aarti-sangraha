@@ -65,11 +65,22 @@ export function generateMetadata({ params }: PageProps): Metadata {
       type: 'article',
       publishedTime: '2024-01-01T00:00:00.000Z',
       authors: [aarti.author || 'पारंपरिक'],
+      images: [
+        {
+          url: 'https://vediconline.com/og-image.jpg',
+          secureUrl: 'https://vediconline.com/og-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: `${aarti.titleDevanagari} आरती - वैदिक ऑनलाईन`,
+          type: 'image/jpeg',
+        },
+      ],
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title: `${aarti.titleDevanagari} आरती लिरिक्स | Vedic Online`,
       description: pageDescription,
+      images: ['https://vediconline.com/og-image.jpg'],
     },
   };
 }
