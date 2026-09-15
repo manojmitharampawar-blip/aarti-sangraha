@@ -75,7 +75,7 @@ export const hanumanAartis: AartiItem[] = [
         "devanagari": [
           "बाएं भुजा असुर दल मारे ।",
           "दहिने भुजा संतजन तारे ॥ ६ ॥",
-          "सुर नर मुनि जन आरती उतारें ।",
+          "सुर नर मुनि आरती उतारें ।",
           "जय जय जय हनुमान उचारें ॥ ७ ॥",
           "कंचन थार कपूर लौ छाई ।",
           "आरती करत अंजना माई ॥ ८ ॥",
@@ -85,7 +85,7 @@ export const hanumanAartis: AartiItem[] = [
         "transliteration": [
           "Baayen bhuja asur dal maare |",
           "Dahine bhuja santajan taare || 6 ||",
-          "Sur nar muni jan aarti utaarein |",
+          "Sur nar muni aarti utaarein |",
           "Jai jai jai hanuman uchaarein || 7 ||",
           "Kanchan thaar kapoor lau chhaai |",
           "Aarti karat anjana maai || 8 ||",
@@ -205,7 +205,7 @@ export const hanumanAartis: AartiItem[] = [
           "नासै रोग हरै सब पीरा । जपत निरंतर हनुमत बीरा ॥ २५ ॥",
           "संकट तें हनुमान छुड़ावै । मन क्रम बचन ध्यान जो लावै ॥ २६ ॥",
           "सब पर राम तपस्वी राजा । तिन के काज सकल तुम साजा ॥ २७ ॥",
-          "और मनोरथ जो कोई लावै । सोइ अमित जीवन फल पावै ॥ २८ ॥",
+          "और मनोरथ जो कोई लावै । सोइ अमित जीवन फल पावै ॥ २8 ॥",
           "चारों जुग परताप तुम्हारा । है परसिद्ध जगत उजियारा ॥ २९ ॥",
           "साधु संत के तुम रखवारे । असुर निकंदन राम दुलारे ॥ ३० ॥"
         ],
@@ -295,7 +295,7 @@ export const hanumanAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "भीमरूपी महारुद्रा वज्रहनुमान मारुती ।",
-          "वनारी अंजनीसूता रामदूता प्रभंजना ॥ १ ॥",
+          "वनारी अंजनीसुता रामदूता प्रभंजना ॥ १ ॥",
           "महाबळी प्राणदाता सकळां उठवी बळें ।",
           "सौख्यकारी दुःखहारी दूत वैष्णव गायका ॥ २ ॥",
           "दीननाथा हरिरूपा सुंदरा जगदंतरा ।",
@@ -326,7 +326,7 @@ export const hanumanAartis: AartiItem[] = [
           "ब्रह्मांडें माइलीं नेणों आवळे दंतपंगती ।",
           "नेत्राग्नी चालिल्या ज्वाळा भ्रुकुटी ताठिल्या बळें ॥ ६ ॥",
           "पुच्छ तें मुरडिलें माथां किरीटी कुंडलें बरीं ।",
-          "सुवर्णकटिं कांसोटी घंटा किंकिणी नागरा ॥ ७ ॥",
+          "सुवर्णकटि कांसोटी घंटा किंकिणी नागरा ॥ ७ ॥",
           "ठकारे पर्वताऐसा नेटका सडपातळू ।",
           "चपळांग पाहतां मोठें महाविद्युल्लतेपरी ॥ ८ ॥",
           "कोटिच्या कोटि उड्डाणें झेपावे उत्तरेकडे ।",
@@ -336,7 +336,7 @@ export const hanumanAartis: AartiItem[] = [
           "Brahmaande maayilee neno aavale dantapangatee |",
           "Netraagnee chalilya jwaala bhrukutee taathilya bale || 6 ||",
           "Puchchha te muradile maatha kireetee kundale baree |",
-          "Suvarnakatin kaansotee ghanta kinkinee naagara || 7 ||",
+          "Suvarnakati kaansotee ghanta kinkinee naagara || 7 ||",
           "Thakaare parvataaisa netaka sadpaataloo |",
           "Chapalaang paahata mothe mahavidyullateparee || 8 ||",
           "Kotichya koti uddaane jhepaave uttare kade |",
@@ -379,7 +379,7 @@ export const hanumanAartis: AartiItem[] = [
           "नासती तूटती चिंता आनंदें भीमदर्शनें ॥ १५ ॥",
           "हे धरा पंधरा श्लोकी लाभली शोभली बरी ।",
           "दृढदेहो निसंदेहो संख्या चंद्रकळा गुणें ॥ १६ ॥",
-          "रामदासी अग्रगण्यू कपिकुळासि मंडणू ।",
+          "रामदासीं अग्रगण्यु कपिकुळासि मंडणू ।",
           "रामरूपी अंतरात्मा दर्शनें दोष नासती ॥ १७ ॥",
           "॥ इति श्रीरामदासकृतं संकटनिरसनं मारुतिस्तोत्रं संपूर्णम् ॥"
         ],
@@ -390,7 +390,7 @@ export const hanumanAartis: AartiItem[] = [
           "Naasatee tootatee chinta aanande bheemadarshane || 15 ||",
           "He dhara pandhara shlokee laabhalee shobhalee baree |",
           "Dridhadeho nisandeho sankhya chandrakala gune || 16 ||",
-          "Ramadaasee agroganyoo kapikulaasi mandanoo |",
+          "Ramadaaseen agroganyu kapikulaasi mandanoo |",
           "Ramaroopee antaraatmaa darshane dosha naasatee || 17 ||",
           "|| Iti shreeramadasakritam sankatanirasanam marutistotram sampoornam ||"
         ]
@@ -424,17 +424,17 @@ export const hanumanAartis: AartiItem[] = [
           "सत्राणे उड्डाणे हुंकार वदनी ।",
           "करि डळमळ भूमंडळ सिंधू जल गगनी ।",
           "कडाडिले ब्रह्मांड धाके त्रिभुवनी ।",
-          "सुरवर चर निशाचर त्या झाल्या पळनी ॥ १ ॥",
+          "सुरवर नर निशाचर त्या झाल्या पळणी ॥ १ ॥",
           "जय देव जय देव जय श्री हनुमंता ।",
-          "तुमचेनी प्रसादे नाभे कृतांता जय देव जय देव ॥ धृ. ॥"
+          "तुमचेनी प्रसादे न भी कृतांता जय देव जय देव ॥ धृ. ॥"
         ],
         "transliteration": [
           "Satrane uddane hunkara vadanee |",
           "Kari dalamala bhoomandala sindhoo jala gaganee |",
           "Kadadile brahmanda dhake tribhuvanee |",
-          "Suravara chara nishachara tya jhalya palanee || १ ||",
+          "Suravara nara nishachara tya jhalya palanee || 1 ||",
           "Jaya deva jaya deva jaya shree hanumanta |",
-          "Tumachenee prasade nabhe krutanta jaya deva jaya deva || dhru. ||"
+          "Tumachenee prasade na bhee krutanta jaya deva jaya deva || dhru. ||"
         ]
       },
       {
@@ -443,18 +443,18 @@ export const hanumanAartis: AartiItem[] = [
         "devanagari": [
           "दुमदुमली पाताळे उठिला प्रतिशब्द ।",
           "थरथरला धरणीधर मानीला खेद ।",
-          "कडाडिले पर्वत उड्डगण उच्छेद ।",
+          "कडाडिले पर्वत उडुगण उच्छेद ।",
           "रामी रामदासा शक्तिचा शोध ॥ २ ॥",
           "जय देव जय देव जय श्री हनुमंता ।",
-          "तुमचेनी प्रसादे नाभे कृतांता जय देव जय देव ॥ धृ. ॥"
+          "तुमचेनी प्रसादे न भी कृतांता जय देव जय देव ॥ धृ. ॥"
         ],
         "transliteration": [
           "Dumadumalee patale uthila pratishabda |",
           "Tharatharala dharaneedhara maneela kheda |",
-          "Kadadile parvata uddagana uchchheda |",
-          "Ramee ramadasa shakticha shodha || २ ||",
+          "Kadadile parvata udugana uchchheda |",
+          "Ramee ramadasa shakticha shodha || 2 ||",
           "Jaya deva jaya deva jaya shree hanumanta |",
-          "Tumachenee prasade nabhe krutanta jaya deva jaya deva || dhru. ||"
+          "Tumachenee prasade na bhee krutanta jaya deva jaya deva || dhru. ||"
         ]
       }
     ]

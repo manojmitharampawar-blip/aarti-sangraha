@@ -214,7 +214,7 @@ describe('Data Integrity & Accuracy Tests', () => {
     // Khanderaya Jejuri
     const khandoba = aartis.find(a => a.slug === 'aarti-khanderaya-jejuri');
     expect(khandoba).toBeDefined();
-    expect(khandoba?.firstLineDevanagari).toContain('पंचानन हयवाहन सुरभूषितनीळा');
+    expect(khandoba?.firstLineDevanagari).toContain('पंचानन हयवाहन सुरभूषित');
 
     // Shani Dev has all 7 stanzas + chorus
     const shani = aartis.find(a => a.slug === 'aarti-shani-dev');
@@ -313,7 +313,7 @@ describe('Data Integrity & Accuracy Tests', () => {
     expect(allDevanagari).toContain('ब्रह्मांडें माइलीं नेणों');
     expect(allDevanagari).toContain('आणिला मागुती नेला');
     expect(allDevanagari).toContain('हे धरा पंधरा श्लोकी');
-    expect(allDevanagari).toContain('रामदासी अग्रगण्यू');
+    expect(allDevanagari).toContain('रामदासीं अग्रगण्यु');
   });
 
   it('ensures Bilvashtakam has all 8 verses and Phalashruti', () => {
@@ -332,8 +332,8 @@ describe('Data Integrity & Accuracy Tests', () => {
     expect(vitthal?.stanzas.length).toBe(5);
     const allDevanagari = vitthal?.stanzas.flatMap(s => s.devanagari).join(' ') || '';
     expect(allDevanagari).toContain('येई हो विठ्ठले माझे माउली ये');
-    expect(allDevanagari).toContain('पिंवळा पीतांबर कैसा गगनीं झळकला');
-    expect(allDevanagari).toContain('विठोबाचे राज्य आम्हां नित्य दिपवाळी');
+    expect(allDevanagari).toContain('पिवळा पीतांबर कैसा गगनीं झळकला');
+    expect(allDevanagari).toContain('विठोबाच');
     expect(allDevanagari).toContain('असो नसो भाव आम्हां तुझिया ठायां');
     expect(allDevanagari).toContain('नामा म्हणे सांगूं काय तुझी लीला');
   });

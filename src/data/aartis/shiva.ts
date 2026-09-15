@@ -30,51 +30,51 @@ export const shivaAartis: AartiItem[] = [
           "लावण्य सुन्दर मस्तकी बाळा ।",
           "तेथुनियां जळ निर्मळ वाहे झुळझुळा ॥ १ ॥",
           "जय देव जय देव जय श्री शंकरा ।",
-          "आरती ओवाळू तुज कर्पुरगौरा ॥ धृ. ॥"
+          "आरती ओवाळू तुज कर्पूरगौरा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Lavathavatee vikrala brahmandee mala |",
-          "Vishen kantha kala trinetree jvala |",
-          "Lavanya sundara mastakee bala |",
-          "Tethuniyan jala nirmala vahe jhulajhula || १ ||",
-          "Jaya deva jaya deva jaya shree shankara |",
-          "Aaratee ovaloo tuja karpuragaura || dhru. ||"
+          "Lavathavatee vikraalaa brahmaandee maalaa |",
+          "Vishen kantha kaalaa trinetree jvaalaa |",
+          "Laavanya sundara mastakee baalaa |",
+          "Tethuniyaan jala nirmala vaahe jhulajhulaa || 1 ||",
+          "Jaya deva jaya deva jaya shree shankaraa |",
+          "Aaratee ovaaloo tuja karpooragauraa || dhru. ||"
         ]
       },
       {
         "stanzaNumber": 2,
         "isChorus": false,
         "devanagari": [
-          "कर्पुरगौरा भोळा नयनी विशाळा ।",
+          "कर्पूरगौरा भोळा नयनी विशाळा ।",
           "अर्धांगी पार्वती सुमनांच्या माळा ।",
-          "विभुतीचे उधळण शितकंठ नीळा ।",
+          "विभूतीचे उधळण शितकंठ नीळा ।",
           "ऐसा शंकर शोभे उमावेल्हाळा ॥ २ ॥",
           "जय देव जय देव जय श्री शंकरा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Karpuragaura bhola nayanee vishala |",
-          "Ardhangee parvatee sumananchya mala |",
-          "Vibhuteeche udhalana shitakantha neela |",
-          "Aisa shankara shobhe umavelhala || २ ||",
-          "Jaya deva jaya deva jaya shree shankara || dhru. ||"
+          "Karpooragauraa bholaa nayanee vishaalaa |",
+          "Ardhaangee paarvatee sumanaanchyaa maalaa |",
+          "Vibhooteeche udhalana shitakantha neelaa |",
+          "Aisaa shankara shobhe umaavelhaalaa || 2 ||",
+          "Jaya deva jaya deva jaya shree shankaraa || dhru. ||"
         ]
       },
       {
         "stanzaNumber": 3,
         "isChorus": false,
         "devanagari": [
-          "देवी दैत्य सागर मंथन पै केले ।",
-          "त्यामाजी अवचीत हलहल जे उठले ।",
-          "ते त्वा असुरपणे प्राशन केले ।",
+          "देवीं दैत्यीं सागरमंथन पै केले ।",
+          "त्यामाजी अवचित हलाहल जे उठले ।",
+          "तें त्वां असुरपणे प्राशन केले ।",
           "नीळकंठ नाम प्रसिद्ध झाले ॥ ३ ॥",
           "जय देव जय देव जय श्री शंकरा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Devee daitya sagara manthana pai kele |",
-          "Tyamajee avacheeta halahala je uthale |",
-          "Te tva asurapane prashana kele |",
-          "Neelakantha nama prasiddha jhale || ३ ||",
-          "Jaya deva jaya deva jaya shree shankara || dhru. ||"
+          "Deveen daityeen saagaramanthana pai kele |",
+          "Tyaamaajee avachita halaahala je uthale |",
+          "Ten tvaan asurapane praashana kele |",
+          "Neelakantha naama prasiddha jhaale || 3 ||",
+          "Jaya deva jaya deva jaya shree shankaraa || dhru. ||"
         ]
       },
       {
@@ -82,17 +82,17 @@ export const shivaAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "व्याघ्रांबर फणिवरधर सुंदर मदनारी ।",
-          "पंचानन मनमोहन मुनिजन सुखकारी ।",
-          "शतकोटीचे बीज वाचे उच्चारी ।",
+          "पंचानन मनमोहन मुनिजनसुखकारी ।",
+          "शतकोटींचे बीज वाचे उच्चारी ।",
           "रघुकुळटिळक रामदासा अंतरी ॥ ४ ॥",
           "जय देव जय देव जय श्री शंकरा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Vyaghrambara phanivaradhara sundara madanaree |",
-          "Panchanana manamohana munijana sukhakaree |",
-          "Shatakoteeche beeja vache uchcharee |",
-          "Raghukulatilaka ramadasa antaree || ४ ||",
-          "Jaya deva jaya deva jaya shree shankara || dhru. ||"
+          "Vyaaghraambara phanivaradhara sundara madanaaree |",
+          "Panchaanana manamohana munijanasukhakaaree |",
+          "Shatakoteenche beeja vaache uchchaaree |",
+          "Raghukulatilaka raamadaasaa antaree || 4 ||",
+          "Jaya deva jaya deva jaya shree shankaraa || dhru. ||"
         ]
       }
     ]
@@ -103,7 +103,7 @@ export const shivaAartis: AartiItem[] = [
     "titleDevanagari": "कर्पूरगौरं करुणावतारम् (शिव स्तोत्र)",
     "titleTransliteration": "Karpura Gauram Karunavataram",
     "firstLineDevanagari": "कर्पूरगौरं करुणावतारं संसारसारं भुजगेन्द्रहारम्",
-    "firstLineTransliteration": "Karpura gauram karunavataram sansarasaram bhujagendraharam",
+    "firstLineTransliteration": "Karpura gauram karunavataram samsarasaram bhujagendraharam",
     "deity": "shiva",
     "type": "stotra",
     "language": "sanskrit",
@@ -121,14 +121,14 @@ export const shivaAartis: AartiItem[] = [
         "devanagari": [
           "कर्पूरगौरं करुणावतारं",
           "संसारसारं भुजगेन्द्रहारम् ।",
-          "सदा बसन्तं हृदयारविन्दे",
+          "सदा वसन्तं हृदयारविन्दे",
           "भवं भवानीसहितं नमामि ॥"
         ],
         "transliteration": [
-          "Karpura-gauram karunavataram",
-          "Samsara-saram bhujagendra-haram |",
-          "Sada vasantam hridayaravinde",
-          "Bhavam bhavani-sahitam namami ||"
+          "Karpoora-gauram karunaavataaram",
+          "Samsaara-saaram bhujagendra-haaram |",
+          "Sadaa vasantam hrudayaaravinde",
+          "Bhavam bhavaanee-sahitam namaami ||"
         ]
       },
       {
@@ -141,10 +141,10 @@ export const shivaAartis: AartiItem[] = [
           "नमः शिवायै च नमः शिवाय ॥"
         ],
         "transliteration": [
-          "Mandaramalakulitalakayai",
-          "Kapalamalankitashekharaya |",
-          "Divyambarayai cha digambaraya",
-          "Namah shivayai cha namah shivaya ||"
+          "Mandaaramaalaakulitaalakaayai",
+          "Kapaalamaalaankitashekharaaya |",
+          "Divyaambaraayai cha digambaraaya",
+          "Namah shivaayai cha namah shivaaya ||"
         ]
       }
     ]
@@ -155,7 +155,7 @@ export const shivaAartis: AartiItem[] = [
     "titleDevanagari": "शिव तांडव स्तोत्र (जटाटवीगलज्जलप्रवाह)",
     "titleTransliteration": "Shiva Tandava Stotra",
     "firstLineDevanagari": "जटाटवीगलज्जलप्रवाहपावितस्थले गलेऽवलम्ब्य लम्बितां भुजङ्गतुङ्गमालिकाम्",
-    "firstLineTransliteration": "Jatatavigalajjala pravahapavitasthale galevalambya lambitam bhujangatungamalikam",
+    "firstLineTransliteration": "Jataatavigalajjala pravahapaavitasthale galevalambya lambitaam bhujangatungamaalikaam",
     "deity": "shiva",
     "type": "stotra",
     "language": "sanskrit",
@@ -180,10 +180,10 @@ export const shivaAartis: AartiItem[] = [
           "चकार चण्डताण्डवं तनोतु नः शिवः शिवम् ॥ १ ॥"
         ],
         "transliteration": [
-          "Jatatavigalajjala pravahapavitasthale",
-          "Galevalambya lambitam bhujangatungamalikam |",
-          "Damaddamaddamaddaman ninadavaddamarvayam",
-          "Chakara chandatandavam tanotu nah shivah shivam || 1 ||"
+          "Jataatavigalajjala pravaahapaavitasthale",
+          "Galevalambya lambitaam bhujangatungamaalikaam |",
+          "Damaddhamaddhamaddhamanninaadavaddhamarvayam",
+          "Chakaara chandataandavam tanotu nah shivah shivam || 1 ||"
         ]
       },
       {
@@ -196,9 +196,9 @@ export const shivaAartis: AartiItem[] = [
           "किशोरचन्द्रशेखरे रतिः प्रतिक्षणं मम ॥ २ ॥"
         ],
         "transliteration": [
-          "Jatakatahasambhrama bhramannilimpanirjhari",
-          "Vilolaveechivallaree virajamanamurdhani |",
-          "Dhagaddhagaddhagajjvala llalatapattapavake",
+          "Jataakataahasambhramabhramannilimpanirjharee-",
+          "Vilolaveechivallareeviraajamaanamoordhani |",
+          "Dhagaddhagaddhagajjvalallalaatapattapaavake",
           "Kishorachandrashekhare ratih pratikshanam mama || 2 ||"
         ]
       },
@@ -209,13 +209,13 @@ export const shivaAartis: AartiItem[] = [
           "धराधरेन्द्रनन्दिनीविलासबन्धुबन्धुर",
           "स्फुरद्दिगन्तसन्ततिप्रमोदमानमानसे ।",
           "कृपाकटाक्षधोरणीनिरुद्धदुर्धरापदि",
-          "क्वचिद् दिगम्बरे मनो विनोदमेतु वस्तुनि ॥ ३ ॥"
+          "क्वचिद्दिगम्बरे मनो विनोदमेतु वस्तुनि ॥ ३ ॥"
         ],
         "transliteration": [
-          "Dharadharendranandini vilasabandhubandhura",
-          "Sphuraddigantasantati pramodamanamanase |",
-          "Kripakatakshadhorani niruddhadurdharapadi",
-          "Kvachid digambare mano vinodametu vastuni || 3 ||"
+          "Dharaadharendranandineevilaasabandhubandhura",
+          "Sphuraddigantasantatipramodamaanamaanase |",
+          "Krupaakataakshadhoraneeniruddhadurdharaapadi",
+          "Kvachiddigambare mano vinodametu vastuni || 3 ||"
         ]
       },
       {
@@ -228,9 +228,9 @@ export const shivaAartis: AartiItem[] = [
           "मनो विनोदमद्भुतं बिभर्तु भूतभर्तरि ॥ ४ ॥"
         ],
         "transliteration": [
-          "Jatabhujangapingala sphuratphanammaniprabha",
-          "Kadambakunkumadrava praliptadigvadhumukhe |",
-          "Madandhasindhurasphurat tvaguttareeyamedure",
+          "Jataabhujangapingalasphuratphanaamaniprabhaa",
+          "Kadambakunkumadravapraliptadigvadhoomukhe |",
+          "Madaandhasindhurasphurattvaguttareeyamedure",
           "Mano vinodamadbhutam bibhartu bhootabhartari || 4 ||"
         ]
       },
@@ -245,9 +245,9 @@ export const shivaAartis: AartiItem[] = [
           "विमोहनं हि देहिनां सुशङ्करस्य चिन्तनम् ॥ ५ ॥"
         ],
         "transliteration": [
-          "Imam hi nityamevamuktam uttamottamam stavam",
+          "Imam hi nityamevamuktamuttamottamam stavam",
           "Pathan smaran bruvan naro vishuddhineti santatam |",
-          "Hare gurau subhaktimaashu yaati naanyatha gatim",
+          "Hare gurau subhaktimaashu yaati naanyathaa gatim",
           "Vimohanam hi dehinaam sushankarasya chintanam || 5 ||"
         ]
       }
@@ -281,8 +281,8 @@ export const shivaAartis: AartiItem[] = [
           "त्रिजन्मपापसंहारं एकबिल्वं शिवार्पणम् ॥ १ ॥"
         ],
         "transliteration": [
-          "Tridalam trigunakaram trinetram cha triyayudham |",
-          "Trijanmapapasamharam ekabilvam shivarpanam || 1 ||"
+          "Tridalam trigunaakaaram trinetram cha triyaayudham |",
+          "Trijanmapaapasamhaaram ekabilvam shivaarpanam || 1 ||"
         ]
       },
       {
@@ -293,8 +293,8 @@ export const shivaAartis: AartiItem[] = [
           "शिवपूजां करिष्यामि ह्येकबिल्वं शिवार्पणम् ॥ २ ॥"
         ],
         "transliteration": [
-          "Trishakhaih bilvapatraishcha hyachhidraih komalaih shubhaih |",
-          "Shivapoojaam karishyaami hyekabilvam shivarpanam || 2 ||"
+          "Trishaakhaih bilvapatraishcha hyachchidraih komalaih shubhaih |",
+          "Shivapoojaam karishyaami hyekabilvam shivaarpanam || 2 ||"
         ]
       },
       {
@@ -306,7 +306,7 @@ export const shivaAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Akhandabilvapatrena poojite nandikeshvare |",
-          "Shuddhyanti sarvapaapebhyo hyekabilvam shivarpanam || 3 ||"
+          "Shuddhyanti sarvapaapebhyo hyekabilvam shivaarpanam || 3 ||"
         ]
       },
       {
@@ -317,8 +317,8 @@ export const shivaAartis: AartiItem[] = [
           "सोमयज्ञमहापुण्यं ह्येकबिल्वं शिवार्पणम् ॥ ४ ॥"
         ],
         "transliteration": [
-          "Shaligramashilamekam vipranam jaatu charpayet |",
-          "Somayajnamahapunyam hyekabilvam shivarpanam || 4 ||"
+          "Shaaligraamashilaamekaam vipraanaam jaatu chaarpayet |",
+          "Somayajnamahaapunyam hyekabilvam shivaarpanam || 4 ||"
         ]
       },
       {
@@ -330,7 +330,7 @@ export const shivaAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Dantikotisahasraani vaajapeyashataani cha |",
-          "Kotikanyamahadanam hyekabilvam shivarpanam || 5 ||"
+          "Kotikanyaamahaadaanam hyekabilvam shivaarpanam || 5 ||"
         ]
       },
       {
@@ -341,8 +341,8 @@ export const shivaAartis: AartiItem[] = [
           "बिल्ववृक्षं प्रयच्छामि ह्येकबिल्वं शिवार्पणम् ॥ ६ ॥"
         ],
         "transliteration": [
-          "Lakshmyastanuta utpannam mahadevasya cha priyam |",
-          "Bilvavriksham prayachchhaami hyekabilvam shivarpanam || 6 ||"
+          "Lakshmyaastanuta utpannam mahaadevasya cha priyam |",
+          "Bilvavruksham prayachchaami hyekabilvam shivaarpanam || 6 ||"
         ]
       },
       {
@@ -353,8 +353,8 @@ export const shivaAartis: AartiItem[] = [
           "अघोरपापसंहारं ह्येकबिल्वं शिवार्पणम् ॥ ७ ॥"
         ],
         "transliteration": [
-          "Darshanam bilvavrikshasya sparshanam paapanaashanam |",
-          "Aghorapaapasamhaaram hyekabilvam shivarpanam || 7 ||"
+          "Darshanam bilvavrukshasya sparshanam paapanaashanam |",
+          "Aghorapaapasamhaaram hyekabilvam shivaarpanam || 7 ||"
         ]
       },
       {
@@ -365,8 +365,8 @@ export const shivaAartis: AartiItem[] = [
           "अग्रतः शिवरूपाय ह्येकबिल्वं शिवार्पणम् ॥ ८ ॥"
         ],
         "transliteration": [
-          "Moolato brahmaroopaya madhyato vishnuroopine |",
-          "Agratah shivaroopaya hyekabilvam shivarpanam || 8 ||"
+          "Moolato brahmaroopaaya madhyato vishnuroopine |",
+          "Agratah shivaroopaaya hyekabilvam shivaarpanam || 8 ||"
         ]
       },
       {
@@ -379,9 +379,9 @@ export const shivaAartis: AartiItem[] = [
           "॥ इति श्रीबिल्वाष्टकं सम्पूर्णम् ॥"
         ],
         "transliteration": [
-          "Bilvashtakamidam punyam yah pathechchhivasannidhau |",
+          "Bilvaashtakamidam punyam yah pathechchivasannidhau |",
           "Sarvapaapavinirmuktah shivalokamavaapnuyaat ||",
-          "|| Iti shreebilvashtakam sampoornam ||"
+          "|| Iti shreebilvaashtakam sampoornam ||"
         ]
       }
     ]
@@ -417,8 +417,8 @@ export const shivaAartis: AartiItem[] = [
           "नित्याय शुद्धाय दिगम्बराय तस्मै \"न\" काराय नमः शिवाय ॥ १ ॥"
         ],
         "transliteration": [
-          "Nagendraharaaya trilochanaya bhasmangaragaya maheshwaraya |",
-          "Nityaya shuddhaya digambaraya tasmai \"Na\" karaya namah shivaya || 1 ||"
+          "Naagendrahaaraaya trilochaanaaya bhasmaangaraagaaya maheshvaraaya |",
+          "Nityaaya shuddhaaya digambaraaya tasmai \"Na\" kaaraaya namah shivaaya || 1 ||"
         ]
       },
       {
@@ -429,8 +429,8 @@ export const shivaAartis: AartiItem[] = [
           "मन्दारमुख्यबहुपुष्पसुपूजिताय तस्मै \"म\" काराय नमः शिवाय ॥ २ ॥"
         ],
         "transliteration": [
-          "Mandakinisalilachandanacharchitaya nandishwarapramathanathamaheshwaraya |",
-          "Mandaramukhyabahupushpasupoojitaya tasmai \"Ma\" karaya namah shivaya || 2 ||"
+          "Mandaakineesalilachandanacharchitaaya nandeeshvarapramathanaathamaheshvaraaya |",
+          "Mandaaramukhyabahupushpasupoojitaaya tasmai \"Ma\" kaaraaya namah shivaaya || 2 ||"
         ]
       },
       {
@@ -441,8 +441,8 @@ export const shivaAartis: AartiItem[] = [
           "श्रीनीलकण्ठाय वृषध्वजाय तस्मै \"शि\" काराय नमः शिवाय ॥ ३ ॥"
         ],
         "transliteration": [
-          "Shivaya gaurivadanabjavrindasuryaya dakshadhwaranashakaya |",
-          "Shrineelakanthaya vrishadhwajaya tasmai \"Shi\" karaya namah shivaya || 3 ||"
+          "Shivaaya gaureevadanaabjavrundasooryaaya dakshaadhvaranaashakaaya |",
+          "Shreeneelakanthaaya vrushadhvajaaya tasmai \"Shi\" kaaraaya namah shivaaya || 3 ||"
         ]
       },
       {
@@ -453,8 +453,8 @@ export const shivaAartis: AartiItem[] = [
           "चन्द्रार्कवैश्वानरलोचनाय तस्मै \"वा\" काराय नमः शिवाय ॥ ४ ॥"
         ],
         "transliteration": [
-          "Vasishthakumbhodbhavagautamaryamuneendradevarchitashekharaya |",
-          "Chandrarkavaishwanaralochanaya tasmai \"Va\" karaya namah shivaya || 4 ||"
+          "Vashishthakumbhodbhavagautamaaryamuneendradevaarchitashekharaaya |",
+          "Chandraarkavaishvaanaralochanaaya tasmai \"Vaa\" kaaraaya namah shivaaya || 4 ||"
         ]
       },
       {
@@ -465,20 +465,20 @@ export const shivaAartis: AartiItem[] = [
           "दिव्याय देवाय दिगम्बराय तस्मै \"य\" काराय नमः शिवाय ॥ ५ ॥"
         ],
         "transliteration": [
-          "Yakshaswaroopaya jatadharaya pinakahastaya sanatanaya |",
-          "Divyaya devaya digambaraya tasmai \"Ya\" karaya namah shivaya || 5 ||"
+          "Yakshasvaroopaaya jataadharaaya pinaakahastaaya sanaatanaaya |",
+          "Divyaaya devaaya digambaraaya tasmai \"Ya\" kaaraaya namah shivaaya || 5 ||"
         ]
       },
       {
         "stanzaNumber": 6,
         "sectionTitle": "॥ फलश्रुती ॥",
         "devanagari": [
-          "पञ्चाक्षरमिदं पुण्यं यः पठेच्छिवसंनिधौ ।",
+          "पञ्चाक्षरमिदं पुण्यं यः पठेच्छिवसन्निधौ ।",
           "शिवलोकमवाप्नोति शिवेन सह मोदते ॥"
         ],
         "transliteration": [
-          "Panchaksharamidam punyam yah pathechchhivasamnidhau |",
-          "Shivalokamavapnoti shivena saha modate ||"
+          "Panchaksharamidam punyam yah pathechchivasannidhau |",
+          "Shivalokamavaapnoti shivena saha modate ||"
         ]
       }
     ]
@@ -512,8 +512,8 @@ export const shivaAartis: AartiItem[] = [
           "जन्मजदुःखविनाशकलिङ्गं तत् प्रणमामि सदाशिवलिङ्गम् ॥ १ ॥"
         ],
         "transliteration": [
-          "Brahmamurarisurarchitalingam nirmalabhasitashobhitalingam |",
-          "Janmajaduhkhavinashakalingam tat pranamami sadashivalingam || 1 ||"
+          "Brahmamuraarisuraarchitalingam nirmalabhaasitashobhitalingam |",
+          "Janmajaduhkhavinaashakalingam tat pranamaami sadaashivalingam || 1 ||"
         ]
       },
       {
@@ -523,8 +523,8 @@ export const shivaAartis: AartiItem[] = [
           "रावणदर्पविनाशनलिङ्गं तत् प्रणमामि सदाशिवलिङ्गम् ॥ २ ॥"
         ],
         "transliteration": [
-          "Devamunipravararchitalingam kamadaham karunakaralingam |",
-          "Ravanadarpavinashanalingam tat pranamami sadashivalingam || 2 ||"
+          "Devamunipravaraarchitalingam kaamadaham karunaakaralingam |",
+          "Raavanadarpavinaashanalingam tat pranamaami sadaashivalingam || 2 ||"
         ]
       },
       {
@@ -534,8 +534,8 @@ export const shivaAartis: AartiItem[] = [
           "सिद्धसुरासुरवन्दितलिङ्गं तत् प्रणमामि सदाशिवलिङ्गम् ॥ ३ ॥"
         ],
         "transliteration": [
-          "Sarvasugandhisulepitalingam buddhivivardhanakaranalingam |",
-          "Siddhasurasuravanditalingam tat pranamami sadashivalingam || 3 ||"
+          "Sarvasugandhisulepitalingam buddhivivardhanakaaranalingam |",
+          "Siddhasuraasuravanditalingam tat pranamaami sadaashivalingam || 3 ||"
         ]
       },
       {
@@ -545,8 +545,8 @@ export const shivaAartis: AartiItem[] = [
           "दक्षसुयज्ञविनाशनलिङ्गं तत् प्रणमामि सदाशिवलिङ्गम् ॥ ४ ॥"
         ],
         "transliteration": [
-          "Kanakamahamanibhooshitalingam phanipativeshtitashobhitalingam |",
-          "Dakshasuyadjnavinashanalingam tat pranamami sadashivalingam || 4 ||"
+          "Kanakamahaamanibhooshitalingam phanipativeshtitashobhitalingam |",
+          "Dakshasuyajnavinaashanalingam tat pranamaami sadaashivalingam || 4 ||"
         ]
       },
       {
@@ -556,8 +556,8 @@ export const shivaAartis: AartiItem[] = [
           "सञ्चितपापविनाशनलिङ्गं तत् प्रणमामि सदाशिवलिङ्गम् ॥ ५ ॥"
         ],
         "transliteration": [
-          "Kumkumachandanalepitalingam pankajaharasushobhitalingam |",
-          "Sanchitapaapavinashanalingam tat pranamami sadashivalingam || 5 ||"
+          "Kunkumachandanalepitalingam pankajahaarasushobhitalingam |",
+          "Sanchitapaapavinaashanalingam tat pranamaami sadaashivalingam || 5 ||"
         ]
       },
       {
@@ -567,8 +567,8 @@ export const shivaAartis: AartiItem[] = [
           "दिनकरकोटिप्रभाकरलिङ्गं तत् प्रणमामि सदाशिवलिङ्गम् ॥ ६ ॥"
         ],
         "transliteration": [
-          "Devaganarchitasevitalingam bhavairbhaktibhireva cha lingam |",
-          "Dinakarakotiprabhakaralingam tat pranamami sadashivalingam || 6 ||"
+          "Devaganaarchitasevitalingam bhaavairbhaktibhireva cha lingam |",
+          "Dinakarakotiprabhaakaralingam tat pranamaami sadaashivalingam || 6 ||"
         ]
       },
       {
@@ -578,8 +578,8 @@ export const shivaAartis: AartiItem[] = [
           "अष्टदरिद्रविनाशनलिङ्गं तत् प्रणमामि सदाशिवलिङ्गम् ॥ ७ ॥"
         ],
         "transliteration": [
-          "Ashtadalopariveshtitalingam sarvasamudbhavakaranalingam |",
-          "Ashtadaridravinashanalingam tat pranamami sadashivalingam || 7 ||"
+          "Ashtadalopariveshtitalingam sarvasamudbhavakaaranalingam |",
+          "Ashtadaridravinaashanalingam tat pranamaami sadaashivalingam || 7 ||"
         ]
       },
       {
@@ -589,8 +589,8 @@ export const shivaAartis: AartiItem[] = [
           "परात्परं परमात्मकलिङ्गं तत् प्रणमामि सदाशिवलिङ्गम् ॥ ८ ॥"
         ],
         "transliteration": [
-          "Suragurusuravarapoojitalingam suravanapushpasadarchitalingam |",
-          "Paratparam paramatmakalingam tat pranamami sadashivalingam || 8 ||"
+          "Suragurusuravarapoojitalingam suravanapushpasadaarchitalingam |",
+          "Paraatparam paramaatmakalingam tat pranamaami sadaashivalingam || 8 ||"
         ]
       },
       {
@@ -601,8 +601,8 @@ export const shivaAartis: AartiItem[] = [
           "शिवलोकमवाप्नोति शिवेन सह मोदते ॥"
         ],
         "transliteration": [
-          "Lingashtakamidam punyam yah pathechchhivasamnidhau |",
-          "Shivalokamavapnoti shivena saha modate ||"
+          "Lingaashtakamidam punyam yah pathechchivasannidhau |",
+          "Shivalokamavaapnoti shivena saha modate ||"
         ]
       }
     ]
@@ -636,85 +636,85 @@ export const shivaAartis: AartiItem[] = [
           "निजं निर्गुणं निर्विकल्पं निरीहं चिदाकाशमाकाशवासं भजेऽहम् ॥ १ ॥"
         ],
         "transliteration": [
-          "Namamishamishana nirvanaroopam vibhum vyapakam brahmavedaswaroopam |",
-          "Nijam nirgunam nirvikalpam nireeham chidakashamakashavasam bhajeham || 1 ||"
+          "Namaameeshameeshaana nirvaanaroopam vibhum vyaapakam brahmavedasvaroopam |",
+          "Nijam nirgunam nirvikalpam nireeham chidaakaashamaakaashavaasam bhaje'ham || 1 ||"
         ]
       },
       {
         "stanzaNumber": 2,
         "devanagari": [
-          "निराकारमोङ्कारमूलं तुरीयं गिरा ज्ञान गोतीतमीशं गिरीशम् ।",
-          "करालं महाकाल कालं कृपालं गुणागार संसारपारं नतोऽहम् ॥ २ ॥"
+          "निराकारमोङ्कारमूलं तुरीयं गिराज्ञानगोतीतमीशं गिरीशम् ।",
+          "करालं महाकालकालं कृपालं गुणागारसंसारपारं नतोऽहम् ॥ २ ॥"
         ],
         "transliteration": [
-          "Nirakaramonkaramoolam tureeyam gira dnyana goteetameesham gireesham |",
-          "Karalam mahakala kalam kripalam gunagara samsaraparam natoham || 2 ||"
+          "Niraakaaramonkaaramoolam tureeyam giraadnyaanagoteetameesham gireesham |",
+          "Karaalam mahaakaalakaalam krupaalam gunaagaarasamsaaraapaaram nato'ham || 2 ||"
         ]
       },
       {
         "stanzaNumber": 3,
         "devanagari": [
-          "तुषाराद्रि संकाश गौरं गभीरं मनोभूत कोटि प्रभा श्री शरीरम् ।",
-          "स्फुरन्मौलि कल्लोलिनी चारु गङ्गा लसद्भालबालेन्दु कण्ठे भुजङ्गा ॥ ३ ॥"
+          "तुषाराद्रिसंकाशगौरं गभीरं मनोभूतकोटिप्रभाश्रीशरीरम् ।",
+          "स्फुरन्मौलिकल्लोलिनीचारुगङ्गा लसद्भालबालेन्दुकण्ठे भुजङ्गा ॥ ३ ॥"
         ],
         "transliteration": [
-          "Tusharadri samkasha gauram gabheeram manobhoota koti prabha shree shareeram |",
-          "Sphuranmauli kallolinee chaaru gangaa lasadbhalabalendu kanthe bhujangaa || 3 ||"
+          "Tushaaraadrisankaashagauram gabheeram manobhootakotiprabhaashreeshareeram |",
+          "Sphuranmaulikallolineechaarugangaa lasadbhaalabaalendukanthe bhujangaa || 3 ||"
         ]
       },
       {
         "stanzaNumber": 4,
         "devanagari": [
-          "चलत्कुण्डलं भ्रू सुनेत्रं विशालं प्रसन्नाननं नीलकण्ठं दयालम् ।",
+          "चलत्कुण्डलं भ्रूसुनेत्रं विशालं प्रसन्नाननं नीलकण्ठं दयालम् ।",
           "मृगाधीशचर्माम्बरं मुण्डमालं प्रियं शङ्करं सर्वनाथं भजामि ॥ ४ ॥"
         ],
         "transliteration": [
-          "Chalatkundalam bhroo sunetram vishalam prasannannanam neelakantham dayalam |",
-          "Mrigadhishacharmambaram mundamalam priyam shankaram sarvanatham bhajami || 4 ||"
+          "Chalatkundalam bhroosunetram vishaalam prasannaananam neelakantham dayaalam |",
+          "Mrugaadheeshacharmaambaram mundamaalam priyam shankaram sarvanaatham bhajaami || 4 ||"
         ]
       },
       {
         "stanzaNumber": 5,
         "devanagari": [
           "प्रचण्डं प्रकृष्टं प्रगल्भं परेशं अखण्डं अजं भानुकोटिप्रकाशम् ।",
-          "त्रयः शूल निर्मूलनं शूलपाणिं भजेऽहं भवानीपतिं भावगम्यम् ॥ ५ ॥"
+          "त्रयःशूलनिर्मूलनं शूलपाणिं भजेऽहं भवानीपतिं भावगम्यम् ॥ ५ ॥"
         ],
         "transliteration": [
-          "Prachandam prakrishtam pragalbham paresham akhandam ajam bhanukotiprakasham |",
-          "Trayah shoola nirmoolanam shoolapanim bhajeham bhavanipatim bhavagamyam || 5 ||"
+          "Prachandam prakrushtam pragalbham paresham akhandam ajam bhaanukotiprakaasham |",
+          "Trayahshoolanirmoolanam shoolapaanim bhaje'ham bhavaaneepatim bhaavagamyam || 5 ||"
         ]
       },
       {
         "stanzaNumber": 6,
         "devanagari": [
           "कलातीत कल्याण कल्पान्तकारी सदा सज्जनानन्ददाता पुरारी ।",
-          "चिदानन्द सन्दोह मोहापहारी प्रसीद प्रसीद प्रभो मन्मथारी ॥ ६ ॥"
+          "चिदानन्दसन्दोहमोहापहारी प्रसीद प्रसीद प्रभो मन्मथारी ॥ ६ ॥"
         ],
         "transliteration": [
-          "Kalateeta kalyana kalpantakaree sada sajjananandadata purari |",
-          "Chidananda sandoha mohapaharee praseeda praseeda prabho manmatharee || 6 ||"
+          "Kalaateeta kalyaana kalpaantakaaree sadaa sajjanaanandadaataa puraaree |",
+          "Chidaanandasandohamohaapahaaree praseeda praseeda prabho manmathaaree || 6 ||"
         ]
       },
       {
         "stanzaNumber": 7,
         "devanagari": [
-          "न यावद् उमानाथ पादारविन्दं भजन्तीह लोके परे वा नराणाम् ।",
-          "न तावत्सुखं शान्ति सन्तापनाशं प्रसीद प्रभो सर्वभूताधिवासम् ॥ ७ ॥"
+          "न यावदुमानाथपादारविन्दं भजन्तीह लोके परे वा नराणाम् ।",
+          "न तावत्सुखं शान्तिसन्तापनाशं प्रसीद प्रभो सर्वभूताधिवासम् ॥ ७ ॥"
         ],
         "transliteration": [
-          "Na yavada umanatha padaravindam bhajanteeha loke pare vaa naranaam |",
-          "Na tavatsukham shanti santapanasham praseeda prabho sarvabhootadhivasam || 7 ||"
+          "Na yaavadumaanaathapaadaaravindam bhajanteeha loke pare vaa naraanaam |",
+          "Na taavatsukham shaantisantaapanaasham praseeda prabho sarvabhootaadhivaasam || 7 ||"
         ]
       },
       {
         "stanzaNumber": 8,
         "devanagari": [
           "न जानामि योगं जपं नैव पूजां नतोऽहं सदा सर्वदा शम्भु तुभ्यम् ।",
-          "जरा जन्म दुःखौघ तातप्यमानं प्रभो पाहि आपन्नमामीश शम्भो ॥ ८ ॥"
+          "जराजन्मदुःखौघतातप्यमानं प्रभो पाहि आपन्नमामीश शम्भो ॥ ८ ॥"
         ],
         "transliteration": [
-          "Na janami yogam japam naiva poojaam natoham sadaa sarvadaa shambhu tubhyam |",
-          "Jaraa janma duhkhaugha tatapyamanam prabho pahi aapannamamisha shambho || 8 ||"
+          "Na jaanaami yogam japam naiva poojaam nato'ham sadaa sarvadaa shambhu tubhyam |",
+          "Jaraajanmaduhkhaughataatapyamaanam prabho paahi aapannamaameesha shambho || 8 ||"
         ]
       },
       {
@@ -725,8 +725,8 @@ export const shivaAartis: AartiItem[] = [
           "ये पठन्ति नरा भक्त्या तेषां शम्भुः प्रसीदति ॥"
         ],
         "transliteration": [
-          "Rudrashtakamidam proktam viprena haratoshaye |",
-          "Ye pathanti nara bhaktya teshaam shambhuh praseedati ||"
+          "Rudraashtakamidam proktam viprena haratoshaye |",
+          "Ye pathanti naraa bhaktyaa teshaam shambhuh praseedati ||"
         ]
       }
     ]
@@ -761,10 +761,10 @@ export const shivaAartis: AartiItem[] = [
           "दीपं देव दयानिधे पशुपते हृत्कल्पितं गृह्यताम् ॥ १ ॥"
         ],
         "transliteration": [
-          "Ratnaih kalpitamasanam himajlaih snanam cha divyambaram",
-          "Nanaratnavibhooshitam mrigamadamodankitam chandanam |",
-          "Jateechampakabilvapatrarachitam pushpam cha dhoopam tatha",
-          "Deepam deva dayanidhe pashupate hritkalpitam grihyatam || 1 ||"
+          "Ratnaih kalpitamaasanam himajalaih snaanam cha divyaambaram",
+          "Naanaaratnavibhooshitam mrugamadaamodaankitam chandanam |",
+          "Jaateechampakabilvapatrarachitam pushpam cha dhoopam tathaa",
+          "Deepam deva dayaanidhe pashupate hrutkalpitam gruhyataam || 1 ||"
         ]
       },
       {
@@ -776,10 +776,10 @@ export const shivaAartis: AartiItem[] = [
           "ताम्बूलं मनसा मया विरचितं भक्त्या प्रभो स्वीकुरु ॥ २ ॥"
         ],
         "transliteration": [
-          "Sauvarne navaratnakhandarachite patre ghritam payasam",
-          "Bhakshyam panchavidham payodadhiyutam rambhaphalam panakam |",
-          "Shakanamayutam jalam ruchikaram karpoorakhandojjwalam",
-          "Tamboolam manasa maya virachitam bhaktya prabho sveekuru || 2 ||"
+          "Sauvarne navaratnakhandarachite paatre ghrutam paayasam",
+          "Bhakshyam panchavidham payodadhiyutam rambhaaphalam paanakam |",
+          "Shaakaanaamayutam jalam ruchikaram karpoorakhandaojjvalam",
+          "Taamboolam manasaa mayaa virachitam bhaktyaa prabho sveekuru || 2 ||"
         ]
       },
       {
@@ -791,10 +791,10 @@ export const shivaAartis: AartiItem[] = [
           "सङ्कल्पेन समर्पितं तव विभो पूजां गृहाण प्रभो ॥ ३ ॥"
         ],
         "transliteration": [
-          "Chhatram chamarayoryugam vyajanakam chadarshakam nirmalam",
-          "Veenabherimridangakahalakala geetam cha nrityam tatha |",
-          "Sashtangam pranatih stutirbahuvidha hyetatsamastam maya",
-          "Sankalpena samarpitam tava vibho poojaam grihana prabho || 3 ||"
+          "Chhatram chaamarayoryugam vyajanakam chaadarshakam nirmalam",
+          "Veenaabherimrudangakaahalakalaa geetam cha nrutyam tathaa |",
+          "Saashtaangam pranatih stutirbahuvidhaa hyetatsamastam mayaa",
+          "Sankalpena samarpitam tava vibho poojaam gruhaana prabho || 3 ||"
         ]
       },
       {
@@ -806,25 +806,25 @@ export const shivaAartis: AartiItem[] = [
           "यद्यत्कर्म करोमि तत्तदखिलं शम्भो तवाराधनम् ॥ ४ ॥"
         ],
         "transliteration": [
-          "Aatma tvam girija matih sahacharah pranah shareeram griham",
-          "Pooja te vishayopabhogarachana nidra samadhisthitih |",
-          "Sancharah padayoh pradakshinavidhih stotrani sarva giro",
-          "Yadyatkarma karomi tattadakhilam shambho tavaradhanam || 4 ||"
+          "Aatmaa tvam girijaa matih sahacharaah praanaah shareeram gruham",
+          "Poojaa te vishayopabhogarachanaa nidraa samaadhisthitih |",
+          "Sanchaaruh padayoh pradakshinavidhih stotraani sarvaa giro",
+          "Yadyatkarma karomi tattadakhilam shambho tavaaraadhanam || 4 ||"
         ]
       },
       {
         "stanzaNumber": 5,
         "devanagari": [
-          "करचरण कृतं वाक्कायजं कर्मजं वा",
+          "करचरणकृतं वाक्कायजं कर्मजं वा",
           "श्रवणनयनजं वा मानसं वापराधम् ।",
           "विहितमविहितं वा सर्वमेतत्क्षमस्व",
           "जय जय करुणाब्धे श्रीमहादेव शम्भो ॥ ५ ॥"
         ],
         "transliteration": [
-          "Karacharana kritam vaakkayajam karmajam vaa",
-          "Shravananayanajam vaa manasam vaaparadham |",
+          "Karacharanakrutam vaakkaayajam karmajam vaa",
+          "Shravananayanajam vaa maanasam vaaparaadham |",
           "Vihitamavihitam vaa sarvametatkshamasva",
-          "Jai jai karunabdhe shreemahadeva shambho || 5 ||"
+          "Jaya jaya karunaabdhe shreemahaadeva shambho || 5 ||"
         ]
       }
     ]
@@ -857,8 +857,8 @@ export const shivaAartis: AartiItem[] = [
           "नारदादियोगिवृन्दवन्दितं दिगम्बरं काशिकापुराधिनाथकालभैरवं भजे ॥ १ ॥"
         ],
         "transliteration": [
-          "Devarajasevyamanapavananghripankajam vyalayadjnasootramindushekharam kripakaram |",
-          "Naradadiyogivrindavanditam digambaram kashikapuradhinathakalabhairavam bhaje || 1 ||"
+          "Devaraajasevyamaanapaavanaanghripankajam vyaalayajnasootramindushekharam krupaakaram |",
+          "Naaradaadiyogivrundavanditam digambaram kaashikaapuraadhinaathakaalabhairavam bhaje || 1 ||"
         ]
       },
       {
@@ -868,8 +868,8 @@ export const shivaAartis: AartiItem[] = [
           "कालकालमम्बुजाक्षमक्षशूलमक्षरं काशिकापुराधिनाथकालभैरवं भजे ॥ २ ॥"
         ],
         "transliteration": [
-          "Bhanukotibhaswaram bhavabdhitarakam param neelakanthameepsitarthadayakam trilochanam |",
-          "Kalakalamambujakshamakshashoolamaksharam kashikapuradhinathakalabhairavam bhaje || 2 ||"
+          "Bhaanukotibhaasvaram bhavaabdhitaarakam param neelakanthameepsitaarthadaayakam trilochanam |",
+          "Kaalakaalamambujaakshamakshashoolamaksharam kaashikaapuraadhinaathakaalabhairavam bhaje || 2 ||"
         ]
       },
       {
@@ -879,8 +879,8 @@ export const shivaAartis: AartiItem[] = [
           "भीमविक्रमं प्रभुं विचित्रताण्डवप्रियं काशिकापुराधिनाथकालभैरवं भजे ॥ ३ ॥"
         ],
         "transliteration": [
-          "Shoolatankapashadandapanimadikaranam shyamakayamadidevamaksharam niramayam |",
-          "Bheemavikramam prabhum vichitratandavapriyam kashikapuradhinathakalabhairavam bhaje || 3 ||"
+          "Shoolatankapaashadandapaanimaadikaaranam shyaamakaayamaadidevamaksharam niraamayam |",
+          "Bheemavikramam prabhum vichitrataandavapriyam kaashikaapuraadhinaathakaalabhairavam bhaje || 3 ||"
         ]
       },
       {
@@ -890,8 +890,8 @@ export const shivaAartis: AartiItem[] = [
           "विनिक्वणन्मनोज्ञहेमकिङ्किणीलसत्कटिं काशिकापुराधिनाथकालभैरवं भजे ॥ ४ ॥"
         ],
         "transliteration": [
-          "Bhuktimuktidayakam prashastacharuvigraham bhaktavatsalam sthitam samastalokavigraham |",
-          "Vinikwananmanojnahemakinkinilasatkatim kashikapuradhinathakalabhairavam bhaje || 4 ||"
+          "Bhuktimuktidaayakam prashastachaaruvigraham bhaktavatsalam sthitam samastalokavigraham |",
+          "Vinikvananmanojnahemakinkineelasatkatim kaashikaapuraadhinaathakaalabhairavam bhaje || 4 ||"
         ]
       },
       {
@@ -901,8 +901,8 @@ export const shivaAartis: AartiItem[] = [
           "स्वर्णवर्णशेषपाशशोभिताङ्गमण्डलं काशिकापुराधिनाथकालभैरवं भजे ॥ ५ ॥"
         ],
         "transliteration": [
-          "Dharmasetupalakam tvadharmamarganashanam karmapashamochakam susharmadayakam vibhum |",
-          "Swarnavarnasheshapashashobhitangamandalam kashikapuradhinathakalabhairavam bhaje || 5 ||"
+          "Dharmasetupaalakam tvadharmamaarganaashanam karmapaashamochakam susharmadaayakam vibhum |",
+          "Svarnavarnasheshapaashashobhitaangamandalam kaashikaapuraadhinaathakaalabhairavam bhaje || 5 ||"
         ]
       },
       {
@@ -912,8 +912,8 @@ export const shivaAartis: AartiItem[] = [
           "मृत्युदर्पनाशनं कराळदंष्ट्रमोक्षणं काशिकापुराधिनाथकालभैरवं भजे ॥ ६ ॥"
         ],
         "transliteration": [
-          "Ratnapadukaprabhabhiramapadayugmakam nityamadviteeyamishtadaivatam niranjanam |",
-          "Mrityudarpanaashanam karaladamshtramokshanam kashikapuradhinathakalabhairavam bhaje || 6 ||"
+          "Ratnapaadukaaprabhaabhiraamapaadayugmakam nityamadviteeyamishtadaivatam niranjanam |",
+          "Mrutyudarpanaashanam karaaladamshtramokshanam kaashikaapuraadhinaathakaalabhairavam bhaje || 6 ||"
         ]
       },
       {
@@ -923,8 +923,8 @@ export const shivaAartis: AartiItem[] = [
           "अष्टसिद्धिदायकं कपालमालिकाधरं काशिकापुराधिनाथकालभैरवं भजे ॥ ७ ॥"
         ],
         "transliteration": [
-          "Attahasabhinnapadmajandakoshasantatim drishtipatanashtapapajalamugrashasanam |",
-          "Ashtasiddhidayakam kapalamalikadharam kashikapuradhinathakalabhairavam bhaje || 7 ||"
+          "Attahaasabhinnapadmajaandakoshasantatim drushtipaatanashtapaapajaalamugrashaasanam |",
+          "Ashtasiddhidaayakam kapaalamaalikaadharam kaashikaapuraadhinaathakaalabhairavam bhaje || 7 ||"
         ]
       },
       {
@@ -934,8 +934,8 @@ export const shivaAartis: AartiItem[] = [
           "नीतिमार्गकोविदं पुरातनं जगत्पतिं काशिकापुराधिनाथकालभैरवं भजे ॥ ८ ॥"
         ],
         "transliteration": [
-          "Bhootasanghanayakam vishalakeertidayakam kashivasalokapunyapapashodhakam vibhum |",
-          "Neetimargakovidam puratanam jagatpatim kashikapuradhinathakalabhairavam bhaje || 8 ||"
+          "Bhootasanghanaayakam vishaalakeertidaayakam kaashivaasalokapunyapaapashodhakam vibhum |",
+          "Neetimaargakovidam puraatanam jagatpatim kaashikaapuraadhinaathakaalabhairavam bhaje || 8 ||"
         ]
       },
       {
@@ -946,8 +946,8 @@ export const shivaAartis: AartiItem[] = [
           "शोकमोहदैन्यलोभकोपतापनाशनं ते प्रयान्ति कालभैरवाङ्घ्रिसन्निधिं ध्रुवम् ॥"
         ],
         "transliteration": [
-          "Kalabhairavashtakam pathanti ye manoharam dnyanamuktisaadhanam vichitrapunyavardhanam |",
-          "Shokamohadainyalobhakopatapanashanam te prayanti kalabhairavanghrisannidhim dhruvam ||"
+          "Kaalabhairavaashtakam pathanti ye manoharam jnaanamuktisaadhanam vichitrapunyavardhanam |",
+          "Shokamohadainyalobhakopataapanaashanam te prayaanti kaalabhairavaanghrisannidhim dhruvam ||"
         ]
       }
     ]
@@ -980,8 +980,8 @@ export const shivaAartis: AartiItem[] = [
           "पंचारति ओवाळू सदया सर्वेशा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Jaya deva jaya deva shreemangesha |",
-          "Pancharati ovaloo sadaya sarvesha || dhru. ||"
+          "Jaya deva jaya deva shreemangeshaa |",
+          "Panchaarati ovaaloo sadayaa sarveshaa || dhru. ||"
         ]
       },
       {
@@ -990,16 +990,16 @@ export const shivaAartis: AartiItem[] = [
         "devanagari": [
           "सदया सगुणा शंभो अजिनांबरधारी ।",
           "गौरीरमणा आद्या मदनांतकारी ।",
-          "त्रिपुरारी अधहारी शिवमस्तकधारी ।",
-          "विश्वंभर विरुदे हें नम संकट धारीं ॥ १ ॥",
+          "त्रिपुरारी अघहारी शिवमस्तकधारी ।",
+          "विश्वंभर विरुदे हें नम संकट वारीं ॥ १ ॥",
           "जय देव जय देव श्रीमंगेशा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Sadaya saguna shambho ajinambaradharee |",
-          "Gaureeramana aadya madanantakaree |",
-          "Tripuraree adhaharee shivamastakadharee |",
-          "Vishvambhara virude hen nama sankata dhareen || १ ||",
-          "Jaya deva jaya deva shreemangesha || dhru. ||"
+          "Sadayaa sagunaa shambho ajinaambaradhaaree |",
+          "Gaureeramanaa aadyaa madanaantakaaree |",
+          "Tripuraaree aghahaaree shivamastakadhaaree |",
+          "Vishvambhara virude hen nama sankata vaareen || 1 ||",
+          "Jaya deva jaya deva shreemangeshaa || dhru. ||"
         ]
       },
       {
@@ -1009,15 +1009,15 @@ export const shivaAartis: AartiItem[] = [
           "भयकृत भयनाशन ही नामें तुज देवा ।",
           "विबुधादिक कमळासन वांच्छिती तव सेवा ।",
           "तुझे गुण वर्णाया वाटतसे हेवा ।",
-          "अभिनव कृपाकटाक्षें मतित्सव द्यावा ॥ २ ॥",
+          "अभिनव कृपाकटाक्षें मतिस्तव द्यावा ॥ २ ॥",
           "जय देव जय देव श्रीमंगेशा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Bhayakruta bhayanashana hee namen tuja deva |",
-          "Vibudhadika kamalasana vanchchhitee tava seva |",
-          "Tujhe guna varnaya vatatase heva |",
-          "Abhinava krupakatakshen matitsava dyava || २ ||",
-          "Jaya deva jaya deva shreemangesha || dhru. ||"
+          "Bhayakruta bhayanaashana hee naamen tuja devaa |",
+          "Vibudhaadika kamalaasana vaanchchitee tava sevaa |",
+          "Tujhe guna varnaaayaa vaatatase hevaa |",
+          "Abhinava krupaakataakshen matistava dyaavaa || 2 ||",
+          "Jaya deva jaya deva shreemangeshaa || dhru. ||"
         ]
       },
       {
@@ -1031,11 +1031,11 @@ export const shivaAartis: AartiItem[] = [
           "जय देव जय देव श्रीमंगेशा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Shiva shiva japata shiva too karisee nijadasa |",
-          "Sankata varee mama toon karee shatruvinasha |",
-          "Kulavruddheete pavatee heecha ase aasha |",
-          "Anantasuta vanchchhitase charanambujalesha || ३ ||",
-          "Jaya deva jaya deva shreemangesha || dhru. ||"
+          "Shiva shiva japataa shiva too karisee nijadaasaa |",
+          "Sankata vaaree mama toon karee shatruvinaashaa |",
+          "Kulavruddheete paavatee heecha ase aashaa |",
+          "Anantasuta vaanchchitase charanaambujaleshaa || 3 ||",
+          "Jaya deva jaya deva shreemangeshaa || dhru. ||"
         ]
       }
     ]
@@ -1065,15 +1065,15 @@ export const shivaAartis: AartiItem[] = [
         "isChorus": true,
         "devanagari": [
           "जय जय त्र्यंबकराज गिरिजानाथा गंगाधरा हो ।",
-          "त्रिशूल पाणी शांभो नीलग्रीवा शशिशेखरा हो ।",
+          "त्रिशूल पाणी शंभो नीलग्रीवा शशिशेखरा हो ।",
           "वृषभारुढ फणिभूषण दशभुज पंचानन शंकरा हो ।",
           "विभूतिमाळाजटा सुंदर गजचर्मांबरधरा हो ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Jaya jaya tryambakaraja girijanatha gangadhara ho |",
-          "Trishoola panee shambho neelagreeva shashishekhara ho |",
-          "Vrushabharudha phanibhooshana dashabhuja panchanana shankara ho |",
-          "Vibhootimalajata sundara gajacharmambaradhara ho || dhru. ||"
+          "Jaya jaya tryambakaraaja girijaanaathaa gangaadharaa ho |",
+          "Trishoolapaanee shambho neelagreevaa shashishekharaa ho |",
+          "Vrushabhaaroodha phanibhooshana dashabhuja panchaanana shankaraa ho |",
+          "Vibhootimaalaajataa sundara gajacharmaambaradharaa ho || dhru. ||"
         ]
       },
       {
@@ -1087,29 +1087,29 @@ export const shivaAartis: AartiItem[] = [
           "जय जय त्र्यंबकराज गिरिजानाथा गंगाधरा हो ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Padalen gohatyechen pataka gautamarushichya shiree ho |",
-          "Tyane tapa mandile dhyana aani tuja antaree ho |",
-          "Prasanna hoooni tyaten snana didhalee godavaree ho |",
-          "Audumbaramulee pragate pavana trailokyaten karee ho || १ ||",
-          "Jaya jaya tryambakaraja girijanatha gangadhara ho || dhru. ||"
+          "Padalen gohatyechen paataka gautamarushichyaa shiree ho |",
+          "Tyaane tapa maandile dhyaanaa aani tuja antaree ho |",
+          "Prasanna hoouni tyaaten snaanaa didhalee godaavaree ho |",
+          "Audumbaramulee pragate paavana trailokyaaten karee ho || 1 ||",
+          "Jaya jaya tryambakaraaja girijaanaathaa gangaadharaa ho || dhru. ||"
         ]
       },
       {
         "stanzaNumber": 3,
         "isChorus": false,
         "devanagari": [
-          "धन्य कुशार्वाताचा महिमा वाचे वर्णू किती हो ।",
-          "आणिकही बहुतीतें गंगाद्वारादिक पर्वती हो ।",
+          "धन्य कुशावर्ताचा महिमा वाचे वर्णू किती हो ।",
+          "आणिकही बहुतीर्थे गंगाद्वारादिक पर्वती हो ।",
           "वंदन मार्जन करिती त्याचे महादोष नासती हो ।",
           "तुझिया दर्शनमात्रे प्राणी मुक्तीतें पावती हो ॥ २ ॥",
           "जय जय त्र्यंबकराज गिरिजानाथा गंगाधरा हो ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Dhanya kusharvatacha mahima vache varnoo kitee ho |",
-          "Aanikahee bahuteeten gangadvaradika parvatee ho |",
-          "Vandana marjana karitee tyache mahadosha nasatee ho |",
-          "Tujhiya darshanamatre pranee mukteeten pavatee ho || २ ||",
-          "Jaya jaya tryambakaraja girijanatha gangadhara ho || dhru. ||"
+          "Dhanya kushaavartaachaa mahimaa vaache varnoo kitee ho |",
+          "Aanikahee bahuteerthe gangaadvaaraadika parvatee ho |",
+          "Vandana maarjana karitee tyaache mahaadosha naasatee ho |",
+          "Tujhiyaa darshanamaatre praanee mukteeten paavatee ho || 2 ||",
+          "Jaya jaya tryambakaraaja girijaanaathaa gangaadharaa ho || dhru. ||"
         ]
       },
       {
@@ -1123,11 +1123,11 @@ export const shivaAartis: AartiItem[] = [
           "जय जय त्र्यंबकराज गिरिजानाथा गंगाधरा हो ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Brahmagireenchee bhaven jyala pradakshina jaree ghade ho |",
-          "Ten te kaya kashten janva janva charanee rupatee khade ho |",
-          "Tanva tanva punya vishesha kilmisha avaghen tyachen jhade ho |",
-          "Kevala to shivaroopee kala tyachya paya pade ho || ३ ||",
-          "Jaya jaya tryambakaraja girijanatha gangadhara ho || dhru. ||"
+          "Brahmagireenchee bhaaven jyaalaa pradakshinaa jaree ghade ho |",
+          "Ten te kaayaa kashten janva janva charanee rupatee khade ho |",
+          "Tanva tanva punya vishesha kilmisha avaghen tyaachen jhade ho |",
+          "Kevala to shivaroopee kaala tyaachyaa paayaa pade ho || 3 ||",
+          "Jaya jaya tryambakaraaja girijaanaathaa gangaadharaa ho || dhru. ||"
         ]
       },
       {
@@ -1141,11 +1141,11 @@ export const shivaAartis: AartiItem[] = [
           "जय जय त्र्यंबकराज गिरिजानाथा गंगाधरा हो ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Lavooniya nijabhajanee sakalahee puravisee manakamana ho |",
-          "Santati sampatti desee antee chukavisee yamayatana ho |",
-          "Shiva shiva nama japata vate aananda majhya mana ho |",
-          "Gosaveenandana visare sansarayatana ho || ४ ||",
-          "Jaya jaya tryambakaraja girijanatha gangadhara ho || dhru. ||"
+          "Laavooniyaa nijabhajanee sakalahee puravisee manakaamanaa ho |",
+          "Santati sampatti desee antee chukavisee yamayaatanaa ho |",
+          "Shiva shiva naama japataa vaate aananda maajhyaa manaa ho |",
+          "Gosaaveenandana visare samsaarayaatanaa ho || 4 ||",
+          "Jaya jaya tryambakaraaja girijaanaathaa gangaadharaa ho || dhru. ||"
         ]
       }
     ]

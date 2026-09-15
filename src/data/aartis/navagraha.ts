@@ -80,8 +80,8 @@ export const navagrahaAartis: AartiItem[] = [
     "slug": "aarti-khanderaya-jejuri",
     "titleDevanagari": "श्री खंडोबाची आरती (पंचानन हयवाहन सुरभूषितनीळा)",
     "titleTransliteration": "Aarti Khanderaya Jejuri (Panchanana Hayavahana)",
-    "firstLineDevanagari": "पंचानन हयवाहन सुरभूषितनीळा । खंडामंडित दंडित दानव अवलीळा ॥",
-    "firstLineTransliteration": "Panchanana hayavahana surabhooshitaneela | Khandamandita dandita danava avaleela ||",
+    "firstLineDevanagari": "पंचानन हयवाहन सुरभूषित निळा । खंडामंडित दंडित दानव अवलीळा ॥",
+    "firstLineTransliteration": "Panchanana hayavahana surabhooshita neela | Khandamandita dandita danava avaleela ||",
     "deity": "khandoba",
     "type": "aarti",
     "language": "marathi",
@@ -99,60 +99,60 @@ export const navagrahaAartis: AartiItem[] = [
         "stanzaNumber": 1,
         "isChorus": true,
         "devanagari": [
-          "पंचानन हयवाहन सुरभूषितनीळा ।",
+          "पंचानन हयवाहन सुरभूषित निळा ।",
           "खंडामंडित दंडित दानव अवलीळा ।",
-          "मणिमल्लां मर्दुनियां जों धूसुर पिवळा ।",
-          "हिरे कंकण बासिंग सुमनांच्या माळा ॥ १ ॥",
+          "मणिमल्लां मर्दुनियां जो धूसर पिवळा ।",
+          "हिरे कंकण बाशिंग सुमनांच्या माळा ॥ १ ॥",
           "जय देव जय देव जय शिव मल्हारी ।",
-          "वारीं दुर्जन असुरां भवदुस्तर तारी ॥ धृ. ॥"
+          "वारी दुर्जन असुरां भवदुस्तर तारी ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Panchanana hayavahana surabhooshitaneela |",
+          "Panchanana hayavahana surabhooshita neela |",
           "Khandamandita dandita danava avaleela |",
-          "Manimallan marduniyan jon dhoosura pivala |",
-          "Hire kankana basinga sumananchya mala || १ ||",
+          "Manimallan marduniyan jo dhoosara pivala |",
+          "Hire kankana baashinga sumananchya maalaa || 1 ||",
           "Jaya deva jaya deva jaya shiva malharee |",
-          "Vareen durjana asuran bhavadustara taree || dhru. ||"
+          "Vaari durjana asuran bhavadustara taaree || dhru. ||"
         ]
       },
       {
         "stanzaNumber": 2,
         "isChorus": false,
         "devanagari": [
-          "सुरवर संवर वर दे मजलागी देवा ।",
-          "नाना नामे गाईन ही तुमची सेवा ।",
+          "सुरवर सत्वर वर दे मजलागी देवा ।",
+          "नाना नामें गाईन ही तुमची सेवा ।",
           "अघटित गुण गावया वाटतसे हेवा ।",
           "फणिवर शिणला किती नर पामर केवा ॥ २ ॥",
           "जय देव जय देव जय शिव मल्हारी ।",
-          "वारीं दुर्जन असुरां भवदुस्तर तारी ॥ धृ. ॥"
+          "वारी दुर्जन असुरां भवदुस्तर तारी ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Suravara sanvara vara de majalagee deva |",
-          "Nana name gaeena hee tumachee seva |",
-          "Aghatita guna gavaya vatatase heva |",
-          "Phanivara shinala kitee nara pamara keva || २ ||",
+          "Suravara satvara vara de majalaagee devaa |",
+          "Naanaa naamen gaaeena hee tumachee sevaa |",
+          "Aghatita guna gaavayaa vaatatase hevaa |",
+          "Phanivara shinalaa kitee nara paamara kevaa || 2 ||",
           "Jaya deva jaya deva jaya shiva malharee |",
-          "Vareen durjana asuran bhavadustara taree || dhru. ||"
+          "Vaari durjana asuran bhavadustara taaree || dhru. ||"
         ]
       },
       {
         "stanzaNumber": 3,
         "isChorus": false,
         "devanagari": [
-          "रघुवीरस्मरण्ी शंकर हृदय निवाला ।",
-          "तो हा मल्लंतक अवतार झाला ।",
+          "रघुवीरस्मरणीं शंकर हृदय निवाला ।",
+          "तो हा मल्लांतक अवतार झाला ।",
           "यालागीं आवडे भाव वर्णिला ।",
-          "रामी रामदासा जिवलग भेडला ॥ ३ ॥",
+          "रामीं रामदासा जिवलग भेटला ॥ ३ ॥",
           "जय देव जय देव जय शिव मल्हारी ।",
-          "वारीं दुर्जन असुरां भवदुस्तर तारी ॥ धृ. ॥"
+          "वारी दुर्जन असुरां भवदुस्तर तारी ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Raghuveerasmaranee shankara hrudaya nivala |",
-          "To ha mallantaka avatara jhala |",
-          "Yalageen aavade bhava varnila |",
-          "Ramee ramadasa jivalaga bhedala || ३ ||",
+          "Raghuveerasmaraneen shankara hridaya nivaalaa |",
+          "To haa mallaantaka avataara jhaalaa |",
+          "Yaalaageen aavade bhaava varnilaa |",
+          "Raameen raamadaasaa jivalaga bhetalaa || 3 ||",
           "Jaya deva jaya deva jaya shiva malharee |",
-          "Vareen durjana asuran bhavadustara taree || dhru. ||"
+          "Vaari durjana asuran bhavadustara taaree || dhru. ||"
         ]
       }
     ]
@@ -162,8 +162,8 @@ export const navagrahaAartis: AartiItem[] = [
     "slug": "aarti-surya-dev",
     "titleDevanagari": "आरती श्री सूर्यदेवाची (जय कश्यप-नंदन)",
     "titleTransliteration": "Aarti Shri Surya Devachi (Jai Kashyap-Nandan)",
-    "firstLineDevanagari": "जय जय जय रविरंगा कश्यप-नंदना । उजळसी त्रिभुवन भास्कर तूं जाणा",
-    "firstLineTransliteration": "Jai jai jai raviranga kashyap-nandana | Ujalasi tribhuvana bhaskara toon jaana",
+    "firstLineDevanagari": "जय जय जय रविराया कश्यप-नंदना । उजळिसी त्रिभुवन भास्कर तूं जाणा",
+    "firstLineTransliteration": "Jai jai jai raviraya kashyap-nandana | Ujalisi tribhuvana bhaskara toon jaana",
     "deity": "surya",
     "type": "aarti",
     "language": "marathi",
@@ -180,48 +180,48 @@ export const navagrahaAartis: AartiItem[] = [
         "stanzaNumber": 1,
         "isChorus": true,
         "devanagari": [
-          "जय जय जय रविरंगा कश्यप-नंदना ।",
-          "उजळसी त्रिभुवन भास्कर तूं जाणा ॥",
-          "आरती ओवाळूं तुज दिनकरा भावे ।",
-          "सर्व संकटांतूनि आम्हांसी तारावे ॥ ध्रु० ॥"
+          "जय जय जय रविराया कश्यप-नंदना ।",
+          "उजळिसी त्रिभुवन भास्कर तूं जाणा ॥",
+          "आरती ओवाळूं तुज दिनकरा भावें ।",
+          "सर्व संकटांतुनि आम्हांसी तारावें ॥ ध्रु० ॥"
         ],
         "transliteration": [
-          "Jai jai jai raviranga kashyap-nandana |",
-          "Ujalasi tribhuvana bhaskara toon jaana ||",
-          "Aarti ovaloon tuja dinakara bhaave |",
-          "Sarva sankatantooni aamhansi taraave || Dhru. ||"
+          "Jai jai jai raviraya kashyap-nandana |",
+          "Ujalisi tribhuvana bhaskara toon jaana ||",
+          "Aarti ovaloon tuja dinakara bhaaven |",
+          "Sarva sankatantuni aamhaansi taaraaven || Dhru. ||"
         ]
       },
       {
         "stanzaNumber": 2,
         "isChorus": false,
         "devanagari": [
-          "सप्तरथावर स्वार अरुण सारथी पुढे ।",
+          "सप्तरथावर स्वार अरुण सारथी पुढें ।",
           "अंधकार नासोनि जगतीं तेज चढे ॥ १ ॥",
-          "कमळदळे विकसती नाम तुझे घेतां ।",
-          "आरोग्य आणि आयु देई कृपावंता ॥ २ ॥",
-          "जय जय जय रविरंगा कश्यप-नंदना ॥ ध्रु० ॥"
+          "कमळदळें विकसती नाम तुझें घेतां ।",
+          "आरोग्य आणि आयुष्य देई कृपावंता ॥ २ ॥",
+          "जय जय जय रविराया कश्यप-नंदना ॥ ध्रु० ॥"
         ],
         "transliteration": [
-          "Saptarathavara swara aruna sarathi pudhe |",
-          "Andhakara naasoni jagati teja chadhe || 1 ||",
-          "Kamaladale vikasati naama tujhe gheta |",
-          "Aarogya aani aayu deyi kripavanta || 2 ||",
-          "Jai jai jai raviranga kashyap-nandana || Dhru. ||"
+          "Saptarathavara swaara aruna saarathee pudhen |",
+          "Andhakaara naasoni jagateen teja chadhe || 1 ||",
+          "Kamaladalen vikasatee naama tujhen ghetaan |",
+          "Aarogya aani aayushya deyi kripaavantaa || 2 ||",
+          "Jai jai jai raviraya kashyap-nandana || Dhru. ||"
         ]
       },
       {
         "stanzaNumber": 3,
         "isChorus": false,
         "devanagari": [
-          "शरण शरण मी आलो तुज सूर्यनारायणा ।",
-          "दूर करीं अज्ञान प्रकाश दावी मना ॥ ३ ॥",
-          "जय जय जय रविरंगा कश्यप-नंदना ॥ ध्रु० ॥"
+          "शरण शरण मी आलों तुज सूर्यनारायणा ।",
+          "दूर करीं अज्ञान प्रकाश दावीं मना ॥ ३ ॥",
+          "जय जय जय रविराया कश्यप-नंदना ॥ ध्रु० ॥"
         ],
         "transliteration": [
-          "Sharana sharana mee aalo tuja sooryanarayana |",
-          "Doora karee adnyana prakasha daavi mana || 3 ||",
-          "Jai jai jai raviranga kashyap-nandana || Dhru. ||"
+          "Sharana sharana mee aalon tuja sooryanaaraayanaa |",
+          "Doora kareen adnyaana prakaasha daaveen manaa || 3 ||",
+          "Jai jai jai raviraya kashyap-nandana || Dhru. ||"
         ]
       }
     ]
@@ -254,36 +254,36 @@ export const navagrahaAartis: AartiItem[] = [
           "आरती ओवाळितों । मनोभावें करूनी सेवा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Jaya jaya shreeshanideva | padmakara shireen theva |",
-          "Aaratee ovaliton | manobhaven karoonee seva || dhru. ||"
+          "Jaya jaya shreeshanideva | padmakara shireen thevaa |",
+          "Aaratee ovaaliton | manobhaaven karoonee sevaa || dhru. ||"
         ]
       },
       {
         "stanzaNumber": 2,
         "isChorus": false,
         "devanagari": [
-          "सूर्यसूता शनिमूर्ती । तुझी अगाध कीर्ती ।",
+          "सूर्यसुता शनिमूर्ती । तुझी अगाध कीर्ती ।",
           "एक मुखें काय वर्णूं । शेषा न चले स्फूर्ती ॥ १ ॥",
           "जय जय श्रीशनिदेवा । पद्मकर शिरीं ठेवा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Sooryasoota shanimoortee | tujhee agadha keertee |",
-          "Eka mukhen kaya varnoon | shesha na chale sphoortee || १ ||",
-          "Jaya jaya shreeshanideva | padmakara shireen theva || dhru. ||"
+          "Sooryasutaa shanimoortee | tujhee agaadha keertee |",
+          "Eka mukhen kaaya varnoon | sheshaa na chale sphoortee || 1 ||",
+          "Jaya jaya shreeshanideva | padmakara shireen thevaa || dhru. ||"
         ]
       },
       {
         "stanzaNumber": 3,
         "isChorus": false,
         "devanagari": [
-          "नवग्रहामाजीं श्रेष्ठ । पराक्रम थोर तुझा ।",
+          "नवग्रहांमाजी श्रेष्ठ । पराक्रम थोर तुझा ।",
           "ज्यावरी कृपा करिसी । होय रंकाचा राजा ॥ २ ॥",
           "जय जय श्रीशनिदेवा । पद्मकर शिरीं ठेवा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Navagrahamajeen shreshtha | parakrama thora tujha |",
-          "Jyavaree krupa karisee | hoya rankacha raja || २ ||",
-          "Jaya jaya shreeshanideva | padmakara shireen theva || dhru. ||"
+          "Navagrahaanmaajee shreshtha | paraakrama thora tujhaa |",
+          "Jyaavaree krupaa karisee | hoya rankaachaa raajaa || 2 ||",
+          "Jaya jaya shreeshanideva | padmakara shireen thevaa || dhru. ||"
         ]
       },
       {
@@ -295,9 +295,9 @@ export const navagrahaAartis: AartiItem[] = [
           "जय जय श्रीशनिदेवा । पद्मकर शिरीं ठेवा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Vikramasarikha ho | shakakarta punyarashee |",
-          "Garva dharitan shiksha kelee | bahu chhaliyelen tyasee || ३ ||",
-          "Jaya jaya shreeshanideva | padmakara shireen theva || dhru. ||"
+          "Vikramaasaarikhaa ho | shakakartaa punyaraashee |",
+          "Garva dharitaan shikshaa kelee | bahu chhaliyelen tyaasee || 3 ||",
+          "Jaya jaya shreeshanideva | padmakara shireen thevaa || dhru. ||"
         ]
       },
       {
@@ -309,9 +309,9 @@ export const navagrahaAartis: AartiItem[] = [
           "जय जय श्रीशनिदेवा । पद्मकर शिरीं ठेवा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Shankarachya varadanen | garva ravanen kela |",
-          "Sadesatee yetan tyasee | samoola nashasee nela || ४ ||",
-          "Jaya jaya shreeshanideva | padmakara shireen theva || dhru. ||"
+          "Shankaraachyaa varadaanen | garva raavanen kelaa |",
+          "Saadesaatee yetaan tyaasee | samoola naashaasee nelaa || 4 ||",
+          "Jaya jaya shreeshanideva | padmakara shireen thevaa || dhru. ||"
         ]
       },
       {
@@ -323,9 +323,9 @@ export const navagrahaAartis: AartiItem[] = [
           "जय जय श्रीशनिदेवा । पद्मकर शिरीं ठेवा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Pratyaksha gurunatha | chamatkara daviyela |",
-          "Neoonee shoolapashee | punha sanmana kela || ५ ||",
-          "Jaya jaya shreeshanideva | padmakara shireen theva || dhru. ||"
+          "Pratyaksha gurunaathaa | chamatkaara daaviyelaa |",
+          "Neoonee shoolaa-paashee | punhaa sanmaana kelaa || 5 ||",
+          "Jaya jaya shreeshanideva | padmakara shireen thevaa || dhru. ||"
         ]
       },
       {
@@ -337,23 +337,23 @@ export const navagrahaAartis: AartiItem[] = [
           "जय जय श्रीशनिदेवा । पद्मकर शिरीं ठेवा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Aise guna kitee gaoon | dhanee na pure gatan |",
-          "Krupa karee deenavaree | maharaja samartha || ६ ||",
-          "Jaya jaya shreeshanideva | padmakara shireen theva || dhru. ||"
+          "Aise guna kitee gaaoon | dhanee na pure gaataan |",
+          "Krupaa karee deenaavaree | mahaaraajaa samarthaa || 6 ||",
+          "Jaya jaya shreeshanideva | padmakara shireen thevaa || dhru. ||"
         ]
       },
       {
         "stanzaNumber": 8,
         "isChorus": false,
         "devanagari": [
-          "दोन्ही कर जोडुनियां । रखमां लीन सदा पायीं ।",
-          "प्रसाद हाचि मागे । उदयकाळ सौख्य दावीं ॥ ७ ॥",
+          "दोन्ही कर जोडुनियां । रखमा लीन सदा पायीं ।",
+          "प्रसाद हाचि मागे । उदयाकाळ सौख्य दावीं ॥ ७ ॥",
           "जय जय श्रीशनिदेवा । पद्मकर शिरीं ठेवा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Donhee kara joduniyan | rakhaman leena sada payeen |",
-          "Prasada hachi mage | udayakala saukhya daveen || ७ ||",
-          "Jaya jaya shreeshanideva | padmakara shireen theva || dhru. ||"
+          "Donhee kara joduniyaan | rakhamaa leena sadaa paayeen |",
+          "Prasaada haachi maage | udayaakaala saukhya daaveen || 7 ||",
+          "Jaya jaya shreeshanideva | padmakara shireen thevaa || dhru. ||"
         ]
       }
     ]
@@ -387,10 +387,10 @@ export const navagrahaAartis: AartiItem[] = [
           "ब्रह्मसुता जगज्जननी मन चरणीं लोभे ॥ १ ॥"
         ],
         "transliteration": [
-          "Jai jai he veenavadini dnyanamayi maate |",
-          "Sharada hansavahini vidya de tvarita || Dhru. ||",
-          "Shveta vastra paridhana veena haati shobhe |",
-          "Brahmasuta jagajjanani mana charani lobhe || 1 ||"
+          "Jai jai he veenavaadini dnyaanamayee maate |",
+          "Shaaradaa hansavaahini vidyaa de tvarita || Dhru. ||",
+          "Shveta vastra paridhaana veenaa haateen shobhe |",
+          "Brahmasutaa jagajjananee mana charaneen lobhe || 1 ||"
         ]
       },
       {
@@ -400,15 +400,15 @@ export const navagrahaAartis: AartiItem[] = [
           "अक्षर ब्रह्म स्वरूप वाणीचा तू वास ।",
           "अंधकार नासोनि करीं ज्ञानाचा प्रकाश ॥ २ ॥",
           "वेद शास्त्र पुराणे तुजपासुनि झालीं ।",
-          "ऋषिमुनी सिद्ध जन वंदिती माउली ॥ ३ ॥",
+          "ऋषीमुनी सिद्ध जन वंदिती माउली ॥ ३ ॥",
           "जय जय हे वीणावादिनी ज्ञानमयी माते ॥ ध्रु० ॥"
         ],
         "transliteration": [
-          "Akshara brahma svaroopa vanicha too vaasa |",
-          "Andhakara naasoni karee dnyanacha prakasha || 2 ||",
-          "Veda shastra purane tujapasuni jhaleen |",
-          "Rishimuni siddha jana vanditi mauli || 3 ||",
-          "Jai jai he veenavadini dnyanamayi maate || Dhru. ||"
+          "Akshara brahma svaroopa vaaneechaa too vaasa |",
+          "Andhakaara naasoni kareen dnyaanaachaa prakaasha || 2 ||",
+          "Veda shaastra puraane tujapaasuni jhaaleen |",
+          "Risheemunee siddha jana vanditee maauli || 3 ||",
+          "Jai jai he veenavaadini dnyaanamayee maate || Dhru. ||"
         ]
       },
       {
@@ -420,9 +420,9 @@ export const navagrahaAartis: AartiItem[] = [
           "जय जय हे वीणावादिनी ज्ञानमयी माते ॥ ध्रु० ॥"
         ],
         "transliteration": [
-          "Dasa mhane maate buddhi deyi nirmala |",
-          "Sada raaho antari vidya dhana sukhaphala || 4 ||",
-          "Jai jai he veenavadini dnyanamayi maate || Dhru. ||"
+          "Daasa mhane maate buddhee deyi nirmala |",
+          "Sadaa raaho antareen vidyaa dhana sukhaphala || 4 ||",
+          "Jai jai he veenavaadini dnyaanamayee maate || Dhru. ||"
         ]
       }
     ]
@@ -452,14 +452,14 @@ export const navagrahaAartis: AartiItem[] = [
         "isChorus": true,
         "devanagari": [
           "जय देव जय देव जय कार्तिकेया ।",
-          "मयूर वाहना स्कंदा शिवसुता श्रेष्ठा ॥ ध्रु० ॥",
+          "मयूरवाहना स्कंदा शिवसुता श्रेष्ठा ॥ ध्रु० ॥",
           "तारकासुर मर्दन देवसेनापती जाण ।",
-          "असुर निकंदन करुनी रक्षियेले देवगण ॥ १ ॥"
+          "असुर निकंदन करुनि रक्षियेले देवगण ॥ १ ॥"
         ],
         "transliteration": [
           "Jai deva jai deva jai kartikeya |",
-          "Mayura vaahana skanda shivasuta shreshtha || Dhru. ||",
-          "Taarakaasura mardana devasenapati jaana |",
+          "Mayooravaahanaa skandaa shivasutaa shreshthaa || Dhru. ||",
+          "Taarakaasura mardana devasenaapatee jaana |",
           "Asura nikandana karuni rakshiyele devagana || 1 ||"
         ]
       },
@@ -467,17 +467,17 @@ export const navagrahaAartis: AartiItem[] = [
         "stanzaNumber": 2,
         "isChorus": false,
         "devanagari": [
-          "षडानन षण्मुख द्वादश भुज शोभे ।",
-          "हातीं शक्ति आयुध पाहतां मन लोभे ॥ २ ॥",
-          "गळां पुष्पहार कानीं कुंडले डोलती ।",
-          "शरवणभव देवा त्रिभुवनीं तव कीर्ती ॥ ३ ॥",
+          "षडानना षण्मुखा द्वादशभुजा शोभे ।",
+          "हातीं शक्ती आयुध पाहतां मन लोभे ॥ २ ॥",
+          "गळां पुष्पहार कानीं कुंडलें डोलती ।",
+          "शरवणभवा देवा त्रिभुवनीं तव कीर्ती ॥ ३ ॥",
           "जय देव जय देव जय कार्तिकेया ॥ ध्रु० ॥"
         ],
         "transliteration": [
-          "Shadanana shanmukha dwadasha bhuja shobhe |",
-          "Haati shakti aayudha pahata mana lobhe || 2 ||",
-          "Galan pushpahara kaani kundale dolati |",
-          "Sharavanabhava deva tribhuvani tava keerti || 3 ||",
+          "Shadaanananaa shanmukhaa dvaadashabhujaa shobhe |",
+          "Haateen shaktee aayudha paahataan mana lobhe || 2 ||",
+          "Galaan pushpahaara kaaneen kundalen dolatee |",
+          "Sharavanabhavaa devaa tribhuvaneen tava keertee || 3 ||",
           "Jai deva jai deva jai kartikeya || Dhru. ||"
         ]
       },
@@ -489,14 +489,14 @@ export const navagrahaAartis: AartiItem[] = [
           "सकळ विघ्न नासोनि पावती उत्तम गती ॥ ४ ॥",
           "दास म्हणे देवा चरणीं मस्तक ठेविला ।",
           "सदा विजय देई भक्तांसी दयाळा ॥ ५ ॥",
-          "जय देव जय देव जय कार्तिकेया । मयूर वाहना स्कंदा शिवसुता श्रेष्ठा ॥ ध्रु० ॥"
+          "जय देव जय देव जय कार्तिकेया । मयूरवाहना स्कंदा शिवसुता श्रेष्ठा ॥ ध्रु० ॥"
         ],
         "transliteration": [
-          "Kartika paurnimesi darshana je gheti |",
-          "Sakala vighna nasoni pavati uttama gati || 4 ||",
-          "Dasa mhane deva charani mastaka thevila |",
-          "Sada vijaya deyi bhaktansi dayala || 5 ||",
-          "Jai deva jai deva jai kartikeya | Mayura vaahana skanda shivasuta shreshtha || Dhru. ||"
+          "Kaartika paurnimesee darshana je ghetee |",
+          "Sakala vighna naasoni paavatee uttama gatee || 4 ||",
+          "Daasa mhane devaa charaneen mastaka thevilaa |",
+          "Sadaa vijaya deyi bhaktaansee dayaalaa || 5 ||",
+          "Jai deva jai deva jai kartikeya | Mayooravaahanaa skandaa shivasutaa shreshthaa || Dhru. ||"
         ]
       }
     ]
@@ -572,7 +572,7 @@ export const navagrahaAartis: AartiItem[] = [
         "sectionTitle": "॥ फलश्रुती ॥",
         "isChorus": false,
         "devanagari": [
-          "नमः सवित्रे सूर्य्याय नम आदित्याय विष्णवे ।",
+          "नमः सवित्रे सूर्याय नम आदित्याय विष्णवे ।",
           "नमो ज्योतिषे च पतये नमो भास्वते नमः ॥ ८ ॥",
           "एतत् स्तोत्रं जपेन्नित्यं सूर्यभक्तः समाहितः ।",
           "स संकटेभ्यो मुच्येत दीर्घमायुश्च विन्दति ॥ ९ ॥"
@@ -628,7 +628,7 @@ export const navagrahaAartis: AartiItem[] = [
         "devanagari": [
           "नमस्ते कोणसंस्थाय पिंगलाय नमोऽस्तु ते ।",
           "नमस्ते बभ्रुरूपाय कृष्णाय च नमोऽस्तु ते ॥ ३ ॥",
-          "नमस्ते रौद्रदेहाय नमस्तकान्तकाय च ।",
+          "नमस्ते रौद्रदेहाय नमस्तेऽन्तकाय च ।",
           "नमस्ते यमसंज्ञाय नमस्ते सौरये विभो ॥ ४ ॥",
           "प्रसीद मम देवेश सर्वपीडाहरो भव ।",
           "शनैश्चर नमस्तुभ्यं छायापुत्राय ते नमः ॥ ५ ॥"
@@ -636,7 +636,7 @@ export const navagrahaAartis: AartiItem[] = [
         "transliteration": [
           "Namaste konasamsthaaya pingalaaya namostu te |",
           "Namaste babhruroopaaya krishnaaya cha namostu te || 3 ||",
-          "Namaste raudradehaaya namastakaantakaaya cha |",
+          "Namaste raudradehaaya namastentakaaya cha |",
           "Namaste yamasamjnaaya namaste sauraye vibho || 4 ||",
           "Praseeda mama devesha sarvapeedaaharo bhava |",
           "Shanaishchara namastubhyam chhaayaaputraaya te namah || 5 ||"
@@ -685,7 +685,7 @@ export const navagrahaAartis: AartiItem[] = [
         "devanagari": [
           "शुक्लां ब्रह्मविचारसारपरमामाद्यां जगद्व्यापिनीं",
           "वीणापुस्तकधारिणीमभयदां जाड्यान्धकारापहाम् ।",
-          "हस्ते स्फाटिकमालिकां विदधतीं पद्मासने संस्थितां",
+          "हस्ते स्फाटिकमालिकां विदधतीं पद्मासने संस्थिताम्",
           "वन्दे तां परमेश्वरीं भगवतीं बुद्धिप्रदां शारदाम् ॥ २ ॥"
         ],
         "transliteration": [
@@ -700,9 +700,9 @@ export const navagrahaAartis: AartiItem[] = [
   {
     "id": "vishnu-sant-sanakadik",
     "slug": "aarti-vishnu-sant-sanakadik",
-    "titleDevanagari": "संतसनकादिक भक्त मिळाळे अनेक (श्री विष्णूची आरती)",
+    "titleDevanagari": "संतसनकादिक भक्त मिळाले अनेक (श्री विष्णूची आरती)",
     "titleTransliteration": "Sant Sanakadik Bhakta Milale Anek (Vishnu Aarti)",
-    "firstLineDevanagari": "संतसनकादिक भक्त मिळाळे अनेक । स्वानंदें गर्जती पाहूं आले कौतुक ॥",
+    "firstLineDevanagari": "संतसनकादिक भक्त मिळाले अनेक । स्वानंदें गर्जती पाहूं आले कौतुक ॥",
     "firstLineTransliteration": "Santasanakadika bhakta milale aneka | Svananden garjatee pahoon aale kautuka ||",
     "deity": "vishnu",
     "type": "aarti",
@@ -721,16 +721,16 @@ export const navagrahaAartis: AartiItem[] = [
         "stanzaNumber": 1,
         "isChorus": true,
         "devanagari": [
-          "संतसनकादिक भक्त मिळाळे अनेक ।",
+          "संतसनकादिक भक्त मिळाले अनेक ।",
           "स्वानंदें गर्जती पाहूं आले कौतुक ॥ १ ॥",
           "नवल होताहे आरती देवाधिदेवा ।",
-          "स्वर्गीहुनी सुरवर पाहूं येती केशवा ॥ धृ. ॥"
+          "स्वर्गीहुनि सुरवर पाहूं येती केशवा ॥ धृ. ॥"
         ],
         "transliteration": [
           "Santasanakadika bhakta milale aneka |",
-          "Svananden garjatee pahoon aale kautuka || १ ||",
-          "Navala hotahe aaratee devadhideva |",
-          "Svargeehunee suravara pahoon yetee keshava || dhru. ||"
+          "Svananden garjatee pahoon aale kautuka || 1 ||",
+          "Navala hotahe aaratee devaadhidevaa |",
+          "Svargeehuni suravara paahoon yetee keshavaa || dhru. ||"
         ]
       },
       {
@@ -738,13 +738,13 @@ export const navagrahaAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "नर नारी तटस्थ टक पडिलें नयना ।",
-          "ओवाळीतां श्रीमुख धणी न पुरे मना ॥ २ ॥",
+          "ओवाळितां श्रीमुख धणी न पुरे मना ॥ २ ॥",
           "नवल होताहे आरती देवाधिदेवा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Nara naree tatastha taka padilen nayana |",
-          "Ovaleetan shreemukha dhanee na pure mana || २ ||",
-          "Navala hotahe aaratee devadhideva || dhru. ||"
+          "Nara naaree tatastha taka padilen nayanaa |",
+          "Ovaalitaan shreemukha dhanee na pure manaa || 2 ||",
+          "Navala hotahe aaratee devaadhidevaa || dhru. ||"
         ]
       },
       {
@@ -752,15 +752,13 @@ export const navagrahaAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "एका जनार्दनी मंगल आरत्या गाती ।",
-          "मंगल कौतुकें गाती ।",
           "मिळाले वैष्णव जयजयकारें गर्जती ॥ ३ ॥",
           "नवल होताहे आरती देवाधिदेवा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Eka janardanee mangala aaratya gatee |",
-          "Mangala kautuken gatee |",
-          "Milale vaishnava jayajayakaren garjatee || ३ ||",
-          "Navala hotahe aaratee devadhideva || dhru. ||"
+          "Ekaa janaardanee mangala aaratyaa gaatee |",
+          "Milale vaishnava jayajayaakaaren garjatee || 3 ||",
+          "Navala hotahe aaratee devaadhidevaa || dhru. ||"
         ]
       }
     ]
@@ -770,8 +768,8 @@ export const navagrahaAartis: AartiItem[] = [
     "slug": "aarti-vyankatesh-sheshachal",
     "titleDevanagari": "शेषाचल अवतार तारक तूं देवा (श्री व्यंकटेश बालाजी आरती)",
     "titleTransliteration": "Sheshachal Avtar Tarak Tu Deva (Tirupati Balaji Aarti)",
-    "firstLineDevanagari": "शेषाचल अवतार तारक तूं देवा । सुरवरमुनिवर भावें करिती जन सेवा ॥",
-    "firstLineTransliteration": "Sheshachala avatara taraka toon deva | Suravaramunivara bhaven karitee jana seva ||",
+    "firstLineDevanagari": "शेषाचल अवतार तारक तूं देवा । सुरवर मुनिवर भावें करिती जन सेवा ॥",
+    "firstLineTransliteration": "Sheshachala avatara taaraka toon devaa | Suravara munivara bhaaven karitee jana sevaa ||",
     "deity": "vishnu",
     "type": "aarti",
     "language": "marathi",
@@ -790,19 +788,19 @@ export const navagrahaAartis: AartiItem[] = [
         "isChorus": true,
         "devanagari": [
           "शेषाचल अवतार तारक तूं देवा ।",
-          "सुरवरमुनिवर भावें करिती जन सेवा ।",
+          "सुरवर मुनिवर भावें करिती जन सेवा ।",
           "कमळारमणा अससी अगणित गुण ठेवा ।",
           "कमळाक्षा मज रक्षुनि सत्वर वर द्यावा ॥ १ ॥",
           "जय देव जय देव जय व्यंकटेशा ।",
-          "केवळ करुणासिंधु पुरवीसी आशा ॥ धृ. ॥"
+          "केवळ करुणासिंधू पुरविसी आशा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Sheshachala avatara taraka toon deva |",
-          "Suravaramunivara bhaven karitee jana seva |",
-          "Kamalaramana asasee aganita guna theva |",
-          "Kamalaksha maja rakshuni satvara vara dyava || १ ||",
-          "Jaya deva jaya deva jaya vyankatesha |",
-          "Kevala karunasindhu puraveesee aasha || dhru. ||"
+          "Sheshaachala avataara taaraka toon devaa |",
+          "Suravara munivara bhaaven karitee jana sevaa |",
+          "Kamalaaramanaa asasee aganita guna thevaa |",
+          "Kamalaakshaa maja rakshuni satvara vara dyaavaa || 1 ||",
+          "Jaya deva jaya deva jaya vyankateshaa |",
+          "Kevala karunaasindhoo puravisee aashaa || dhru. ||"
         ]
       },
       {
@@ -810,17 +808,17 @@ export const navagrahaAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "हें निजवैकुंठ म्हणुनि ध्यातों मी तूतें ।",
-          "दाखविसी गुण कैसे सकाळिक लोकांतें ।",
+          "दाखविसी गुण कैसे सकळिक लोकांतें ।",
           "देखुनि तुझें स्वरूप सुख अद्भुत होतें ।",
-          "ध्यातों तुजला श्रीपति दृढ़ मानस होतें ॥ २ ॥",
+          "ध्यातों तुजला श्रीपति दृढ मानस होतें ॥ २ ॥",
           "जय देव जय देव जय व्यंकटेशा ॥ धृ. ॥"
         ],
         "transliteration": [
           "Hen nijavaikuntha mhanuni dhyaton mee tooten |",
-          "Dakhavisee guna kaise sakalika lokanten |",
+          "Daakhavisee guna kaise sakalika lokaanten |",
           "Dekhuni tujhen svaroopa sukha adbhuta hoten |",
-          "Dhyaton tujala shreepati drudha़ manasa hoten || २ ||",
-          "Jaya deva jaya deva jaya vyankatesha || dhru. ||"
+          "Dhyaaton tujalaa shreepati drudha maanasa hoten || 2 ||",
+          "Jaya deva jaya deva jaya vyankateshaa || dhru. ||"
         ]
       }
     ]

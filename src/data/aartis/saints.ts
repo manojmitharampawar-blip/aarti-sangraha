@@ -11,8 +11,8 @@ export const saintsAartis: AartiItem[] = [
     "deity": "dnyaneshwar",
     "type": "aarti",
     "language": "marathi",
-    "author": "संत नामदेव महाराज (Sant Namdev Maharaj)",
-    "meaningSummary": "संतशिरोमणी ज्ञानदेवांच्या महाकैवल्यतेज स्वरूपाची, भावार्थदीपिका (ज्ञानेश्वरी) व संजीवन समाधीची संत नामदेवांनी गायलेली नित्य आरती.",
+    "author": "रामा जनार्दनी (Rama Janardani)",
+    "meaningSummary": "संतशिरोमणी ज्ञानदेवांच्या महाकैवल्यतेज स्वरूपाची, भावार्थदीपिका (ज्ञानेश्वरी) व संजीवन समाधीची राम जनार्दनी यांनी गायलेली नित्य आरती.",
     "tags": [
       "dnyaneshwar",
       "alandi",
@@ -26,12 +26,12 @@ export const saintsAartis: AartiItem[] = [
         "isChorus": true,
         "devanagari": [
           "आरती ज्ञानराजा । महाकैवल्यतेजा ।",
-          "सेविती साधुसंत । हणु मनु वेजा ॥",
+          "सेविती साधुसंत । मनु माझा वेधा ॥",
           "आरती ज्ञानराजा ॥ ध्रु० ॥"
         ],
         "transliteration": [
           "Aarti dnyanraja | Mahakaivalyateja |",
-          "Seviti sadhusanta | Hanu manu veja ||",
+          "Seviti sadhusanta | Manu majha vedha ||",
           "Aarti dnyanraja || Dhru. ||"
         ]
       },
@@ -39,13 +39,13 @@ export const saintsAartis: AartiItem[] = [
         "stanzaNumber": 2,
         "isChorus": false,
         "devanagari": [
-          "लोपले ज्ञान जगीं । हिता नेणती कोणी ।",
-          "अवतार पांडुरंग । नाम ठेविले ज्ञानी ॥ १ ॥",
+          "लोपले ज्ञान जगीं । हित नेणती कोणी ।",
+          "अवतार पांडुरंग । नाम ठेविलें ज्ञानी ॥ १ ॥",
           "आरती ज्ञानराजा ॥ ध्रु० ॥"
         ],
         "transliteration": [
           "Lopale dnyana jagi | Hita nenati koni |",
-          "Avatara panduranga | Naama thevile dnyani || 1 ||",
+          "Avatara panduranga | Naama thevilen dnyani || 1 ||",
           "Aarti dnyanraja || Dhru. ||"
         ]
       },
@@ -53,13 +53,13 @@ export const saintsAartis: AartiItem[] = [
         "stanzaNumber": 3,
         "isChorus": false,
         "devanagari": [
-          "कनकाचे ताट माजीं । भोजनाचा भात ।",
-          "प्रेमे वाढियला । ज्ञानदेव नामा ॥ २ ॥",
+          "कनकाचें ताट करीं । उभ्या गोपिका नारी ।",
+          "नारद तुंबरहो । सामगायन करी ॥ २ ॥",
           "आरती ज्ञानराजा ॥ ध्रु० ॥"
         ],
         "transliteration": [
-          "Kanakache taata maaji | Bhojanacha bhaata |",
-          "Preme vaadhiyala | Dnyandeva naama || 2 ||",
+          "Kanakachen taata kareen | Ubya gopika naari |",
+          "Narada tumbaraho | Saamagayana kari || 2 ||",
           "Aarti dnyanraja || Dhru. ||"
         ]
       },
@@ -67,13 +67,13 @@ export const saintsAartis: AartiItem[] = [
         "stanzaNumber": 4,
         "isChorus": false,
         "devanagari": [
-          "एका जनार्दनीं । भोग साचार झाला ।",
-          "ज्ञानदेव नामा । एकरूप झाला ॥ ३ ॥",
+          "प्रगट गुह्य बोले । विश्व ब्रह्माचि केलें ।",
+          "राम जनार्दनीं । पायीं मस्तक ठेविलें ॥ ३ ॥",
           "आरती ज्ञानराजा महाकैवल्यतेजा ॥ ध्रु० ॥"
         ],
         "transliteration": [
-          "Eka janardani | Bhoga saachara jhala |",
-          "Dnyandeva naama | Ekarupa jhala || 3 ||",
+          "Pragata guhya bole | Vishva brahmachi kelen |",
+          "Rama janardaneen | Paayeen mastaka thevilen || 3 ||",
           "Aarti dnyanraja mahakaivalyateja || Dhru. ||"
         ]
       }
@@ -115,13 +115,13 @@ export const saintsAartis: AartiItem[] = [
         "stanzaNumber": 2,
         "isChorus": false,
         "devanagari": [
-          "राघव सांतारां । पाषाण तारीले ।",
+          "राघवें सागरांत । पाषाण तारिले ।",
           "तैसे हे तुकोबाचे । अभंग उदकीं रक्षिले ॥ १ ॥",
           "आरती तुकारामा । स्वामी सद्गुरुधामा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Raghava santaran | pashana tareele |",
-          "Taise he tukobache | abhanga udakeen rakshile || १ ||",
+          "Raghaven saagarant | paashana taarile |",
+          "Taise he tukobache | abhanga udakeen rakshile || 1 ||",
           "Aaratee tukarama | svamee sadgurudhama || dhru. ||"
         ]
       },
@@ -135,7 +135,7 @@ export const saintsAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Tukitan tulanesee | brahma tukasee aalen |",
-          "Mhanunee rameshvaren | charaneen mastaka thevilen || २ ||",
+          "Mhanunee rameshvaren | charaneen mastaka thevilen || 2 ||",
           "Aaratee tukarama | svamee sadgurudhama || dhru. ||"
         ]
       }
@@ -187,7 +187,7 @@ export const saintsAartis: AartiItem[] = [
           "Brahmandacha nayaka deva too kalale |",
           "Pratyaya nijabhaktanche adbhuta daviyele |",
           "Brahma vishnu shangkara ganapatee too trata |",
-          "Bhajatan tava padakamala harisee bhavachinta || १ ||",
+          "Bhajatan tava padakamala harisee bhavachinta || 1 ||",
           "Jaya deva jaya deva jaya saeenatha || dhru. ||"
         ]
       },
@@ -196,16 +196,16 @@ export const saintsAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "हरूनी दारिद्र्याते रंका रक्षियले ।",
-          "रोगग्रस्तां तुझिया उदिने तारियले ।",
+          "रोगग्रस्तां तुझिया उदीने तारियले ।",
           "वांझेसी तोषविलें देउनिया पुत्रा ।",
-          "जो जो वांच्छिल त्यांचा तू अससी दाता ॥ २ ॥",
+          "जो जो वांछिल त्यांचा तू अससी दाता ॥ २ ॥",
           "जय देव जय देव जय साईनाथा ॥ धृ. ॥"
         ],
         "transliteration": [
           "Haroonee daridryate ranka rakshiyale |",
           "Rogagrastan tujhiya udine tariyale |",
           "Vanjhesee toshavilen deuniya putra |",
-          "Jo jo vanchchhila tyancha too asasee data || २ ||",
+          "Jo jo vanchila tyancha too asasee data || 2 ||",
           "Jaya deva jaya deva jaya saeenatha || dhru. ||"
         ]
       },
@@ -223,7 +223,7 @@ export const saintsAartis: AartiItem[] = [
           "Jnyanaravee too didhale jnyana ajnyana |",
           "Sanmarga lavuniya uddharile tyanna |",
           "Aishee too sakalanchee mamataloo mata |",
-          "Romanchita tanu hoee guna mahima gatan || ३ ||",
+          "Romanchita tanu hoee guna mahima gatan || 3 ||",
           "Jaya deva jaya deva jaya saeenatha || dhru. ||"
         ]
       },
@@ -241,7 +241,7 @@ export const saintsAartis: AartiItem[] = [
           "Yamapasha todunee too bhakta sodavile |",
           "Aayurbala deooni tya sakala toshavile |",
           "Aise samarthyache pratapa tava gatan |",
-          "Shinalee mati maga aalon sharana tula natha || ४ ||",
+          "Shinalee mati maga aalon sharana tula natha || 4 ||",
           "Jaya deva jaya deva jaya saeenatha || dhru. ||"
         ]
       },
@@ -251,15 +251,15 @@ export const saintsAartis: AartiItem[] = [
         "devanagari": [
           "मद्वचनी विश्वासुनि जे सेवा करिती ।",
           "त्यांची चिंता लागे रात्रंदिन मजसी ।",
-          "ऐसे दृढ़ आश्वासन दिधलेसी जगता ।",
+          "ऐसे दृढ आश्वासन दिधलेसी जगता ।",
           "करुणेचा सागर तू अससी गुरुनाथा ॥ ५ ॥",
           "जय देव जय देव जय साईनाथा ॥ धृ. ॥"
         ],
         "transliteration": [
           "Madvachanee vishvasuni je seva karitee |",
           "Tyanchee chinta lage ratrandina majasee |",
-          "Aise drudha़ aashvasana didhalesee jagata |",
-          "Karunecha sagara too asasee gurunatha || ५ ||",
+          "Aise drudha aashvasana didhalesee jagata |",
+          "Karunecha sagara too asasee gurunatha || 5 ||",
           "Jaya deva jaya deva jaya saeenatha || dhru. ||"
         ]
       },
@@ -277,7 +277,7 @@ export const saintsAartis: AartiItem[] = [
           "Samatechee yogachee moortee shree saee |",
           "Ruddhisiddhee ghetee lolana tava payeen |",
           "Antara sakshee tujala sarvanchee varta |",
-          "Agamya tujala kanheen aisa too jnyata || ६ ||",
+          "Agamya tujala kanheen aisa too jnyata || 6 ||",
           "Jaya deva jaya deva jaya saeenatha || dhru. ||"
         ]
       },
@@ -286,16 +286,16 @@ export const saintsAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "लाभे फळ करितां तव नवस समाधीला ।",
-          "दाखविसी अद्यापी निज साद लीला ।",
+          "दाखविसी अद्यापी निज अगाध लीला ।",
           "चुकतां पथ दर्शविसी देउनि दृष्टांता ।",
           "हीना दीनांचा तू स्वामी हितकर्ता ॥ ७ ॥",
           "जय देव जय देव जय साईनाथा ॥ धृ. ॥"
         ],
         "transliteration": [
           "Labhe phala karitan tava navasa samadheela |",
-          "Dakhavisee adyapee nija sada leela |",
+          "Dakhavisee adyapee nija agaadh leela |",
           "Chukatan patha darshavisee deuni drushtanta |",
-          "Heena deenancha too svamee hitakarta || ७ ||",
+          "Heena deenancha too svamee hitakarta || 7 ||",
           "Jaya deva jaya deva jaya saeenatha || dhru. ||"
         ]
       },
@@ -313,7 +313,7 @@ export const saintsAartis: AartiItem[] = [
           "Janmojanmee majala ghadun de shreedeva |",
           "Aasheervachanachee tava labho maja seva |",
           "Ghaluniya lotangana yachitase natha |",
-          "Papatma mee yastava lotoon naka parata || ८ ||",
+          "Papatma mee yastava lotoon naka parata || 8 ||",
           "Jaya deva jaya deva jaya saeenatha || dhru. ||"
         ]
       }
@@ -361,7 +361,7 @@ export const saintsAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Sakshat shankaracha | avatara marutee |",
-          "Kalimajeen techi jalee | ramadasachee moortee || १ ||",
+          "Kalimajeen techi jalee | ramadasachee moortee || 1 ||",
           "Aaratee ramadasa | bhakta virakta eesha || dhru. ||"
         ]
       },
@@ -370,12 +370,12 @@ export const saintsAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "वीसही दशकांचा । दासबोध ग्रंथ केला ।",
-          "जडजीवां उद्धरीलें । नृप शिवासी तारिलें ॥ २ ॥",
+          "जडजीवां उद्धरीले । नृप शिवासी तारिले ॥ २ ॥",
           "आरती रामदासा । भक्त विरक्त ईशा ॥ धृ. ॥"
         ],
         "transliteration": [
           "Veesahee dashakancha | dasabodha grantha kela |",
-          "Jadajeevan uddhareelen | nrupa shivasee tarilen || २ ||",
+          "Jadajeevan uddhareele | nrupa shivasee taarile || 2 ||",
           "Aaratee ramadasa | bhakta virakta eesha || dhru. ||"
         ]
       },
@@ -389,7 +389,7 @@ export const saintsAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Brahmacharya vrata jyachen | ramaroopa srushti pahe |",
-          "Kalyana tinheen lokeen | samartha sadgurupaya || ३ ||",
+          "Kalyana tinheen lokeen | samartha sadgurupaya || 3 ||",
           "Aaratee ramadasa | bhakta virakta eesha || dhru. ||"
         ]
       }
@@ -568,7 +568,7 @@ export const saintsAartis: AartiItem[] = [
           "Nirguna brahma sanatana avyaya avinashee |",
           "Sthirachara vyapoona urale je ya jagatasee |",
           "Ten toon kharokhara nihsanshaya asasee |",
-          "Leelamatren dharilen manava dehasee || १ ||",
+          "Leelamatren dharilen manava dehasee || 1 ||",
           "Jaya jaya sachchitasvaroopa svamee ganaraya |",
           "Avataralasee bhoovara jada moodha taraya || dhru. ||"
         ]
@@ -588,7 +588,7 @@ export const saintsAartis: AartiItem[] = [
           "Hooon na deshee tyachee janiva toon kavana |",
           "Karunee gani gana ganata bote ya bhajana |",
           "Dhata harihara guruvara toonchi sukhasadana |",
-          "Jikade pahave tikade toon disasee nayana || २ ||",
+          "Jikade pahave tikade toon disasee nayana || 2 ||",
           "Jaya jaya sachchitasvaroopa svamee ganaraya |",
           "Avataralasee bhoovara jada moodha taraya || dhru. ||"
         ]
@@ -597,18 +597,18 @@ export const saintsAartis: AartiItem[] = [
         "stanzaNumber": 4,
         "isChorus": false,
         "devanagari": [
-          "लीला अनंत केल्या बकटसदनास ।",
+          "लीला अनंत केल्या बंकटसदनास ।",
           "पेटविले त्या अग्नीवांचुनि चिलमेस ।",
-          "क्षणांत आणिले जीवन निर्जल वापिस ।",
+          "क्षणांत आणिले जीवन निर्जल वापीस ।",
           "केला ब्रह्मगिरीच्या गर्वाचा नाश ॥ ३ ॥",
           "जय जय सच्चितस्वरूप स्वामी गणराया ।",
           "अवतरलासी भूवर जड मूढ ताराया ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Leela ananta kelya bakatasadanasa |",
-          "Petavile tya agneevanchuni chilamesa |",
-          "Kshananta aanile jeevana nirjala vapisa |",
-          "Kela brahmagireechya garvacha nasha || ३ ||",
+          "Leela ananta kelya bankatsadanasa |",
+          "Petavile tya agneevaanchuni chilamesa |",
+          "Kshananta aanile jeevana nirjala vaapeesa |",
+          "Kela brahmagireechya garvacha nasha || 3 ||",
           "Jaya jaya sachchitasvaroopa svamee ganaraya |",
           "Avataralasee bhoovara jada moodha taraya || dhru. ||"
         ]
@@ -628,7 +628,7 @@ export const saintsAartis: AartiItem[] = [
           "Vyadhi varuna kele kaikan sampanna |",
           "Karavilen bhaktanlagee viththala darshana |",
           "Bhavasindhu ha taranya nauka tava charana |",
-          "Svamee dasaganooche manya kara kavana || ४ ||",
+          "Svamee dasaganooche manya kara kavana || 4 ||",
           "Jaya jaya sachchitasvaroopa svamee ganaraya |",
           "Avataralasee bhoovara jada moodha taraya || dhru. ||"
         ]
@@ -640,8 +640,8 @@ export const saintsAartis: AartiItem[] = [
     "slug": "shirdi-sai-kakad-aarti",
     "titleDevanagari": "शिर्डी साईबाबा काकड आरती (पहाटेची आरती - 4:30 AM)",
     "titleTransliteration": "Shirdi Sai Baba Kakad Aarti (Morning Aarti)",
-    "firstLineDevanagari": "जोधुनिया कर दोन्ही चरणीं ठेविला माथा । परिसावी विनंती माझी समर्थ सदगुरूनाथा",
-    "firstLineTransliteration": "Jodhuniya kara donhi charani thevila matha | Parisavi vinanti majhi samartha sadgurunatha",
+    "firstLineDevanagari": "जोडूनिया कर दोन्ही चरणीं ठेविला माथा । परिसावी विनंती माझी समर्थ सदगुरूनाथा",
+    "firstLineTransliteration": "Joduniya kara donhi charani thevila matha | Parisavi vinanti majhi samartha sadgurunatha",
     "deity": "saibaba",
     "type": "aarti",
     "language": "marathi",
@@ -659,13 +659,13 @@ export const saintsAartis: AartiItem[] = [
         "stanzaNumber": 1,
         "isChorus": true,
         "devanagari": [
-          "जोधुनिया कर दोन्ही चरणीं ठेविला माथा ।",
+          "जोडूनिया कर दोन्ही चरणीं ठेविला माथा ।",
           "परिसावी विनंती माझी समर्थ सदगुरूनाथा ॥ ध्रु० ॥",
           "उठा पांडुरंगा आता दर्शन द्या सकळा ।",
           "झाला अरुणोदय सरली निद्रेची वेळा ॥ १ ॥"
         ],
         "transliteration": [
-          "Jodhuniya kara donhi charani thevila matha |",
+          "Joduniyaa kara donhi charani thevila matha |",
           "Parisavi vinanti majhi samartha sadgurunatha || Dhru. ||",
           "Utha panduranga aata darshana dya sakala |",
           "Jhala arunodaya sarali nidrechi vela || 1 ||"
@@ -679,14 +679,14 @@ export const saintsAartis: AartiItem[] = [
           "चिद्घन रूपा आनंदाच्या मूर्ता ॥",
           "भक्तजन आले दर्शना कारणे ।",
           "कृपादृष्टी आम्हांवरी करणे ॥ २ ॥",
-          "जोधुनिया कर दोन्ही चरणीं ठेविला माथा ॥ ध्रु० ॥"
+          "जोडूनिया कर दोन्ही चरणीं ठेविला माथा ॥ ध्रु० ॥"
         ],
         "transliteration": [
           "Kakada aarti kara sainatha |",
           "Chidghana roopa aanandachya moorta |",
           "Bhaktajana aale darshana karane |",
           "Kripadrishti aamhanvari karane || 2 ||",
-          "Jodhuniya kara donhi charani thevila matha || Dhru. ||"
+          "Joduniyaa kara donhi charani thevila matha || Dhru. ||"
         ]
       },
       {
@@ -697,14 +697,14 @@ export const saintsAartis: AartiItem[] = [
           "आनंदमय रूप दाखवावे त्वरित ॥",
           "साईनाथ गुरू माझे आई ।",
           "आम्हां ठाव द्यावा पायां ठायी ॥ ३ ॥",
-          "जोधुनिया कर दोन्ही चरणीं ठेविला माथा ॥ ध्रु० ॥"
+          "जोडूनिया कर दोन्ही चरणीं ठेविला माथा ॥ ध्रु० ॥"
         ],
         "transliteration": [
           "Utha sadhusanta sadhoo kara aapule hita |",
           "Aanandamaya roopa dakhavave tvarita |",
           "Sainatha guru majhe aayi |",
           "Aamhan thaava dyava paayan thaayi || 3 ||",
-          "Jodhuniya kara donhi charani thevila matha || Dhru. ||"
+          "Joduniyaa kara donhi charani thevila matha || Dhru. ||"
         ]
       },
       {
@@ -715,14 +715,14 @@ export const saintsAartis: AartiItem[] = [
           "काकड आरतीचा हा वेळ आला ॥",
           "सकल जीवांसी सुख शांती द्यावी ।",
           "भवभय चिंता सकळ हरावी ॥ ४ ॥",
-          "जोधुनिया कर दोन्ही चरणीं ठेविला माथा । परिसावी विनंती माझी समर्थ सदगुरूनाथा ॥ ध्रु० ॥"
+          "जोडूनिया कर दोन्ही चरणीं ठेविला माथा । परिसावी विनंती माझी समर्थ सदगुरूनाथा ॥ ध्रु० ॥"
         ],
         "transliteration": [
           "Dasaganu mhane sai dayala |",
           "Kakada aarticha ha vela aala |",
           "Sakala jeevansi sukha shanti dyavi |",
           "Bhavabhaya chinta sakala haravi || 4 ||",
-          "Jodhuniya kara donhi charani thevila matha | Parisavi vinanti majhi samartha sadgurunatha || Dhru. ||"
+          "Joduniyaa kara donhi charani thevila matha | Parisavi vinanti majhi samartha sadgurunatha || Dhru. ||"
         ]
       }
     ]
@@ -916,8 +916,8 @@ export const saintsAartis: AartiItem[] = [
     "slug": "shirdi-sai-shej-aarti",
     "titleDevanagari": "शिर्डी साईबाबा शेज आरती (रात्रीची शयन आरती - 10:00 PM)",
     "titleTransliteration": "Shirdi Sai Baba Shej Aarti (Night Aarti)",
-    "firstLineDevanagari": "ओवाळू आरती माझ्या सद्गुरू राया । आता स्वामी सुखे निद्रा करा अवधूता",
-    "firstLineTransliteration": "Ovaloo aarti majhya sadguru raya | Aata swami sukhe nidra kara avadhuta",
+    "firstLineDevanagari": "ओवाळू आरती माझ्या सद्गुरूनाथा । आता स्वामी सुखे निद्रा करा अवधूता",
+    "firstLineTransliteration": "Ovaloo aarti majhya sadgurunatha | Aata swami sukhe nidra kara avadhuta",
     "deity": "saibaba",
     "type": "aarti",
     "language": "marathi",
@@ -935,13 +935,13 @@ export const saintsAartis: AartiItem[] = [
         "stanzaNumber": 1,
         "isChorus": true,
         "devanagari": [
-          "ओवाळू आरती माझ्या सद्गुरू राया ।",
+          "ओवाळू आरती माझ्या सद्गुरूनाथा ।",
           "आता स्वामी सुखे निद्रा करा अवधूता ॥ ध्रु० ॥",
           "दिवसभराचे श्रम परिहार व्हावे ।",
           "सुवर्ण शेजेवरी पहुडावे भावे ॥ १ ॥"
         ],
         "transliteration": [
-          "Ovaloo aarti majhya sadguru raya |",
+          "Ovaloo aarti majhya sadgurunatha |",
           "Aata swami sukhe nidra kara avadhuta || Dhru. ||",
           "Divasabharache shrama parihara vhave |",
           "Suvarna shejevari pahudave bhave || 1 ||"
@@ -955,14 +955,14 @@ export const saintsAartis: AartiItem[] = [
           "संत महंतांचे विश्रामस्थान कीर्ती ॥",
           "चावडी आणि मंदिरी दीप उजळले ।",
           "भक्त अंतरीं ध्यान तुझे रंगले ॥ २ ॥",
-          "ओवाळू आरती माझ्या सद्गुरू राया ॥ ध्रु० ॥"
+          "ओवाळू आरती माझ्या सद्गुरूनाथा ॥ ध्रु० ॥"
         ],
         "transliteration": [
           "Chidghana roopa aanandachya moorti |",
           "Santa mahantanche vishramasthaana keerti |",
           "Chawadi aani mandiri deepa ujalale |",
           "Bhakta antari dhyana tujhe rangale || 2 ||",
-          "Ovaloo aarti majhya sadguru raya || Dhru. ||"
+          "Ovaloo aarti majhya sadgurunatha || Dhru. ||"
         ]
       },
       {
@@ -973,14 +973,14 @@ export const saintsAartis: AartiItem[] = [
           "साईंच्या चरणीं मन स्थिर झाले ॥",
           "भक्तांचे रक्षण करसी दयाळा ।",
           "शेज आरतीचा हा शेवट आला ॥ ३ ॥",
-          "ओवाळू आरती माझ्या सद्गुरू राया ॥ ध्रु० ॥"
+          "ओवाळू आरती माझ्या सद्गुरूनाथा ॥ ध्रु० ॥"
         ],
         "transliteration": [
           "Pāpa tāpa dainya duhkha sakalahi gele |",
           "Saichya charani mana sthira jhale |",
           "Bhaktanche rakshana karasi dayala |",
           "Sheja aarticha ha shevata aala || 3 ||",
-          "Ovaloo aarti majhya sadguru raya || Dhru. ||"
+          "Ovaloo aarti majhya sadgurunatha || Dhru. ||"
         ]
       },
       {
@@ -991,14 +991,14 @@ export const saintsAartis: AartiItem[] = [
           "उद्या प्रातःकाळी दर्शन प्रभा द्यावी ॥",
           "जय जय सद्गुरू साई समर्था ।",
           "सुखे निद्रा करा कृपाळू नाथा ॥ ४ ॥",
-          "ओवाळू आरती माझ्या सद्गुरू राया । आता स्वामी सुखे निद्रा करा अवधूता ॥ ध्रु० ॥"
+          "ओवाळू आरती माझ्या सद्गुरूनाथा । आता स्वामी सुखे निद्रा करा अवधूता ॥ ध्रु० ॥"
         ],
         "transliteration": [
           "Tuka mhane aata vishranti ghyavi |",
           "Udya pratahkali darshana prabha dyavi |",
           "Jai jai sadguru sai samartha |",
           "Sukhe nidra kara kripalu natha || 4 ||",
-          "Ovaloo aarti majhya sadguru raya | Aata swami sukhe nidra kara avadhuta || Dhru. ||"
+          "Ovaloo aarti majhya sadgurunatha | Aata swami sukhe nidra kara avadhuta || Dhru. ||"
         ]
       }
     ]
@@ -1040,12 +1040,12 @@ export const saintsAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "एकनाथ नाम सार । वेदशास्त्रांचें गूज ।",
-          "संसारदुःख नास । महामंत्राचें बीज ॥ १ ॥",
+          "संसारदुःखनाश । महामंत्राचें बीज ॥ १ ॥",
           "आरती एकनाथा । महाराजा समर्था ॥ धृ. ॥"
         ],
         "transliteration": [
           "Ekanatha nama sara | vedashastranchen gooja |",
-          "Sansaraduhkha nasa | mahamantrachen beeja || १ ||",
+          "Sansaraduhkhanasha | mahamantrachen beeja || 1 ||",
           "Aaratee ekanatha | maharaja samartha || dhru. ||"
         ]
       },
@@ -1059,7 +1059,7 @@ export const saintsAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Ekanatha nama ghetan | sukha vatalen chitta |",
-          "Ananta gopaladasa | dhanee na pure gatan || २ ||",
+          "Ananta gopaladasa | dhanee na pure gatan || 2 ||",
           "Aaratee ekanatha | maharaja samartha || dhru. ||"
         ]
       }
@@ -1316,7 +1316,7 @@ export const saintsAartis: AartiItem[] = [
           "अनवरत भूमंडळीं । भेटतु भूतां ॥ ४ ॥"
         ],
         "transliteration": [
-          "Duritaanchan timira jaavo | Vishva svadharmasoorya paaho |",
+          "Duritaanchen timira jaavo | Vishva svadharmasoorya paaho |",
           "Jo je vaanchheel to ten laaho | Praanijaata || 3 ||",
           "Varshata sakala mangalee | Ishvaranishthaanchee maandiyaalee |",
           "Anavarata bhoomandalee | Bhetatu bhootaan || 4 ||"
@@ -1326,27 +1326,27 @@ export const saintsAartis: AartiItem[] = [
         "stanzaNumber": 3,
         "isChorus": false,
         "devanagari": [
-          "चलां कल्पतरूंचे आरव । चेतना चिंतामणींचें गांव ।",
+          "चळां कल्पतरूंचे आरव । चेतना चिंतामणींचें गांव ।",
           "बोलते जे अर्णव । पीयूषाचे ॥ ५ ॥",
-          "चंद्रमे जे अलांछन । मार्तंड जे तापहीन ।",
+          "चंद्रमे जे अळांछन । मार्तंड जे तापहीन ।",
           "ते सर्वांही सदा सज्जन । सोयरे होतु ॥ ६ ॥",
           "किंबहुना सर्व सुखी । पूर्ण होऊनि तिन्हीं लोकीं ।",
           "भजिजो आदिपुरुखीं । अखंडित ॥ ७ ॥",
           "आणि ग्रंथोपजीविये । विशेषीं लोकीं इयें ।",
           "दृष्टादृष्ट विजयें । होआवे जी ॥ ८ ॥",
-          "येथ म्हणे श्रीविश्वेशराओ । हा होईल दानपसावो ।",
+          "येथ म्हणे श्रीविश्वेशरावो । हा होईल दानपसावो ।",
           "येणें वरें ज्ञानदेवो । सुखिया जाहला ॥ ९ ॥"
         ],
         "transliteration": [
-          "Chalaan kalpataroonche aarava | Chetana chintaamaneenchen gaanva |",
+          "Chalaan kalpataroonche aarava | Chetanaa chintaamaneenchen gaanva |",
           "Bolate je arnava | Peeyooshaache || 5 ||",
           "Chandrame je alaanchhana | Maartanda je taapaheena |",
           "Te sarvaanhee sadaa sajjana | Soyare hotu || 6 ||",
-          "Kimbahunaa sarva sukhee | Poorna houni tinheen lokee |",
+          "Kimbahunaa sarva sukhee | Poorna hoouni tinheen lokee |",
           "Bhajijo aadipurukheen | Akhandita || 7 ||",
           "Aani granthopajeeviye | Vishesheen lokee iyen |",
           "Drishtaadrishta vijayen | Hoave jee || 8 ||",
-          "Yetha mhane shreevishvesharaao | Haa hoila daanapasaavo |",
+          "Yetha mhane shreevishvesharaavo | Haa hoila daanapasaavo |",
           "Yenen varen jnaanadevo | Sukhiyaa jaahalaa || 9 ||"
         ]
       }
@@ -1388,13 +1388,13 @@ export const saintsAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "जिथे स्वामी पाय तिथे न्यून काय । स्वये भक्त प्रारब्ध घडवी ही माय ।",
-          "आज्ञेविना काळ ना नेई त्याला । परलोकीही ना भीती तयाला ॥ २ ॥",
+          "आज्ञेविना काळ ना नेई त्याला । परलोकीही ना भिती तयाला ॥ २ ॥",
           "उगाची भितोसी भय हे पळू दे । प्रपंचीक संकटे सारी गळू दे ।",
           "दयावंत हा स्वामी समर्थ राजा । पाठिराखा असे भाविकांचा ॥ ३ ॥"
         ],
         "transliteration": [
           "Jithe swami paaya tithe nyoon kaaya | Svaye bhakta praarabdha ghadavee hee maaya |",
-          "Aagnyevina kaala naa neyi tyaalaa | Paralokeehee naa bheetee tayaalaa || 2 ||",
+          "Aagnyevina kaala naa neyi tyaalaa | Paralokeehee naa bhitee tayaalaa || 2 ||",
           "Ugaachee bhitosee bhaya he paloo de | Prapancheeka sankate saaree galoo de |",
           "Dayaavanta haa swami samartha raajaa | Paathiraakhaa ase bhaavikaanchaa || 3 ||"
         ]
@@ -1445,7 +1445,7 @@ export const saintsAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Saguna he aaratee nirguna ovaloon |",
-          "Kalpanechen ghruta ghaloona deepa pajaloon || १ ||",
+          "Kalpanechen ghruta ghaloona deepa pajaloon || 1 ||",
           "Onvaloon aaratee sadgurunatha shreegurunatha |",
           "Bhaven charanakamalavaree thevila matha || dhru. ||"
         ]
@@ -1460,7 +1460,7 @@ export const saintsAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Avidyecha moha padala upadonee sandoon |",
-          "Aasha manasha trushna kama krodha kuravandoo || २ ||",
+          "Aasha manasha trushna kama krodha kuravandoo || 2 ||",
           "Onvaloon aaratee sadgurunatha shreegurunatha || dhru. ||"
         ]
       },
@@ -1474,7 +1474,7 @@ export const saintsAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Sadgurooche poojana kele shodashopachare |",
-          "Ramananda jeevanmukta jhala sansaree || ३ ||",
+          "Ramananda jeevanmukta jhala sansaree || 3 ||",
           "Onvaloon aaratee sadgurunatha shreegurunatha || dhru. ||"
         ]
       }
@@ -1505,7 +1505,7 @@ export const saintsAartis: AartiItem[] = [
         "devanagari": [
           "फळलें भाग्य माझें धन्य झालों संसारी ।",
           "सद्गुरु भेटला हो तेणें धरियेलें करीं ।",
-          "पश्चिमे चालवीलें आत्मस्तुती निर्धारीं ।",
+          "पश्चिमे चालवीलें आत्मस्थिती निर्धारीं ।",
           "त्रिकुटावरी नांद देखियेला पंढरी ॥ १ ॥",
           "तें सुख काय सांगूं वाचे बोलता न ये ।",
           "आरतिचेनि गुणें गेलें मीपण माये ॥ धृ. ॥"
@@ -1513,8 +1513,8 @@ export const saintsAartis: AartiItem[] = [
         "transliteration": [
           "Phalalen bhagya majhen dhanya jhalon sansaree |",
           "Sadguru bhetala ho tenen dhariyelen kareen |",
-          "Pashchime chalaveelen aatmastutee nirdhareen |",
-          "Trikutavaree nanda dekhiyela pandharee || १ ||",
+          "Pashchime chalaveelen aatmasthitee nirdhareen |",
+          "Trikutavaree nanda dekhiyela pandharee || 1 ||",
           "Ten sukha kaya sangoon vache bolata na ye |",
           "Aaraticheni gunen gelen meepana maye || dhru. ||"
         ]
@@ -1526,14 +1526,14 @@ export const saintsAartis: AartiItem[] = [
           "राऊळामाजीं जातां राहे देह अवस्था ।",
           "मन हें उन्मन झालें नसे बहुत्वेची वार्ता ।",
           "हेतु हा मावळला शब्दा आली निःशब्दता ।",
-          "तटस्थ होऊनि ठेलों नीजरूप पहातां ॥ २ ॥",
+          "तटस्थ होऊनि ठेलों निजरूप पहातां ॥ २ ॥",
           "तें सुख काय सांगूं वाचे बोलता न ये ॥ धृ. ॥"
         ],
         "transliteration": [
           "Raoolamajeen jatan rahe deha avastha |",
           "Mana hen unmana jhalen nase bahutvechee varta |",
           "Hetu ha mavalala shabda aalee nihshabdata |",
-          "Tatastha hoooni thelon neejaroopa pahatan || २ ||",
+          "Tatastha hoooni thelon nijaroopa pahatan || 2 ||",
           "Ten sukha kaya sangoon vache bolata na ye || dhru. ||"
         ]
       },
@@ -1551,7 +1551,7 @@ export const saintsAartis: AartiItem[] = [
           "Triguna guna baee poorna jalatya vatee |",
           "Navalava avinasha na samayen samanjyotee |",
           "Pahatan laksha tethen haloon visaralee pantee |",
-          "Natude majhen nahee divasaratee || ३ ||",
+          "Natude majhen nahee divasaratee || 3 ||",
           "Ten sukha kaya sangoon vache bolata na ye || dhru. ||"
         ]
       },
@@ -1569,7 +1569,7 @@ export const saintsAartis: AartiItem[] = [
           "Aaratee sadguruchi ujalalee antareen |",
           "Prakasha thora jhala santhavena ambareen |",
           "Ravishashi mavalale taya tejamajhareen |",
-          "Vajatee divya vadye anuhate gajaree || ४ ||",
+          "Vajatee divya vadye anuhate gajaree || 4 ||",
           "Ten sukha kaya sangoon vache bolata na ye || dhru. ||"
         ]
       },
@@ -1587,7 +1587,7 @@ export const saintsAartis: AartiItem[] = [
           "Aanandasagaranta premen deedhalee budee |",
           "Ladhalen saukhya mothen na ye boleen |",
           "Sadgurucheni sangen aisee aaratee kelee |",
-          "Nivrutteenen aanandachee tethe vrutti nimalee || ५ ||",
+          "Nivrutteenen aanandachee tethe vrutti nimalee || 5 ||",
           "Ten sukha kaya sangoon vache bolata na ye || dhru. ||"
         ]
       }
@@ -1629,12 +1629,12 @@ export const saintsAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "पदोपदीं अपार झाल्या पुण्याच्या राशी ।",
-          "सर्वही तीर्थे घडलीं आम्हा आदिकरुनि काशी ॥ १ ॥",
+          "सर्वही तीर्थे घडली आम्हां आदिकरूनि काशी ॥ १ ॥",
           "धन्य धन्य हे प्रदक्षिणा सद्गुरुरायाची ॥ धृ. ॥"
         ],
         "transliteration": [
           "Padopadeen apara jhalya punyachya rashee |",
-          "Sarvahee teerthe ghadaleen aamha aadikaruni kashee || १ ||",
+          "Sarvahee teerthe ghadalee aamhaan aadikaroonee kashee || 1 ||",
           "Dhanya dhanya he pradakshina sadgururayachee || dhru. ||"
         ]
       },
@@ -1648,7 +1648,7 @@ export const saintsAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Mrudanga tala ghola bhakta bhavarthe gatee |",
-          "Namasankeertanen brahmananden nachatee || २ ||",
+          "Namasankeertanen brahmananden nachatee || 2 ||",
           "Dhanya dhanya he pradakshina sadgururayachee || dhru. ||"
         ]
       },
@@ -1662,7 +1662,7 @@ export const saintsAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Koti brahmahatya haratee karitan dandavata |",
-          "Lotangana ghalitan moksha lole payanta || ३ ||",
+          "Lotangana ghalitan moksha lole payanta || 3 ||",
           "Dhanya dhanya he pradakshina sadgururayachee || dhru. ||"
         ]
       },
@@ -1676,7 +1676,7 @@ export const saintsAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Gurubhajanacha mahima na kale aagama-nigamansee |",
-          "Anubhava te janatee je gurupadinche rahivasee || ४ ||",
+          "Anubhava te janatee je gurupadinche rahivasee || 4 ||",
           "Dhanya dhanya he pradakshina sadgururayachee || dhru. ||"
         ]
       },
@@ -1690,7 +1690,7 @@ export const saintsAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Pradakshina karooni deha bhaven vahila |",
-          "Shreerangatmaja viththala pudhen ubha rahila || ५ ||",
+          "Shreerangatmaja viththala pudhen ubha rahila || 5 ||",
           "Dhanya dhanya he pradakshina sadgururayachee || dhru. ||"
         ]
       }
@@ -1721,7 +1721,7 @@ export const saintsAartis: AartiItem[] = [
         "devanagari": [
           "वेदांतसंमतीचा काव्यसिंधू भरला ।",
           "श्रुतिशास्त्रग्रंथ साक्ष सांगू केला ।",
-          "महानुभव संतजनी अनुभव चाखियला ।",
+          "महानुभाव संतजनी अनुभव चाखियला ।",
           "अज्ञान जड जीवां मार्ग सुगम केला ॥ १ ॥",
           "जय जयाजी दासबोधा ग्रंथराज प्रसिद्धा ।",
           "आरती ओंवाळीन विमलज्ञान बाळबोधा ॥ धृ. ॥"
@@ -1730,7 +1730,7 @@ export const saintsAartis: AartiItem[] = [
           "Vedantasammateecha kavyasindhoo bharala |",
           "Shrutishastragrantha saksha sangoo kela |",
           "Mahanubhava santajanee anubhava chakhiyala |",
-          "Ajnyana jada jeevan marga sugama kela || १ ||",
+          "Ajnyana jada jeevan marga sugama kela || 1 ||",
           "Jaya jayajee dasabodha grantharaja prasiddha |",
           "Aaratee onvaleena vimalajnyana balabodha || dhru. ||"
         ]
@@ -1749,7 +1749,7 @@ export const saintsAartis: AartiItem[] = [
           "Navavidha bhaktipanthen ramaroopanubhavee |",
           "Chaturyanadhi motha mayachakra ughavee |",
           "Harihara hrudayanche guhya pragata daveen |",
-          "Baddhachee siddha jhale asankhyata manavee || २ ||",
+          "Baddhachee siddha jhale asankhyata manavee || 2 ||",
           "Jaya jayajee dasabodha grantharaja prasiddha || dhru. ||"
         ]
       },
@@ -1767,7 +1767,7 @@ export const saintsAartis: AartiItem[] = [
           "Veesahee dashakeencha anubhava jo pahe |",
           "Nityanemen vivareetan svayen brahmachee hoye |",
           "Apara punya ganthee taree shravana lahee |",
-          "Kalyana lekhakache bhavagarbha hrudayeen || ३ ||",
+          "Kalyana lekhakache bhavagarbha hrudayeen || 3 ||",
           "Jaya jayajee dasabodha grantharaja prasiddha || dhru. ||"
         ]
       }
@@ -1807,7 +1807,7 @@ export const saintsAartis: AartiItem[] = [
           "Prapancharachana sarvahi bhogooni tyagilee |",
           "Anutapache jvalee dehabuddhi haravilee |",
           "Vairagyachee nishtha pragatuni dakhavilee |",
-          "Ahammamata davaduni nijashantee vareelee || १ ||",
+          "Ahammamata davaduni nijashantee vareelee || 1 ||",
           "Jaya jayajee sadguru tukaya datara |",
           "Taraka too sakalancha jivalaga soyara || dhru. ||"
         ]
@@ -1826,7 +1826,7 @@ export const saintsAartis: AartiItem[] = [
           "Haribhakteecha mahima vishesha vadhavila |",
           "Virakta jnyanacha theva ughaduni dakhavila |",
           "Jagaduddharalageen upaya suchavila |",
-          "Nindaka durjanacha sandeha niraseela || २ ||",
+          "Nindaka durjanacha sandeha niraseela || 2 ||",
           "Jaya jayajee sadguru tukaya datara || dhru. ||"
         ]
       },
@@ -1844,7 +1844,7 @@ export const saintsAartis: AartiItem[] = [
           "Tera divasa vahya rakshuniyan udakeen |",
           "Koradyachi kadhuni dakhavilya shekhee |",
           "Apara kavitashakti milavuni ihalokeen |",
-          "Keertana shravanen tumachya uddharati jana lokeen || ३ ||",
+          "Keertana shravanen tumachya uddharati jana lokeen || 3 ||",
           "Jaya jayajee sadguru tukaya datara || dhru. ||"
         ]
       },
@@ -1852,17 +1852,17 @@ export const saintsAartis: AartiItem[] = [
         "stanzaNumber": 4,
         "isChorus": false,
         "devanagari": [
-          "बाळवे घेऊनि श्रीहरी भेटला ।",
+          "बाळवेष घेऊनि श्रीहरी भेटला ।",
           "विधि जनिता तोचि आठव हा दीधला ।",
           "तेणें ब्रह्मानन्दे प्रेमा डोलविला ।",
           "न तुके म्हणोनि तुका नामीं गौरविला ॥ ४ ॥",
           "जय जयाजी सद्गुरु तुकया दातारा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Balave gheooni shreeharee bhetala |",
+          "Balavesha gheooni shreeharee bhetala |",
           "Vidhi janita tochi aathava ha deedhala |",
           "Tenen brahmanande prema dolavila |",
-          "Na tuke mhanoni tuka nameen gauravila || ४ ||",
+          "Na tuke mhanoni tuka nameen gauravila || 4 ||",
           "Jaya jayajee sadguru tukaya datara || dhru. ||"
         ]
       },
@@ -1880,7 +1880,7 @@ export const saintsAartis: AartiItem[] = [
           "Prayanakaleen deven vimana pathavilen |",
           "Kalichya kalamadhye adbhuta vartavilen |",
           "Manava deha gheooni nijadhama gele |",
-          "Nila mhane sakala santa toshavile || ५ ||",
+          "Nila mhane sakala santa toshavile || 5 ||",
           "Jaya jayajee sadguru tukaya datara || dhru. ||"
         ]
       }
@@ -1934,7 +1934,7 @@ export const saintsAartis: AartiItem[] = [
           "Machchhendra gorakha | gainee nivruttinatha |",
           "Jnyanadeva namadeva | khechara visoba santa |",
           "Sopana changadeva | gora jagamitra bhakta |",
-          "Kabeera pathaka nama | chokha parasa bhagavata || १ ||",
+          "Kabeera pathaka nama | chokha parasa bhagavata || 1 ||",
           "Aaratee santamandalee || dhru. ||"
         ]
       },
@@ -1950,7 +1950,7 @@ export const saintsAartis: AartiItem[] = [
         "transliteration": [
           "Bhanudasa krushnadasa | vadavalasiddha naganatha |",
           "Bahira pisa mukundaraja | keshavasvamee sooradasa |",
-          "Ranganatha vamanasvamee | janajasavanta dasa || २ ||",
+          "Ranganatha vamanasvamee | janajasavanta dasa || 2 ||",
           "Aaratee santamandalee || dhru. ||"
         ]
       },
@@ -1968,7 +1968,7 @@ export const saintsAartis: AartiItem[] = [
           "Ekanatha ramadasa | yancha hari padeen vasa |",
           "Gurukrupa sampadilee | svamee janardana tyasa |",
           "Meerabaee muktabaee | bahinabaee udasa |",
-          "Sonara naraharee ha | malee sanvata dasa || ३ ||",
+          "Sonara naraharee ha | malee sanvata dasa || 3 ||",
           "Aaratee santamandalee || dhru. ||"
         ]
       },
@@ -1986,7 +1986,7 @@ export const saintsAartis: AartiItem[] = [
           "Rohidasa santabaee | janee rajabaee gonaee |",
           "Jogaparamanandasalya | shekhamahammada bhaee |",
           "Nimbaraja bodharaja | matha tayanchen payeen |",
-          "Koormadasa shivadasa | malukadasa karmabaee || ४ ||",
+          "Koormadasa shivadasa | malukadasa karmabaee || 4 ||",
           "Aaratee santamandalee || dhru. ||"
         ]
       },
@@ -1996,15 +1996,15 @@ export const saintsAartis: AartiItem[] = [
         "devanagari": [
           "नारा म्हादा गोंदा विठा । प्रेमळ दामाजी ।",
           "तुकोबा गणेशनाथ । सेना नरसी महत ।",
-          "तुलसीदास कसांबया । पवार संतोबा भक्त ।",
+          "तुलसीदास कसाया । पवार संतोबा भक्त ।",
           "महिपती तुम्हां पासी । चरणसेवा मागत ॥ ५ ॥",
           "आरती संतमंडळी ॥ धृ. ॥"
         ],
         "transliteration": [
           "Nara mhada gonda vitha | premala damajee |",
           "Tukoba ganeshanatha | sena narasee mahata |",
-          "Tulaseedasa kasambaya | pavara santoba bhakta |",
-          "Mahipatee tumhan pasee | charanaseva magata || ५ ||",
+          "Tulaseedasa kasaya | pavara santoba bhakta |",
+          "Mahipatee tumhan pasee | charanaseva magata || 5 ||",
           "Aaratee santamandalee || dhru. ||"
         ]
       }

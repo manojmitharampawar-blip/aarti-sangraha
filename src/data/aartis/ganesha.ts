@@ -283,15 +283,15 @@ export const ganeshaAartis: AartiItem[] = [
         "devanagari": [
           "ऋतं वच्मि । सत्यं वच्मि ॥ २ ॥",
           "अव त्वं माम् । अव वक्तारम् । अव श्रोतारम् ।",
-          "अव दातारम् । अव धातारम् । अवा Tearचा Tearनम् ।",
+          "अव दातारम् । अव धातारम् । अवानूचानमव शिष्यम् ।",
           "अव पश्चात्तात् । अव पुरस्तात् । अवोत्तरात्तात् ।",
-          "अव दक्षिणात्तात् । अव चोध्वात्तात् । अवाधरात्तात् ।",
+          "अव दक्षिणात्तात् । अव चोर्ध्वात्तात् । अवाधरात्तात् ।",
           "सर्वतो मां पाहि पाहि समन्तात् ॥ ३ ॥"
         ],
         "transliteration": [
           "Ritam vachmi | Satyam vachmi || 2 ||",
           "Ava tvam maam | Ava vaktaram | Ava shrotaram |",
-          "Ava dataram | Ava dhataram | Avanuchanamava shishyam |",
+          "Ava dataram | Ava dhataram | Avaanuchanamava shishyam |",
           "Ava pashchattat | Ava purastat | Avottarattat |",
           "Ava dakshinattat | Ava chordhvattat | Avadharattat |",
           "Sarvato maam paahi paahi samantaat || 3 ||"
@@ -341,7 +341,7 @@ export const ganeshaAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "गणादिं पूर्वमुच्चार्य वर्णादिं तदनन्तरम् ।",
-          "अनुस्वारः परतरः । अर्धेन्दुलसितम् । तारेण ऋद्धम् ।",
+          "अनुस्वारः परतरः । अर्धेन्दुलसितम् । तारेण रुद्धम् ।",
           "एतत्तव मनुस्वरूपम् । गकारः पूर्वरूपम् ।",
           "अकारो मध्यमरूपम् । अनुस्वारश्चान्त्यरूपम् ।",
           "बिन्दुरुत्तररूपम् । नादः सन्धानम् । संहिता सन्धिः ।",
@@ -350,7 +350,7 @@ export const ganeshaAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Ganaadim poorvamuchharya varnaadim tadanantaram |",
-          "Anusvaarah paratarah | Ardhendulasitam | Tare na riddham |",
+          "Anusvaarah paratarah | Ardhendulasitam | Taarena ruddham |",
           "Etattava manusvaroopam | Gakarah poorvaroopam |",
           "Akaaro madhyamaroopam | Anusvaarashchantyaroopam |",
           "Binduruttararoopam | Naadah sandhanam | Samhita sandhih |",
@@ -391,7 +391,7 @@ export const ganeshaAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "नमो व्रातपतये । नमो गणपतये । नमः प्रमथपतये ।",
-          "नमस्तेऽस्तु लम्बोदरायाेकदन्ताय विघ्ननाशिने",
+          "नमस्तेऽस्तु लम्बोदरायैकदन्ताय विघ्ननाशिने",
           "शिवसुताय वरदमूर्तये नमः ॥ १० ॥",
           "एतदथर्वशीर्षं योऽधीते स ब्रह्मभूयाय कल्पते ।",
           "स सर्वविघ्नैर्न बाध्यते । स सर्वतः सुखमेधते ।",
@@ -521,7 +521,7 @@ export const ganeshaAartis: AartiItem[] = [
         "devanagari": [
           "नाना परिमळ दूर्वा शेंदुर शमिपत्रें ।",
           "लाडू मोदक अन्ने परिपूरित पात्रें ।",
-          "ऐसें पूजन केल्या बेएजाक्षर मंत्रें ।",
+          "ऐसें पूजन केल्या बीजाक्षर मंत्रें ।",
           "अष्टहि सिद्धि नवनिधि देसी क्षणमात्रें ॥ १ ॥",
           "जय देव जय देव जय मंगलमूर्ती ।",
           "तूझे गुण वर्णाया मज कैची स्फूर्ती ॥ धृ. ॥"
@@ -583,7 +583,7 @@ export const ganeshaAartis: AartiItem[] = [
     "titleDevanagari": "कपोल झिरती मदें शुण्डा बहु साजे (श्री गणेश आरती ४)",
     "titleTransliteration": "Kapol Jhirati Made (Ganesh Aarti 4)",
     "firstLineDevanagari": "कपोल झिरती मदें शुण्डा बहु साजे । शेंदुर जो घवघवीत अद्भुत सुविराजे ॥",
-    "firstLineTransliteration": "Kapola jhiratee maden shunda bahu saje | Shendura jo ghavaghaveeta adbhuta suvuraje ||",
+    "firstLineTransliteration": "Kapola jhiratee maden shunda bahu saje | Shendura jo ghavaghaveeta adbhuta suviraje ||",
     "deity": "ganesha",
     "type": "aarti",
     "language": "marathi",
@@ -721,14 +721,14 @@ export const ganeshaAartis: AartiItem[] = [
         "devanagari": [
           "अभयवरदा सुखदा राजिवदलनयना ।",
           "परशांकुशलडूधर शोभित शुभवदना ।",
-          "ऊर्ध्वदोंदिल उंदिर कार्तिकेHeader रचना ।",
+          "ऊर्ध्वदोंदिल उंदिर खालते रचना ।",
           "मुक्तेश्वर चरणांबुजिं अलिपरि करी भ्रमणा ॥ ३ ॥",
           "जय देव जय देव जय वक्रतुंडा ॥ धृ. ॥"
         ],
         "transliteration": [
           "Abhayavarada sukhada rajivadalanayana |",
           "Parashankushaladoodhara shobhita shubhavadana |",
-          "Oordhvadondila undira kartikeHeader rachana |",
+          "Oordhvadondila undira khalate rachana |",
           "Mukteshvara charanambujin alipari karee bhramana || ३ ||",
           "Jaya deva jaya deva jaya vakratunda || dhru. ||"
         ]

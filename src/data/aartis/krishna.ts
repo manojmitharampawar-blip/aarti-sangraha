@@ -280,12 +280,12 @@ export const krishnaAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "चरणकमल ज्याचे अति सुकुमार ।",
-          "ध्वजवज्रांकुश ब्रीदाते तोडर ॥ १ ॥",
+          "ध्वजवज्रांकुश ब्रीदाचे तोडर ॥ १ ॥",
           "ओवाळूं आरती मदनगोपाळा ॥ धृ. ॥"
         ],
         "transliteration": [
           "Charanakamala jyache ati sukumara |",
-          "Dhvajavajrankusha breedate todara || १ ||",
+          "Dhvajavajrankusha breedache todara || 1 ||",
           "Ovaloon aaratee madanagopala || dhru. ||"
         ]
       },
@@ -294,12 +294,12 @@ export const krishnaAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "नाभिकमलीं ज्याचें ब्रह्माचें स्थान ।",
-          "हृदया पदक शोभे श्रीवत्सलांछन ॥ २ ॥",
+          "हृदयीं पदक शोभे श्रीवत्सलांछन ॥ २ ॥",
           "ओवाळूं आरती मदनगोपाळा ॥ धृ. ॥"
         ],
         "transliteration": [
           "Nabhikamaleen jyachen brahmachen sthana |",
-          "Hrudaya padaka shobhe shreevatsalanchhana || २ ||",
+          "Hrudayeen padaka shobhe shreevatsalanchhana || 2 ||",
           "Ovaloon aaratee madanagopala || dhru. ||"
         ]
       },
@@ -313,7 +313,7 @@ export const krishnaAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Mukhakamala pahatan sooryachyakotee |",
-          "Mohiyelen manasa kondiyalee drushtee || ३ ||",
+          "Mohiyelen manasa kondiyalee drushtee || 3 ||",
           "Ovaloon aaratee madanagopala || dhru. ||"
         ]
       },
@@ -327,7 +327,7 @@ export const krishnaAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Jaditamuguta jyachya dedeepyamana |",
-          "Tenen tejen kondalen avaghe tribhuvana || ४ ||",
+          "Tenen tejen kondalen avaghe tribhuvana || 4 ||",
           "Ovaloon aaratee madanagopala || dhru. ||"
         ]
       },
@@ -336,12 +336,12 @@ export const krishnaAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "एका जनार्दनीं देखियेले रूप ।",
-          "रूप पाहों जातां झालेंसें तद्रूप ॥ ५ ॥",
+          "रूप पाहों जातां झालेंसे तद्रूप ॥ ५ ॥",
           "ओवाळूं आरती मदनगोपाळा ॥ धृ. ॥"
         ],
         "transliteration": [
           "Eka janardaneen dekhiyele roopa |",
-          "Roopa pahon jatan jhalensen tadroopa || ५ ||",
+          "Roopa pahon jatan jhalense tadroopa || 5 ||",
           "Ovaloon aaratee madanagopala || dhru. ||"
         ]
       }
@@ -353,7 +353,7 @@ export const krishnaAartis: AartiItem[] = [
     "titleDevanagari": "हरि चला मंदिरा ऐशा म्हणती गोपिका (श्री कृष्णाची आरती २)",
     "titleTransliteration": "Hari Chala Mandira Esha Mhanati Gopika (Krishna Aarti 2)",
     "firstLineDevanagari": "हरि चला मंदिरा ऐशा म्हणती गोपिका म्हणती राधिका । भावें ओवाळिती यदुकुलतिलका ॥",
-    "firstLineTransliteration": "Hari chala mandira aisha mhanatee gopika mhanatee radhika | Bhaven ovalitee yadukulatalika ||",
+    "firstLineTransliteration": "Hari chala mandira aisha mhanatee gopika mhanatee radhika | Bhaven ovalitee yadukulatilaka ||",
     "deity": "krishna",
     "type": "aarti",
     "language": "marathi",
@@ -388,7 +388,7 @@ export const krishnaAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Ekeekade raee ekeekade rakhumaee |",
-          "Bhaven ovalita harisi toon hosee do thaeen || १ ||",
+          "Bhaven ovalita harisi toon hosee do thaeen || 1 ||",
           "Hari chala mandira aisha mhanatee gopika || dhru. ||"
         ]
       },
@@ -402,7 +402,7 @@ export const krishnaAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Ashtadhika sola sahasra jyachya sundara jyachya sundara |",
-          "Jine jinen prarthilen jasee tiyechya ghara || २ ||",
+          "Jine jinen prarthilen jasee tiyechya ghara || 2 ||",
           "Hari chala mandira aisha mhanatee gopika || dhru. ||"
         ]
       },
@@ -416,7 +416,7 @@ export const krishnaAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Eka janardanee haree toon laghavee hosee |",
-          "Itakyahee bhogunee brahmacharee mhanaveesee || ३ ||",
+          "Itakyahee bhogunee brahmacharee mhanaveesee || 3 ||",
           "Hari chala mandira aisha mhanatee gopika || dhru. ||"
         ]
       }
@@ -448,16 +448,16 @@ export const krishnaAartis: AartiItem[] = [
         "devanagari": [
           "अवतार गोकुळी हो । जन तारावयासी ।",
           "लावण्यरुपडे हो । तेजःपुंजाळ राशी ।",
-          "उगवले कोटिर्बिंब । रवि लोपला शशी ।",
+          "उगवलें कोटि बिंब । रवि लोपला शशी ।",
           "उत्साह सुरवरां । महाथोर मानसी ॥ १ ॥",
           "जय देवा कृष्णनाथा । राईरखुमाई कांता ।",
           "आरती ओवाळीन । तुम्हा देवकीसुता ॥ धृ. ॥"
         ],
         "transliteration": [
           "Avatara gokulee ho | jana taravayasee |",
-          "Lavanyarupade ho | tejhpunjala rashee |",
-          "Ugavale kotirbimba | ravi lopala shashee |",
-          "Utsaha suravaran | mahathora manasee || १ ||",
+          "Lavanyarupade ho | tejahpunjala rashee |",
+          "Ugavalen koti bimba | ravi lopala shashee |",
+          "Utsaha suravaran | mahathora manasee || 1 ||",
           "Jaya deva krushnanatha | raeerakhumaee kanta |",
           "Aaratee ovaleena | tumha devakeesuta || dhru. ||"
         ]
@@ -466,17 +466,17 @@ export const krishnaAartis: AartiItem[] = [
         "stanzaNumber": 2,
         "isChorus": false,
         "devanagari": [
-          "कौतुक पहावया । भाव ब्रह्मयाने केली ।",
+          "कौतुक पहावया । धाव ब्रह्मयाने केली ।",
           "वत्सेंही चोरूनिया । सत्यलोकासी नेलीं ।",
           "गोपाल गाईवत्सें । दोन्ही ठाईं रक्षिली ।",
           "सुखाचा प्रेमसिंधू । अनाथांची माऊली ॥ २ ॥",
           "जय देवा कृष्णनाथा राईरखुमाई कांता ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Kautuka pahavaya | bhava brahmayane kelee |",
+          "Kautuka pahavaya | dhava brahmayane kelee |",
           "Vatsenhee chorooniya | satyalokasee neleen |",
           "Gopala gaeevatsen | donhee thaeen rakshilee |",
-          "Sukhacha premasindhoo | anathanchee maoolee || २ ||",
+          "Sukhacha premasindhoo | anathanchee maoolee || 2 ||",
           "Jaya deva krushnanatha raeerakhumaee kanta || dhru. ||"
         ]
       },
@@ -494,7 +494,7 @@ export const krishnaAartis: AartiItem[] = [
           "Choritan godhanen ho | indra kopala bharee |",
           "Megha kadadila | shila varshalya dharee |",
           "Rakshile gokula ho | nakheen dharila giree |",
-          "Nirbhaya lokapala | avatarala haree || ३ ||",
+          "Nirbhaya lokapala | avatarala haree || 3 ||",
           "Jaya deva krushnanatha raeerakhumaee kanta || dhru. ||"
         ]
       },
@@ -502,17 +502,17 @@ export const krishnaAartis: AartiItem[] = [
         "stanzaNumber": 4,
         "isChorus": false,
         "devanagari": [
-          "वसुदेव देवकीचे । बंद फोडिली शाळ ।",
-          "होऊनिया विश्वजनिता । तया पोटांचा बाल ।",
+          "वसुदेव देवकीचे । बंदी फोडिली शाळा ।",
+          "होऊनिया विश्वजनिता । तया पोटांचा बाळ ।",
           "दैत्य हे त्रासियेले । समूळ कंसासी काळ ।",
           "राज्य हें उग्रसेना । केला मथुरापाळ ॥ ४ ॥",
           "जय देवा कृष्णनाथा राईरखुमाई कांता ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Vasudeva devakeeche | banda phodilee shala |",
+          "Vasudeva devakeeche | bandee phodilee shala |",
           "Hoooniya vishvajanita | taya potancha bala |",
           "Daitya he trasiyele | samoola kansasee kala |",
-          "Rajya hen ugrasena | kela mathurapala || ४ ||",
+          "Rajya hen ugrasena | kela mathurapala || 4 ||",
           "Jaya deva krushnanatha raeerakhumaee kanta || dhru. ||"
         ]
       },
@@ -522,15 +522,15 @@ export const krishnaAartis: AartiItem[] = [
         "devanagari": [
           "तारिले भक्तजन । दैत्य सर्व निर्दाळून ।",
           "पांडवा साहाकारी । अडलिया निर्वाणी ।",
-          "गुण मी काय वर्णू । मति केवढी वानूं ।",
+          "गुण मी काय वर्णू । मति केवढी वानू ।",
           "विनवितो दास तुका । ठाव मागे चरणी ॥ ५ ॥",
           "जय देवा कृष्णनाथा राईरखुमाई कांता ॥ धृ. ॥"
         ],
         "transliteration": [
           "Tarile bhaktajana | daitya sarva nirdaloona |",
           "Pandava sahakaree | adaliya nirvanee |",
-          "Guna mee kaya varnoo | mati kevadhee vanoon |",
-          "Vinavito dasa tuka | thava mage charanee || ५ ||",
+          "Guna mee kaya varnoo | mati kevadhee vaanoo |",
+          "Vinavito dasa tuka | thava mage charanee || 5 ||",
           "Jaya deva krushnanatha raeerakhumaee kanta || dhru. ||"
         ]
       }
@@ -566,7 +566,7 @@ export const krishnaAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Sahasradeepen deepa kaisee prakashalee prabha |",
-          "Ujalalya dashadisha gagana aaleese shobha || १ ||",
+          "Ujalalya dashadisha gagana aaleese shobha || 1 ||",
           "Kankada aarati majhya krushna sabhagiya |",
           "Charachara moharalen tujhee moortee pahaya || dhru. ||"
         ]
@@ -581,7 +581,7 @@ export const krishnaAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Kondalensen teja prabha jhaleese eka |",
-          "Nitya nava aananda onvalitan shreemukha || २ ||",
+          "Nitya nava aananda onvalitan shreemukha || 2 ||",
           "Kankada aarati majhya krushna sabhagiya || dhru. ||"
         ]
       },
@@ -595,7 +595,7 @@ export const krishnaAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Aarati karitan teja prakashalen nayaneen |",
-          "Tenen tejen meenala eka ekeen janardaneen || ३ ||",
+          "Tenen tejen meenala eka ekeen janardaneen || 3 ||",
           "Kankada aarati majhya krushna sabhagiya || dhru. ||"
         ]
       }
@@ -632,11 +632,11 @@ export const krishnaAartis: AartiItem[] = [
           "आणिक नावडे हो दुजे तिन्हीं हो लोकीं ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Aikonee krushnakeertee mana tethen vedhalen |",
+          "Aikonee krishnakeertee mana tethen vedhalen |",
           "Sagunaroopa maye majhya jeeveen baisalen |",
           "Ten maja aavadaten anumana na bole |",
-          "Pahavaya roopa yachen utaveela ho jhalen || १ ||",
-          "Yalageen aaratee ho krushna pahee ho sakhee |",
+          "Pahavaya roopa yachen utaveela ho jhalen || 1 ||",
+          "Yalageen aaratee ho krishna pahee ho sakhee |",
           "Aanika navade ho duje tinheen ho lokeen || dhru. ||"
         ]
       },
@@ -647,15 +647,15 @@ export const krishnaAartis: AartiItem[] = [
           "पाऊल कृष्णजीचें माझ्या जीवीं बैसलें ।",
           "सनकादिक पाहा महा आसक्त झाले ।",
           "मुक्त जो शुकमुनी तेणें मनीं धरिलें ।",
-          "तें मी केवीं सोडूं मज बहूरुचलें ॥ २ ॥",
+          "तें मी केवीं सोडूं मज बहू रुचलें ॥ २ ॥",
           "यालागीं आरती हो कृष्णा पाही हो सखी ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Paoola krushnajeechen majhya jeeveen baisalen |",
+          "Paoola krishnajeechen majhya jeeveen baisalen |",
           "Sanakadika paha maha aasakta jhale |",
           "Mukta jo shukamunee tenen maneen dharilen |",
-          "Ten mee keveen sodoon maja bahooruchalen || २ ||",
-          "Yalageen aaratee ho krushna pahee ho sakhee || dhru. ||"
+          "Ten mee keveen sodoon maja bahoo ruchalen || 2 ||",
+          "Yalageen aaratee ho krishna pahee ho sakhee || dhru. ||"
         ]
       },
       {
@@ -672,8 +672,8 @@ export const krishnaAartis: AartiItem[] = [
           "Nirguna goshta maye maja navade sachen |",
           "Saguna bola kanheen kevhan aathavee vachen |",
           "Paya lagena toojhya henchi aarta maneenchen |",
-          "Tenen ghadela dasya ramavallabhachen || ३ ||",
-          "Yalageen aaratee ho krushna pahee ho sakhee || dhru. ||"
+          "Tenen ghadela dasya ramavallabhachen || 3 ||",
+          "Yalageen aaratee ho krishna pahee ho sakhee || dhru. ||"
         ]
       }
     ]

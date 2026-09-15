@@ -4,10 +4,10 @@ export const deviAartis: AartiItem[] = [
   {
     "id": "devi-durge-durgat",
     "slug": "durge-durgat-bhari",
-    "titleDevanagari": "दुर्गे दुर्घट भारी तुजवीण संसारी (दुर्गा देवी आरती)",
+    "titleDevanagari": "दुर्गे दुर्घट भारी तुजविण संसारी (दुर्गा देवी आरती)",
     "titleTransliteration": "Durge Durgat Bhari Tujvin Sansari",
-    "firstLineDevanagari": "दुर्गे दुर्घटभारी तुजवीण संसारी । अनाथ नाथे अम्बे करुणाविस्तारी ॥",
-    "firstLineTransliteration": "Durge durghatabharee tujveen sansaree | Anatha nathe ambe karunavistaree ||",
+    "firstLineDevanagari": "दुर्गे दुर्घट भारी तुजविण संसारी । अनाथनाथे अंबे करुणाविस्तारी ॥",
+    "firstLineTransliteration": "Durge durghata bharee tujavin sansaree | Anathanathe ambe karunavistaree ||",
     "deity": "devi",
     "type": "aarti",
     "language": "marathi",
@@ -25,38 +25,38 @@ export const deviAartis: AartiItem[] = [
         "stanzaNumber": 1,
         "isChorus": true,
         "devanagari": [
-          "दुर्गे दुर्घटभारी तुजवीण संसारी ।",
-          "अनाथ नाथे अम्बे करुणाविस्तारी ।",
-          "वारी वारी जन्म मरणांते वारी ।",
-          "हारी पडलो आता संकट नेवारी ॥ १ ॥",
-          "जय देवी जय देवी महिषासुरमथिनि ।",
-          "सुरवर ईश्वर वरदे तारकसंजीवनी ॥ धृ. ॥"
+          "दुर्गे दुर्घट भारी तुजविण संसारी ।",
+          "अनाथनाथे अंबे करुणाविस्तारी ।",
+          "वारी वारी जन्ममरणाते वारी ।",
+          "हारी पडलो आता संकट निवारी ॥ १ ॥",
+          "जय देवी जय देवी महिषासुरमर्दिनी ।",
+          "सुरवरईश्वरवरदे तारकसंजीवनी ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Durge durghatabharee tujaveena sansaree |",
-          "Anatha nathe ambe karunavistaree |",
-          "Varee varee janma maranante varee |",
-          "Haree padalo aata sankata nevaree || १ ||",
-          "Jaya devee jaya devee mahishasuramathini |",
-          "Suravara eeshvara varade tarakasanjeevanee || dhru. ||"
+          "Durge durghata bharee tujavin sansaree |",
+          "Anathanathe ambe karunavistaree |",
+          "Varee varee janmamaranate varee |",
+          "Haree padalo aata sankata nivaree || 1 ||",
+          "Jaya devee jaya devee mahishasuramardini |",
+          "Suravaraeeshvaravarade tarakasanjeevanee || dhru. ||"
         ]
       },
       {
         "stanzaNumber": 2,
         "isChorus": false,
         "devanagari": [
-          "तुजवीण भुवनी पाहता तुज ऐसे नाही ।",
+          "तुजविण भुवनी पाहता तुज ऐसे नाही ।",
           "चारी श्रमले परंतु न बोलवे काही ।",
           "साही विवाद करिता पडले प्रवाही ।",
           "ते तू भक्तालागी पावसि लवलाही ॥ २ ॥",
-          "जय देवी जय देवी महिषासुरमथिनि ॥ धृ. ॥"
+          "जय देवी जय देवी महिषासुरमर्दिनी ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Tujaveena bhuvanee pahata tuja aise nahee |",
+          "Tujavin bhuvanee pahata tuja aise nahee |",
           "Charee shramale parantu na bolave kahee |",
           "Sahee vivada karita padale pravahee |",
-          "Te too bhaktalagee pavasi lavalahee || २ ||",
-          "Jaya devee jaya devee mahishasuramathini || dhru. ||"
+          "Te too bhaktalagee pavasi lavalahee || 2 ||",
+          "Jaya devee jaya devee mahishasuramardini || dhru. ||"
         ]
       },
       {
@@ -64,17 +64,17 @@ export const deviAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "प्रसन्न वदने प्रसन्न होसी निजदासा ।",
-          "क्लेशांपासुनी सोडवी तोडी भवपाशा ।",
-          "अम्बे तुजवाचून कोण पुरवील आशा ।",
-          "नरहरी तल्लीन झाला पदपंकजलेशा ॥ ३ ॥",
-          "जय देवी जय देवी महिषासुरमथिनि ॥ धृ. ॥"
+          "क्लेशापासुनि सोडवि तोडी भवपाशा ।",
+          "अंबे तुजवाचून कोण पुरविल आशा ।",
+          "नरहरि तल्लीन झाला पदपंकजलेशा ॥ ३ ॥",
+          "जय देवी जय देवी महिषासुरमर्दिनी ॥ धृ. ॥"
         ],
         "transliteration": [
           "Prasanna vadane prasanna hosee nijadasa |",
-          "Kleshampasunee sodavee todee bhavapasha |",
-          "Ambe tujavachoona kona puraveela aasha |",
-          "Naraharee talleena jhala padapankajalesha || ३ ||",
-          "Jaya devee jaya devee mahishasuramathini || dhru. ||"
+          "Kleshapasuni sodavi todee bhavapasha |",
+          "Ambe tujavachoon kona puravila aasha |",
+          "Narahari talleena jhala padapankajalesha || 3 ||",
+          "Jaya devee jaya devee mahishasuramardini || dhru. ||"
         ]
       }
     ]
@@ -145,7 +145,7 @@ export const deviAartis: AartiItem[] = [
     "slug": "aarti-gauri-mata",
     "titleDevanagari": "गौरी मातेची आरती (भाद्रपद महालक्ष्मी)",
     "titleTransliteration": "Aarti Gauri Mata (Bhadrapad Mahalakshmi)",
-    "firstLineDevanagari": "जय देवी जय देवी जय महालक्ष्मी । गौरी गणपती पूजितो आंम्ही",
+    "firstLineDevanagari": "जय देवी जय देवी जय महालक्ष्मी । गौरी गणपती पूजितो आम्ही",
     "firstLineTransliteration": "Jai devi jai devi jai mahalakshmi | Gauri ganapati poojito aamhi",
     "deity": "gauri",
     "type": "aarti",
@@ -164,15 +164,15 @@ export const deviAartis: AartiItem[] = [
         "isChorus": true,
         "devanagari": [
           "जय देवी जय देवी जय महालक्ष्मी ।",
-          "गौरी गणपती पूजितो आंम्ही ॥ ध्रु० ॥",
+          "गौरी गणपती पूजितो आम्ही ॥ ध्रु० ॥",
           "भाद्रपद मासीं अनुराधा नक्षत्रीं ।",
-          "गौरी आगमन झाले घरांत पवित्र ॥ १ ॥"
+          "गौरी आगमन झाले घरांत पवित्रीं ॥ १ ॥"
         ],
         "transliteration": [
           "Jai devi jai devi jai mahalakshmi |",
           "Gauri ganapati poojito aamhi || Dhru. ||",
           "Bhadrapada maasi anuradha nakshatri |",
-          "Gauri aagamana jhale gharanta pavitra || 1 ||"
+          "Gauri aagamana jhale gharanta pavitri || 1 ||"
         ]
       },
       {
@@ -214,7 +214,7 @@ export const deviAartis: AartiItem[] = [
     "slug": "aarti-ambe-mata-navratri",
     "titleDevanagari": "अंबे मातेची आरती (नवरात्री विशेष आरती)",
     "titleTransliteration": "Aarti Ambe Mata (Navratri Special Aarti)",
-    "firstLineDevanagari": "अंबे कृपा करीं अंबे कृपा करीं । नवरानीच्या दिनीं वास करीं अंतरीं",
+    "firstLineDevanagari": "अंबे कृपा करीं अंबे कृपा करीं । नवरात्रीच्या दिनीं वास करीं अंतरीं",
     "firstLineTransliteration": "Ambe kripa kari ambe kripa kari | Navratrichya dini vaas kari antari",
     "deity": "devi",
     "type": "aarti",
@@ -233,7 +233,7 @@ export const deviAartis: AartiItem[] = [
         "isChorus": true,
         "devanagari": [
           "अंबे कृपा करीं अंबे कृपा करीं ।",
-          "नवरानीच्या दिनीं वास करीं अंतरीं ॥ ध्रु० ॥",
+          "नवरात्रीच्या दिनीं वास करीं अंतरीं ॥ ध्रु० ॥",
           "प्रथम शैलपुत्री दुसरी ब्रह्मचारिणी ।",
           "तिसरी चंद्रघंटा कुष्मांडा तारिणी ॥ १ ॥"
         ],
@@ -327,7 +327,7 @@ export const deviAartis: AartiItem[] = [
           "Shreelakshmeedevee toon shreevishnoopatnee |",
           "Pavasee bhaktalageen ati sopya yatneen |",
           "Jananee vishvachee toon jeevana chichchhaktee |",
-          "Sharana tula mee aalon nuravee aapattee || १ ||",
+          "Sharana tula mee aalon nuravee aapattee || 1 ||",
           "Jaya devee shree devee santoshee mate || dhru. ||"
         ]
       },
@@ -345,7 +345,7 @@ export const deviAartis: AartiItem[] = [
           "Bhruguvareen shraddhenen upasa tava karitee |",
           "Aambata konee kanheen anna na seveetee |",
           "Goola chanyacha sadha prasada bhaksheetee |",
-          "Mangala vhaven mhanuni katha shravana karitee || २ ||",
+          "Mangala vhaven mhanuni katha shravana karitee || 2 ||",
           "Jaya devee shree devee santoshee mate || dhru. ||"
         ]
       },
@@ -355,15 +355,15 @@ export const deviAartis: AartiItem[] = [
         "devanagari": [
           "जे कोणी नरनारी व्रत तव आचरिती ।",
           "अनन्य भावें तुजला स्मरुनी प्रार्थीती ।",
-          "त्याच्या हांकेला तूं धांवुनियां येअसी ।",
+          "त्याच्या हाकेला तू धावूनिया येशी ।",
           "संतति वैभव कीर्ती धनदौलत देसी ॥ ३ ॥",
           "जय देवी श्री देवी संतोषी माते ॥ धृ. ॥"
         ],
         "transliteration": [
           "Je konee naranaree vrata tava aacharitee |",
           "Ananya bhaven tujala smarunee prartheetee |",
-          "Tyachya hankela toon dhanvuniyan yeasee |",
-          "Santati vaibhava keertee dhanadaulata desee || ३ ||",
+          "Tyachya hakela too dhavuniya yeshi |",
+          "Santati vaibhava keertee dhanadaulata desee || 3 ||",
           "Jaya devee shree devee santoshee mate || dhru. ||"
         ]
       },
@@ -381,7 +381,7 @@ export const deviAartis: AartiItem[] = [
           "Vishvadhare mate prasanna toon vhaven |",
           "Bhavabhaya harunee aamhan sadaiva rakshaven |",
           "Maneenchee ichchha vhavee paripoorna sagalee |",
-          "Mhanunee milindamadhava aaratee ovalee || ४ ||",
+          "Mhanunee milindamadhava aaratee ovalee || 4 ||",
           "Jaya devee shree devee santoshee mate || dhru. ||"
         ]
       }
@@ -513,9 +513,9 @@ export const deviAartis: AartiItem[] = [
         "stanzaNumber": 3,
         "isChorus": false,
         "devanagari": [
-          "चतुराननें कुश्चित कर्माच्या ओळी ।",
+          "चतुरानने कुश्चित कर्माच्या ओळी ।",
           "लिहिल्या असतील माते माझे निजभाळी ॥",
-          "पुसोनि कुंकुमटीळा लाविसि या भाळी ।",
+          "पुसोनि कुंकुमटिळा लाविसि या भाळी ।",
           "तोडी भवबंधन या बाळकाची वेळी ॥ ३ ॥",
           "जय देवी जय देवी जय महालक्ष्मी । वससी व्यापकरुपे तू स्थूलसूक्ष्मी ॥ ध्रु० ॥"
         ],
@@ -795,7 +795,7 @@ export const deviAartis: AartiItem[] = [
         "transliteration": [
           "Ayi nijahunkritimaatraniraakritadhoomravilochanadhoomrashate",
           "Samaravishoshitashonitabeejasamudbhavashonitabeejapate |",
-          "Shivashivashumbhanishumbhamahaahavatar pitabhootapishaacharate",
+          "Shivashivashumbhanishumbhamahaahavatarpitabhootapishaacharate",
           "Jaya jaya he mahishasuramardini ramyakapardini shailasute || 3 ||"
         ]
       }
@@ -857,7 +857,7 @@ export const deviAartis: AartiItem[] = [
           "Kaam sosmitaam hiranyapraakaaraamaardraam jvalanteem triptaam tarpayantim |",
           "Padme sthitaam padmavarnaam taamihopahvaye shriyam || 4 ||",
           "Chandraam prabhaasaam yashasaa jvalanteem shriyam loke devajushtaamudaaraam |",
-          "Taam padmineemeem sharanamaham prapadye lakshmeerme nashyataam tvaam vrine || 5 ||",
+          "Taam padmineemeem sharanamaham prapadye'lakshmeerme nashyataam tvaam vrine || 5 ||",
           "Aadityavarne tapasodhijaato vanaspatistava vrikshotha bilvah |",
           "Tasya phalaani tapasaanudantu maayaantaraayaashcha baahyaa alakshmeeh || 6 ||"
         ]
@@ -867,7 +867,7 @@ export const deviAartis: AartiItem[] = [
         "sectionTitle": "॥ महालक्ष्मी प्रार्थना ॥",
         "isChorus": false,
         "devanagari": [
-          "ॐ महालक्ष्मै च विद्महे विष्णुपत्नी च धीमहि ।",
+          "ॐ महालक्ष्म्यै च विद्महे विष्णुपत्नी च धीमहि ।",
           "तन्नो लक्ष्मीः प्रचोदयात् ॥",
           "ॐ शान्तिः शान्तिः शान्तिः ॥"
         ],
@@ -905,35 +905,35 @@ export const deviAartis: AartiItem[] = [
         "devanagari": [
           "सुखसदने शशिवदने अंबे मृगनयने ।",
           "गजगमने सुरनमने कोल्हापुरमथने ।",
-          "सुरवर वर्षति सुमनें करुनियां नमनें ।",
+          "सुरवर वर्षति सुमने करूनिया नमने ।",
           "भयहरणे सुखकरणे सुंदरी शिवरमणे ॥ १ ॥",
           "जय देवी जय देवी वो जय अंबे ।",
-          "कोल्हापुराधिसामिणि तुज वो जगदंबे ॥ धृ. ॥"
+          "कोल्हापुरवासिनी तुज वो जगदंबे ॥ धृ. ॥"
         ],
         "transliteration": [
           "Sukhasadane shashivadane ambe mruganayane |",
           "Gajagamane suranamane kolhapuramathane |",
-          "Suravara varshati sumanen karuniyan namanen |",
-          "Bhayaharane sukhakarane sundaree shivaramane || १ ||",
+          "Suravara varshati sumane karuniya namane |",
+          "Bhayaharane sukhakarane sundaree shivaramane || 1 ||",
           "Jaya devee jaya devee vo jaya ambe |",
-          "Kolhapuradhisamini tuja vo jagadambe || dhru. ||"
+          "Kolhapuravasini tuja vo jagadambe || dhru. ||"
         ]
       },
       {
         "stanzaNumber": 2,
         "isChorus": false,
         "devanagari": [
-          "मृगमदमिश्रित केशर शोभत तें भाळीं ।",
-          "कुंचित केश विराजित मुगुटांतून भाळीं ।",
+          "मृगमदमिश्रित केशर शोभत ते भाळी ।",
+          "कुंचित केश विराजित मुकुटातून भाळी ।",
           "रत्नजडित सुंदर अंगी कांचोळी ।",
           "चिद्गगनाचा गाभा अंबा वेल्हाळी ॥ २ ॥",
           "जय देवी जय देवी वो जय अंबे ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Mrugamadamishrita keshara shobhata ten bhaleen |",
-          "Kunchita kesha virajita mugutantoona bhaleen |",
+          "Mrugamadamishrita keshara shobhata te bhalee |",
+          "Kunchita kesha virajita mukutatoona bhalee |",
           "Ratnajadita sundara angee kancholee |",
-          "Chidgaganacha gabha amba velhalee || २ ||",
+          "Chidgaganacha gabha amba velhalee || 2 ||",
           "Jaya devee jaya devee vo jaya ambe || dhru. ||"
         ]
       },
@@ -941,17 +941,17 @@ export const deviAartis: AartiItem[] = [
         "stanzaNumber": 3,
         "isChorus": false,
         "devanagari": [
-          "कंठी विलसत सगुण मुक्ता सुविशेषें ।",
-          "पीतांबर सुंदर कसियेला काँसे ।",
+          "कंठी विलसत सगुण मुक्ता सुविशेषे ।",
+          "पीतांबर सुंदर कसियेला कासे ।",
           "कटितटि कांची किंकिणि ध्वनि मंजुळ भासे ।",
-          "पदमकमल लावण्ये अंबा शोभतसे ॥ ३ ॥",
+          "पदकमल लावण्ये अंबा शोभतसे ॥ ३ ॥",
           "जय देवी जय देवी वो जय अंबे ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Kanthee vilasata saguna mukta suvisheshen |",
-          "Peetambara sundara kasiyela kanse |",
+          "Kanthee vilasata saguna mukta suvisheshe |",
+          "Peetambara sundara kasiyela kaase |",
           "Katitati kanchee kinkini dhvani manjula bhase |",
-          "Padamakamala lavanye amba shobhatase || ३ ||",
+          "Padakamala lavanye amba shobhatase || 3 ||",
           "Jaya devee jaya devee vo jaya ambe || dhru. ||"
         ]
       },
@@ -959,17 +959,17 @@ export const deviAartis: AartiItem[] = [
         "stanzaNumber": 4,
         "isChorus": false,
         "devanagari": [
-          "झळझळझळझळ झळकति तानवडें कर्णी ।",
-          "तेजा लोपुनि गेले रविशशि निज करणीं ।",
-          "ब्रह्महरिहर सकळीक नेणति तव करणी ।",
-          "अद्भुत लीला लिहितां न पुरे ही धरणी ॥ ४ ॥",
+          "झगझग झगझग झळकती तानवडे कर्णी ।",
+          "तेजा लोपुनि गेले रविशशि निज करणी ।",
+          "ब्रह्माहरिहर सकळीक नेणती तव करणी ।",
+          "अद्भुत लीला लिहिता न पुरे ही धरणी ॥ ४ ॥",
           "जय देवी जय देवी वो जय अंबे ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Jhalajhalajhalajhala jhalakati tanavaden karnee |",
-          "Teja lopuni gele ravishashi nija karaneen |",
-          "Brahmaharihara sakaleeka nenati tava karanee |",
-          "Adbhuta leela lihitan na pure hee dharanee || ४ ||",
+          "Jhagajhaga jhagajhaga jhalakatee tanavade karnee |",
+          "Teja lopuni gele ravishashi nija karanee |",
+          "Brahmaharihara sakaleeka nenatee tava karanee |",
+          "Adbhuta leela lihita na pure hee dharanee || 4 ||",
           "Jaya devee jaya devee vo jaya ambe || dhru. ||"
         ]
       },
@@ -977,17 +977,17 @@ export const deviAartis: AartiItem[] = [
         "stanzaNumber": 5,
         "isChorus": false,
         "devanagari": [
-          "अष्टहि भूजा सुंदर शोभतसे ।",
-          "झगझगझगझगझगझगती लावण्यगाभा ।",
-          "म्हाम्हाम्हाम्हाम्हाम्हाम्हागीत समनांची शोभा ।",
+          "अष्टहि भुजा सुंदर शोभतसे उभा ।",
+          "झगझग झगझग झगझगती लावण्यगाभा ।",
+          "मघमघ मघमघ मघमघती सुवासांची शोभा ।",
           "त्र्यंबक मधुकर होऊनि वर्णितसे अंबा ॥ ५ ॥",
           "जय देवी जय देवी वो जय अंबे ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Ashtahi bhooja sundara shobhatase |",
-          "Jhagajhagajhagajhagajhagajhagatee lavanyagabha |",
-          "Mhamhamhamhamhamhamhageeta samananchee shobha |",
-          "Tryambaka madhukara hoooni varnitase amba || ५ ||",
+          "Ashtahi bhuja sundara shobhatase ubha |",
+          "Jhagajhaga jhagajhaga jhagajhagateelavanyagabha |",
+          "Maghamagha maghamagha maghamaghatee suvasanchee shobha |",
+          "Tryambaka madhukara hoooni varnitase amba || 5 ||",
           "Jaya devee jaya devee vo jaya ambe || dhru. ||"
         ]
       }
@@ -1017,37 +1017,37 @@ export const deviAartis: AartiItem[] = [
         "stanzaNumber": 1,
         "isChorus": true,
         "devanagari": [
-          "आश्विनशुद्धपक्षीं अंबा बैसली सिंहासनी हो ।",
+          "आश्विनशुद्धपक्षी अंबा बैसली सिंहासनी हो ।",
           "प्रतिपदेपासून घटस्थापना ती करूनि हो ।",
-          "मूलमंत्रजप करूनी भोवतें रक्षक ठेऊनि हो ।",
+          "मूलमंत्रजप करूनी भोवते रक्षक ठेऊनि हो ।",
           "ब्रह्माविष्णुरुद्र आईंचे पूजन करिती हो ॥ १ ॥",
           "उदो बोला उदो अंबाबाई माऊलीचा हो ।",
-          "उदोकारें गर्जती काय महिमा वर्णू तिचा हो ॥ धृ. ॥"
+          "उदोकारे गर्जती काय महिमा वर्णू तिचा हो ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Aashvinashuddhapaksheen amba baisalee sinhasanee ho |",
+          "Aashvinashuddhapakshee amba baisalee sinhasanee ho |",
           "Pratipadepasoona ghatasthapana tee karooni ho |",
-          "Moolamantrajapa karoonee bhovaten rakshaka theooni ho |",
-          "Brahmavishnurudra aaeenche poojana karitee ho || १ ||",
+          "Moolamantrajapa karoonee bhovate rakshaka theooni ho |",
+          "Brahmavishnurudra aaeenche poojana karitee ho || 1 ||",
           "Udo bola udo ambabaee maooleecha ho |",
-          "Udokaren garjatee kaya mahima varnoo ticha ho || dhru. ||"
+          "Udokare garjatee kaya mahima varnoo ticha ho || dhru. ||"
         ]
       },
       {
         "stanzaNumber": 2,
         "isChorus": false,
         "devanagari": [
-          "द्वितीयेचे दिवशीं मिळती चौसष्ट योगिनि हो ।",
+          "द्वितीयेचे दिवशी मिळती चौसष्ट योगिनि हो ।",
           "सकळांमध्ये श्रेष्ठ परशुरामाची जननी हो ।",
           "कस्तुरीमळवट भांगी शेंदुर भरूनी हो ।",
-          "उदोकारें गर्जती सकळ चामुंडा मिळुनि हो ॥ २ ॥",
+          "उदोकारे गर्जती सकळ चामुंडा मिळुनि हो ॥ २ ॥",
           "उदो बोला उदो अंबाबाई माऊलीचा हो ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Dviteeyeche divasheen milatee chausashta yogini ho |",
+          "Dviteeyeche divashee milatee chausashta yogini ho |",
           "Sakalammadhye shreshtha parashuramachee jananee ho |",
           "Kastureemalavata bhangee shendura bharoonee ho |",
-          "Udokaren garjatee sakala chamunda miluni ho || २ ||",
+          "Udokare garjatee sakala chamunda miluni ho || 2 ||",
           "Udo bola udo ambabaee maooleecha ho || dhru. ||"
         ]
       },
@@ -1055,17 +1055,17 @@ export const deviAartis: AartiItem[] = [
         "stanzaNumber": 3,
         "isChorus": false,
         "devanagari": [
-          "तृतीयेचे दिवशीं अंबे शृंगार मांडिला हो ।",
-          "मळकट पातळ चोळी कंठी हार मुक्ताफळा हो ।",
+          "तृतीयेचे दिवशी अंबे शृंगार मांडिला हो ।",
+          "मळवट पातळ चोळी कंठी हार मुक्ताफळा हो ।",
           "कंठीची पदके कांसे पीतांबर पिवळा हो ।",
           "अष्टभुजा मिरविती अंबे सुंदर दिसे लीला हो ॥ ३ ॥",
           "उदो बोला उदो अंबाबाई माऊलीचा हो ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Truteeyeche divasheen ambe shrungara mandila ho |",
-          "Malakata patala cholee kanthee hara muktaphala ho |",
+          "Truteeyeche divashee ambe shrungara mandila ho |",
+          "Malavata patala cholee kanthee hara muktaphala ho |",
           "Kantheechee padake kanse peetambara pivala ho |",
-          "Ashtabhuja miravitee ambe sundara dise leela ho || ३ ||",
+          "Ashtabhuja miravitee ambe sundara dise leela ho || 3 ||",
           "Udo bola udo ambabaee maooleecha ho || dhru. ||"
         ]
       },
@@ -1073,17 +1073,17 @@ export const deviAartis: AartiItem[] = [
         "stanzaNumber": 4,
         "isChorus": false,
         "devanagari": [
-          "चतुर्थीचे दिवशीं विश्वव्यापक जननी हो ।",
-          "उपासकां पाहसी अंबे प्रसन्न अंतःकरणीं हो ।",
-          "पूर्ण कृपें पाहसी जगन्माते मनमोहिनी हो ।",
+          "चतुर्थीचे दिवशी विश्वव्यापक जननी हो ।",
+          "उपासका पाहसी अंबे प्रसन्न अंतःकरणी हो ।",
+          "पूर्ण कृपे पाहसी जगन्माते मनमोहिनी हो ।",
           "भक्तांच्या माऊलि सुर ते येती लोटांगणी हो ॥ ४ ॥",
           "उदो बोला उदो अंबाबाई माऊलीचा हो ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Chaturtheeche divasheen vishvavyapaka jananee ho |",
-          "Upasakan pahasee ambe prasanna anthkaraneen ho |",
-          "Poorna krupen pahasee jaganmate manamohinee ho |",
-          "Bhaktanchya maooli sura te yetee lotanganee ho || ४ ||",
+          "Chaturtheeche divashee vishvavyapaka jananee ho |",
+          "Upasaka pahasee ambe prasanna antahkaranee ho |",
+          "Poorna krupe pahasee jaganmate manamohinee ho |",
+          "Bhaktanchya maooli sura te yetee lotanganee ho || 4 ||",
           "Udo bola udo ambabaee maooleecha ho || dhru. ||"
         ]
       },
@@ -1091,17 +1091,17 @@ export const deviAartis: AartiItem[] = [
         "stanzaNumber": 5,
         "isChorus": false,
         "devanagari": [
-          "पंचमीचे दिवशीं व्रत तें उपांगलालिता हो ।",
-          "अर्घ्यपाद्यपूजनें तुजला भवानी स्तविती हो ।",
-          "रात्रीचे समयीं करिती जागरण हरिकथा हो ।",
-          "आनंदें प्रेम तें आलें सद्भावें क्रीडता हो ॥ ५ ॥",
+          "पंचमीचे दिवशी व्रत ते उपांगललिता हो ।",
+          "अर्घ्यपाद्यपूजने तुजला भवानी स्तविती हो ।",
+          "रात्रीचे समयी करिती जागरण हरिकथा हो ।",
+          "आनंदे प्रेम ते आले सद्भावे क्रीडता हो ॥ ५ ॥",
           "उदो बोला उदो अंबाबाई माऊलीचा हो ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Panchameeche divasheen vrata ten upangalalita ho |",
-          "Arghyapadyapoojanen tujala bhavanee stavitee ho |",
-          "Ratreeche samayeen karitee jagarana harikatha ho |",
-          "Aananden prema ten aalen sadbhaven kreedata ho || ५ ||",
+          "Panchameeche divashee vrata te upangalalita ho |",
+          "Arghyapadyapoojane tujala bhavanee stavitee ho |",
+          "Ratreeche samayee karitee jagarana harikatha ho |",
+          "Aanande prema te aale sadbhave kreedata ho || 5 ||",
           "Udo bola udo ambabaee maooleecha ho || dhru. ||"
         ]
       },
@@ -1109,17 +1109,17 @@ export const deviAartis: AartiItem[] = [
         "stanzaNumber": 6,
         "isChorus": false,
         "devanagari": [
-          "षष्ठीचे दिवशीं भक्तां आनंद वर्तला हो ।",
+          "षष्ठीचे दिवशी भक्ता आनंद वर्तला हो ।",
           "घेऊनि दिवट्या हस्ती हर्षे गोंधळ घातला हो ।",
-          "कवडी एक अर्पितां देसी हार मुक्ताफळांचा हो ।",
-          "जोगवा मागतां प्रसन्न झाली भक्तकुळा हो ॥ ६ ॥",
+          "कवडी एक अर्पिता देसी हार मुक्ताफळांचा हो ।",
+          "जोगवा मागता प्रसन्न झाली भक्तकुळा हो ॥ ६ ॥",
           "उदो बोला उदो अंबाबाई माऊलीचा हो ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Shashtheeche divasheen bhaktan aananda vartala ho |",
+          "Shashtheeche divashee bhakta aananda vartala ho |",
           "Gheooni divatya hastee harshe gondhala ghatala ho |",
           "Kavadee eka arpitan desee hara muktaphalancha ho |",
-          "Jogava magatan prasanna jhalee bhaktakula ho || ६ ||",
+          "Jogava magata prasanna jhalee bhaktakula ho || 6 ||",
           "Udo bola udo ambabaee maooleecha ho || dhru. ||"
         ]
       },
@@ -1127,17 +1127,17 @@ export const deviAartis: AartiItem[] = [
         "stanzaNumber": 7,
         "isChorus": false,
         "devanagari": [
-          "सप्तमीचे दिवशीं सप्तशृंगगडावरी हो ।",
-          "तेथें तूं नांदसी भोवतें पुष्पें नानापरी हो ।",
+          "सप्तमीचे दिवशी सप्तशृंगगडावरी हो ।",
+          "तेथे तू नांदसी भोवते पुष्पे नानापरी हो ।",
           "जाईजुईशेवंती पूजा रेखियली बरवी हो ।",
-          "भक्तसंकटी पडतां झेलूनि घेसी वरचे वरी हो ॥ ७ ॥",
+          "भक्तसंकटी पडता झेलूनि घेसी वरचे वरी हो ॥ ७ ॥",
           "उदो बोला उदो अंबाबाई माऊलीचा हो ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Saptameeche divasheen saptashrungagadavaree ho |",
-          "Tethen toon nandasee bhovaten pushpen nanaparee ho |",
+          "Saptameeche divashee saptashrungagadavaree ho |",
+          "Tethe too nandasee bhovate pushpe nanaparee ho |",
           "Jaeejueeshevantee pooja rekhiyalee baravee ho |",
-          "Bhaktasankatee padatan jhelooni ghesee varache varee ho || ७ ||",
+          "Bhaktasankatee padata jhelooni ghesee varache varee ho || 7 ||",
           "Udo bola udo ambabaee maooleecha ho || dhru. ||"
         ]
       },
@@ -1145,17 +1145,17 @@ export const deviAartis: AartiItem[] = [
         "stanzaNumber": 8,
         "isChorus": false,
         "devanagari": [
-          "अष्टमीचे दिवशीं अष्टभुजां नारायणी हो ।",
+          "अष्टमीचे दिवशी अष्टभुजा नारायणी हो ।",
           "सह्याद्रीपर्वती पाहिली उभी जगज्जननी हो ।",
-          "मन माझें मोहिलें शरण आलों तुजलागुनी हो ।",
-          "स्तनपान देऊनि सुखी केली अंतःकरणीं हो ॥ ८ ॥",
+          "मन माझे मोहिले शरण आलो तुजलागुनी हो ।",
+          "स्तनपान देऊनि सुखी केली अंतःकरणी हो ॥ ८ ॥",
           "उदो बोला उदो अंबाबाई माऊलीचा हो ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Ashtameeche divasheen ashtabhujan narayanee ho |",
+          "Ashtameeche divashee ashtabhuja narayanee ho |",
           "Sahyadreeparvatee pahilee ubhee jagajjananee ho |",
-          "Mana majhen mohilen sharana aalon tujalagunee ho |",
-          "Stanapana deooni sukhee kelee anthkaraneen ho || ८ ||",
+          "Mana majhe mohile sharana aalo tujalagunee ho |",
+          "Stanapana deooni sukhee kelee antahkaranee ho || 8 ||",
           "Udo bola udo ambabaee maooleecha ho || dhru. ||"
         ]
       },
@@ -1163,17 +1163,17 @@ export const deviAartis: AartiItem[] = [
         "stanzaNumber": 9,
         "isChorus": false,
         "devanagari": [
-          "नवमीचे दिवशीं नवदिवसांचें पारणें हो ।",
-          "सप्तशतीजप होम हवनें सद्भक्ती करूनी हो ।",
+          "नवमीचे दिवशी नवदिवसांचे पारणे हो ।",
+          "सप्तशतीजप होम हवने सद्भक्ती करूनी हो ।",
           "षड्रस अन्न नैवेद्यासी अर्पियली भोजनी हो ।",
-          "आचार्यब्राह्मणां तृप्त केलें कृपेंकरूनी हो ॥ ९ ॥",
+          "आचार्यब्राह्मणा तृप्त केले कृपेकरूनी हो ॥ ९ ॥",
           "उदो बोला उदो अंबाबाई माऊलीचा हो ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Navameeche divasheen navadivasanchen paranen ho |",
-          "Saptashateejapa homa havanen sadbhaktee karoonee ho |",
+          "Navameeche divashee navadivasanche parane ho |",
+          "Saptashateejapa homa havane sadbhaktee karoonee ho |",
           "Shadrasa anna naivedyasee arpiyalee bhojanee ho |",
-          "Aacharyabrahmanan trupta kelen krupenkaroonee ho || ९ ||",
+          "Aacharyabrahmana trupta kele krupekaroonee ho || 9 ||",
           "Udo bola udo ambabaee maooleecha ho || dhru. ||"
         ]
       },
@@ -1181,17 +1181,17 @@ export const deviAartis: AartiItem[] = [
         "stanzaNumber": 10,
         "isChorus": false,
         "devanagari": [
-          "दशमीच्या दिवशीं अंबा निघे सीमोल्लंघनी हो ।",
-          "सिंहारूढे दारुण शस्त्रें अंबे त्वां घेऊनी हो ।",
+          "दशमीच्या दिवशी अंबा निघे सीमोल्लंघनी हो ।",
+          "सिंहारूढे दारुण शस्त्रे अंबे त्वा घेऊनी हो ।",
           "शुंभनिशुंभादिक राक्षसा किती मारिसी रणी हो ।",
-          "विप्रा रामदासा आश्रय दिधला तो चरणी हो ॥ १० ॥",
+          "विप्र रामदासा आश्रय दिधला तो चरणी हो ॥ १० ॥",
           "उदो बोला उदो अंबाबाई माऊलीचा हो ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Dashameechya divasheen amba nighe seemollanghanee ho |",
-          "Sinharoodhe daruna shastren ambe tvan gheoonee ho |",
+          "Dashameechya divashee amba nighe seemollanghanee ho |",
+          "Sinharoodhe daruna shastre ambe tva gheoonee ho |",
           "Shumbhanishumbhadika rakshasa kitee marisee ranee ho |",
-          "Vipra ramadasa aashraya didhala to charanee ho || १० ||",
+          "Vipra ramadasa aashraya didhala to charanee ho || 10 ||",
           "Udo bola udo ambabaee maooleecha ho || dhru. ||"
         ]
       }
@@ -1203,7 +1203,7 @@ export const deviAartis: AartiItem[] = [
     "titleDevanagari": "जय देवी मंगळागौरी ओवाळीन सोनियाताटीं (मंगळागौरी आरती)",
     "titleTransliteration": "Jay Devi Mangalagauri (Mangalagauri Aarti)",
     "firstLineDevanagari": "जय देवी मंगळागौरी । ओवाळीन सोनियाताटीं । रत्नांचे दिवे । माणिकांच्या वाती ॥",
-    "firstLineTransliteration": "Jaya devee mngalagaufee | Ovaleen soniyataateen | Ratnanche dive | Manikanhya vaatee ||",
+    "firstLineTransliteration": "Jaya devee mangalagauri | Ovaleen soniyataateen | Ratnanche dive | Manikanchya vaatee ||",
     "deity": "parvati",
     "type": "aarti",
     "language": "marathi",
@@ -1224,13 +1224,13 @@ export const deviAartis: AartiItem[] = [
           "जय देवी मंगळागौरी । ओवाळीन सोनियाताटीं ।",
           "रत्नांचे दिवे । माणिकांच्या वाती । हिरेया ज्योती ॥ धृ. ॥",
           "मंगळमूर्ती उपजली कार्या । प्रसन्न झाली अल्पायुषी राया ।",
-          "तिष्ठली राज्यकाळी । अयोधन द्यावया ॥ १ ॥"
+          "तिष्ठली राज्यकाळी । अयोध्येचा राया ॥ १ ॥"
         ],
         "transliteration": [
           "Jaya devee mangalagauree | ovaleena soniyatateen |",
           "Ratnanche dive | manikanchya vatee | hireya jyotee || dhru. ||",
           "Mangalamoortee upajalee karya | prasanna jhalee alpayushee raya |",
-          "Tishthalee rajyakalee | ayodhana dyavaya || १ ||"
+          "Tishthalee rajyakalee | ayodhyecha raya || 1 ||"
         ]
       },
       {
@@ -1238,14 +1238,14 @@ export const deviAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "पूजेला ग आणिली जाईजुईच्या कळ्या । सोळा तिकटीं सोळा दूर्वा ।",
-          "सोळा परींची पत्री । जाई जुई आबुल्या शेवंती नागचांफे ।",
-          "पारिजातकें मनोहरें । नंदेटें तगरें । पूजेला ग आणिली ॥ २ ॥",
+          "सोळा परींची पत्री । जाई जुई आबोली शेवंती नागचांफे ।",
+          "पारिजातकें मनोहरें । नंदवटे तगरे । पूजेला ग आणिली ॥ २ ॥",
           "जय देवी मंगळागौरी ओवाळीन सोनियाताटीं ॥ धृ. ॥"
         ],
         "transliteration": [
           "Poojela ga aanilee jaeejueechya kalya | sola tikateen sola doorva |",
-          "Sola pareenchee patree | jaee juee aabulya shevantee nagachamphe |",
-          "Parijataken manoharen | nandeten tagaren | poojela ga aanilee || २ ||",
+          "Sola pareenchee patree | jaee juee aaboli shevantee nagachamphe |",
+          "Parijataken manoharen | nandavate tagare | poojela ga aanilee || 2 ||",
           "Jaya devee mangalagauree ovaleena soniyatateen || dhru. ||"
         ]
       },
@@ -1259,7 +1259,7 @@ export const deviAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Saleeche tandula mugachee dala | aalaneen khichadee randhitee naree |",
-          "Aapulya pateelageen seva karitee phara || ३ ||",
+          "Aapulya pateelageen seva karitee phara || 3 ||",
           "Jaya devee mangalagauree ovaleena soniyatateen || dhru. ||"
         ]
       },
@@ -1267,13 +1267,13 @@ export const deviAartis: AartiItem[] = [
         "stanzaNumber": 4,
         "isChorus": false,
         "devanagari": [
-          "डुमडुमें डुमडुमें वाजंत्री वाजती । कळावी कांकणें गौरीला शोभती ।",
-          "शोभली बाजुबंद । कानीं कापांचे गवे । त्यायिली अंबा शोभे ॥ ४ ॥",
+          "डुमडुमें डुमडुमें वाजंत्री वाजती । चुडे कांकणें गौरीला शोभती ।",
+          "शोभली बाजुबंद । कानीं कापांचे गवे । त्यात माझी अंबा शोभे ॥ ४ ॥",
           "जय देवी मंगळागौरी ओवाळीन सोनियाताटीं ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Dumadumen dumadumen vajantree vajatee | kalavee kankanen gaureela shobhatee |",
-          "Shobhalee bajubanda | kaneen kapanche gave | tyayilee amba shobhe || ४ ||",
+          "Dumadumen dumadumen vajantree vajatee | chude kankanen gaureela shobhatee |",
+          "Shobhalee bajubanda | kaneen kapanche gave | tyaat majhi amba shobhe || 4 ||",
           "Jaya devee mangalagauree ovaleena soniyatateen || dhru. ||"
         ]
       },
@@ -1281,13 +1281,13 @@ export const deviAartis: AartiItem[] = [
         "stanzaNumber": 5,
         "isChorus": false,
         "devanagari": [
-          "न्हाउनी माखुनी मौनी बैसली । पाटाबाची चोळी क्षीरोदक नेसली ।",
+          "न्हाउनी माखुनी मौनी बैसली । पाटाव चोळी क्षीरोदक नेसली ।",
           "स्वच्छ बहुत होऊनी अंबा पूजूं लागली ॥ ५ ॥",
           "जय देवी मंगळागौरी ओवाळीन सोनियाताटीं ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Nhaunee makhunee maunee baisalee | patabachee cholee ksheerodaka nesalee |",
-          "Svachchha bahuta hooonee amba poojoon lagalee || ५ ||",
+          "Nhaunee makhunee maunee baisalee | paatava cholee ksheerodaka nesalee |",
+          "Svachchha bahuta hooonee amba poojoon lagalee || 5 ||",
           "Jaya devee mangalagauree ovaleena soniyatateen || dhru. ||"
         ]
       },
@@ -1301,7 +1301,7 @@ export const deviAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Soniya tateen ghatalya pancharatee | madhyen ujalatee kapurachya vatee |",
-          "Kara dhoopa deepa | aatan naivedya shadrasa pakvannen | tateen bhara bonen || ६ ||",
+          "Kara dhoopa deepa | aatan naivedya shadrasa pakvannen | tateen bhara bonen || 6 ||",
           "Jaya devee mangalagauree ovaleena soniyatateen || dhru. ||"
         ]
       },
@@ -1309,15 +1309,15 @@ export const deviAartis: AartiItem[] = [
         "stanzaNumber": 7,
         "isChorus": false,
         "devanagari": [
-          "लवलाहें तिघें काशीसी निघाली । माउली मंगळागौर भिजवूं विसरली ।",
-          "मागूती परतुनीयां आली । अंबा स्वयंभू देखिली ।",
+          "लवलाहें तिघे काशीसी निघाले । माउली मंगळागौर भिजवू विसरले ।",
+          "मागुती परतुनिया आले । अंबा स्वयंभू देखिली ।",
           "देऊळ सोनियाचे । खांब हिरेयांचे । कळस वरती मोतियांचा ॥ ७ ॥",
           "जय देवी मंगळागौरी ओवाळीन सोनियाताटीं ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Lavalahen tighen kasheesee nighalee | maulee mangalagaura bhijavoon visaralee |",
-          "Magootee paratuneeyan aalee | amba svayambhoo dekhilee |",
-          "Deoola soniyache | khamba hireyanche | kalasa varatee motiyancha || ७ ||",
+          "Lavalahen tighe kasheesee nighale | maulee mangalagaura bhijavoo visarale |",
+          "Magootee paratuniya aale | amba svayambhoo dekhilee |",
+          "Deoola soniyache | khamba hireyanche | kalasa varatee motiyancha || 7 ||",
           "Jaya devee mangalagauree ovaleena soniyatateen || dhru. ||"
         ]
       }
@@ -1365,7 +1365,7 @@ export const deviAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Haraardhangee vasasee | jasee yajnya maherasi |",
-          "Tethen apamana pavasee | yajnyakundeenta gupta hosee || १ ||",
+          "Tethen apamana pavasee | yajnyakundeenta gupta hosee || 1 ||",
           "Jayadevee haritalike sakhee parvatee ambike || dhru. ||"
         ]
       },
@@ -1379,7 +1379,7 @@ export const deviAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Righasee himadreechya potee | kanya hosee too gomatee |",
-          "Ugra tapashcharya mothee | aacharasee uthauthee || २ ||",
+          "Ugra tapashcharya mothee | aacharasee uthauthee || 2 ||",
           "Jayadevee haritalike sakhee parvatee ambike || dhru. ||"
         ]
       },
@@ -1393,7 +1393,7 @@ export const deviAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Tapapanchagnisadhanen | dhoomrapanen adhovadanen |",
-          "Keleen bahoo uposhanen | shambhu bhratarakarane || ३ ||",
+          "Keleen bahoo uposhanen | shambhu bhratarakarane || 3 ||",
           "Jayadevee haritalike sakhee parvatee ambike || dhru. ||"
         ]
       },
@@ -1407,7 +1407,7 @@ export const deviAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Leela dakhavisee drushtee | hen vrata karisee lokansatheen |",
-          "Punha varasee dhoorjatee | maja rakshaven sankateen || ४ ||",
+          "Punha varasee dhoorjatee | maja rakshaven sankateen || 4 ||",
           "Jayadevee haritalike sakhee parvatee ambike || dhru. ||"
         ]
       },
@@ -1421,7 +1421,7 @@ export const deviAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Kaya varnoo tava guna | alpamati narayana |",
-          "Maten dakhaveen charana | chukavaven janma marana || ५ ||",
+          "Maten dakhaveen charana | chukavaven janma marana || 5 ||",
           "Jayadevee haritalike sakhee parvatee ambike || dhru. ||"
         ]
       }
@@ -1432,8 +1432,8 @@ export const deviAartis: AartiItem[] = [
     "slug": "aarti-vatsavitri",
     "titleDevanagari": "अश्वपती पुसता झाला नारद सांगताती (वटसावित्री आरती)",
     "titleTransliteration": "Ashwapati Pusata Jhala (Vatsavitri Aarti)",
-    "firstLineDevanagari": "अश्वपती पुसता झाला । नारद सांगताती तयाला । अल्पायुषी सत्यवंत । सावित्रीनें का प्रणीला ॥",
-    "firstLineTransliteration": "Ashvapatee pusata jhala | Narada sangatatee tayala | Alpayushee satyavanta | Savitreenen ka praneela ||",
+    "firstLineDevanagari": "अश्वपती पुसता झाला । नारद सांगताती तयाला । अल्पायुषी सत्यवंत । सावित्रीनें का प्रणिला ॥",
+    "firstLineTransliteration": "Ashvapatee pusata jhala | Narada sangatatee tayala | Alpayushee satyavanta | Savitreenen ka pranila ||",
     "deity": "devi",
     "type": "aarti",
     "language": "marathi",
@@ -1452,7 +1452,7 @@ export const deviAartis: AartiItem[] = [
         "isChorus": true,
         "devanagari": [
           "अश्वपती पुसता झाला । नारद सांगताती तयाला ।",
-          "अल्पायुषी सत्यवंत । सावित्रीनें का प्रणीला ।",
+          "अल्पायुषी सत्यवंत । सावित्रीनें का प्रणिला ।",
           "आणखी वर वरी बाळे । मनीं निश्चय जो केला ।",
           "आरती वडराजा ॥ १ ॥",
           "दयावंत यमदूजा । सत्यवंत ही सावित्री ।",
@@ -1460,9 +1460,9 @@ export const deviAartis: AartiItem[] = [
         ],
         "transliteration": [
           "Ashvapatee pusata jhala | narada sangatatee tayala |",
-          "Alpayushee satyavanta | savitreenen ka praneela |",
+          "Alpayushee satyavanta | savitreenen ka pranila |",
           "Aanakhee vara varee bale | maneen nishchaya jo kela |",
-          "Aaratee vadaraja || १ ||",
+          "Aaratee vadaraja || 1 ||",
           "Dayavanta yamadooja | satyavanta hee savitree |",
           "Bhaven kareena mee pooja | aaratee vadaraja || dhru. ||"
         ]
@@ -1479,7 +1479,7 @@ export const deviAartis: AartiItem[] = [
         "transliteration": [
           "Jyeshthamasa trayodashee | karitee poojana vadashee |",
           "Triratra vrata karooniya | jinkee toon satyavantashee |",
-          "Aaratee vadaraja || २ ||",
+          "Aaratee vadaraja || 2 ||",
           "Dayavanta yamadooja | satyavanta hee savitree || dhru. ||"
         ]
       },
@@ -1487,17 +1487,17 @@ export const deviAartis: AartiItem[] = [
         "stanzaNumber": 3,
         "isChorus": false,
         "devanagari": [
-          "स्वर्गावरी जाऊनियां । अग्निखांब कचळीला ।",
+          "स्वर्गावरी जाऊनियां । अग्निखांब कवटाळिला ।",
           "धर्मराजा उचकला । हत्या घालील जीवाला ।",
           "येई ग पतिव्रते । पती नेई गे आपुला ।",
           "आरती वडराजा ॥ ३ ॥",
           "दयावंत यमदूजा । सत्यवंत ही सावित्री ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Svargavaree jaooniyan | agnikhamba kachaleela |",
+          "Svargavaree jaooniyan | agnikhamba kavatalila |",
           "Dharmaraja uchakala | hatya ghaleela jeevala |",
           "Yeee ga pativrate | patee neee ge aapula |",
-          "Aaratee vadaraja || ३ ||",
+          "Aaratee vadaraja || 3 ||",
           "Dayavanta yamadooja | satyavanta hee savitree || dhru. ||"
         ]
       },
@@ -1506,14 +1506,14 @@ export const deviAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "जाऊनियां यमापाशीं । मागतसे आपुला पती ।",
-          "चारी वर देऊनियां । दयावंता द्यावा पती ।",
+          "चार वर घेऊनियां । दयावंता द्यावा पती ।",
           "आरती वडराजा ॥ ४ ॥",
           "दयावंत यमदूजा । सत्यवंत ही सावित्री ॥ धृ. ॥"
         ],
         "transliteration": [
           "Jaooniyan yamapasheen | magatase aapula patee |",
-          "Charee vara deooniyan | dayavanta dyava patee |",
-          "Aaratee vadaraja || ४ ||",
+          "Chaara vara gheuniyan | dayavanta dyava patee |",
+          "Aaratee vadaraja || 4 ||",
           "Dayavanta yamadooja | satyavanta hee savitree || dhru. ||"
         ]
       },
@@ -1529,7 +1529,7 @@ export const deviAartis: AartiItem[] = [
         "transliteration": [
           "Pativrate tujhee keerti | aikunee jya naree |",
           "Tujhen vraten aacharatee | tujheen bhuvanen pavatee |",
-          "Aaratee vadaraja || ५ ||",
+          "Aaratee vadaraja || 5 ||",
           "Dayavanta yamadooja | satyavanta hee savitree || dhru. ||"
         ]
       },
@@ -1545,7 +1545,7 @@ export const deviAartis: AartiItem[] = [
         "transliteration": [
           "Pativrate tujhee stutee | tribhuvanee jya karitee |",
           "Svargee pushpavrushtee | karuniyan aanilasee aapula patee |",
-          "Abhaya deooniyan | pativrate taree tyasee || ६ ||",
+          "Abhaya deooniyan | pativrate taree tyasee || 6 ||",
           "Dayavanta yamadooja | satyavanta hee savitree || dhru. ||"
         ]
       }

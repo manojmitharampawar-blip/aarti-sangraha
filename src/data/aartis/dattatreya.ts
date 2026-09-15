@@ -44,7 +44,7 @@ export const dattatreyaAartis: AartiItem[] = [
         "stanzaNumber": 2,
         "isChorus": false,
         "devanagari": [
-          "कलियुगीं मातले बहु अधर्म देव ।",
+          "कलियुगीं मातले बहु अधर्म दैव ।",
           "दाविसी चमत्कार भक्तां लागीं सर्व ।",
           "करिती जे ध्यान त्यांचे हरसी दुःख ।",
           "देवासी संशय नाहीं प्रत्यक्ष सुख ॥ २ ॥",
@@ -52,7 +52,7 @@ export const dattatreyaAartis: AartiItem[] = [
           "आरती ओवाळितां हरली भवचिंता ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Kaliyugi matale bahu adharma deva |",
+          "Kaliyugi matale bahu adharma daiva |",
           "Davisi chamatkara bhaktan laagi sarva |",
           "Kariti je dhyana tyanche harasi duhkha |",
           "Devasi sanshaya naahi pratyaksha sukha || 2 ||",
@@ -87,7 +87,7 @@ export const dattatreyaAartis: AartiItem[] = [
     "slug": "ghora-kashtoddharana-stotra",
     "titleDevanagari": "घोरकष्टोद्धारण स्तोत्र (श्रीपाद श्रीवल्लभ - टेंबे स्वामी)",
     "titleTransliteration": "Ghora Kashtoddharana Stotra (Tembe Swami)",
-    "firstLineDevanagari": "श्रीपाद श्रीवल्लभ त्वं सदैव । श्रीदत्तात्रेया पाहि मां देवदेव",
+    "firstLineDevanagari": "श्रीपाद श्रीवल्लभ त्वं सदैव । श्रीदत्तात्रेय पाहि मां देवदेव",
     "firstLineTransliteration": "Shreepada shreevallabha tvam sadaiva | Shreedattatreya paahi maam devadeva",
     "deity": "dattatreya",
     "type": "stotra",
@@ -106,7 +106,7 @@ export const dattatreyaAartis: AartiItem[] = [
         "stanzaNumber": 1,
         "isChorus": true,
         "devanagari": [
-          "श्रीपाद श्रीवल्लभ त्वं सदैव । श्रीदत्तात्रेया पाहि मां देवदेव ।",
+          "श्रीपाद श्रीवल्लभ त्वं सदैव । श्रीदत्तात्रेय पाहि मां देवदेव ।",
           "भवभयहरणं घोरकष्टोद्धारणम् । त्वमेव शरणं मम दत्तनाथ ॥ १ ॥"
         ],
         "transliteration": [
@@ -204,11 +204,11 @@ export const dattatreyaAartis: AartiItem[] = [
       {
         "stanzaNumber": 5,
         "devanagari": [
-          "ह्रस्वदीर्घकृशस्थूल-नामगोत्र-विवर्जित ।",
+          "ह्रस्वदीर्घकृशस्थूलनामगोत्रविवर्जित ।",
           "सर्वसर्वज्ञरूपाय दत्तात्रेय नमोऽस्तुते ॥ ४ ॥"
         ],
         "transliteration": [
-          "Hrasvadeerghakrishasthoola-naamagotra-vivarjita |",
+          "Hrasvadeerghakrishasthoolanaamagotravivarjita |",
           "Sarvasarvadnya-roopaaya dattatreya namostute || 4 ||"
         ]
       },
@@ -470,18 +470,18 @@ export const dattatreyaAartis: AartiItem[] = [
       {
         "stanzaNumber": 2,
         "devanagari": [
-          "जटाजूटधरं देवं भस्मधूलितविग्रहम् ।",
+          "जटाजूटधरं देवं भस्मोद्धूलितविग्रहम् ।",
           "दिगम्बरं महात्मानं योगिध्येयं सनातनम् ॥ २ ॥"
         ],
         "transliteration": [
-          "Jataajootadharam devam bhasmadhoolitavigraham |",
+          "Jataajootadharam devam bhasmoddhoolitavigraham |",
           "Digambaram mahaatmaanam yogidhyeyam sanaatanam || 2 ||"
         ]
       },
       {
         "stanzaNumber": 3,
         "devanagari": [
-          "अत्रिपुत्रं महावीर्यं अनसूयानंदवर्धनम् ।",
+          "अत्रिपुत्रं महावीर्यं अनसूयानन्दवर्धनम् ।",
           "सर्वतीर्थमयं देवं दत्तात्रेयं नमाम्यहम् ॥ ३ ॥"
         ],
         "transliteration": [
@@ -503,7 +503,7 @@ export const dattatreyaAartis: AartiItem[] = [
       {
         "stanzaNumber": 5,
         "devanagari": [
-          "शंखचक्रगदापाणिं डमरूत्रिशूलधारिणम् ।",
+          "शंखचक्रगदापाणिं डमरुत्रिशूलधारिणम् ।",
           "सर्वाभरणसंयुक्तं दत्तात्रेयं नमाम्यहम् ॥ ५ ॥"
         ],
         "transliteration": [
@@ -762,13 +762,13 @@ export const dattatreyaAartis: AartiItem[] = [
       {
         "stanzaNumber": 2,
         "devanagari": [
-          "फुलांची सेज सुंदर रचियली देवा ।",
+          "फुलांची शेज सुंदर रचियली देवा ।",
           "स्वीकारावी आतां संतांची सेवा ॥",
           "चंदन उटी लेपविला अंगा ।",
           "निशंक शांत बैसले महायोगा ॥ जय देव० ॥ १ ॥"
         ],
         "transliteration": [
-          "Phulaanchee seja sundara rachiyalee devaa |",
+          "Phulaanchee sheja sundara rachiyalee devaa |",
           "Sveekaaraavee aataa santaanchee sevaa ||",
           "Chandana utee lepavilaa angaa |",
           "Nishanka shaanta baisale mahaayogaa || Jai dev || 1 ||"
@@ -842,15 +842,15 @@ export const dattatreyaAartis: AartiItem[] = [
         "stanzaNumber": 2,
         "isChorus": false,
         "devanagari": [
-          "दिग्मिरवेष्टितमंबरमेव प्रत्यग्ब्रह्मेति ।",
+          "दिग्भिर्वेष्टितमम्बरमेव प्रत्यग्ब्रह्मेति ।",
           "खं ब्रह्मेति श्रुतिरपि वदति ।",
-          "खं ब्रह्मेति श्रुतिरपि वदति । दिगंबराचेति ॥ १ ॥",
+          "खं ब्रह्मेति श्रुतिरपि वदति दिगम्बरश्चेति ॥ १ ॥",
           "दिगंबरा दिगंबरा श्रीपादवल्लभ दिगंबरा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Digmiraveshtitamambarameva pratyagbrahmeti |",
-          "Khan brahmeti shrutirapi vadati |",
-          "Khan brahmeti shrutirapi vadati | digambaracheti || १ ||",
+          "Digbhirveshtitamambarameva pratyagbrahmeti |",
+          "Kham brahmeti shrutirapi vadati |",
+          "Kham brahmeti shrutirapi vadati digambarashcheti || 1 ||",
           "Digambara digambara shreepadavallabha digambara || dhru. ||"
         ]
       },
@@ -858,15 +858,15 @@ export const dattatreyaAartis: AartiItem[] = [
         "stanzaNumber": 3,
         "isChorus": false,
         "devanagari": [
-          "दिगवत् चांबरमेव व्यापकं पूर्णब्रह्मेति ।",
-          "सच्चित्सुखघनमशयातीत ।",
-          "सच्चित्सुखघनमायातीत दिगंबरा वदति ॥ २ ॥",
+          "दिगिव चाम्बरमेव व्यापकं पूर्णब्रह्मेति ।",
+          "सच्चित्सुखघनमायातीतं ।",
+          "सच्चित्सुखघनमायातीतं दिगम्बरं वदति ॥ २ ॥",
           "दिगंबरा दिगंबरा श्रीपादवल्लभ दिगंबरा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Digavat chambarameva vyapakan poornabrahmeti |",
-          "Sachchitsukhaghanamashayateeta |",
-          "Sachchitsukhaghanamayateeta digambara vadati || २ ||",
+          "Digiva chaambarameva vyapakam poornabrahmeti |",
+          "Sachchitsukhaghanamayaateetam |",
+          "Sachchitsukhaghanamayaateetam digambaram vadati || 2 ||",
           "Digambara digambara shreepadavallabha digambara || dhru. ||"
         ]
       },
@@ -875,14 +875,14 @@ export const dattatreyaAartis: AartiItem[] = [
         "isChorus": false,
         "devanagari": [
           "श्रीपादवल्लभ नाम प्राप हि नक्रगजेन्द्रमिव ।",
-          "द्रोपद्यंबरीषचोर ।",
-          "द्रोपद्यंबरीषचोर ग्रसितद्विजमेव ॥ ३ ॥",
+          "द्रौपद्यम्बरीषचोर ।",
+          "द्रौपद्यम्बरीषचोरग्रसितद्विजमेव ॥ ३ ॥",
           "दिगंबरा दिगंबरा श्रीपादवल्लभ दिगंबरा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Shreepadavallabha nama prapa hi nakragajendramiva |",
-          "Dropadyambareeshachora |",
-          "Dropadyambareeshachora grasitadvijameva || ३ ||",
+          "Shreepadavallabha naama praapa hi nakragajendramiva |",
+          "Draupadyambareeshachora |",
+          "Draupadyambareeshachoragrasitadvijameva || 3 ||",
           "Digambara digambara shreepadavallabha digambara || dhru. ||"
         ]
       },
@@ -890,15 +890,15 @@ export const dattatreyaAartis: AartiItem[] = [
         "stanzaNumber": 5,
         "isChorus": false,
         "devanagari": [
-          "दिगंबरा गुरु वासुदेव दत्तस्तवं ब्रह्म ।",
+          "दिगम्बर गुरुवासुदेव दत्तस्त्वं ब्रह्म ।",
           "कामक्रोधग्रसितं मां लभ ।",
-          "कामक्रोध ग्रसितं मां लभ तथैव झटिति वह ॥ ४ ॥",
+          "कामक्रोधग्रसितं मां लभ तथैव झटिति वह ॥ ४ ॥",
           "दिगंबरा दिगंबरा श्रीपादवल्लभ दिगंबरा ॥ धृ. ॥"
         ],
         "transliteration": [
-          "Digambara guru vasudeva dattastavan brahma |",
-          "Kamakrodhagrasitan man labha |",
-          "Kamakrodha grasitan man labha tathaiva jhatiti vaha || ४ ||",
+          "Digambara guruvaasudeva dattastvam brahma |",
+          "Kaamakrodhagrasitam maam labha |",
+          "Kaamakrodhagrasitam maam labha tathaiva jhatiti vaha || 4 ||",
           "Digambara digambara shreepadavallabha digambara || dhru. ||"
         ]
       }
