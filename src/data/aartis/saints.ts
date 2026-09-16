@@ -320,6 +320,143 @@ export const saintsAartis: AartiItem[] = [
     ]
   },
   {
+    "id": "sai-baba-saukhyadata-aarti",
+    "slug": "aarti-sai-baba-saukhyadata",
+    "titleDevanagari": "आरती साई बाबा (सौख्यदातार जीवा)",
+    "titleTransliteration": "Aarti Saibaba (Saukhyadatara Jeeva)",
+    "firstLineDevanagari": "आरती साई बाबा । सौख्यदातार जीवा । चरणरजातली द्यावा दासां विसावा ॥",
+    "firstLineTransliteration": "Aarti Saibaba | Saukhyadatara jeeva | Charanarajataali dhyaava daasa visaava ||",
+    "deity": "saibaba",
+    "type": "aarti",
+    "language": "marathi",
+    "author": "बापूसाहेब जोग / संत माधव (Bapusaheb Jog / Sant Madhav)",
+    "meaningSummary": "शिर्डीचे श्री साईबाबा यांची जगप्रसिद्ध नित्य आरती - 'सौख्यदातार जीवा चरणरजातली द्यावा दासां विसावा'. ही मुख्य आरती शिर्डी संस्थानच्या काकड, माध्यान्ह, धूप व शेज आरत्यांमध्ये भक्तीभावाने गायली जाते.",
+    "tags": [
+      "sai",
+      "saibaba",
+      "shirdi",
+      "guruwar",
+      "kakad-aarti",
+      "madhyan-aarti",
+      "dhoop-aarti",
+      "shej-aarti"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": true,
+        "devanagari": [
+          "आरती साई बाबा ।",
+          "सौख्यदातार जीवा । चरणरजातली ।",
+          "द्यावा दासां विसावा । भक्तां विसावा ॥ आरती साई बाबा ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Aarti Saibaba |",
+          "Saukhyadatara jeeva | Charanarajatali |",
+          "Dhyaava daasa visaava | Bhakta visaava || Aarti Saibaba || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "जाळुनियां अनंग । स्वस्वरूपीं राहे दंग ।",
+          "मुमुक्षुजन दावी । निज डोळां श्रीरंग ॥ १ ॥",
+          "आरती साई बाबा । सौख्यदातार जीवा ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Jaaluniyan ananga | Swaswaroopi raahe dang |",
+          "Mumukshu jana daavi | Nija dolaan shrirang || 1 ||",
+          "Aarti Saibaba | Saukhyadatara jeeva || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 3,
+        "isChorus": false,
+        "devanagari": [
+          "जया मनीं जैसा भाव । तया तैसा अनुभव ।",
+          "दाविसी दयाघना । ऐसी तुझी ही माव , तुझी ही माव ॥ २ ॥",
+          "आरती साई बाबा । सौख्यदातार जीवा ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Jaya mani jaisa bhaav | Taya taisa anubhav |",
+          "Daavisi dayaghana | Aisi tujhi hi maav , tujhi hi maav || 2 ||",
+          "Aarti Saibaba | Saukhyadatara jeeva || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 4,
+        "isChorus": false,
+        "devanagari": [
+          "तुमचें नाम ध्यातां । हरे संसृतिव्यथा ।",
+          "अगाध तव करणी । मार्ग दाविसी अनाथां , दाविसी अनाथां ॥ ३ ॥",
+          "आरती साई बाबा । सौख्यदातार जीवा ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Tumche naam dhyata | Hare sansrutivyatha |",
+          "Agaadha tav karni | Maarg daavisi anatha , daavisi anatha || 3 ||",
+          "Aarti Saibaba | Saukhyadatara jeeva || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 5,
+        "isChorus": false,
+        "devanagari": [
+          "कलियुगीं अवतार । सगुण परब्रह्म साचार ।",
+          "अवतीर्ण झालासे । स्वामी दत्त दिगंबर , दत्त दिगंबर ॥ ४ ॥",
+          "आरती साई बाबा । सौख्यदातार जीवा ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Kaliyugi avataar | Sagunbrahma saachaar |",
+          "Avateerna jhalaase | Swami datta digambar , datta digambar || 4 ||",
+          "Aarti Saibaba | Saukhyadatara jeeva || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 6,
+        "isChorus": false,
+        "devanagari": [
+          "आठां दिवसां गुरुवारीं । भक्त करिती वारी ।",
+          "प्रभुपद पहावया । भवभय निवारी , भय निवारी ॥ ५ ॥",
+          "आरती साई बाबा । सौख्यदातार जीवा ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Aatha divsaa guruvaari | Bhakt kariti vaari |",
+          "Prabhu pad pahavaya | Bhavbhaya nivari , bhaya nivari || 5 ||",
+          "Aarti Saibaba | Saukhyadatara jeeva || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 7,
+        "isChorus": false,
+        "devanagari": [
+          "माझा निजद्रव्य ठेवा । तव चरणरजसेवा ।",
+          "मागणे हेची आतां । तुम्हां देवाधिदेवा , देवाधिदेवा ॥ ६ ॥",
+          "आरती साई बाबा । सौख्यदातार जीवा ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Majha nij dravya theva | Tav charan rajseva |",
+          "Maagne henchi aata | Tumha devadhideva , devadhideva || 6 ||",
+          "Aarti Saibaba | Saukhyadatara jeeva || dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 8,
+        "isChorus": false,
+        "devanagari": [
+          "इच्छित दीन चातक । निर्मळ तोय निजसुख ।",
+          "पाजावें माधवा या । सांभाळ आपुली भाक , आपुली भाक ॥ ७ ॥",
+          "आरती साई बाबा । सौख्यदातार जीवा ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Ichhit deen chaatak | Nirmal toya nijsukh |",
+          "Pajaven maadhava ya | Saambhaal aapuli bhaak , aapuli bhaak || 7 ||",
+          "Aarti Saibaba | Saukhyadatara jeeva || dhru. ||"
+        ]
+      }
+    ]
+  },
+  {
     "id": "ramdas-aarti",
     "slug": "aarti-samarth-ramdas",
     "titleDevanagari": "श्रीरामदासांची आरती (आरती रामदासा भक्त विरक्त ईशा)",

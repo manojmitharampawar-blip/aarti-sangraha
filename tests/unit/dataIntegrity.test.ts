@@ -37,7 +37,7 @@ describe('Data Integrity & Accuracy Tests', () => {
 
   it('has a substantial collection of authentic aartis and stotras', () => {
     expect(aartis.length).toBeGreaterThanOrEqual(120);
-    expect(aartis.length).toBe(129);
+    expect(aartis.length).toBe(130);
   });
 
   it('verifies modular deity/category aarti collections are populated', () => {
@@ -49,7 +49,7 @@ describe('Data Integrity & Accuracy Tests', () => {
     expect(krishnaAartis.length).toBeGreaterThanOrEqual(9);
     expect(dattatreyaAartis.length).toBeGreaterThanOrEqual(9);
     expect(hanumanAartis.length).toBeGreaterThanOrEqual(4);
-    expect(saintsAartis.length).toBeGreaterThanOrEqual(23);
+    expect(saintsAartis.length).toBeGreaterThanOrEqual(24);
     expect(nityapujaAartis.length).toBeGreaterThanOrEqual(20);
     expect(navagrahaAartis.length).toBeGreaterThanOrEqual(9);
 
@@ -111,6 +111,7 @@ describe('Data Integrity & Accuracy Tests', () => {
     expect(slugs).toContain('trigunatmak-traimurti');
     expect(slugs).toContain('yuge-atthavis');
     expect(slugs).toContain('aarti-sai-baba');
+    expect(slugs).toContain('aarti-sai-baba-saukhyadata');
     expect(slugs).toContain('aarti-swami-samarth');
     expect(slugs).toContain('aarti-dnyanraja');
     expect(slugs).toContain('aarti-tukaram');
@@ -220,6 +221,20 @@ describe('Data Integrity & Accuracy Tests', () => {
     const shani = aartis.find(a => a.slug === 'aarti-shani-dev');
     expect(shani).toBeDefined();
     expect(shani?.stanzas.length).toBe(8);
+  });
+
+  it('ensures authentic Sai Baba Aarti (Saukhyadatara Jeeva) has all 7 stanzas and chorus', () => {
+    const sai = aartis.find(a => a.slug === 'aarti-sai-baba-saukhyadata');
+    expect(sai).toBeDefined();
+    expect(sai?.stanzas.length).toBe(8);
+    const allDevanagari = sai?.stanzas.flatMap(s => s.devanagari).join(' ') || '';
+    expect(allDevanagari).toContain('आरती साई बाबा');
+    expect(allDevanagari).toContain('सौख्यदातार जीवा');
+    expect(allDevanagari).toContain('जाळुनियां अनंग');
+    expect(allDevanagari).toContain('जया मनीं जैसा भाव');
+    expect(allDevanagari).toContain('कलियुगीं अवतार');
+    expect(allDevanagari).toContain('आठां दिवसां गुरुवारीं');
+    expect(allDevanagari).toContain('पाजावें माधवा या');
   });
 
   it('includes Mata Parvati and Lord Kartikeya Swami aartis', () => {
