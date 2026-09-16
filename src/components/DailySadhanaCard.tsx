@@ -25,6 +25,7 @@ import { playTempleBell } from '@/lib/audioBell';
 import { getSolarTimings, SolarTimings } from '@/lib/panchangEngine';
 import { useAppPermissions } from '@/hooks/useAppPermissions';
 import { DevotionalPermissionsModal } from './DevotionalPermissionsModal';
+import { UpasanaAiModal } from './UpasanaAiModal';
 
 export function DailySadhanaCard() {
   const [recommendation, setRecommendation] = useState<DevotionalRecommendation | null>(null);
@@ -35,9 +36,10 @@ export function DailySadhanaCard() {
   });
   const [showCelebration, setShowCelebration] = useState(false);
   const [isPermissionsModalOpen, setIsPermissionsModalOpen] = useState(false);
+  const [isUpasanaModalOpen, setIsUpasanaModalOpen] = useState(false);
   const [solarTimes, setSolarTimes] = useState<SolarTimings | null>(null);
 
-  const { userLocation, allGranted } = useAppPermissions();
+  const { userLocation } = useAppPermissions();
 
   useEffect(() => {
     const rec = getDevotionalRecommendation();
@@ -83,10 +85,22 @@ export function DailySadhanaCard() {
           </div>
         </div>
 
-        {/* Sadhana Streak Pill */}
-        <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-800 dark:text-amber-200 text-xs font-extrabold">
-          <Flame className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
-          <span>{streak.currentStreak} दिवस सलग उपासना</span>
+        <div className="flex items-center gap-2">
+          {/* Upasana AI Trigger */}
+          <button
+            onClick={() => setIsUpasanaModalOpen(true)}
+            title="उपासना मार्गदर्शक (AI)"
+            className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-saffron-500/15 border border-saffron-500/30 text-saffron-800 dark:text-saffron-200 text-xs font-extrabold hover:bg-saffron-500/25 transition-colors"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-saffron-600" />
+            <span>उपासना AI</span>
+          </button>
+
+          {/* Sadhana Streak Pill */}
+          <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-800 dark:text-amber-200 text-xs font-extrabold">
+            <Flame className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+            <span>{streak.currentStreak} दिवस सलग उपासना</span>
+          </div>
         </div>
       </div>
 
@@ -198,6 +212,13 @@ export function DailySadhanaCard() {
       <DevotionalPermissionsModal
         isOpen={isPermissionsModalOpen}
         onClose={() => setIsPermissionsModalOpen(false)}
+      />
+
+      {/* Upasana AI Modal */}
+      <UpasanaAiModal
+        isOpen={isUpasanaModalOpen}
+        onClose={() => setIsUpasanaModalOpen(false)}
+        defaultTopic={dayNameMr}
       />
     </div>
   );
