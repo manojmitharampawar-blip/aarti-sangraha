@@ -37,7 +37,7 @@ describe('Data Integrity & Accuracy Tests', () => {
 
   it('has a substantial collection of authentic aartis and stotras', () => {
     expect(aartis.length).toBeGreaterThanOrEqual(120);
-    expect(aartis.length).toBe(130);
+    expect(aartis.length).toBe(131);
   });
 
   it('verifies modular deity/category aarti collections are populated', () => {
@@ -49,7 +49,7 @@ describe('Data Integrity & Accuracy Tests', () => {
     expect(krishnaAartis.length).toBeGreaterThanOrEqual(9);
     expect(dattatreyaAartis.length).toBeGreaterThanOrEqual(9);
     expect(hanumanAartis.length).toBeGreaterThanOrEqual(4);
-    expect(saintsAartis.length).toBeGreaterThanOrEqual(24);
+    expect(saintsAartis.length).toBeGreaterThanOrEqual(25);
     expect(nityapujaAartis.length).toBeGreaterThanOrEqual(20);
     expect(navagrahaAartis.length).toBeGreaterThanOrEqual(9);
 
@@ -118,6 +118,7 @@ describe('Data Integrity & Accuracy Tests', () => {
     expect(slugs).toContain('aarti-samarth-ramdas');
     expect(slugs).toContain('aarti-sant-eknath');
     expect(slugs).toContain('aarti-gajanan-maharaj');
+    expect(slugs).toContain('nityananda-arati');
   });
 
   it('includes authentic traditional aartis added from Sampurna Marathi Aarti Sangrah', () => {
@@ -235,6 +236,18 @@ describe('Data Integrity & Accuracy Tests', () => {
     expect(allDevanagari).toContain('कलियुगीं अवतार');
     expect(allDevanagari).toContain('आठां दिवसां गुरुवारीं');
     expect(allDevanagari).toContain('पाजावें माधवा या');
+  });
+
+  it('ensures authentic Bhagwan Nityananda Aarti (Govinda) is present and valid', () => {
+    const nityananda = aartis.find(a => a.slug === 'nityananda-arati');
+    expect(nityananda).toBeDefined();
+    expect(nityananda?.stanzas.length).toBe(4);
+    const allDevanagari = nityananda?.stanzas.flatMap(s => s.devanagari).join(' ') || '';
+    expect(allDevanagari).toContain('जय जय आरती नित्यानन्दा');
+    expect(allDevanagari).toContain('सगुण रूपी गोविन्दा');
+    expect(allDevanagari).toContain('गाणगापुरी लीला दाविसी');
+    expect(allDevanagari).toContain('कलियुगी नित्यानन्द बनसी');
+    expect(allDevanagari).toContain('गणेशपुरी तू वससी');
   });
 
   it('includes Mata Parvati and Lord Kartikeya Swami aartis', () => {

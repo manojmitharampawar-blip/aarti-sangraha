@@ -594,6 +594,96 @@ export const saintsAartis: AartiItem[] = [
     ]
   },
   {
+    "id": "nityananda-arati-govinda",
+    "slug": "nityananda-arati",
+    "titleDevanagari": "नित्यानंद आरती (जय जय आरती नित्यानन्दा)",
+    "titleTransliteration": "Nityananda Arati (Jaya Jaya Aarti Nityananda)",
+    "firstLineDevanagari": "जय जय आरती नित्यानन्दा सगुण रूपी गोविन्दा",
+    "firstLineTransliteration": "Jaya jaya aarati nityananda saguna roopi govinda",
+    "deity": "nityanand",
+    "type": "aarti",
+    "language": "marathi",
+    "author": "पारंपरिक (Traditional)",
+    "meaningSummary": "भगवान नित्यानंद यांची सगुण रूपी गोविंदा म्हणून स्तुती करणारी व त्यांचे दत्तात्रेय, श्रीपाद, नरहरी, माणिकप्रभू, अक्कलकोट स्वामी आणि साईनाथ हे अवतार वर्णन करणारी आरती.",
+    "tags": [
+      "nityanand",
+      "ganeshpuri",
+      "guru",
+      "dattatreya",
+      "marathi"
+    ],
+    "stanzas": [
+      {
+        "stanzaNumber": 1,
+        "isChorus": true,
+        "devanagari": [
+          "जय जय आरती नित्यानन्दा ।",
+          "सगुण रूपी गोविन्दा ।",
+          "जय जय आरती नित्यानन्दा ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Jaya jaya aarati nityananda |",
+          "Saguna roopi govinda |",
+          "Jaya jaya aarati nityananda || Dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 2,
+        "isChorus": false,
+        "devanagari": [
+          "प्रथम दत्तरूप घेसी ।",
+          "द्वितीय श्रीपाद होसी ।",
+          "तृतीय नरहरी होसी ।",
+          "गाणगापुरी लीला दाविसी ॥ १ ॥",
+          "जय जय आरती नित्यानन्दा ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Prathama dattaroopa ghesi |",
+          "Dviteeya shreepada hosi |",
+          "Truteeya narahari hosi |",
+          "Ganagapuri leela davisi || 1 ||",
+          "Jaya jaya aarati nityananda || Dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 3,
+        "isChorus": false,
+        "devanagari": [
+          "माणिकप्रभु तू होसी ।",
+          "अक्कलकोट स्वामी होसी ।",
+          "शिरडी साईनाथ होसी ।",
+          "कलियुगी नित्यानन्द बनसी ॥ २ ॥",
+          "जय जय आरती नित्यानन्दा ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Manikaprabhu too hosi |",
+          "Akkalkota swami hosi |",
+          "Shirdi sainatha hosi |",
+          "Kaliyugi nityananda banasi || 2 ||",
+          "Jaya jaya aarati nityananda || Dhru. ||"
+        ]
+      },
+      {
+        "stanzaNumber": 4,
+        "isChorus": false,
+        "devanagari": [
+          "ऐसी अनेक रूपे तू घेसी ।",
+          "गणेशपुरी तू वससी ।",
+          "भक्तांची इच्छा पुरविसी ।",
+          "बाळांना बहु आवडसी ॥ ३ ॥",
+          "जय जय आरती नित्यानन्दा ॥ धृ. ॥"
+        ],
+        "transliteration": [
+          "Aisi aneka roope too ghesi |",
+          "Ganeshpuri too vasasi |",
+          "Bhaktanchi ichchha puravisi |",
+          "Balanna bahu aavadasi || 3 ||",
+          "Jaya jaya aarati nityananda || Dhru. ||"
+        ]
+      }
+    ]
+  },
+  {
     "id": "swami-samarth-aarti",
     "slug": "aarti-swami-samarth",
     "titleDevanagari": "आरती स्वामी समर्थांची (जय जय स्वामी समर्थ)",
