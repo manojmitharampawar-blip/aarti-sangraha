@@ -37,6 +37,10 @@ import { DevotionalAudioBar } from '@/components/DevotionalAudioBar';
 import { NextAartiCountdown } from '@/components/NextAartiCountdown';
 import { VirtualAartiModal } from '@/components/VirtualAartiModal';
 import { getHymnTypeBadge } from '@/components/AartiCard';
+import { PronunciationGuideModal } from "@/components/PronunciationGuideModal";
+import { UpasanaAiModal } from "@/components/UpasanaAiModal";
+import { getStanzaBhavarth } from "@/lib/bhavarthEngine";
+import { BookOpen, Volume2, Flame } from "lucide-react";
 import { deities } from '@/data/deities';
 import { playTempleBell } from '@/lib/audioBell';
 import { useScrollDirection } from '@/hooks/useScrollDirection';
@@ -67,6 +71,16 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
   const { isLocked, isSupported: wakeLockSupported, requestLock, releaseLock } = useWakeLock();
   const isNavVisible = useScrollDirection(8);
 
+    const [isPronounceModalOpen, setIsPronounceModalOpen] = useState(false);
+  const [isUpasanaModalOpen, setIsUpasanaModalOpen] = useState(false);
+  const [expandedBhavarth, setExpandedBhavarth] = useState<Record<number, boolean>>({});
+
+  const toggleBhavarth = (idx: number) => {
+    setExpandedBhavarth(prev => ({
+      ...prev,
+      [idx]: !prev[idx],
+    }));
+  };
   const [isReadingSettingsOpen, setIsReadingSettingsOpen] = useState(false);
   const [isGroupModalOpen, setIsGroupModalOpen] = useState(false);
   const [isVirtualAartiOpen, setIsVirtualAartiOpen] = useState(false);
@@ -288,6 +302,26 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
           </Link>
 
           <div className="flex items-center gap-1.5">
+                        {/* Pronunciation Assistant Trigger */}
+            <button
+              onClick={() => setIsPronounceModalOpen(true)}
+              aria-label="Open Vedic Pronunciation Guide"
+              title="शुद्ध उच्चार व पदच्छेद मार्गदर्शक"
+              className="p-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 active:scale-95 transition-all"
+            >
+              <Volume2 className="w-4 h-4 text-emerald-600" />
+            </button>
+
+            {/* Upasana AI Assistant Trigger */}
+            <button
+              onClick={() => setIsUpasanaModalOpen(true)}
+              aria-label="Open Upasana AI Devotional Guide"
+              title="उपासना मित्र (AI पूजा विधी व मार्गदर्शन)"
+              className="p-2 rounded-xl border border-saffron-500/30 bg-saffron-500/10 text-saffron-700 dark:text-saffron-300 hover:bg-saffron-500/20 active:scale-95 transition-all"
+            >
+              <Flame className="w-4 h-4 text-saffron-600 animate-pulse" />
+            </button>
+
             {/* Touchless Virtual Aarti Camera Trigger */}
             <button
               onClick={() => setIsVirtualAartiOpen(true)}
@@ -494,6 +528,8 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
         {aarti.stanzas.map((stanza, sIdx) => {
           const isActive = activeStanzaIndex === sIdx;
           const showSpotlightDimming = spotlightMode && !isActive;
+          const bhavarth = getStanzaBhavarth(aarti.slug, sIdx, stanza, aarti);
+          const isBhavarthOpen = !!expandedBhavarth[sIdx];
 
           return (
             <div
@@ -543,6 +579,63 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
                       {line}
                     </p>
                   ))}
+                </div>
+              )}
+
+              {/* Stanza Footer Actions: Bhavarth & Pronounce Chips */}
+              <div className="flex items-center justify-between gap-2 pt-3 mt-3 border-t border-[var(--border-main)]/50 text-xs">
+                <button
+                  onClick={() => toggleBhavarth(sIdx)}
+                  className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-bold transition-colors ${
+                    isBhavarthOpen
+                      ? "bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/40"
+                      : "text-[var(--text-secondary)] hover:text-amber-600 hover:bg-amber-500/5"
+                  }`}
+                >
+                  <BookOpen className="w-3 h-3" />
+                  <span>{isBhavarthOpen ? "भावार्थ लपवा" : "भावार्थ (Meaning)"}</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    setActiveStanzaIndex(sIdx);
+                    setIsPronounceModalOpen(true);
+                  }}
+                  className="text-[11px] text-[var(--text-secondary)] hover:text-emerald-600 flex items-center gap-1 font-medium"
+                >
+                  <Volume2 className="w-3 h-3" />
+                  <span>उच्चार शिका</span>
+                </button>
+              </div>
+
+              {/* Expandable Stanza Bhavarth Drawer */}
+              {isBhavarthOpen && (
+                <div className="mt-2.5 p-3 rounded-xl bg-amber-500/5 dark:bg-amber-950/20 border border-amber-500/20 space-y-2 animate-fade-in text-xs font-normal">
+                  <div className="flex items-center gap-1.5 text-amber-700 dark:text-amber-300 font-bold">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>कडवे भावार्थ:</span>
+                  </div>
+                  <p className="leading-relaxed text-[var(--text-primary)] font-devanagari">
+                    {bhavarth.marathiMeaning}
+                  </p>
+                  <p className="text-[11px] leading-relaxed text-[var(--text-secondary)] italic">
+                    {bhavarth.englishMeaning}
+                  </p>
+                  {bhavarth.keywords.length > 0 && (
+                    <div className="flex items-center gap-1.5 flex-wrap pt-1">
+                      <span className="text-[10px] text-[var(--text-secondary)] font-semibold">
+                        मुख्य संकल्पना:
+                      </span>
+                      {bhavarth.keywords.map((kw, kIdx) => (
+                        <span
+                          key={kIdx}
+                          className="px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-800 dark:text-amber-200 text-[10px] font-bold"
+                        >
+                          {kw}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -686,6 +779,22 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
           </button>
         </div>
       </div>
+
+            {/* Pronunciation Guide Modal */}
+      <PronunciationGuideModal
+        isOpen={isPronounceModalOpen}
+        onClose={() => setIsPronounceModalOpen(false)}
+        stanzas={aarti.stanzas}
+        activeStanzaIndex={activeStanzaIndex}
+        hymnTitle={isDevanagari ? aarti.titleDevanagari : aarti.titleTransliteration}
+      />
+
+      {/* Upasana AI Modal */}
+      <UpasanaAiModal
+        isOpen={isUpasanaModalOpen}
+        onClose={() => setIsUpasanaModalOpen(false)}
+        defaultTopic={deityInfo?.nameDevanagari}
+      />
 
       {/* Touchless Virtual Aarti Camera Modal */}
       <VirtualAartiModal

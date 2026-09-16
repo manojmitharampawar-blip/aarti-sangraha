@@ -2,16 +2,20 @@
 
 import React, { useState, useEffect } from 'react';
 import {
-  Music,
   Volume2,
-  Sliders,
+  VolumeX,
   Play,
   Pause,
-  Square,
+  Sliders,
   Sparkles,
+  Music,
   Mic,
   MicOff,
-  Radio,
+  ChevronDown,
+  ChevronUp,
+  Square,
+  Gauge,
+  User,
 } from 'lucide-react';
 import {
   startDevotionalMusic,
@@ -19,14 +23,14 @@ import {
   setDevotionalMusicVolume,
   setDevotionalMusicTempo,
 } from '@/lib/devotionalAudio';
-import { useAartiSpeech } from '@/hooks/useAartiSpeech';
+import { useAartiSpeech, LayaSpeed, VoiceGenderPreference } from '@/hooks/useAartiSpeech';
 import { useAdaptiveSur } from '@/hooks/useAdaptiveSur';
 import { useThemeContext } from '@/components/ThemeProvider';
 import { Stanza, ScriptType } from '@/types';
 import { INDIAN_SUR_REGISTRY, IndianSur } from '@/lib/pitchDetector';
 
-// Feature flag: speech recitation ('पठण ऐका') is kept intact for further singing/laya improvements, but hidden from end users for now.
-const SHOW_SPEECH_RECITATION = false;
+// AI Vani Recitation enabled with rhythmic prosody and laya control
+const SHOW_SPEECH_RECITATION = true;
 
 interface DevotionalAudioBarProps {
   stanzas?: Stanza[];
@@ -83,6 +87,10 @@ export function DevotionalAudioBar({
     isPaused,
     rate: speechRate,
     setRate: setSpeechRate,
+    laya,
+    setLaya,
+    genderPreference,
+    setGenderPreference,
     speak,
     pause: pauseSpeech,
     resume: resumeSpeech,
@@ -113,7 +121,7 @@ export function DevotionalAudioBar({
     }
   };
 
-  // Toggle Text-to-Speech Recitation (Kept intact for development)
+  // Toggle AI Vani Recitation with gentle accompanying drone
   const toggleSpeech = () => {
     if (isSpeaking) {
       if (isPaused) {
@@ -124,7 +132,8 @@ export function DevotionalAudioBar({
     } else {
       if (!isMusicPlaying) {
         try {
-          startDevotionalMusic({ bpm: musicTempo, volume: 0.35, sur: currentSur });
+          // Accompany AI recitation with subtle devotional drone
+          startDevotionalMusic({ bpm: musicTempo, volume: 0.3, sur: currentSur });
           setIsMusicPlaying(true);
         } catch {
           // ignore
@@ -133,6 +142,8 @@ export function DevotionalAudioBar({
       speak(stanzas, script, {
         onStanzaChange,
         onComplete: onSpeechComplete,
+        laya,
+        gender: genderPreference,
       });
     }
   };
@@ -153,6 +164,15 @@ export function DevotionalAudioBar({
     } else {
       cycleAutoScrollSpeed();
     }
+  };
+
+  const cycleLaya = () => {
+    const nextLaya: Record<LayaSpeed, LayaSpeed> = {
+      vilambit: 'madhya',
+      madhya: 'dhrut',
+      dhrut: 'vilambit',
+    };
+    setLaya(nextLaya[laya]);
   };
 
   const handleSurSelect = (sur: IndianSur) => {
@@ -188,7 +208,7 @@ export function DevotionalAudioBar({
           <button
             onClick={() => setShowSettings(prev => !prev)}
             aria-label="Adjust audio settings"
-            title="ऑडिओ, सूर व ताल सेटिंग्ज (AI)"
+            title="ऑडिओ, सूर व ताल सेटिंग्स (AI)"
             className={`p-1.5 rounded-lg border transition-colors ${
               showSettings
                 ? 'border-saffron-500 bg-saffron-500/10 text-saffron-600'
@@ -230,12 +250,61 @@ export function DevotionalAudioBar({
             </button>
           )}
 
+          {/* AI Vani Recitation Button */}
+          {SHOW_SPEECH_RECITATION && speechSupported && (
+            <div className="flex items-center rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] overflow-hidden">
+              <button
+                onClick={toggleSpeech}
+                aria-label="Toggle AI Vani Natural Recitation"
+                title="AI वाणी पठण (नैसर्गिक स्वर, लय व आरोह-अवरोह)"
+                className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-bold transition-all ${
+                  isSpeaking && !isPaused
+                    ? 'bg-emerald-600 text-white shadow-sm shadow-emerald-600/30 animate-pulse'
+                    : 'text-[var(--text-primary)] hover:text-emerald-600'
+                }`}
+              >
+                {isSpeaking && !isPaused ? (
+                  <Pause className="w-3.5 h-3.5 fill-current" />
+                ) : (
+                  <Volume2 className="w-3.5 h-3.5 text-emerald-600" />
+                )}
+                <span>
+                  {isSpeaking
+                    ? isPaused
+                      ? 'पठण सुरू'
+                      : 'पठण चालू'
+                    : 'AI वाणी'}
+                </span>
+              </button>
+
+              {/* Laya Preset Cycle */}
+              <button
+                onClick={cycleLaya}
+                title={`लय: ${laya === 'vilambit' ? 'विलंबित (शांत)' : laya === 'dhrut' ? 'द्रुत (जलद)' : 'मध्यम (सामान्य)'}`}
+                className="px-2 py-1.5 text-[10px] font-bold border-l border-[var(--border-main)] text-[var(--text-secondary)] hover:text-emerald-600 hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+              >
+                {laya === 'vilambit' ? 'संथ' : laya === 'dhrut' ? 'द्रुत' : 'मध्य'}
+              </button>
+
+              {isSpeaking && (
+                <button
+                  onClick={stopSpeech}
+                  aria-label="Stop speech recitation"
+                  title="पठण पूर्ण बंद करा"
+                  className="p-1.5 border-l border-[var(--border-main)] text-rose-600 hover:bg-rose-500/10"
+                >
+                  <Square className="w-3 h-3 fill-rose-600" />
+                </button>
+              )}
+            </div>
+          )}
+
           {/* Direct Auto-Scroll Button for Stotra & Aarti */}
           {onToggleAutoScroll && (
             <div className="flex items-center rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] overflow-hidden">
               <button
                 onClick={onToggleAutoScroll}
-                aria-label={isAutoScrolling ? 'Stop auto-scroll' : 'Start auto-scroll'}
+                aria-label={isAutoScrolling ? "Stop auto-scroll" : "Start auto-scroll"}
                 title={isAutoScrolling ? 'स्क्रोल थांबवा' : 'स्वयं-स्क्रोल सुरू करा'}
                 className={`flex items-center gap-1 px-2.5 py-1.5 text-xs font-bold transition-all ${
                   isAutoScrolling
@@ -260,46 +329,6 @@ export function DevotionalAudioBar({
               </button>
             </div>
           )}
-
-          {/* Text-to-Speech Recitation Button ('पठण ऐका' is hidden from users pending singing laya improvements) */}
-          {SHOW_SPEECH_RECITATION && speechSupported && (
-            <div className="flex items-center gap-1">
-              <button
-                onClick={toggleSpeech}
-                aria-label="Toggle text to speech natural recitation"
-                title="नैसर्गिक ऑडिओ पठण (स्वर व लयांसह)"
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                  isSpeaking && !isPaused
-                    ? 'bg-emerald-600 text-white shadow-sm shadow-emerald-600/30 animate-pulse'
-                    : 'border border-[var(--border-main)] bg-[var(--bg-main)] text-[var(--text-primary)] hover:border-emerald-500/50'
-                }`}
-              >
-                {isSpeaking && !isPaused ? (
-                  <Pause className="w-3.5 h-3.5" />
-                ) : (
-                  <Volume2 className="w-3.5 h-3.5 text-emerald-600" />
-                )}
-                <span>
-                  {isSpeaking
-                    ? isPaused
-                      ? 'पठण सुरू ठेवा'
-                      : 'पठण थांबवा'
-                    : 'पठण ऐका'}
-                </span>
-              </button>
-
-              {isSpeaking && (
-                <button
-                  onClick={stopSpeech}
-                  aria-label="Stop speech recitation"
-                  title="पठण पूर्ण बंद करा"
-                  className="p-1.5 rounded-lg border border-rose-200 bg-rose-500/10 text-rose-600 hover:bg-rose-500/20"
-                >
-                  <Square className="w-3.5 h-3.5 fill-rose-600" />
-                </button>
-              )}
-            </div>
-          )}
         </div>
       </div>
 
@@ -311,7 +340,7 @@ export function DevotionalAudioBar({
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-1.5 font-bold text-saffron-800 dark:text-saffron-300">
                 <Sparkles className="w-3.5 h-3.5 text-saffron-600" />
-                <span>सूर व संवादिनी जुळणी (Adaptive Sur):</span>
+                <span>सूर व संवादिनी जुळवणी (Adaptive Sur):</span>
                 <span className="text-[11px] font-extrabold text-saffron-700 dark:text-saffron-200 px-2 py-0.5 rounded-md bg-saffron-500/15">
                   {currentSur.nameMr}
                 </span>
@@ -340,39 +369,25 @@ export function DevotionalAudioBar({
               </button>
             </div>
 
-            {/* Live Detection Feedback Bar */}
-            {isDetectingSur && (
-              <div className="flex items-center gap-2 p-2 rounded-lg bg-white/80 dark:bg-stone-900/80 border border-saffron-500/30 text-xs">
-                <Radio className="w-3.5 h-3.5 text-rose-600 animate-ping shrink-0" />
-                <div className="flex-1 truncate">
-                  <span className="font-semibold text-rose-700 dark:text-rose-400">
-                    आवाज ऐकत आहे... (सा म्हणा)
-                  </span>
-                  {detectedPitchHz && (
-                    <span className="ml-2 text-[10px] font-bold text-stone-600 dark:text-stone-300">
-                      {detectedPitchHz} Hz ({detectedSurInfo?.sur.nameMr})
-                    </span>
-                  )}
-                </div>
-              </div>
-            )}
-
-            {surStatusMessage && !isDetectingSur && (
-              <div className="text-[11px] font-medium text-saffron-700 dark:text-saffron-300">
+            {surStatusMessage && (
+              <p className="text-[11px] text-amber-700 dark:text-amber-300 italic">
                 {surStatusMessage}
-              </div>
+              </p>
             )}
 
-            {/* Quick Scale Selector Chips */}
-            <div className="flex items-center gap-1.5 flex-wrap pt-0.5">
-              {(showAllSurs ? INDIAN_SUR_REGISTRY : POPULAR_SURS).map(sur => (
+            {/* Quick Sur Selectors */}
+            <div className="flex items-center gap-1.5 flex-wrap pt-1">
+              <span className="text-[10px] text-[var(--text-secondary)] font-semibold">
+                लोकप्रिय सूर:
+              </span>
+              {POPULAR_SURS.map(sur => (
                 <button
                   key={sur.key}
                   onClick={() => handleSurSelect(sur)}
-                  className={`px-2 py-1 rounded-lg text-[10px] font-bold border transition-colors ${
+                  className={`px-2 py-0.5 rounded-md text-[10px] font-bold transition-all ${
                     currentSur.key === sur.key
-                      ? 'border-saffron-600 bg-saffron-600 text-white shadow-xs'
-                      : 'border-saffron-500/30 bg-[var(--card-main)] text-[var(--text-secondary)] hover:border-saffron-500'
+                      ? 'bg-saffron-500 text-white shadow-xs'
+                      : 'border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-secondary)] hover:border-saffron-500/50'
                   }`}
                 >
                   {sur.nameMr}
@@ -380,84 +395,92 @@ export function DevotionalAudioBar({
               ))}
 
               <button
-                onClick={() => setShowAllSurs(!showAllSurs)}
-                className="text-[10px] font-bold text-saffron-600 hover:underline px-1 py-0.5"
+                onClick={() => setShowAllSurs(prev => !prev)}
+                className="text-[10px] text-saffron-600 dark:text-saffron-400 font-bold hover:underline ml-1"
               >
-                {showAllSurs ? 'कमी पर्याय' : 'इतर १२ सूर...'}
+                {showAllSurs ? 'कमी दाखवा' : 'सर्व १२ सूर...'}
               </button>
             </div>
+
+            {showAllSurs && (
+              <div className="grid grid-cols-4 sm:grid-cols-6 gap-1.5 pt-1.5 border-t border-saffron-500/20">
+                {INDIAN_SUR_REGISTRY.map(sur => (
+                  <button
+                    key={sur.key}
+                    onClick={() => handleSurSelect(sur)}
+                    className={`px-2 py-1 rounded-md text-[10px] font-bold transition-all text-center ${
+                      currentSur.key === sur.key
+                        ? 'bg-saffron-500 text-white shadow-xs'
+                        : 'border border-[var(--border-main)] bg-[var(--card-main)] text-[var(--text-secondary)] hover:border-saffron-500/50'
+                    }`}
+                  >
+                    <div>{sur.nameMr}</div>
+                    <div className="text-[9px] opacity-75">{sur.nameEn}</div>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
-          {/* Music Volume Slider */}
-          <div className="flex items-center justify-between gap-3">
-            <span className="text-[var(--text-secondary)] font-semibold flex items-center gap-1">
-              <Volume2 className="w-3 h-3" />
-              <span>वाद्य आवाज (Music Volume):</span>
-            </span>
-            <input
-              type="range"
-              min="0.1"
-              max="1"
-              step="0.05"
-              value={musicVolume}
-              onChange={e => handleVolumeChange(parseFloat(e.target.value))}
-              className="w-28 accent-amber-600 cursor-pointer"
-            />
-          </div>
-
-          {/* Music Tempo Buttons */}
-          <div className="flex items-center justify-between gap-2">
-            <span className="text-[var(--text-secondary)] font-semibold">
-              लय (Rhythm Tempo):
-            </span>
-            <div className="flex gap-1">
-              {[
-                { label: 'मंद (72)', bpm: 72 },
-                { label: 'मध्यम (82)', bpm: 82 },
-                { label: 'जलद (96)', bpm: 96 },
-              ].map(t => (
+          {/* AI Vani Preferences */}
+          <div className="flex items-center justify-between gap-3 p-2 rounded-xl bg-[var(--bg-main)] border border-[var(--border-main)] flex-wrap">
+            <div className="flex items-center gap-1.5 font-bold text-[var(--text-primary)]">
+              <User className="w-3.5 h-3.5 text-emerald-600" />
+              <span>AI वाणी स्वर प्रकार:</span>
+            </div>
+            <div className="flex items-center gap-1">
+              {(['auto', 'female', 'male'] as VoiceGenderPreference[]).map(g => (
                 <button
-                  key={t.bpm}
-                  onClick={() => handleTempoChange(t.bpm)}
-                  className={`px-2 py-1 rounded-lg text-[10px] font-bold border transition-colors ${
-                    musicTempo === t.bpm
-                      ? 'border-amber-500 bg-amber-500/15 text-amber-700 dark:text-amber-300'
-                      : 'border-[var(--border-main)] text-[var(--text-secondary)] hover:bg-black/5 dark:hover:bg-white/5'
+                  key={g}
+                  onClick={() => setGenderPreference(g)}
+                  className={`px-2 py-1 rounded-lg text-[10px] font-bold transition-colors ${
+                    genderPreference === g
+                      ? 'bg-emerald-600 text-white'
+                      : 'border border-[var(--border-main)] text-[var(--text-secondary)] hover:border-emerald-500/50'
                   }`}
                 >
-                  {t.label}
+                  {g === 'auto' ? 'आपोआप' : g === 'female' ? 'महिला स्वर' : 'पुरुष स्वर'}
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Speech Rate Control ('पठण ऐका' speed settings hidden along with the recitation button) */}
-          {SHOW_SPEECH_RECITATION && speechSupported && (
-            <div className="flex items-center justify-between gap-2 pt-1 border-t border-dashed border-[var(--border-main)]">
-              <span className="text-[var(--text-secondary)] font-semibold">
-                वाचन गती (Speech Speed):
-              </span>
-              <div className="flex gap-1">
-                {[
-                  { label: '0.8x शांत', rate: 0.8 },
-                  { label: '0.9x ध्यान', rate: 0.86 },
-                  { label: '1.0x सामान्य', rate: 1.0 },
-                ].map(r => (
-                  <button
-                    key={r.rate}
-                    onClick={() => setSpeechRate(r.rate)}
-                    className={`px-2 py-1 rounded-lg text-[10px] font-bold border transition-colors ${
-                      Math.abs(speechRate - r.rate) < 0.04
-                        ? 'border-emerald-500 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300'
-                        : 'border-[var(--border-main)] text-[var(--text-secondary)] hover:bg-black/5 dark:hover:bg-white/5'
-                    }`}
-                  >
-                    {r.label}
-                  </button>
-                ))}
+          {/* Tempo & Volume Sliders */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+            <div className="space-y-1">
+              <div className="flex justify-between text-[11px] text-[var(--text-secondary)]">
+                <span>वाद्य आवाज (Volume)</span>
+                <span>{Math.round(musicVolume * 100)}%</span>
               </div>
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.05"
+                value={musicVolume}
+                onChange={e => handleVolumeChange(parseFloat(e.target.value))}
+                aria-label="Background music volume"
+                className="w-full accent-saffron-500 cursor-pointer"
+              />
             </div>
-          )}
+
+            <div className="space-y-1">
+              <div className="flex justify-between text-[11px] text-[var(--text-secondary)]">
+                <span>आरती ताल गती (Laya Tempo)</span>
+                <span>{musicTempo} BPM</span>
+              </div>
+              <input
+                type="range"
+                min="60"
+                max="120"
+                step="2"
+                value={musicTempo}
+                onChange={e => handleTempoChange(parseInt(e.target.value, 10))}
+                aria-label="Devotional music tempo"
+                className="w-full accent-saffron-500 cursor-pointer"
+              />
+            </div>
+          </div>
         </div>
       )}
     </div>
