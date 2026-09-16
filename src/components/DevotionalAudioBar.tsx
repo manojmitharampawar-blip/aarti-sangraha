@@ -28,6 +28,7 @@ import { useAdaptiveSur } from '@/hooks/useAdaptiveSur';
 import { useThemeContext } from '@/components/ThemeProvider';
 import { Stanza, ScriptType } from '@/types';
 import { INDIAN_SUR_REGISTRY, IndianSur } from '@/lib/pitchDetector';
+import { startTempleAcoustics, stopTempleAcoustics } from '@/lib/templeAcousticEngine';
 
 // AI Vani Recitation enabled with rhythmic prosody and laya control
 const SHOW_SPEECH_RECITATION = true;
@@ -106,6 +107,18 @@ export function DevotionalAudioBar({
   }, [stopSurDetection]);
 
   // Toggle Background Devotional Music
+    const [isTempleAcousticsActive, setIsTempleAcousticsActive] = useState(false);
+
+  const toggleTempleAcoustics = () => {
+    if (isTempleAcousticsActive) {
+      stopTempleAcoustics();
+      setIsTempleAcousticsActive(false);
+    } else {
+      const started = startTempleAcoustics();
+      setIsTempleAcousticsActive(started);
+    }
+  };
+
   const toggleMusic = () => {
     if (isMusicPlaying) {
       stopDevotionalMusic();

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Sparkles,
@@ -12,8 +12,14 @@ import {
   ChevronRight,
   Flame,
   HelpCircle,
+  Mic,
+  MicOff,
+  Volume2,
+  VolumeX,
+  Scroll,
 } from 'lucide-react';
-import { queryUpasanaGuidance, UpasanaGuidance, UPASANA_KNOWLEDGE_BASE } from '@/lib/upasanaAiEngine';
+import { queryUpasanaGuidance, UpasanaGuidance } from '@/lib/upasanaAiEngine';
+import { findScripturalCitations, ScripturalCitation } from '@/lib/scripturalKnowledgeBase';
 import { aartis } from '@/data/aartis';
 
 interface UpasanaAiModalProps {
@@ -27,20 +33,101 @@ export function UpasanaAiModal({ isOpen, onClose, defaultTopic }: UpasanaAiModal
   const [activeGuidance, setActiveGuidance] = useState<UpasanaGuidance>(() =>
     queryUpasanaGuidance(defaultTopic || 'आजची उपासना')
   );
+  const [citations, setCitations] = useState<ScripturalCitation[]>(() =>
+    findScripturalCitations(defaultTopic || 'आजची उपासना')
+  );
+  const [isVoiceListening, setIsVoiceListening] = useState(false);
+  const [isVoiceSpeaking, setIsVoiceSpeaking] = useState(false);
+
+  useEffect(() => {
+    return () => {
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
 
   if (!isOpen) return null;
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSearch = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     if (!queryInput.trim()) return;
     const result = queryUpasanaGuidance(queryInput);
     setActiveGuidance(result);
+    setCitations(findScripturalCitations(queryInput));
   };
 
   const selectPreset = (presetQuestion: string) => {
     setQueryInput(presetQuestion);
     const result = queryUpasanaGuidance(presetQuestion);
     setActiveGuidance(result);
+    setCitations(findScripturalCitations(presetQuestion));
+  };
+
+  // Voice In: Speech Recognition
+  const toggleVoiceIn = () => {
+    if (typeof window === 'undefined') return;
+
+    const SpeechRecognition =
+      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      alert('तुमच्या ब्राउझरमध्ये व्हॉईस इनपुट उपलब्ध नाही.');
+      return;
+    }
+
+    if (isVoiceListening) {
+      setIsVoiceListening(false);
+      return;
+    }
+
+    try {
+      const rec = new SpeechRecognition();
+      rec.lang = 'mr-IN';
+      rec.continuous = false;
+      rec.interimResults = false;
+
+      rec.onresult = (evt: any) => {
+        const transcript = evt.results[0][0].transcript;
+        setQueryInput(transcript);
+        const result = queryUpasanaGuidance(transcript);
+        setActiveGuidance(result);
+        setCitations(findScripturalCitations(transcript));
+        setIsVoiceListening(false);
+      };
+
+      rec.onerror = () => setIsVoiceListening(false);
+      rec.onend = () => setIsVoiceListening(false);
+
+      setIsVoiceListening(true);
+      rec.start();
+    } catch {
+      setIsVoiceListening(false);
+    }
+  };
+
+  // Voice Out: Speech Synthesis Readout
+  const toggleVoiceOut = () => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+
+    if (isVoiceSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsVoiceSpeaking(false);
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(
+      `${activeGuidance.questionDevanagari}। ${activeGuidance.answerDevanagari}`
+    );
+    utterance.lang = 'mr-IN';
+    utterance.rate = 0.88; // Devotional calm pace
+
+    utterance.onend = () => setIsVoiceSpeaking(false);
+    utterance.onerror = () => setIsVoiceSpeaking(false);
+
+    setIsVoiceSpeaking(true);
+    window.speechSynthesis.speak(utterance);
   };
 
   const PRESET_TOPICS = [
@@ -59,10 +146,13 @@ export function UpasanaAiModal({ isOpen, onClose, defaultTopic }: UpasanaAiModal
       aria-modal="true"
       aria-labelledby="upasana-modal-title"
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in"
-      onClick={onClose}
+      onClick={() => {
+        if (isVoiceSpeaking) window.speechSynthesis.cancel();
+        onClose();
+      }}
     >
       <div
-        className="w-full max-w-xl max-h-[85vh] overflow-y-auto rounded-3xl border border-[var(--border-main)] bg-[var(--card-main)] p-5 shadow-2xl space-y-4"
+        className="w-full max-w-xl max-h-[88vh] overflow-y-auto rounded-3xl border border-[var(--border-main)] bg-[var(--card-main)] p-5 shadow-2xl space-y-4"
         onClick={e => e.stopPropagation()}
       >
         {/* Modal Header */}
@@ -76,12 +166,15 @@ export function UpasanaAiModal({ isOpen, onClose, defaultTopic }: UpasanaAiModal
                 उपासना मित्र (Devotional AI Guide)
               </h2>
               <p className="text-xs text-[var(--text-secondary)]">
-                शास्त्रोक्त पूजा विधी, वार देवता व साधना मार्गदर्शन
+                शास्त्रोक्त पूजा विधी, संत साहित्य व साधना मार्गदर्शन
               </p>
             </div>
           </div>
           <button
-            onClick={onClose}
+            onClick={() => {
+              if (isVoiceSpeaking) window.speechSynthesis.cancel();
+              onClose();
+            }}
             aria-label="Close Upasana AI modal"
             className="p-1.5 rounded-full hover:bg-black/5 dark:hover:bg-white/5 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
           >
@@ -89,19 +182,37 @@ export function UpasanaAiModal({ isOpen, onClose, defaultTopic }: UpasanaAiModal
           </button>
         </div>
 
-        {/* Search / Ask Input */}
-        <form onSubmit={handleSearch} className="relative">
-          <input
-            type="text"
-            value={queryInput}
-            onChange={e => setQueryInput(e.target.value)}
-            placeholder="उदा. आजची उपासना, सोमवारची शिवपूजा, आरती शास्त्र..."
-            className="w-full pl-9 pr-20 py-2.5 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] text-xs text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-hidden focus:border-saffron-500"
-          />
-          <Search className="w-4 h-4 text-[var(--text-secondary)] absolute left-3 top-3" />
+        {/* Search / Voice Input */}
+        <form onSubmit={handleSearch} className="relative flex items-center gap-1.5">
+          <div className="relative flex-1">
+            <input
+              type="text"
+              value={queryInput}
+              onChange={e => setQueryInput(e.target.value)}
+              placeholder="उदा. सोमवारची शिवपूजा, आरती कशी ओवाळावी, संकष्टी व्रत..."
+              className="w-full pl-9 pr-12 py-2.5 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] text-xs text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-hidden focus:border-saffron-500 font-devanagari"
+            />
+            <Search className="w-4 h-4 text-[var(--text-secondary)] absolute left-3 top-3" />
+
+            {/* Mic Voice-In Button */}
+            <button
+              type="button"
+              onClick={toggleVoiceIn}
+              aria-label="Speak query"
+              title="बोलून प्रश्न विचारा (व्हॉईस इनपुट)"
+              className={`absolute right-2 top-2 p-1.5 rounded-lg transition-all ${
+                isVoiceListening
+                  ? 'bg-rose-500 text-white animate-pulse'
+                  : 'text-[var(--text-secondary)] hover:text-saffron-600'
+              }`}
+            >
+              {isVoiceListening ? <MicOff className="w-3.5 h-3.5" /> : <Mic className="w-3.5 h-3.5" />}
+            </button>
+          </div>
+
           <button
             type="submit"
-            className="absolute right-1.5 top-1.5 px-3 py-1.5 rounded-lg bg-saffron-500 text-white text-xs font-bold hover:bg-saffron-600 transition-colors"
+            className="px-3.5 py-2.5 rounded-xl bg-saffron-500 text-white text-xs font-bold hover:bg-saffron-600 active:scale-95 transition-all shrink-0"
           >
             विचारा
           </button>
@@ -120,13 +231,30 @@ export function UpasanaAiModal({ isOpen, onClose, defaultTopic }: UpasanaAiModal
           ))}
         </div>
 
-        {/* Guidance Display Card */}
-        <div className="p-4 rounded-2xl border border-saffron-500/30 bg-saffron-500/5 dark:bg-saffron-950/20 space-y-3">
-          <div className="flex items-center gap-2">
-            <Flame className="w-4 h-4 text-saffron-600 shrink-0" />
-            <h3 className="text-sm font-bold text-[var(--text-primary)] font-devanagari">
-              {activeGuidance.questionDevanagari}
-            </h3>
+        {/* Guidance Display Card with Voice-Out Audio Readout */}
+        <div className="p-4 rounded-2xl border border-saffron-500/30 bg-saffron-500/5 dark:bg-saffron-950/20 space-y-3 relative">
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <Flame className="w-4 h-4 text-saffron-600 shrink-0" />
+              <h3 className="text-sm font-bold text-[var(--text-primary)] font-devanagari">
+                {activeGuidance.questionDevanagari}
+              </h3>
+            </div>
+
+            {/* Voice-Out Audio Answer Button */}
+            <button
+              onClick={toggleVoiceOut}
+              aria-label="Listen to answer"
+              title={isVoiceSpeaking ? 'ऑडिओ थांबवा' : 'मार्गदर्शन ऐका (AI वाणी)'}
+              className={`flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-bold transition-all shrink-0 ${
+                isVoiceSpeaking
+                  ? 'bg-saffron-600 text-white animate-pulse'
+                  : 'border border-saffron-500/40 text-saffron-800 dark:text-saffron-300 hover:bg-saffron-500/15'
+              }`}
+            >
+              {isVoiceSpeaking ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
+              <span>{isVoiceSpeaking ? 'थांबवा' : 'ऐका'}</span>
+            </button>
           </div>
 
           <p className="text-xs leading-relaxed text-[var(--text-primary)] font-devanagari">
@@ -137,6 +265,30 @@ export function UpasanaAiModal({ isOpen, onClose, defaultTopic }: UpasanaAiModal
             {activeGuidance.answerEnglish}
           </p>
         </div>
+
+        {/* Scriptural Grounding (संत साहित्य संदर्भ) */}
+        {citations.length > 0 && (
+          <div className="p-3.5 rounded-2xl border border-amber-500/20 bg-amber-500/5 space-y-2">
+            <div className="flex items-center gap-1.5 text-xs font-bold text-amber-800 dark:text-amber-300">
+              <Scroll className="w-3.5 h-3.5" />
+              <span>संत साहित्य संदर्भ (Scriptural Grounding):</span>
+            </div>
+            {citations.slice(0, 2).map((cit, cIdx) => (
+              <div key={cIdx} className="space-y-1 text-xs">
+                <div className="flex items-center justify-between text-[11px] text-[var(--text-secondary)] font-semibold">
+                  <span className="text-amber-700 dark:text-amber-300">📖 {cit.sourceTextMr}</span>
+                  <span>{cit.chapterOrOviMr}</span>
+                </div>
+                <p className="italic font-devanagari text-[var(--text-primary)] text-xs">
+                  &ldquo;{cit.verseSnippetDevanagari}&rdquo;
+                </p>
+                <p className="text-[11px] text-[var(--text-secondary)]">
+                  {cit.purportMr}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Ritual Tips */}
         {activeGuidance.ritualsTips.length > 0 && (
@@ -174,7 +326,10 @@ export function UpasanaAiModal({ isOpen, onClose, defaultTopic }: UpasanaAiModal
                   <Link
                     key={slug}
                     href={`/aarti/${slug}`}
-                    onClick={onClose}
+                    onClick={() => {
+                      if (isVoiceSpeaking) window.speechSynthesis.cancel();
+                      onClose();
+                    }}
                     className="flex items-center justify-between p-2.5 rounded-xl border border-[var(--border-main)] bg-[var(--card-main)] hover:border-saffron-500/60 hover:bg-saffron-500/5 transition-all group"
                   >
                     <div className="truncate pr-2">
