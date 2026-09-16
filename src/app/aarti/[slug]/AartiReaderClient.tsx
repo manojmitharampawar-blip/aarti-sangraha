@@ -39,6 +39,7 @@ import { VirtualAartiModal } from '@/components/VirtualAartiModal';
 import { getHymnTypeBadge } from '@/components/AartiCard';
 import { PronunciationGuideModal } from "@/components/PronunciationGuideModal";
 import { UpasanaAiModal } from "@/components/UpasanaAiModal";
+import { SmartJapaMalaModal } from "@/components/SmartJapaMalaModal";
 import { getStanzaBhavarth } from "@/lib/bhavarthEngine";
 import { BookOpen, Volume2, Flame } from "lucide-react";
 import { deities } from '@/data/deities';
@@ -73,6 +74,7 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
 
     const [isPronounceModalOpen, setIsPronounceModalOpen] = useState(false);
   const [isUpasanaModalOpen, setIsUpasanaModalOpen] = useState(false);
+  const [isJapaModalOpen, setIsJapaModalOpen] = useState(false);
   const [expandedBhavarth, setExpandedBhavarth] = useState<Record<number, boolean>>({});
 
   const toggleBhavarth = (idx: number) => {
@@ -310,6 +312,16 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
               className="p-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 active:scale-95 transition-all"
             >
               <Volume2 className="w-4 h-4 text-emerald-600" />
+            </button>
+
+                        {/* Smart Japa Mala Trigger */}
+            <button
+              onClick={() => setIsJapaModalOpen(true)}
+              aria-label="Open Smart Japa Mala & Repetition Counter"
+              title="स्मार्ट जप व आवर्तन गणक (११, २१, १०८)"
+              className="p-2 rounded-xl border border-rose-500/30 bg-rose-500/10 text-rose-700 dark:text-rose-300 hover:bg-rose-500/20 active:scale-95 transition-all text-xs font-bold"
+            >
+              <span>📿</span>
             </button>
 
             {/* Upasana AI Assistant Trigger */}
@@ -786,6 +798,13 @@ export function AartiReaderClient({ aarti, nextAarti }: AartiReaderClientProps) 
         onClose={() => setIsPronounceModalOpen(false)}
         stanzas={aarti.stanzas}
         activeStanzaIndex={activeStanzaIndex}
+        hymnTitle={isDevanagari ? aarti.titleDevanagari : aarti.titleTransliteration}
+      />
+
+            {/* Smart Japa Mala Modal */}
+      <SmartJapaMalaModal
+        isOpen={isJapaModalOpen}
+        onClose={() => setIsJapaModalOpen(false)}
         hymnTitle={isDevanagari ? aarti.titleDevanagari : aarti.titleTransliteration}
       />
 
